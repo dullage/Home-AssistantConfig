@@ -10,16 +10,16 @@ Here are some screenshots from the front end:
 ![Main Tab](docs/main_tab.png)
 
 ## Climate Tab
-![Climate Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/2%20-%20Climate%20Tab.png)
+![Climate Tab](docs/climate_tab.png)
 
 ## AV Tab
-![AV Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/3%20-%20AV%20Tab.png)
+![AV Tab](docs/av_tab.png)
 
 ## Miscellaneous Tab
-![Miscellaneous Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/4%20-%20Miscellaneous%20Tab.png)
+![Miscellaneous Tab](docs/miscellaneous_tab.png)
 
 ## Camera Tab
-![Camera Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/5%20-%20Camera%20Tab.png)
+![Camera Tab](docs/camera_tab.png)
 
 ## Admin Tab
-![Admin Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/6%20-%20Admin%20Tab.png)
+![Admin Tab](docs/admin_tab.png)
