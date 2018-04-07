@@ -7,7 +7,7 @@ Currently there is very little in terms of in-configuration comments but if anyo
 Here are some screenshots from the front end:
 
 ## Main Tab
-![Main Tab](readme_images/1 - Main Tab.png)
+![Main Tab](docs/main_tab.png)
 
 ## Climate Tab
 ![Climate Tab](https://github.com/Dullage/Home-AssistantConfig/raw/master/readme_images/2%20-%20Climate%20Tab.png)
