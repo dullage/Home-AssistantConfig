@@ -7,6 +7,7 @@
 # Allow these file extensions
 !*.yaml
 !*.sh
+!*.png
 
 # Allow these specific files 
 !.HA_VERSION
