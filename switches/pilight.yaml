@@ -1,0 +1,94 @@
+# Christmas Tree:
+  # on_code:
+    # protocol: clarus_switch
+    # id: 'B1'
+    # unit: 16
+    # 'on': 1
+  # off_code:
+    # protocol: clarus_switch
+    # id: 'B1'
+    # unit: 16
+    # 'off': 1
+Garden Lights:
+  on_code:
+    protocol: elro_800_switch
+    systemcode: 3
+    unit: 3
+    'on': 1
+  off_code:
+    protocol: elro_800_switch
+    systemcode: 3
+    unit: 3
+    'off': 1
+Kitchen Right:
+  on_code:
+    protocol: clarus_switch
+    id: 'A2'
+    unit: 16
+    'on': 1
+  off_code:
+    protocol: clarus_switch
+    id: 'A2'
+    unit: 16
+    'off': 1
+Kitchen Left:
+  on_code:
+    protocol: clarus_switch
+    id: 'E3'
+    unit: 16
+    'on': 1
+  off_code:
+    protocol: clarus_switch
+    id: 'E3'
+    unit: 16
+    'off': 1
+# Dining Room Lamp:
+  # on_code:
+    # protocol: clarus_switch
+    # id: 'C3'
+    # unit: 16
+    # 'on': 1
+  # off_code:
+    # protocol: clarus_switch
+    # id: 'C3'
+    # unit: 16
+    # 'off': 1
+PiZero:
+  on_code:
+    protocol: clarus_switch
+    id: 'C3'
+    unit: 40
+    'on': 1
+  off_code:
+    protocol: clarus_switch
+    id: 'C3'
+    unit: 40
+    'off': 1
+Echo Amplifier:
+  on_code:
+    protocol: clarus_switch
+    id: 'B1'
+    unit: 40
+    'on': 1
+  off_code:
+    protocol: clarus_switch
+    id: 'B1'
+    unit: 40
+    'off': 1
+DoorbellCamera:
+  on_code:
+    protocol: raw
+    code: "253 759 759 253 759 253 759 253 253 759 253 759 253 759 253 759 253 759 253 759 759 253 253 759 253 759 759 253 759 253 759 253 253 759 253 759 759 253 253 759 759 253 253 759 253 759 759 253 253 8602"
+  off_code:
+    protocol: raw
+    code: "253 759 759 253 759 253 759 253 253 759 253 759 253 759 253 759 253 759 253 759 759 253 253 759 253 759 759 253 759 253 759 253 253 759 253 759 759 253 253 759 759 253 253 759 253 759 759 253 253 8602"
+  # on_code:
+    # protocol: clarus_switch
+    # id: 'A1'
+    # unit: 1
+    # 'on': 1
+  # off_code:
+    # protocol: clarus_switch
+    # id: 'A1'
+    # unit: 1
+    # 'off': 1

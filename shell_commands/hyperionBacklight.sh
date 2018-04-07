@@ -1,0 +1,1 @@
+echo '{ "color": [255,185,75], "command": "color", "priority": 0 }' | nc 192.168.0.15 19444

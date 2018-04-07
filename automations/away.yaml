@@ -1,0 +1,57 @@
+# Set Nest to 'Away' when HA Away Input turned on
+- alias: ha away to nest away
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.away
+    to: 'on'
+  action:
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.house
+        operation_mode: 'off'
+    - service: notify.telegram
+      data:
+        message: "I have put the house into 'Away Mode', have a nice trip!"
+
+# Set Nest to 'Home' when HA Away Input turned off
+- alias: ha not away to nest home
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.away
+    to: 'off'
+  action:
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.house
+        operation_mode: 'heat'
+    - service: notify.telegram
+      data:
+        message: "Welcome Home!"
+
+# # Turn on 'Away Lights' at sunset if we are away
+# - alias: set away scene
+  # trigger:
+    # platform: sun
+    # event: sunset
+  # condition:
+    # condition: state
+    # entity_id: input_boolean.away
+    # state: 'on'
+  # action:
+    # service: scene.turn_on
+    # entity_id: scene.away
+
+# # Turn off 'Away Lights' at 22:22 if we are away
+# - alias: unset away scene
+  # trigger:
+    # platform: time
+    # at: '22:22:00'
+  # condition:
+    # condition: state
+    # entity_id: input_boolean.away
+    # state: 'on'
+  # action:
+    # service: scene.turn_on
+    # entity_id: scene.all_off

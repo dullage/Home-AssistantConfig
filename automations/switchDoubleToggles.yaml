@@ -1,0 +1,54 @@
+- alias: Landing Switch Special Function
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "landingSwitch"
+  action:
+    service: light.toggle
+    entity_id: light.downstairs
+
+# Kitchen Switch (when low kitchen lights off)
+- alias: Kitchen Switch When Low Kitchen Lights Off
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "kitchen"
+  condition:
+    condition: state
+    entity_id: group.kitchen_low
+    state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.kitchen_left
+    - service: light.turn_on
+      entity_id: light.kitchen_right
+
+# Kitchen Switch (when low kitchen lights on)
+- alias: Kitchen Switch When Low Kitchen Lights On
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "kitchen"
+  condition:
+    condition: state
+    entity_id: group.kitchen_low
+    state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.kitchen_left
+    - service: light.turn_off
+      entity_id: light.kitchen_right
+      
+# Master Bedroom
+- alias: Landing Switch Special Function
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "master_bedroom_main"
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.biglightgroup

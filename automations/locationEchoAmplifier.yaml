@@ -1,0 +1,9 @@
+- alias: bothLeftEchoAmplifier
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.echo_amplifier

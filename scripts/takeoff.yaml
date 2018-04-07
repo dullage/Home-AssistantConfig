@@ -1,0 +1,6 @@
+takeoff:
+  sequence:
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>Adam has just taken off. You can track his flight online.</speak>"

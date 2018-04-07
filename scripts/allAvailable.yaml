@@ -1,0 +1,51 @@
+all_available:
+  alias: All Available
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/bathroom_and_landing/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/bathroom_and_landing/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/bathroom_mirror/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/dining_room_lamp/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/front_room_lamp/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "light/master_bedroom_main/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "switch/ambilight_power_supply/availability"
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: "switch/dryer/availability"
+        payload: '1'

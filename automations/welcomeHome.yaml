@@ -1,0 +1,91 @@
+# Welcome Home Adam
+- alias: welcome_home_adam
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.queue_home_adam
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.queue_home_lea
+        state: 'off'
+  action:
+    - service: script.turn_on
+      entity_id: script.welcomeadam
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.queue_home_adam
+    #- condition: template
+      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
+    - delay:
+        seconds: 5
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>Welcome Aboard Captain</speak>"
+
+# Welcome Home Leanne
+- alias: welcome_home_lea
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.queue_home_adam
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.queue_home_lea
+        state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.welcomelea
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.queue_home_lea
+    #- condition: template
+      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
+    - delay:
+        seconds: 5
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>Welcome Home Leanne</speak>"
+    
+# Welcome Home Both
+- alias: welcome_home_both
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.queue_home_adam
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.queue_home_lea
+        state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.welcomeboth
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.queue_home_adam
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.queue_home_lea
+    #- condition: template
+      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
+    - delay:
+        seconds: 5
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>Welcome Home</speak>"      

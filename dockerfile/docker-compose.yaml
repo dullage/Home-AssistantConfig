@@ -1,0 +1,11 @@
+version: '3'
+services:
+  homeassistant:
+    build: .
+    image: myhomeassistant
+    container_name: "homeassistant"
+    volumes:
+      - "..:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    network_mode: "host"
+    restart: "always"

@@ -1,0 +1,23 @@
+- alias: welcome_nick
+  initial_state: true
+  trigger: 
+    platform: state
+    entity_id: device_tracker.nicksiphone
+    to: 'home'
+  action:
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'on' }}"
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>Welcome Smiler</speak>"
+- alias: nick_warning
+  initial_state: true
+  trigger: 
+    platform: state
+    entity_id: device_tracker.nicksiphone
+    to: 'home'
+  action:
+    - service: notify.ios_adams_iphone
+      data_template:
+        message: "Nick is here!"

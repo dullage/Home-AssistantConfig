@@ -1,0 +1,16 @@
+- alias: bothLeftLights
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  condition:
+    condition: state
+    entity_id: group.biglightgroup
+    state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.all_off
+    - service: notify.telegram
+      data:
+        message: "You left lights on! But don't worry, I've turned them off for you!"

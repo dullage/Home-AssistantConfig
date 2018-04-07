@@ -1,0 +1,11 @@
+- alias: dryer
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.clothes_dryer
+    to: 'on'
+    for:
+      hours: 6
+  action:
+    service: switch.turn_off
+    entity_id: switch.clothes_dryer

@@ -1,0 +1,34 @@
+# Doorbell
+- alias: doorbell
+  initial_state: true
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d000128c313
+        click_type: single
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d000128c313
+        click_type: double
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d000128c313
+        click_type: long_click_press
+  action:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: 34:ce:00:8c:05:b9
+        ringtone_id: 10
+    - service: notify.ios_adams_iphone
+      data:
+        message: "Doorbell!"
+    - service: notify.ios_leannes_iphone
+      data:
+        message: "Doorbell!"
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.front_room_speaker
+        message: "<speak>There is someone at the front door.</speak>"

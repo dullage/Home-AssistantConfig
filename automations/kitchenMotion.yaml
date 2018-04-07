@@ -1,0 +1,121 @@
+- alias: kitchenMotionLowLightsDown
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00015db8be
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+    # condition: template
+    # value_template: "{{is_state_attr('light.kitchen_right', 'rgb_color', [255, 147, 41])}}"
+      - condition: state
+        entity_id: light.kitchen_right
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.kitchen_animation
+        state: 'off'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_left
+        payload: '{0:1,2:[26,15,4],3:100}'
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_right
+        payload: '{0:1,2:[26,15,4],3:100}'
+- alias: kitchenMotionLowLightsUp
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00015db8be
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+    # condition: template
+    # value_template: "{{is_state_attr('light.kitchen_right', 'rgb_color', [255, 147, 41])}}"
+      - condition: state
+        entity_id: light.kitchen_right
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.kitchen_animation
+        state: 'off'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_left
+        payload: '{0:2,2:[255,147,41]}'
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_right
+        payload: '{0:2,2:[255,147,41]}'
+
+
+- alias: kitchenMotionMainLightsOff
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00015db8be
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    condition: state
+    entity_id: light.main_kitchen_lights
+    state: 'on'
+  action:
+    service: light.turn_off
+    entity_id: light.main_kitchen_lights
+
+    
+- alias: kitchen_animation_monitor_on
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: "light/kitchen_right/recovery"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json['0'] >= 3 }}"
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.kitchen_animation
+- alias: kitchen_animation_monitor_off
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: "light/kitchen_right/recovery"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json['0'] <= 2 }}"
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.kitchen_animation
+
+
+- alias: kitchen_low_dim_on_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.kitchen_right
+    to: 'on'
+    # for:
+      # seconds: 1
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.kitchen_animation
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d00015db8be
+        state: 'off'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_left
+        payload: '{0:1,2:[26,15,4],3:5}'
+    - service: mqtt.publish
+      data:
+        topic: light/kitchen_right
+        payload: '{0:1,2:[26,15,4],3:5}'

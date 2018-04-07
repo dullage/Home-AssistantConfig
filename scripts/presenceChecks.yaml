@@ -1,0 +1,23 @@
+presence_check_adam:
+  sequence:
+    - service: tts.amazon_polly_say
+      data_template:
+        entity_id: media_player.front_room_speaker
+        message: >
+          {% if states.group.adam.state == 'home' %}
+            <speak>Adam is at home. He got in at {{ as_timestamp(states.group.adam.last_changed) | timestamp_custom("%-I %-M %p") }}</speak>
+          {% else %}
+            <speak>Adam is out. He left at {{ as_timestamp(states.group.adam.last_changed) | timestamp_custom("%-I %-M %p") }}</speak>
+          {% endif %}
+
+presence_check_leanne:
+  sequence:
+    - service: tts.amazon_polly_say
+      data_template:
+        entity_id: media_player.front_room_speaker
+        message: >
+          {% if states.group.leanne.state == 'home' %}
+            <speak>Leanne is at home. She got in at {{ as_timestamp(states.group.leanne.last_changed) | timestamp_custom("%-I %-M %p") }}</speak>
+          {% else %}
+            <speak>Leanne is out. She left at {{ as_timestamp(states.group.leanne.last_changed) | timestamp_custom("%-I %-M %p") }}</speak>
+          {% endif %}

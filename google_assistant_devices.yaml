@@ -1,0 +1,72 @@
+group.diningroom:
+  expose: true
+group.frontroom:
+  name: Front Room
+  expose: true
+group.kitchen:
+  expose: true
+group.upstairs:
+  expose: true
+  name: Upstairs Lights
+group.everything:
+  expose: true
+  name: ha_everything
+light.gateway_light_34ce008c05b9:
+  expose: true
+  name: Gateway
+light.stairs:
+  expose: true
+  name: Stair Lights
+light.downstairs:
+  expose: true
+light.bathroom_lights:
+  expose: true
+light.bathroom_mirror_lights:
+  expose: true
+light.dining_room_lamp:
+  expose: true
+light.landing_light:
+  expose: true
+light.main_kitchen_lights:
+  expose: true
+light.front_room_lamp:
+  expose: true
+  name: Front Room Lamp
+light.master_bedroom_main:
+  expose: true
+  name: Bedroom Lights
+switch.echo_amplifier:
+  expose: true
+script.ambilight_on:
+  expose: true
+  name: Back Light
+script.colourphasemode:
+  expose: true
+script.strobemode:
+  expose: true
+script.firemode:
+  expose: true
+script.going_out:
+  expose: true
+  name: Going Out Script
+script.xbox_on:
+  expose: true
+  name: XBOX
+script.input_apple_tv:
+  expose: true
+  name: Apple TV
+script.input_chromecast:
+  expose: true
+  name: Chromecast
+script.input_guest:
+  expose: true
+  name: Guest HDMI
+scene.downstairs_movie:
+  expose: true
+  name: Movie Mode
+scene.downstairs_general:
+  expose: true
+  name: Downstairs General Scene
+scene.front_room_dim:
+  expose: true
+  name: Dim Mode

@@ -1,0 +1,79 @@
+# If either of the app based trackers send an away message we set both of the app trackers to away so that the group also goes away.
+- alias: location_cleanup_adam
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.adams_iphone
+      to: 'not_home'
+    - platform: state
+      entity_id: device_tracker.97097be28e8e4429a0cbe8f813e5d773
+      to: 'not_home'
+  action:
+    - service: device_tracker.see
+      data:
+        dev_id: adams_iphone
+        location_name: not_home
+    - service: device_tracker.see
+      data:
+        dev_id: 97097be28e8e4429a0cbe8f813e5d773
+        location_name: not_home
+    # - service: device_tracker.see
+      # data:
+        # dev_id: dullagesiphone
+        # location_name: not_home
+
+- alias: location_cleanup_leanne
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.leannes_iphone
+      to: 'not_home'
+    - platform: state
+      entity_id: device_tracker.b57a733cd0fc4493894b976cbd81ceed
+      to: 'not_home'
+  action:
+    - service: device_tracker.see
+      data:
+        dev_id: leannes_iphone
+        location_name: not_home
+    - service: device_tracker.see
+      data:
+        dev_id: b57a733cd0fc4493894b976cbd81ceed
+        location_name: not_home
+    # - service: device_tracker.see
+      # data:
+        # dev_id: iphone
+        # location_name: not_home
+
+# If the Unifi tracker arrives, set both the app trackers to arrived as well so that the group arrives.
+- alias: location_cleanup2_adam
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.dullagesiphone
+      to: 'home'
+  action:
+    - service: device_tracker.see
+      data:
+        dev_id: adams_iphone
+        location_name: home
+    - service: device_tracker.see
+      data:
+        dev_id: 97097be28e8e4429a0cbe8f813e5d773
+        location_name: home
+        
+- alias: location_cleanup2_leanne
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: device_tracker.iphone
+      to: 'home'
+  action:
+    - service: device_tracker.see
+      data:
+        dev_id: leannes_iphone
+        location_name: home
+    - service: device_tracker.see
+      data:
+        dev_id: b57a733cd0fc4493894b976cbd81ceed
+        location_name: home

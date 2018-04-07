@@ -1,0 +1,21 @@
+# Exclude everything
+*
+
+# Allow all sub-directories
+!*/
+
+# Allow these file extensions
+!*.yaml
+!*.sh
+
+# Allow these specific files 
+!.HA_VERSION
+!Dockerfile
+!xboxOn.py
+!.gitignore
+
+# Re-exclude these files as their extensions were allowed above
+secrets.yaml
+entity_registry.yaml
+known_devices.yaml
+secretShellCommands.yaml

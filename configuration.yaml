@@ -1,0 +1,482 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: Europe/London
+  customize: !include customize.yaml
+  customize_domain: !include customize_domain.yaml
+
+# Enable Config
+config:
+
+# Enable Map
+map:
+  
+# Custom Zones
+zone:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 200
+      
+# Misc
+updater:
+discovery:
+conversation:
+history:
+frontend:
+
+# logger:
+ # default: debug
+ 
+# Logbook
+logbook:
+  exclude:
+    domains:
+      - group
+    entities:
+      - automation.duckdns
+      - light.downstairs
+
+# Web Interface
+http:
+  api_password: !secret api_password
+  ssl_certificate: "/config/dullage.com.pem"
+  ssl_key: "/config/dullage.com.key"
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  server_port: 8443
+  base_url: !secret base_url
+
+# DuckDNS
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_access_token
+  
+# Xiaomi Gateway
+xiaomi_aqara:
+  gateways:
+    - key: !secret xiaomi_gateway_key
+  
+# iOS
+ios:
+  push:
+    categories:
+      - name: Weekend Heating Warning
+        identifier: 'weekend_heating_warning'
+        actions:
+          - identifier: 'HEATING_TURN_OFF'
+            title: 'Turn Heating Off'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            # behavior: 'textInput'
+            # textInputButtonTitle: 'Silencio!'
+            # textInputPlaceholder: 'Placeholder'
+
+# Camera
+camera:
+  - platform: mjpeg
+    name: PiCamera
+    mjpeg_url: http://192.168.0.11:8081/ 
+
+# Text to Speech
+tts:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: 'eu-west-1'
+    text_type: ssml
+    voice: Amy
+  
+# Media Player
+media_player:
+  - platform: cast
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+
+# Notification Platforms
+notify:
+  - name: Telegram
+    platform: telegram
+    api_key: !secret telegram_api_key
+    chat_id: -193931355
+  - platform: ios
+
+# Telegram Bot
+telegram_bot:
+  platform: webhooks
+  api_key: !secret telegram_api_key
+  allowed_chat_ids:
+    - -193931355
+    - 142858079
+    - 291036842
+
+# Lights, Switches, Automations, Scenes and Groups
+light: !include lights.yaml
+switch: !include switches.yaml
+automation: !include_dir_merge_list automations/
+scene: !include scenes.yaml
+group: !include groups.yaml
+script: !include_dir_merge_named scripts/
+shell_command: !include_dir_merge_named shell_commands/
+
+# Emulated Hue
+emulated_hue:
+  host_ip: 192.168.0.49
+  expose_by_default: false
+  off_maps_to_on_domains:
+    - scene
+    - script
+    
+# Google Assistant
+google_assistant:
+  project_id: home-assistant-f64f8
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  api_key: !secret google_assistant_api_key
+  expose_by_default: false
+  entity_config: !include google_assistant_devices.yaml
+ 
+# Sun Tracking
+sun:
+
+# Sensors
+sensor:
+  - platform: yr
+  - platform: speedtest
+    server_id: 7028
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: template
+    sensors:
+      heatingon_time:
+        friendly_name: 'Set Time'
+        value_template: '{% if states.input_number.heatingonhour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heatingonhour.state|round(0)|string }}:{% if states.input_number.heatingonminutes.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heatingonminutes.state|round(0)|string }}'
+      kitchen_motion_sensor_battery:
+        friendly_name: Kitchen Motion Sensor Battery
+        value_template: '{{states.binary_sensor.motion_sensor_158d00015db8be.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      doorbell_battery:
+        friendly_name: Doorbell Battery
+        value_template: '{{states.binary_sensor.switch_158d000128c313.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      back_door_sensor_battery:
+        friendly_name: Back Door Sensor Battery
+        value_template: '{{states.binary_sensor.door_window_sensor_158d00019f63a5.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      upstairs_humidity_sensor_battery:
+        friendly_name: Upstairs Humidity Sensor Battery
+        value_template: '{{states.sensor.humidity_158d00018256fa.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      upstairs_temperature_sensor_battery:
+        friendly_name: Upstairs Temperature Sensor Battery
+        value_template: '{{states.sensor.temperature_158d00018256fa.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      motion_sensor_battery:
+        friendly_name:  Motion Sensor Battery
+        value_template: '{{states.binary_sensor.motion_sensor_158d00015e6be1.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      front_door_sensor_battery:
+        friendly_name:  Front Door Sensor Battery
+        value_template: '{{states.binary_sensor.door_window_sensor_158d0001a5e08d.attributes.battery_level}}'
+        unit_of_measurement: '%'
+      global_shutdown_message:
+        friendly_name: ' '
+        value_template: '{{states.input_select.global_shutdown_message.state}}'
+      adam_badge:
+        unit_of_measurement: Adam
+        friendly_name_template: >
+          {% if is_state('group.adam', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        entity_id: group.adam
+        value_template: >
+          {% if is_state('group.adam', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: http://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg
+      leanne_badge:
+        unit_of_measurement: Leanne
+        friendly_name_template: >
+          {% if is_state('group.leanne', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        entity_id: group.leanne
+        value_template: >
+          {% if is_state('group.leanne', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+        entity_picture_template: /local/leanne.jpg
+      blank1:
+        friendly_name: ' '
+        value_template: ' '
+      blank2:
+        friendly_name: ' '
+        value_template: ' '
+      blank3:
+        friendly_name: ' '
+        value_template: ' '
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    units: uk2
+    monitored_conditions:
+      - precip_intensity
+      - precip_probability
+      - precip_intensity_max
+      - temperature
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - minutely_summary
+  - platform: mqtt
+    state_topic: 'temperature/loft'
+    name: 'Loft Temperature'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: 'humidity/loft'
+    name: 'Loft Humidity'
+    unit_of_measurement: '%'
+  - platform: rest
+    name: Baby Countdown
+    resource: http://api.wolframalpha.com/v1/result?appid=XYTY8U-4V6PY72VT9&i=How%20many%20days%20until%203rd%20July%202018
+    value_template: "{{ (value|replace(' days', '')) | int }}"
+    unit_of_measurement: Days
+    scan_interval: 43200
+    
+# MQTT
+mqtt:
+  broker: 127.0.0.1
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+# Device Tracking
+device_tracker:
+  - platform: locative
+  - platform: unifi
+    host: localhost
+    port: 8444
+    username: !secret unifi_username
+    password: !secret unifi_password
+    verify_ssl: false
+    detection_time: 30
+
+# Nest
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+# Pilight
+pilight:
+  host: 192.168.0.32
+  port: 5000
+
+# IFTTT
+ifttt:
+  key: !secret ifttt_key
+  
+# Text Inputs
+input_text:
+  arrival_reminder_adam:
+    name: Remind Adam
+    min: 0
+    max: 255
+    initial: ''
+  arrival_reminder_leanne:
+    name: Remind Leanne
+    min: 0
+    max: 255
+    initial: ''
+  
+# Selection Inputs
+input_select:
+  stairlamp_mode:
+    name: Under Stair Lamp Mode
+    options:
+      - "Select..."
+      - "Warm Light"
+      - "Strobe"
+      - "Fire"
+      - "Colour Phase"
+      - "Sparkle"
+      - "Shoot / Drip"
+      - "Rain"
+    initial: "Select..."
+  stairs_mode:
+    name: Stairs Mode
+    options:
+      - "Select..."
+      - "Warm Light"
+      - "Strobe"
+      - "Fire"
+      - "Colour Phase"
+      - "Sparkle"
+      - "Shoot / Drip"
+      - "Rain"
+      - "Stepped"
+      - "Startup"
+      - "Shutdown"
+      - "All On"
+      - "Baby Countdown"
+    initial: "Select..."
+  kitchen_mode:
+    name: Kitchen Mode
+    options:
+      - "Select..."
+      - "Warm Light"
+      - "Dim Light"
+      - "Strobe"
+      - "Fire"
+      - "Colour Phase"
+      - "Sparkle"
+      - "Shoot / Drip"
+      - "Rain"
+    initial: "Select..."
+  global_shutdown_message:
+    name: Global Shutdown Message
+    options:
+      - ""
+      - "Error: Locked"
+      - "Shutting down..."
+    initial: ""
+  hyperion:
+    name: Animation
+    options:
+     - "Select..."
+     - "Backlight"
+     - "Ambilight"
+     - "Knight Rider"
+     - "Mood Blobs Blue"
+     - "Mood Blobs Cold"
+     - "Mood Blobs Full Color"
+     - "Mood Blobs Green"
+     - "Mood Blobs Rainbow"
+     - "Mood Blobs Red"
+     - "Mood Blobs Warm"
+     - "Rainbow Swirl"
+     - "Snake"
+     - "Strobe Blue"
+     - "Strobe Raspberry"
+     - "Strobe White"
+     - "Cinema Dim Lights"
+     - "Cinema Brighten Lights"
+     - "Police Lights Single"
+     - "Police Lights Solid"
+     - "Random"
+     - "Running Dots"
+     - "System Shutdown"
+     - "Sparks Color"
+     - "Sparks"
+     - "Color Traces"
+    initial: "Select..."
+
+# Boolean Inputs
+input_boolean:
+  away:
+    name: Away
+    icon: mdi:airplane
+  queuelights:
+    name: Queue Lights
+    initial: off
+  queue_home_adam:
+    name: Queue Home (Adam)
+    initial: off
+  queue_home_lea:
+    name: Queue Home (Lea)
+    initial: off
+  ghost_lights:
+    name: Ghost Lights
+    initial: off
+  global_shutdown_lock:
+    name: Global Shutdown Lock
+    initial: on
+  picamera:
+    name: PiCamera Power
+  kitchen_animation:
+    name: Kitchen Animation Running
+
+input_number:
+  heatingonhour:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+  heatingonminutes:
+    name: Minutes
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 55
+    step: 5
+    
+binary_sensor:
+    - platform: mqtt
+      name: Stairs
+      state_topic: "light/stairs/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Bathroom Main and Landing
+      state_topic: "light/bathroom_and_landing/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Bathroom Mirror
+      state_topic: "light/bathroom_mirror/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Kitchen Main
+      state_topic: "light/kitchen/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Kitchen Left
+      state_topic: "light/kitchen_left/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Kitchen Right
+      state_topic: "light/kitchen_right/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Dining Room Lamp
+      state_topic: "light/dining_room_lamp/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Front Room Lamp
+      state_topic: "light/front_room_lamp/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Master Bedroom Main
+      state_topic: "light/master_bedroom_main/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Ambilight
+      state_topic: "switch/ambilight_power_supply/availability"
+      payload_on : "1"
+      payload_off: "0"
+    - platform: mqtt
+      name: Clothes Dryer
+      state_topic: "switch/dryer/availability"
+      payload_on : "1"
+      payload_off: "0"

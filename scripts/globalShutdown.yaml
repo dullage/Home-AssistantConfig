@@ -1,0 +1,36 @@
+global_shutdown:
+  alias: Global Shutdown
+  sequence:
+    - service: script.turn_on
+      entity_id: script.global_shutdown_failure
+    - condition: state
+      entity_id: input_boolean.global_shutdown_lock
+      state: 'off'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_shutdown_message
+        option: 'Shutting down...'
+    - service: mqtt.publish
+      data:
+        topic: "power/screenpi"
+        payload: "shutdown"
+    - service: mqtt.publish
+      data:
+        topic: "PiController/PiZero"
+        payload: "shutdown"
+    - service: mqtt.publish
+      data:
+        topic: "PiController/HyperionPi"
+        payload: "shutdown"
+    - service: shell_command.picamera_shutdown
+    - service: shell_command.self_shutdown
+global_shutdown_failure:
+  alias: Global Shutdown Failure
+  sequence:
+    - condition: state
+      entity_id: input_boolean.global_shutdown_lock
+      state: 'on'
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_shutdown_message
+        option: 'Error: Locked'

@@ -1,0 +1,147 @@
+- platform: mqtt
+  name: Stairs
+  state_topic: "light/stairs/state"
+  command_topic: "light/stairs"
+  #availability_topic: "light/stairs/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  rgb_state_topic: "light/stairs/rgb/state"
+  rgb_command_topic: "light/stairs/rgb"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Landing Light
+  state_topic: "light/landing/state"
+  command_topic: "light/landing"
+  #availability_topic: "light/bathroom_and_landing/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Bathroom Lights
+  state_topic: "light/bathroom/state"
+  command_topic: "light/bathroom"
+  #availability_topic: "light/bathroom_and_landing/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Bathroom Mirror Lights
+  state_topic: "light/bathroom_mirror/state"
+  command_topic: "light/bathroom_mirror"
+  #availability_topic: "light/bathroom_mirror/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Main Kitchen Lights
+  state_topic: "light/kitchen/state"
+  command_topic: "light/kitchen"
+  #availability_topic: "light/kitchen/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Kitchen Left
+  state_topic: "light/kitchen_left/state"
+  command_topic: "light/kitchen_left"
+  #availability_topic: "light/kitchen_left/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  rgb_state_topic: "light/kitchen_left/rgb/state"
+  rgb_command_topic: "light/kitchen_left/rgb"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Kitchen Right
+  state_topic: "light/kitchen_right/state"
+  command_topic: "light/kitchen_right"
+  #availability_topic: "light/kitchen_right/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  rgb_state_topic: "light/kitchen_right/rgb/state"
+  rgb_command_topic: "light/kitchen_right/rgb"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Dining Room Lamp
+  state_topic: "light/dining_room_lamp/state"
+  command_topic: "light/dining_room_lamp"
+  #availability_topic: "light/dining_room_lamp/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Front Room Lamp
+  state_topic: "light/front_room_lamp/state"
+  command_topic: "light/front_room_lamp"
+  #availability_topic: "light/front_room_lamp/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Test 1
+  state_topic: "switch/test1/state"
+  command_topic: "switch/test1" 
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Test 2
+  state_topic: "switch/test2/state"
+  command_topic: "switch/test2"
+  payload_off: "0"
+  payload_on: "1"
+  retain: false
+- platform: mqtt
+  name: Master Bedroom Main
+  command_topic: "light/master_bedroom_main"
+  #availability_topic: "light/master_bedroom_main/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  state_topic: "light/master_bedroom_main/state"
+  payload_on: "1"
+  payload_off: "0"
+  retain: false
+- platform: template
+  lights:
+    downstairs:
+      value_template: "{{ is_state('group.downstairsExcStairs', 'on') }}"
+      turn_on:
+        service: scene.turn_on
+        data:
+          entity_id: scene.downstairs_general
+      turn_off:
+        service: scene.turn_on
+        data:
+          entity_id: scene.downstairs_off
+    # kitchen_low:
+      # friendly_name: Kitchen Low Lights
+      # value_template: "{{ states('group.kitchen_low') }}"
+      # turn_on:
+        # service: light.turn_on
+        # data:
+          # entity_id: group.kitchen_low
+      # turn_off:
+        # service: light.turn_off
+        # data:
+          # entity_id: group.kitchen_low
+# - platform: hyperion
+  # name: Solid Backlight
+  # host: 192.168.0.15
+  # default_color: [255,185,75]
