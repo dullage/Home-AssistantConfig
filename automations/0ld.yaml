@@ -1,149 +1,72 @@
-        # Adam Home Queue
-- alias: adam_home_queue
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.adam
-    to: 'home'
-  action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.queue_home_adam
-    
-# Lea Home Queue
-- alias: lea_home_queue
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.leanne
-    to: 'home'
-  action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.queue_home_lea
-    
 # Queue lights when Adam gets home (and Lea isn't and the sun has set)
-- alias: adam home
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.adam
-    to: 'home'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: group.leanne
-        state: 'not_home'
-  action:
-     service: input_boolean.turn_on
-     entity_id: input_boolean.queuelights
+# - alias: adam home
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: group.adam
+    # to: 'home'
+  # condition:
+    # condition: and
+    # conditions:
+      # - condition: state
+        # entity_id: sun.sun
+        # state: 'below_horizon'
+      # - condition: state
+        # entity_id: group.leanne
+        # state: 'not_home'
+  # action:
+     # service: input_boolean.turn_on
+     # entity_id: input_boolean.queuelights
 
 # Queue lights when Lea gets home (and Adam isn't and the sun has set)
-- alias: lea home
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.leanne
-    to: 'home'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
-        entity_id: group.adam
-        state: 'not_home'
-  action:
-     service: input_boolean.turn_on
-     entity_id: input_boolean.queuelights
+# - alias: lea home
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: group.leanne
+    # to: 'home'
+  # condition:
+    # condition: and
+    # conditions:
+      # - condition: state
+        # entity_id: sun.sun
+        # state: 'below_horizon'
+      # - condition: state
+        # entity_id: group.adam
+        # state: 'not_home'
+  # action:
+     # service: input_boolean.turn_on
+     # entity_id: input_boolean.queuelights
 
 # Trigger the lights when the frontdoor is opened
-- alias: frontdoorLights
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
-    to: 'on'
-  condition:
-    condition: state
-    entity_id: input_boolean.queuelights
-    state: 'on'
-  action:
-    - service: scene.turn_on
-      entity_id: scene.downstairs_general
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.queuelights
-   
-# input_boolean.queue_home_adam Timeout
-- alias: queue_home_adam_timeout
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.queue_home_adam
-    to: 'on'
-    for:
-      minutes: 10
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.queue_home_adam
-    
-# input_boolean.queue_home_lea Timeout
-- alias: queue_home_lea_timeout
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.queue_home_lea
-    to: 'on'
-    for:
-      minutes: 10
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.queue_home_lea
+# - alias: frontdoorLights
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+    # to: 'on'
+  # condition:
+    # condition: state
+    # entity_id: input_boolean.queuelights
+    # state: 'on'
+  # action:
+    # - service: scene.turn_on
+      # entity_id: scene.downstairs_general
+    # - service: input_boolean.turn_off
+      # entity_id: input_boolean.queuelights
     
 # input_boolean.queuelights Timeout
-- alias: queuelights_timeout
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.queuelights
-    to: 'on'
-    for:
-      minutes: 10
-  action:
-    service: input_boolean.turn_off
-    entity_id: input_boolean.queuelights
-
-# MQTT Sun Position Publish
-- alias: publish sun setting
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: sun.sun
-    from: 'above_horizon'
-    to: 'below_horizon'
-  action:
-    service: mqtt.publish
-    data:
-      topic: sunPosition
-      payload: 0
-      retain: true
-- alias: publish sun rising
-  hide_entity: true
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: sun.sun
-    from: 'below_horizon'
-    to: 'above_horizon'
-  action:
-    service: mqtt.publish
-    data:
-      topic: sunPosition
-      payload: 1
-      retain: true
+# - alias: queuelights_timeout
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: input_boolean.queuelights
+    # to: 'on'
+    # for:
+      # minutes: 10
+  # action:
+    # service: input_boolean.turn_off
+    # entity_id: input_boolean.queuelights
 
 # Warn if lights have been off for more than 24 hours but away is not set
 - alias: possible away warning
@@ -173,70 +96,6 @@
     service_template: "{{ trigger.topic.split('/')[-3] }}.{{ trigger.topic.split('/')[-2] }}"
     data_template:
       entity_id: "{{ trigger.topic.split('/')[-1] }}"
-
-# Telegram Webhook - Screen Message
-- alias: TelegramWebhookScreenMessage
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/msg'
-  condition:
-    condition: template
-    value_template: '{{ trigger.event.data.args|length > 0 }}'
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "message"
-      payload: >
-        {{ trigger.event.data.args|join(' ') }}
-- alias: TelegramWebhookScreenMessageWarning
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/msg'
-  condition:
-    condition: template
-    value_template: '{{ trigger.event.data.args|length == 0 }}'
-  action:
-    service: notify.telegram
-    data:
-      message: 'No message recieved. Example command "/msg Hello Everyone".'
-
-# Telegram Webhook - TTS Message
-- alias: TelegramWebhookTTSMessage
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/tts'
-  condition:
-    condition: template
-    value_template: '{{ trigger.event.data.args|length > 0 }}'
-  action:
-    service: mqtt.publish
-    data_template:
-      topic: "tts"
-      payload: >
-        {{ trigger.event.data.args|join(' ') }}
-- alias: TelegramWebhookTTSMessageWarning
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/msg'
-  condition:
-    condition: template
-    value_template: '{{ trigger.event.data.args|length == 0 }}'
-  action:
-    service: notify.telegram
-    data:
-      message: 'No message recieved. Example command "/tts Hello Everyone".'
       
 # Optional (one-time) Home Notifications     
 - alias: "Leanne (Notify Adam)"
@@ -264,58 +123,6 @@
     - service: automation.turn_off
       entity_id: automation.adam_notify_leanne
 
-     
-# Turn the echo amp on if Adam comes home
-- alias: adam_arriving_echo_amp_on
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.adam
-    to: 'home'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.echo_amplifier
-      
-# Turn the echo amp on if Lea comes home
-- alias: lea_arriving_echo_amp_on
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.leanne
-    to: 'home'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.echo_amplifier
-     
-# Turn echo amp off at midnight (just a backup)
-- alias: midnight_echo_amp_off
-  initial_state: true
-  trigger:
-    platform: time
-    at: '00:00:00'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.echo_amplifier
-      
-# Turn echo amp on at 7am
-- alias: 7am_echo_amp_on
-  initial_state: true
-  trigger:
-    platform: time
-    at: '07:00:00'
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: group.leanne
-        state: 'home'  
-      - condition: state
-        entity_id: group.adam
-        state: 'home'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.echo_amplifier
-
 # Door Open Camera
 - alias: frontdoor_snapshots
   initial_state: true
@@ -333,22 +140,22 @@
         entity_id: group.leanne
         state: 'not_home'
   action:
-    - service: shell_command.take_snapshots
-    - service: shell_command.rename_snapshots
+    # - service: shell_command.take_snapshots
+    # - service: shell_command.rename_snapshots
     - service: notify.telegram
       data:
         message: "Frontdoor Opened!"
-    - service: notify.telegram
-      data:
-        message: "Frontdoor Opened"
-        data:
-          photo:
-            - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot1.jpg
-              caption: "Snapshot 1"
-            - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot2.jpg
-              caption: "Snapshot 2"
-            - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot3.jpg
-              caption: "Snapshot 3"
+    # - service: notify.telegram
+      # data:
+        # message: "Frontdoor Opened"
+        # data:
+          # photo:
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot1.jpg
+              # caption: "Snapshot 1"
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot2.jpg
+              # caption: "Snapshot 2"
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot3.jpg
+              # caption: "Snapshot 3"
 
 # Trigger Ghost Lights Script when Boolean Turned On
 - alias: ghost_lights

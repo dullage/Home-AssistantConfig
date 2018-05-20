@@ -1,3 +1,54 @@
+# Adam Home Queue
+- alias: adam_home_queue
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.adam
+    to: 'home'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.queue_home_adam
+    
+# Lea Home Queue
+- alias: lea_home_queue
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.leanne
+    to: 'home'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.queue_home_lea
+
+# Adam Home Queue Timeout
+- alias: queue_home_adam_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.queue_home_adam
+    to: 'on'
+    for:
+      minutes: 10
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.queue_home_adam
+    
+# Lea Home Queue Timeout
+- alias: queue_home_lea_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.queue_home_lea
+    to: 'on'
+    for:
+      minutes: 10
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.queue_home_lea
+
+
+
+    
 # Welcome Home Adam
 - alias: welcome_home_adam
   initial_state: true
@@ -19,10 +70,7 @@
       entity_id: script.welcomeadam
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_adam
-    #- condition: template
-      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
-    - delay:
-        seconds: 5
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
       data:
         entity_id: media_player.front_room_speaker
@@ -49,14 +97,11 @@
       entity_id: script.welcomelea
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_lea
-    #- condition: template
-      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
-    - delay:
-        seconds: 5
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
-      data:
+      data_template:
         entity_id: media_player.front_room_speaker
-        message: "<speak>Welcome Home Leanne</speak>"
+        message: "<speak>Welcome Home Leanne. Only {{states.sensor.baby_countdown.state}} days to go now!</speak>"
     
 # Welcome Home Both
 - alias: welcome_home_both
@@ -81,10 +126,7 @@
       entity_id: input_boolean.queue_home_adam
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_lea
-    #- condition: template
-      #value_template: '{{ (states.media_player.whole_house.state != "playing") and (states.media_player.downstairs_speakers.state != "playing") and (states.media_player.upstairs_speakers.state != "playing") }} '
-    - delay:
-        seconds: 5
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
       data:
         entity_id: media_player.front_room_speaker

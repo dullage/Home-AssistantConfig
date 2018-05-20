@@ -388,9 +388,9 @@ input_boolean:
   away:
     name: Away
     icon: mdi:airplane
-  queuelights:
-    name: Queue Lights
-    initial: off
+  # queuelights:
+    # name: Queue Lights
+    # initial: off
   queue_home_adam:
     name: Queue Home (Adam)
     initial: off

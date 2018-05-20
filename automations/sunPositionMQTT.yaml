@@ -1,0 +1,29 @@
+# MQTT Sun Position Publish
+- alias: publish sun setting
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    from: 'above_horizon'
+    to: 'below_horizon'
+  action:
+    service: mqtt.publish
+    data:
+      topic: sunPosition
+      payload: 0
+      retain: true
+
+- alias: publish sun rising
+  hide_entity: true
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    from: 'below_horizon'
+    to: 'above_horizon'
+  action:
+    service: mqtt.publish
+    data:
+      topic: sunPosition
+      payload: 1
+      retain: true

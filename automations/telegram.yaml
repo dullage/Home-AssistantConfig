@@ -1,0 +1,63 @@
+# Telegram Webhook - Screen Message
+- alias: TelegramWebhookScreenMessage
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/msg'
+  condition:
+    condition: template
+    value_template: '{{ trigger.event.data.args|length > 0 }}'
+  action:
+    service: mqtt.publish
+    data_template:
+      topic: "message"
+      payload: >
+        {{ trigger.event.data.args|join(' ') }}
+- alias: TelegramWebhookScreenMessageWarning
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/msg'
+  condition:
+    condition: template
+    value_template: '{{ trigger.event.data.args|length == 0 }}'
+  action:
+    service: notify.telegram
+    data:
+      message: 'No message recieved. Example command "/msg Hello Everyone".'
+
+# Telegram Webhook - TTS Message
+# - alias: TelegramWebhookTTSMessage
+  # initial_state: true
+  # trigger:
+    # platform: event
+    # event_type: telegram_command
+    # event_data:
+      # command: '/tts'
+  # condition:
+    # condition: template
+    # value_template: '{{ trigger.event.data.args|length > 0 }}'
+  # action:
+    # service: mqtt.publish
+    # data_template:
+      # topic: "tts"
+      # payload: >
+        # {{ trigger.event.data.args|join(' ') }}
+# - alias: TelegramWebhookTTSMessageWarning
+  # initial_state: true
+  # trigger:
+    # platform: event
+    # event_type: telegram_command
+    # event_data:
+      # command: '/msg'
+  # condition:
+    # condition: template
+    # value_template: '{{ trigger.event.data.args|length == 0 }}'
+  # action:
+    # service: notify.telegram
+    # data:
+      # message: 'No message recieved. Example command "/tts Hello Everyone".'
