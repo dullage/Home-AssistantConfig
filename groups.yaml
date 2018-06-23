@@ -131,6 +131,16 @@ amp_inputs:
     - script.amp_dvd
     - script.amp_cd
     
+house_audio_volume:
+  name: House Audio Volume
+  control: hidden
+  entities:
+    - input_number.whole_house_volume
+    - sensor.blank1
+    - input_number.downstairs_volume
+    - input_number.front_room_volume
+    - input_number.upstairs_volume
+    
 
 # Miscellaneous Page
 away:
@@ -172,11 +182,17 @@ homeArrivalReminders:
     - input_text.arrival_reminder_adam
     - input_text.arrival_reminder_leanne
 
+dryer:
+  name: "Clothes Dryer"
+  control: hidden
+  entities:
+    - switch.clothes_dryer
+    - input_number.dryer_timeout
+    
 misccard:
   name: Miscellaneous
   control: hidden
   entities:
-    - switch.clothes_dryer
     - switch.echo_amplifier
 
 security:
@@ -337,7 +353,7 @@ default_view:
 climate_view:
   name: Climate
   view: yes
-  icon: mdi:nest-thermostat
+  icon: mdi:thermostat
   entities:
     - group.indoor_climate
     - group.climate
@@ -354,6 +370,7 @@ av_view:
     - group.av
     - group.amp_inputs
     - media_player.spotify
+    - group.house_audio_volume
 
 misc:
   name: Miscellaneous
@@ -368,6 +385,7 @@ misc:
     - group.quickActions
     - group.automationControl
     - group.speedtest
+    - group.dryer
     - group.misccard
 
 cameras:

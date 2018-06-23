@@ -1,0 +1,10 @@
+- type: entities
+  title: Camera Controls
+  entities:
+    - script.snapshot
+    - group.biglightgroup
+    - input_boolean.ghost_lights
+
+- type: camera-preview
+  entity: camera.picamera
+  

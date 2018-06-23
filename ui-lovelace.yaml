@@ -1,0 +1,20 @@
+name: Home
+views:
+  - name: Main
+    tab_icon: mdi:home-assistant
+    cards: !include ui/main_tab.yaml
+  - name: Climate
+    tab_icon: mdi:thermostat
+    cards: !include ui/climate_tab.yaml
+  - name: AV
+    tab_icon: mdi:remote
+    cards: !include ui/av_tab.yaml
+  - name: Miscellaneous
+    tab_icon: mdi:hops
+    cards: !include ui/miscellaneous_tab.yaml
+  - name: Camera
+    tab_icon: mdi:camera
+    cards: !include ui/camera_tab.yaml
+  - name: Admin
+    tab_icon: mdi:account
+    cards: !include ui/admin_tab.yaml

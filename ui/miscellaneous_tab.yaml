@@ -1,0 +1,54 @@
+- type: entities
+  title: Away Mode
+  entities:
+    - input_boolean.away
+
+- type: entities
+  title: Internet Speeds
+  entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+
+- type: entities
+  title: "Quick Actions"
+  entities:
+    - script.set_adam_home
+    - script.set_lea_home
+
+- type: entities
+  title: Automation Control
+  entities:
+    - automation.bothLeftLights
+
+- type: entities
+  title: "Home Arrival Notifications"
+  entities:
+    - automation.adam_notify_leanne
+    - automation.leanne_notify_adam
+    
+- type: entities
+  title: "Home Arrival Reminders"
+  entities:
+    - input_text.arrival_reminder_adam
+    - input_text.arrival_reminder_leanne
+
+- type: entities
+  title: "Clothes Dryer"
+  entities:
+    - switch.clothes_dryer
+    - input_number.dryer_timeout
+    
+- type: entities
+  title: Miscellaneous
+  entities:
+    - switch.echo_amplifier
+
+- type: entities
+  title: Security
+  entities:
+    - binary_sensor.motion_sensor_158d00015db8be
+    - binary_sensor.motion_sensor_158d00015e6be1
+    - binary_sensor.door_window_sensor_158d0001a5e08d
+    - binary_sensor.door_window_sensor_158d00019f63a5
+    - binary_sensor.door_window_sensor_158d0001a67e20

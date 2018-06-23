@@ -1,11 +1,61 @@
-- alias: dryer
+# - alias: dryer
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: switch.clothes_dryer
+    # to: 'on'
+    # for:
+      # hours: 6
+  # action:
+    # service: switch.turn_off
+    # entity_id: switch.clothes_dryer
+    
+- alias: dryer_timeout_decrement
+  initial_state: true
+  trigger:
+    platform: time
+    # Every minute (on the minute)
+    minutes: '/1'
+    seconds: 00
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.clothes_dryer
+        state: 'on'
+      - condition: numeric_state
+        entity_id: input_number.dryer_timeout
+        above: 0
+  action:
+    service: input_number.decrement
+    data:
+      entity_id: input_number.dryer_timeout
+      
+- alias: dryer_timeout_turn_off_and_reset
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: input_number.dryer_timeout
+    below: 1
+  action:
+    - service: switch.turn_off
+      entity_id: switch.clothes_dryer
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.dryer_timeout
+        value: 360
+
+# Resets the timer in cases where the dryer is turned off manually. Waits for 5 minutes in case it's an accidental or fault caused power off.
+- alias: dryer_timeout_backup_reset
   initial_state: true
   trigger:
     platform: state
     entity_id: switch.clothes_dryer
-    to: 'on'
+    to: 'off'
     for:
-      hours: 6
+      minutes: 5
   action:
-    service: switch.turn_off
-    entity_id: switch.clothes_dryer
+    service: input_number.set_value
+    data:
+      entity_id: input_number.dryer_timeout
+      value: 360

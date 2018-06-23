@@ -1,0 +1,47 @@
+- type: entities
+  title: Test
+  entities:
+    - light.test_1
+
+- type: entities
+  title: Global Shutdown
+  entities:
+    - input_boolean.global_shutdown_lock
+    - script.global_shutdown
+    - sensor.global_shutdown_message
+
+- type: entities
+  title: Battery Levels
+  entities:
+    - sensor.doorbell_battery
+    - sensor.front_door_sensor_battery
+    - sensor.back_door_sensor_battery
+    - sensor.upstairs_temperature_sensor_battery
+    - sensor.kitchen_motion_sensor_battery
+    - sensor.motion_sensor_battery
+    
+- type: entities
+  title: Wifi Controllers
+  entities:
+    - binary_sensor.stairs
+    - binary_sensor.bathroom_main_and_landing
+    - binary_sensor.bathroom_mirror
+    - binary_sensor.kitchen_main
+    - binary_sensor.kitchen_left
+    - binary_sensor.kitchen_right
+    - binary_sensor.dining_room_lamp
+    - binary_sensor.front_room_lamp
+    - binary_sensor.master_bedroom_main
+    - binary_sensor.ambilight
+    - binary_sensor.clothes_dryer
+    - script.all_available
+    
+- type: entities
+  title: Trackers
+  entities:
+    - device_tracker.adams_iphone
+    - device_tracker.97097be28e8e4429a0cbe8f813e5d773
+    - device_tracker.dullagesiphone
+    - device_tracker.leannes_iphone
+    - device_tracker.b57a733cd0fc4493894b976cbd81ceed
+    - device_tracker.iphone

@@ -1,0 +1,40 @@
+- type: entities
+  title: AV Power
+  entities:
+    - script.xbox_on
+    - script.tv
+    - script.amp
+    - script.sky_box
+
+- type: entities
+  title: Volume
+  entities:
+    - script.volume_upx4
+    - script.volume_downx4
+    - script.mute
+
+- type: entities
+  title: TV Inputs
+  entities:
+    - script.input_xbox
+    - script.input_apple_tv
+    - script.input_chromecast
+    - script.input_guest
+
+- type: entities
+  title: Front Room Amplifier Inputs
+  entities:
+    - script.amp_dvd
+    - script.amp_cd
+    
+- type: media-control
+  entity: media_player.spotify
+    
+- type: entities
+  title: House Audio Volume
+  entities:
+    - input_number.whole_house_volume
+    - sensor.blank1
+    - input_number.downstairs_volume
+    - input_number.front_room_volume
+    - input_number.upstairs_volume

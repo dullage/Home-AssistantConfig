@@ -204,7 +204,7 @@ sensor:
           {% else %}
             Away
           {% endif %}
-        entity_picture_template: http://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg
+        entity_picture_template: https://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg
       leanne_badge:
         unit_of_measurement: Leanne
         friendly_name_template: >
@@ -423,6 +423,38 @@ input_number:
     min: 0
     max: 55
     step: 5
+  whole_house_volume:
+    name: Whole House
+    icon: mdi:volume-high
+    step: 0.01
+    min: 0
+    max: 1
+  downstairs_volume:
+    name: Downstairs
+    icon: mdi:volume-high
+    step: 0.01
+    min: 0
+    max: 1
+  front_room_volume:
+    name: Front Room
+    icon: mdi:volume-high
+    step: 0.01
+    min: 0
+    max: 1
+  upstairs_volume:
+    name: Upstairs
+    icon: mdi:volume-high
+    step: 0.01
+    min: 0
+    max: 1
+  dryer_timeout:
+    name: Dryer Timeout
+    icon: mdi:progress-clock
+    step: 1
+    min: 0
+    max: 999
+    mode: box
+    unit_of_measurement: mins
     
 binary_sensor:
     - platform: mqtt

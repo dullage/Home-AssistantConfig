@@ -30,5 +30,5 @@
         message: "Doorbell!"
     - service: tts.amazon_polly_say
       data:
-        entity_id: media_player.front_room_speaker
+        entity_id: media_player.google_homes
         message: "<speak>There is someone at the front door.</speak>"

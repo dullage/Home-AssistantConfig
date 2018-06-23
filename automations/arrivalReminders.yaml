@@ -22,7 +22,7 @@
         payload: "Adams's Reminder: {{ states.input_text.arrival_reminder_adam.state }}"
     - service: tts.amazon_polly_say
       data_template:
-        entity_id: media_player.front_room_speaker
+        entity_id: media_player.google_homes
         message: "<speak>Reminder for Adam. {{ states.input_text.arrival_reminder_adam.state }}</speak>"
     - service: input_text.set_value
       data:
@@ -53,7 +53,7 @@
         payload: "Leanne's Reminder: {{ states.input_text.arrival_reminder_leanne.state }}"
     - service: tts.amazon_polly_say
       data_template:
-        entity_id: media_player.front_room_speaker
+        entity_id: media_player.google_homes
         message: "<speak>Reminder for Leanne. {{ states.input_text.arrival_reminder_leanne.state }}</speak>"
     - service: input_text.set_value
       data:

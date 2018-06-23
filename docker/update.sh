@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-# Note: This relieis on the dockerfile being updated with the latest version number (as there doesn't seem to be a latest tage for the HA RPI container). It will also leave behind the old HA RPI image.
+# Note: This relies on the dockerfile being updated with the latest version number (as there doesn't seem to be a latest tag for the HA RPI container). It will also leave behind the old HA RPI image. Change Directory
 
-# Change Directory
 cd /home/pi/homeassistant/docker
 
 # Stop the existing container

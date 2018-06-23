@@ -1,0 +1,29 @@
+- type: entities
+  title: Outdoor Climate
+  entities:
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_precip_probability
+
+- type: entities
+  title: Indoor Climate
+  entities:
+    - climate.house
+    - sensor.temperature_158d00018256fa
+    - sensor.loft_temperature
+    - script.heating_to_21
+    - script.heating_boost
+    
+- type: entities
+  title: Humidity
+  entities:
+    - sensor.house_thermostat_humidity
+    - sensor.humidity_158d00018256fa
+    - sensor.loft_humidity
+    
+- type: entities
+  title: One-Off Heating Timer
+  entities:
+    - sensor.heatingon_time
+    - input_number.heatingonhour
+    - input_number.heatingonminutes
+    - automation.triggerheatingon

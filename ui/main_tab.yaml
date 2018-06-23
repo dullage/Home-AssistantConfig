@@ -1,0 +1,62 @@
+- type: glance
+  entities:
+    - sensor.adam_badge
+    - sensor.leanne_badge
+    - sensor.baby_countdown
+
+- type: entities
+  title: Dining Room
+  entities:
+    - light.dining_room_lamp
+    - light.gateway_light_34ce008c05b9
+
+- type: entities
+  title: Hyperion
+  entities:
+    - switch.ambilight_power
+    - script.ambilight_on
+    - input_select.hyperion
+    
+- type: entities
+  title: Frontroom
+  entities:
+    - light.frontroom_left
+    - light.frontroom_under_tv
+    - light.frontroom_right
+    - light.front_room_lamp
+    - group.hyperion
+
+- type: entities
+  title: Kitchen
+  entities:
+    - light.main_kitchen_lights
+    - group.kitchen_low
+    - input_select.kitchen_mode
+
+- type: entities
+  title: Garden
+  entities:
+    - switch.garden_lights
+
+- type: entities
+  title: Stairs
+  entities:
+    - light.stairs
+    - input_select.stairs_mode
+
+- type: entities
+  title: Upstairs
+  entities:
+    - light.Landing_Light
+    - light.Bathroom_Lights
+    - light.bathroom_mirror_lights
+    - light.master_bedroom_main
+
+- type: entities
+  title: Scenes
+  entities:
+    - scene.downstairs_general
+    - scene.front_room_dim
+    - scene.downstairs_movie
+    - scene.downstairs_off
+    - scene.all_off
