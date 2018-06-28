@@ -7,6 +7,8 @@ homeassistant:
   time_zone: Europe/London
   customize: !include customize.yaml
   customize_domain: !include customize_domain.yaml
+  whitelist_external_dirs: 
+    - /config/
 
 # Enable Config
 config:
@@ -36,6 +38,7 @@ logbook:
   exclude:
     domains:
       - group
+      - device_tracker
     entities:
       - automation.duckdns
       - light.downstairs
@@ -256,6 +259,10 @@ sensor:
     value_template: "{{ (value|replace(' days', '')) | int }}"
     unit_of_measurement: Days
     scan_interval: 43200
+  - platform: filesize
+    name: Database Size
+    file_paths:
+      - /config/home-assistant_v2.db
     
 # MQTT
 mqtt:
@@ -273,6 +280,7 @@ device_tracker:
     password: !secret unifi_password
     verify_ssl: false
     detection_time: 30
+    track_new_devices: no
 
 # Nest
 nest:

@@ -201,6 +201,7 @@ security:
   entities:
     - binary_sensor.motion_sensor_158d00015db8be
     - binary_sensor.motion_sensor_158d00015e6be1
+    - binary_sensor.motion_sensor_158d000223abef
     - binary_sensor.door_window_sensor_158d0001a5e08d
     - binary_sensor.door_window_sensor_158d00019f63a5
     - binary_sensor.door_window_sensor_158d0001a67e20
@@ -404,6 +405,7 @@ admin:
     - updater.updater
     - sensor.adam_badge
     - sensor.leanne_badge
+    - sensor.homeassistant_v2db
     - group.trackers
     - group.global_shutdown
     - group.batteryLevels

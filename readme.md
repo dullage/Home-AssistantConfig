@@ -20,6 +20,22 @@ I use the 3 platforms with the following logic:
 
 The logic for the automations mentioned above can be found in the automation file [locationCleanup.yaml](https://github.com/Dullage/Home-AssistantConfig/blob/master/automations/locationCleanup.yaml).
 
+# Highlights
+Some highlights of our setup in no particular order:
+
+* Google Home Minis for voice control and voice notifications (Google Cast) in most areas of the house.
+* Chromecase Audios for whole house audio.
+* Most house lights controllable via Home Assistant (a mix of Hue, Sonoff and WS2812 LED strips).
+* Nest Thermostat.
+* Broadlink RM Mini IR blaster for AV control.
+* Motion detection for some lighting effects (Xiaomi Motion Sensors).
+* The heating turns itself off as we goto bed (**/automations/bedtime.yaml** or **/scripts/alexaRoutines.yaml**:alexa_goodnight).
+* All lights turn off if everyone leaves the house. Lights turn on (at night) when someone comes home (/automations/locationLights.yaml).
+* ESP8266 controlled ceiling lights (see [this post](https://community.home-assistant.io/t/esp8266-sonoff-controlled-ceiling-lights/24141)).
+* Double toggle a wall switch to perform a special function e.g. turn off every light on that floor (see [this repo](https://github.com/Dullage/SwitchedSonoffSimple) and **/automations/switchDoubleToggles.yaml**).
+* iOS notifications when the doorbell is pressed (**/automations/doorbell.yaml**).
+* iOS notifications if we both leave the house but a door is left open (**/automations/locationDoorWarning.yaml**).
+
 # Screenshots
 Here are some screenshots from the front end:
 

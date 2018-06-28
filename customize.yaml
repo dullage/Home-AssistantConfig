@@ -34,6 +34,8 @@ sensor.illumination_34ce008c05b9:
   friendly_name: Dining Room Light Level
 binary_sensor.motion_sensor_158d00015db8be:
   friendly_name: Kitchen Motion Sensor
+binary_sensor.motion_sensor_158d000223abef:
+  friendly_name: Misc Motion Sensor
 binary_sensor.door_window_sensor_158d00019f63a5:
   friendly_name: Back Door
   icon: mdi:door
