@@ -5,6 +5,6 @@
     - group.biglightgroup
     - input_boolean.ghost_lights
 
-- type: camera-preview
+- type: picture-entity
   entity: camera.picamera
   
