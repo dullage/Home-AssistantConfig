@@ -6,7 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/London
   customize: !include customize.yaml
-  customize_domain: !include customize_domain.yaml
+  customize_domain: !include customize_domain.yaml 
   whitelist_external_dirs: 
     - /config/
 
@@ -27,30 +27,32 @@ zone:
 updater:
 discovery:
 conversation:
-history:
 frontend:
 
-# logger:
- # default: debug
+# Recorder
+recorder:
+  db_url: !secret db_url
+  purge_keep_days: 7
  
 # Logbook
 logbook:
   exclude:
     domains:
       - group
-      - device_tracker
     entities:
       - automation.duckdns
       - light.downstairs
 
+history:
+
 # Web Interface
 http:
   api_password: !secret api_password
-  ssl_certificate: "/config/dullage.com.pem"
-  ssl_key: "/config/dullage.com.key"
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
   ip_ban_enabled: true
   login_attempts_threshold: 5
-  server_port: 8443
+  server_port: 8448
   base_url: !secret base_url
 
 # DuckDNS
@@ -79,6 +81,19 @@ ios:
             # textInputButtonTitle: 'Silencio!'
             # textInputPlaceholder: 'Placeholder'
 
+# HomeKit
+homekit:
+  filter:
+    include_entities:
+      - light.downstairs
+      - light.bathroom_lights
+      - light.bathroom_mirror_lights
+      - light.landing_light
+      - light.master_bedroom_main
+  entity_config:
+    light.master_bedroom_main:
+      name: 'Bedroom Lights'
+            
 # Camera
 camera:
   - platform: mjpeg
@@ -96,27 +111,27 @@ tts:
   
 # Media Player
 media_player:
-  - platform: cast
+  #- platform: cast
   - platform: spotify
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
 
 # Notification Platforms
 notify:
-  - name: Telegram
-    platform: telegram
-    api_key: !secret telegram_api_key
-    chat_id: -193931355
+  # - name: Telegram
+    # platform: telegram
+    # api_key: !secret telegram_api_key
+    # chat_id: -193931355
   - platform: ios
 
 # Telegram Bot
-telegram_bot:
-  platform: webhooks
-  api_key: !secret telegram_api_key
-  allowed_chat_ids:
-    - -193931355
-    - 142858079
-    - 291036842
+# telegram_bot:
+  # platform: webhooks
+  # api_key: !secret telegram_api_key
+  # allowed_chat_ids:
+    # - -193931355
+    # - 142858079
+    # - 291036842
 
 # Lights, Switches, Automations, Scenes and Groups
 light: !include lights.yaml
@@ -128,12 +143,12 @@ script: !include_dir_merge_named scripts/
 shell_command: !include_dir_merge_named shell_commands/
 
 # Emulated Hue
-emulated_hue:
-  host_ip: 192.168.0.49
-  expose_by_default: false
-  off_maps_to_on_domains:
-    - scene
-    - script
+# emulated_hue:
+  # host_ip: 192.168.0.49
+  # expose_by_default: false
+  # off_maps_to_on_domains:
+    # - scene
+    # - script
     
 # Google Assistant
 google_assistant:
@@ -253,16 +268,6 @@ sensor:
     state_topic: 'humidity/loft'
     name: 'Loft Humidity'
     unit_of_measurement: '%'
-  - platform: rest
-    name: Baby Countdown
-    resource: http://api.wolframalpha.com/v1/result?appid=XYTY8U-4V6PY72VT9&i=How%20many%20days%20until%203rd%20July%202018
-    value_template: "{{ (value|replace(' days', '')) | int }}"
-    unit_of_measurement: Days
-    scan_interval: 43200
-  - platform: filesize
-    name: Database Size
-    file_paths:
-      - /config/home-assistant_v2.db
     
 # MQTT
 mqtt:
@@ -275,7 +280,7 @@ device_tracker:
   - platform: locative
   - platform: unifi
     host: localhost
-    port: 8444
+    port: 8443
     username: !secret unifi_username
     password: !secret unifi_password
     verify_ssl: false
@@ -338,7 +343,6 @@ input_select:
       - "Startup"
       - "Shutdown"
       - "All On"
-      - "Baby Countdown"
     initial: "Select..."
   kitchen_mode:
     name: Kitchen Mode
@@ -464,59 +468,59 @@ input_number:
     mode: box
     unit_of_measurement: mins
     
-binary_sensor:
-    - platform: mqtt
-      name: Stairs
-      state_topic: "light/stairs/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Bathroom Main and Landing
-      state_topic: "light/bathroom_and_landing/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Bathroom Mirror
-      state_topic: "light/bathroom_mirror/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Kitchen Main
-      state_topic: "light/kitchen/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Kitchen Left
-      state_topic: "light/kitchen_left/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Kitchen Right
-      state_topic: "light/kitchen_right/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Dining Room Lamp
-      state_topic: "light/dining_room_lamp/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Front Room Lamp
-      state_topic: "light/front_room_lamp/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Master Bedroom Main
-      state_topic: "light/master_bedroom_main/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Ambilight
-      state_topic: "switch/ambilight_power_supply/availability"
-      payload_on : "1"
-      payload_off: "0"
-    - platform: mqtt
-      name: Clothes Dryer
-      state_topic: "switch/dryer/availability"
-      payload_on : "1"
-      payload_off: "0"
+# binary_sensor:
+    # - platform: mqtt
+      # name: Stairs
+      # state_topic: "light/stairs/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Bathroom Main and Landing
+      # state_topic: "light/bathroom_and_landing/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Bathroom Mirror
+      # state_topic: "light/bathroom_mirror/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Kitchen Main
+      # state_topic: "light/kitchen/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Kitchen Left
+      # state_topic: "light/kitchen_left/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Kitchen Right
+      # state_topic: "light/kitchen_right/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Dining Room Lamp
+      # state_topic: "light/dining_room_lamp/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Front Room Lamp
+      # state_topic: "light/front_room_lamp/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Master Bedroom Main
+      # state_topic: "light/master_bedroom_main/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Ambilight
+      # state_topic: "switch/ambilight_power_supply/availability"
+      # payload_on : "1"
+      # payload_off: "0"
+    # - platform: mqtt
+      # name: Clothes Dryer
+      # state_topic: "switch/dryer/availability"
+      # payload_on : "1"
+      # payload_off: "0"

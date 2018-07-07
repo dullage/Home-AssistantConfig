@@ -69,22 +69,22 @@
     # entity_id: input_boolean.queuelights
 
 # Warn if lights have been off for more than 24 hours but away is not set
-- alias: possible away warning
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.biglightgroup
-    to: 'off'
-    for:
-      hours: 24
-  condition:
-      condition: state
-      entity_id: input_boolean.away
-      state: 'off'
-  action:
-    service: notify.telegram
-    data:
-      message: "The lights have been off now for more than 24 hours, are you away?"
+# - alias: possible away warning
+  # initial_state: true
+  # trigger:
+    # platform: state
+    # entity_id: group.biglightgroup
+    # to: 'off'
+    # for:
+      # hours: 24
+  # condition:
+      # condition: state
+      # entity_id: input_boolean.away
+      # state: 'off'
+  # action:
+    # service: notify.telegram
+    # data:
+      # message: "The lights have been off now for more than 24 hours, are you away?"
 
 # MQTT API (homeassistant/<service>(-3)/<action>(-2)/<entity_id>(-1)
 - alias: MQTT API
@@ -142,9 +142,15 @@
   action:
     # - service: shell_command.take_snapshots
     # - service: shell_command.rename_snapshots
-    - service: notify.telegram
+    - service: notify.ios_adams_iphone
       data:
         message: "Frontdoor Opened!"
+    - service: notify.ios_leannes_iphone
+      data:
+        message: "Frontdoor Opened!"
+    # - service: notify.telegram
+      # data:
+        # message: "Frontdoor Opened!"
     # - service: notify.telegram
       # data:
         # message: "Frontdoor Opened"
@@ -168,18 +174,18 @@
     service: shell_command.ghost_lights
     
  # Telegram Test
-- alias: tg_test
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: telegram_callback
-    event_data:
-      data: '/do_nothing'
-  action:
-    - service: telegram_bot.answer_callback_query
-      data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: 'OK, you said no!'
+# - alias: tg_test
+  # initial_state: true
+  # trigger:
+    # platform: event
+    # event_type: telegram_callback
+    # event_data:
+      # data: '/do_nothing'
+  # action:
+    # - service: telegram_bot.answer_callback_query
+      # data_template:
+        # callback_query_id: '{{ trigger.event.data.id }}'
+        # message: 'OK, you said no!'
     
 # Dominos Door Open
 - alias: dominos

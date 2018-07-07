@@ -1,21 +1,21 @@
 ############
 ## GROUPS ##
 ############
-group.diningroom:
-  emulated_hue_hidden: false
-group.frontroom:
-  emulated_hue_name: Front Room
-  emulated_hue_hidden: false
-group.kitchen:
-  emulated_hue_hidden: false
-group.upstairs:
-  emulated_hue_hidden: false
-  emulated_hue_name: Upstairs Lights
-  homebridge_visible: true
-  homebridge_name: Upstairs Lights
-group.everything:
-  emulated_hue_hidden: false
-  homebridge_visible: true
+#group.diningroom:
+  #emulated_hue_hidden: false
+#group.frontroom:
+  #emulated_hue_name: Front Room
+  #emulated_hue_hidden: false
+#group.kitchen:
+  #emulated_hue_hidden: false
+#group.upstairs:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Upstairs Lights
+  #homebridge_visible: true
+  #homebridge_name: Upstairs Lights
+#group.everything:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
 
 #############
 ## SENSORS ##
@@ -87,50 +87,50 @@ sensor.loft_humidity:
 ############
 light.gateway_light_34ce008c05b9:
   friendly_name: Xiaomi Gateway
-  emulated_hue_hidden: false
-  emulated_hue_name: Gateway
-  homebridge_visible: true
-  homebridge_name: Gateway
-light.stairs:
-  emulated_hue_hidden: false
-  emulated_hue_name: Stair Lights
-  homebridge_visible: true
-  homebridge_name: Stair Lights
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Gateway
+  #homebridge_visible: true
+  #homebridge_name: Gateway
+#light.stairs:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Stair Lights
+  #homebridge_visible: true
+  #homebridge_name: Stair Lights
 light.frontroom_left:
   friendly_name: Front Room Left  
 light.frontroom_right:
   friendly_name: Front Room Right
 light.frontroom_under_tv:
   friendly_name: Frontroom Under TV
-light.downstairs:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-light.bathroom_lights:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-light.bathroom_mirror_lights:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-light.dining_room_lamp:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-light.landing_light:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-light.main_kitchen_lights:
-  emulated_hue_hidden: false
-  homebridge_visible: true
+#light.downstairs:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#light.bathroom_lights:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#light.bathroom_mirror_lights:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#light.dining_room_lamp:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#light.landing_light:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#light.main_kitchen_lights:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
 light.front_room_lamp:
-  emulated_hue_hidden: false
-  emulated_hue_name: Front Room Lamp
-  homebridge_visible: true
-  homebridge_name: Front Room Lamp
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Front Room Lamp
+  #homebridge_visible: true
+  #homebridge_name: Front Room Lamp
   icon: mdi:lightbulb
-light.master_bedroom_main:
-  emulated_hue_hidden: false
-  emulated_hue_name: Bedroom Lights
-  homebridge_visible: true
-  homebridge_name: Bedroom Lights
+#light.master_bedroom_main:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Bedroom Lights
+  #homebridge_visible: true
+  #homebridge_name: Bedroom Lights
 
 #################
 ## AUTOMATIONS ##
@@ -156,8 +156,8 @@ switch.kitchen_right:
   icon: mdi:lightbulb
 switch.echo_amplifier:
   icon: mdi:amplifier
-  emulated_hue_hidden: false
-  homebridge_visible: true
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
 switch.clothes_dryer:
   icon: mdi:tshirt-crew
 switch.christmas_tree:
@@ -177,21 +177,21 @@ script.snapshot:
   icon: mdi:camera
 script.ambilight_on:
   icon: mdi:eye
-  emulated_hue_hidden: false
-  emulated_hue_name: Back Light
-  homebridge_visible: true
-  homebridge_name: Back Light
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Back Light
+  #homebridge_visible: true
+  #homebridge_name: Back Light
 script.ambilight_off:
   icon: mdi:eye-off
-script.colourphasemode:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-script.strobemode:
-  emulated_hue_hidden: false
-  homebridge_visible: true
-script.firemode:
-  emulated_hue_hidden: false
-  homebridge_visible: true
+#script.colourphasemode:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#script.strobemode:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
+#script.firemode:
+  #emulated_hue_hidden: false
+  #homebridge_visible: true
 script.tv:
   icon: mdi:television
 script.amp:
@@ -204,46 +204,46 @@ script.volume_down:
   icon: mdi:volume-minus
 script.volume_upx4:
   icon: mdi:volume-plus
-  emulated_hue_hidden: false
-  emulated_hue_name: Volume Up
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Volume Up
 script.volume_downx4:
   icon: mdi:volume-minus
-  emulated_hue_hidden: false
-  emulated_hue_name: Volume Down
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Volume Down
 script.mute:
   icon: mdi:volume-off
-  emulated_hue_hidden: false
-  emulated_hue_name: Mute
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Mute
 script.xbox_on:
-  emulated_hue_hidden: false
-  emulated_hue_name: XBOX
+  #emulated_hue_hidden: false
+  #emulated_hue_name: XBOX
   icon: mdi:gamepad-variant
 script.input_apple_tv:
-  emulated_hue_hidden: false
-  emulated_hue_name: Apple TV
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Apple TV
   icon: mdi:apple
   can_cancel: false
 script.input_chromecast:
-  emulated_hue_hidden: false
-  emulated_hue_name: Chromecast
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Chromecast
   icon: mdi:google-chrome
   can_cancel: false
 script.input_guest:
-  emulated_hue_hidden: false
-  emulated_hue_name: Guest HDMI
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Guest HDMI
   icon: mdi:video-input-hdmi
   can_cancel: false
-script.alexa_goodnight:
-  emulated_hue_hidden: false
+#script.alexa_goodnight:
+  #emulated_hue_hidden: false
 script.amp_dvd:
  icon: mdi:television
 script.amp_cd:
  icon: mdi:floor-plan
 script.input_xbox:
   icon: mdi:gamepad-variant
-script.going_out:
-  emulated_hue_hidden: false
-  emulated_hue_name: Going Out
+#script.going_out:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Going Out
 
 ############
 ## SCENES ##
@@ -252,20 +252,20 @@ scene.all_off:
   icon: mdi:power
 scene.downstairs_movie:
   icon: mdi:movie
-  emulated_hue_hidden: false
-  emulated_hue_name: Movie Mode
-  homebridge_visible: true
-  homebridge_name: Movie Mode
-scene.downstairs_general:
-  emulated_hue_hidden: false
-  emulated_hue_name: Downstairs General Scene
-  homebridge_visible: true
-  homebridge_name: Downstairs General Scene
-scene.front_room_dim:
-  emulated_hue_hidden: false
-  emulated_hue_name: Front Room Dim Scene
-  homebridge_visible: false
-  homebridge_name: Front Room Dim Scene
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Movie Mode
+  #homebridge_visible: true
+  #homebridge_name: Movie Mode
+#scene.downstairs_general:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Downstairs General Scene
+  #homebridge_visible: true
+  #homebridge_name: Downstairs General Scene
+#scene.front_room_dim:
+  #emulated_hue_hidden: false
+  #emulated_hue_name: Front Room Dim Scene
+  #homebridge_visible: false
+  #homebridge_name: Front Room Dim Scene
   
 ####################
 ## INPUT BOOLEANS ##

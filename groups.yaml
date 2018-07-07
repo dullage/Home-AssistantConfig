@@ -243,22 +243,22 @@ batteryLevels:
     - sensor.kitchen_motion_sensor_battery
     - sensor.motion_sensor_battery
     
-wifi_controllers:
-  name: Wifi Controllers
-  control: hidden
-  entities:
-    - binary_sensor.stairs
-    - binary_sensor.bathroom_main_and_landing
-    - binary_sensor.bathroom_mirror
-    - binary_sensor.kitchen_main
-    - binary_sensor.kitchen_left
-    - binary_sensor.kitchen_right
-    - binary_sensor.dining_room_lamp
-    - binary_sensor.front_room_lamp
-    - binary_sensor.master_bedroom_main
-    - binary_sensor.ambilight
-    - binary_sensor.clothes_dryer
-    - script.all_available
+# wifi_controllers:
+  # name: Wifi Controllers
+  # control: hidden
+  # entities:
+    # - binary_sensor.stairs
+    # - binary_sensor.bathroom_main_and_landing
+    # - binary_sensor.bathroom_mirror
+    # - binary_sensor.kitchen_main
+    # - binary_sensor.kitchen_left
+    # - binary_sensor.kitchen_right
+    # - binary_sensor.dining_room_lamp
+    # - binary_sensor.front_room_lamp
+    # - binary_sensor.master_bedroom_main
+    # - binary_sensor.ambilight
+    # - binary_sensor.clothes_dryer
+    # - script.all_available
     
 trackers:
   name: Trackers
@@ -342,7 +342,6 @@ default_view:
   entities:
     - sensor.adam_badge
     - sensor.leanne_badge
-    - sensor.baby_countdown
     - group.scenes   
     - group.frontroom
     - group.diningroom    
@@ -405,10 +404,8 @@ admin:
     - updater.updater
     - sensor.adam_badge
     - sensor.leanne_badge
-    - sensor.homeassistant_v2db
     - group.trackers
     - group.global_shutdown
     - group.batteryLevels
     - group.test
-    - group.wifi_controllers
-    #- input_text.tile_card_1
+    #- group.wifi_controllers

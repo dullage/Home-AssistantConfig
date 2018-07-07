@@ -4,6 +4,9 @@
 # Allow all sub-directories
 !*/
 
+# Except these
+**/disabled
+
 # Allow these file extensions
 !*.yaml
 !*.sh

@@ -10,7 +10,10 @@
       data:
         entity_id: climate.house
         operation_mode: 'off'
-    - service: notify.telegram
+    - service: notify.ios_adams_iphone
+      data:
+        message: "I have put the house into 'Away Mode', have a nice trip!"
+    - service: notify.ios_leannes_iphone
       data:
         message: "I have put the house into 'Away Mode', have a nice trip!"
 
@@ -26,7 +29,10 @@
       data:
         entity_id: climate.house
         operation_mode: 'heat'
-    - service: notify.telegram
+    - service: notify.ios_adams_iphone
+      data:
+        message: "Welcome Home!"
+    - service: notify.ios_leannes_iphone
       data:
         message: "Welcome Home!"
 
