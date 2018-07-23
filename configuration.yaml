@@ -15,6 +15,12 @@ config:
 
 # Enable Map
 map:
+
+# Logging
+logger:
+  default: warn
+  logs:
+    homeassistant.components.recorder: debug
   
 # Custom Zones
 zone:
@@ -33,6 +39,7 @@ frontend:
 recorder:
   db_url: !secret db_url
   purge_keep_days: 7
+  purge_interval: 1
  
 # Logbook
 logbook:
@@ -65,10 +72,11 @@ http:
   server_port: 8448
   base_url: !secret base_url
 
-# DuckDNS
-duckdns:
-  domain: !secret duckdns_domain
-  access_token: !secret duckdns_access_token
+cloudflare:
+  email: !secret cloudflare_email
+  api_key: !secret cloudflare_api_key
+  zone: !secret cloudflare_zone
+  records: !secret cloudflare_records
   
 # Xiaomi Gateway
 xiaomi_aqara:
