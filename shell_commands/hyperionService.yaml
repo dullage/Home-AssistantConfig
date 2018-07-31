@@ -1,0 +1,2 @@
+h_stop_service: ssh -oStrictHostKeyChecking=no pi@192.168.0.15 'sudo systemctl stop hyperion'
+h_start_service: ssh -oStrictHostKeyChecking=no pi@192.168.0.15 'sudo systemctl start hyperion'

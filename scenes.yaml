@@ -44,6 +44,21 @@
     input_select.hyperion:
       option: Backlight
 
+- name: Hue Normal
+  entities:
+    light.frontroom_right:
+      state: on
+      brightness: 254
+      xy_color: [0.50,0.42]
+    light.frontroom_under_tv:
+      state: on
+      brightness: 254
+      xy_color: [0.49,0.41]
+    light.frontroom_left:
+      state: on
+      brightness: 254
+      xy_color: [0.50,0.42]
+
 - name: Front Room Dim
   entities:
     light.front_room_lamp:
@@ -64,6 +79,21 @@
       state: on
     input_select.hyperion:
       option: Ambilight
+      
+- name: Hue Dim
+  entities:
+    light.frontroom_right:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
+    light.frontroom_under_tv:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
+    light.frontroom_left:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
 
 - name: Downstairs Movie
   entities:

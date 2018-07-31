@@ -274,6 +274,8 @@ input_boolean.global_shutdown_lock:
   icon: mdi:lock
 input_boolean.ghost_lights:
   icon: mdi:ghost
+input_boolean.hyperion2:
+  icon: mdi:spotlight
   
 ###########
 ## Tiles ##

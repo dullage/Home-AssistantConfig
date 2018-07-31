@@ -1,0 +1,19 @@
+- alias: ambilight2_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.hyperion2
+    to: 'on'
+  action:
+    service: shell_command.h2_on
+
+- alias: ambilight2_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.hyperion2
+    to: 'off'
+  action:
+    - service: shell_command.h2_off
+    - service: scene.turn_on
+      entity_id: scene.hue_dim

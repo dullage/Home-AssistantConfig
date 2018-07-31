@@ -13,6 +13,7 @@
   title: Hyperion
   entities:
     - switch.ambilight_power
+    - input_boolean.hyperion2
     - script.ambilight_on
     - input_select.hyperion
     

@@ -437,6 +437,8 @@ input_boolean:
     name: PiCamera Power
   kitchen_animation:
     name: Kitchen Animation Running
+  hyperion2:
+    name: Whole Room Ambilight
 
 input_number:
   heatingonhour:
