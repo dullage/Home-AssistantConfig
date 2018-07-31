@@ -1,11 +1,11 @@
 version: '3'
 services:
   homeassistant:
-    build: .
-    image: myhomeassistant
+    image: homeassistant/raspberrypi3-homeassistant:0.74.1
     container_name: "homeassistant"
     volumes:
       - "..:/config"
       - "/etc/localtime:/etc/localtime:ro"
+      - "~/.ssh:/root/.ssh:ro"
     network_mode: "host"
     restart: "always"
