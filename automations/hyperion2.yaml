@@ -17,3 +17,14 @@
     - service: shell_command.h2_off
     - service: scene.turn_on
       entity_id: scene.hue_dim
+
+- alias: ambilight2_auto_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.ambilight_power
+    to: 'off'
+  action:
+    service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.hyperion2
