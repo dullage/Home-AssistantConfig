@@ -34,7 +34,12 @@
 - alias: dryer_timeout_turn_off_and_reset
   initial_state: true
   trigger:
-    platform: numeric_state
+    platform: time
+    # Every minute (on the minute)
+    minutes: '/1'
+    seconds: 00
+  condition:
+    condition: numeric_state
     entity_id: input_number.dryer_timeout
     below: 1
   action:
