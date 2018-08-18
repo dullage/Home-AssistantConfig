@@ -22,13 +22,14 @@
       data:
         gw_mac: 34:ce:00:8c:05:b9
         ringtone_id: 10
-    - service: notify.ios_adams_iphone
-      data:
-        message: "Doorbell!"
-    - service: notify.ios_leannes_iphone
-      data:
-        message: "Doorbell!"
+    # - service: notify.ios_adams_iphone
+      # data:
+        # message: "Doorbell!"
+    # - service: notify.ios_leannes_iphone
+      # data:
+        # message: "Doorbell!"
     - service: tts.amazon_polly_say
       data:
         entity_id: media_player.google_homes
         message: "<speak>There is someone at the front door.</speak>"
+    - service: shell_command.blink

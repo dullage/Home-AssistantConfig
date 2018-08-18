@@ -3,3 +3,4 @@ take_snapshots: 'rm -f /config/www/picamera_snapshots/* | vlc -q -I dummy http:/
 rename_snapshots: ls /config/www/picamera_snapshots | cat -n | while read n f; do mv "/config/www/picamera_snapshots/$f" "/config/www/picamera_snapshots/snapshot$n.jpg"; done
 ghost_lights: python3 /config/python_scripts/GhostLights.py
 self_shutdown: sudo shutdown now
+blink: python3 /config/python_scripts/blink.py
