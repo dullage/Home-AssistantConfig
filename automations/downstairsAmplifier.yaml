@@ -7,7 +7,7 @@
     to: 'home'
   action:
     - service: switch.turn_on
-      entity_id: switch.echo_amplifier
+      entity_id: switch.downstairs_amplifier
       
 # Turn the downstairs amp on if Lea comes home
 - alias: lea_arriving_echo_amp_on
@@ -18,7 +18,7 @@
     to: 'home'
   action:
     - service: switch.turn_on
-      entity_id: switch.echo_amplifier
+      entity_id: switch.downstairs_amplifier
      
 # Turn downstairs amp off at midnight (just a backup)
 - alias: midnight_echo_amp_off
@@ -28,7 +28,7 @@
     at: '00:00:00'
   action:
     - service: switch.turn_off
-      entity_id: switch.echo_amplifier
+      entity_id: switch.downstairs_amplifier
       
 # Turn downstairs amp on at 7am
 - alias: 7am_echo_amp_on
@@ -47,4 +47,4 @@
         state: 'home'
   action:
     - service: switch.turn_on
-      entity_id: switch.echo_amplifier
+      entity_id: switch.downstairs_amplifier

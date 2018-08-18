@@ -10,12 +10,12 @@ diningroom:
     - light.gateway_light_34ce008c05b9
 
 hyperion:
-  name: Hyperion
+  name: Ambilight
   control: hidden
   entities:
     - switch.ambilight_power
     - input_boolean.hyperion2
-    - script.ambilight_on
+    #- script.ambilight_on
     - input_select.hyperion
     
 frontroom:
@@ -194,7 +194,7 @@ misccard:
   name: Miscellaneous
   control: hidden
   entities:
-    - switch.echo_amplifier
+    - switch.downstairs_amplifier
 
 security:
   name: Security
@@ -213,7 +213,7 @@ camera_controls:
   name: Camera Controls
   control: hidden
   entities:
-    - script.snapshot
+    #- script.snapshot
     - group.biglightgroup
     - input_boolean.ghost_lights
     
@@ -366,9 +366,9 @@ av_view:
   view: yes
   icon: mdi:remote
   entities:
-    - group.tv_inputs
     - group.volume
     - group.av
+    - group.tv_inputs
     - group.amp_inputs
     - media_player.spotify
     - group.house_audio_volume

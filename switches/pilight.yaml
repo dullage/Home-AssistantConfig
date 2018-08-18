@@ -64,7 +64,7 @@ PiZero:
     id: 'C3'
     unit: 40
     'off': 1
-Echo Amplifier:
+Downstairs Amplifier:
   on_code:
     protocol: clarus_switch
     id: 'B1'

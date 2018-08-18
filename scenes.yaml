@@ -62,7 +62,7 @@
 - name: Front Room Dim
   entities:
     light.front_room_lamp:
-      state: on
+      state: off
     light.frontroom_right:
       state: on
       brightness: 85

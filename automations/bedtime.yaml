@@ -14,4 +14,4 @@
       data:
         temperature: 9
     - service: switch.turn_off
-      entity_id: switch.echo_amplifier
+      entity_id: switch.downstairs_amplifier
