@@ -59,7 +59,7 @@ sky_box:
     - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet: 
-          - JgAyAFUfDBEMEQsgDCAaEQwRDBEMEQwRDBEMEQwRGhEMHwwRDBEMEQwRDBEbEAwgDBEMAA0FAAAAAAAA
+          - JgA+AFcdDw4PDg8dDx0dDg8ODw8ODw4PDg8ODw4PHR0PDg8ODw4PDw4PHQ4PHR0dDw4PDg8ODw4dDw8dDg8OAA0FAAAAAAAAAAAAAA==
 input_xbox:
   alias: Xbox
   sequence:
@@ -94,6 +94,17 @@ input_guest:
       data:
         packet:
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+          - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+          - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+input_sky:
+  alias: Sky Q
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_0_31
+      data:
+        packet:
+          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
+          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
+          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
 amp_dvd:
   alias: TV Audio
   sequence:
@@ -108,3 +119,10 @@ amp_cd:
       data:
         packet:
           - JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
+normal_av:
+  alias: TV, Sky & Amp (Toggle)
+  sequence:
+    - service: script.tv
+    - service: script.amp
+    - service: script.sky_box
+    - service: script.input_sky

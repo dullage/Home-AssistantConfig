@@ -103,11 +103,12 @@ av:
   name: AV Power
   control: hidden
   entities:
-    - script.xbox_on
+    - script.normal_av
     - script.tv
     - script.amp
     - script.sky_box
-
+    - script.xbox_on
+    
 volume:
   name: Volume
   control: hidden
@@ -120,9 +121,10 @@ tv_inputs:
   name: TV Inputs
   control: hidden
   entities:
+    - script.input_sky
+    - script.input_chromecast
     - script.input_xbox
     - script.input_apple_tv
-    - script.input_chromecast
     - script.input_guest
 
 amp_inputs:

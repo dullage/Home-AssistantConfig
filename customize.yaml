@@ -198,6 +198,10 @@ script.amp:
   icon: mdi:amplifier
 script.sky_box:
   icon: mdi:satellite-variant
+script.normal_av:
+  icon: mdi:numeric-3-box-multiple-outline
+script.input_sky:
+  icon: mdi:satellite-variant
 script.volume_up:
   icon: mdi:volume-plus
 script.volume_down:

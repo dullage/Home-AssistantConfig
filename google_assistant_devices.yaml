@@ -52,6 +52,9 @@ script.going_out:
 script.xbox_on:
   expose: true
   name: XBOX
+script.normal_av:
+  expose: true
+  name: TV
 script.input_apple_tv:
   expose: true
   name: Apple TV
