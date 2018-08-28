@@ -11,7 +11,7 @@ videoSavePath = "/config/www"
 secretsFileLocation = "/config"
 
 goBackMinutes = 1 # Videos created before this many minutes ago will be ignored
-waitTimeoutSeconds = 15 # How long to wait for a video before giving up
+waitTimeoutSeconds = 60 # How long to wait for a video before giving up
 timeOffsetHours = 1 # Blinks datetimes were offset by an hour
 
 notifyEntityNames = ["ios_adams_iphone", "ios_leannes_iphone"]
@@ -55,15 +55,12 @@ token = response.json()["authtoken"]["authtoken"]
 # We need to grab the last video but only if it was created recently (goBackMinutes) as the camera may not have finished yet. Grab the current time help with this.
 start = datetime.today()
 
-# Instantiate a latestVideoTimestamp variable with a very old date.
-#latestVideoTimestamp = datetime.utcfromtimestamp(0)
-
 # Keep refreshing the video list until we have a video from the last minute.
 while True:
 	# Get a list of videos, assume page 0 has the most recent. Convert the JSON response to a dict.
 	responseData = get("https://rest-prde.immedia-semi.com/api/v2/videos/page/0", headers = {"Host":"prod.immedia-semi.com", "TOKEN_AUTH":token}).json()
 	
-	# Assume the first video in the list is the latest. Grab the created datetime.
+	# Loop through all the videos to find the most recent
 	latestVideoTimestamp = datetime.utcfromtimestamp(0)
 	for video in responseData:
 		videoTimestamp = datetime.strptime(video["created_at"], "%Y-%m-%dT%H:%M:%S+00:00") + relativedelta(hours = timeOffsetHours)
