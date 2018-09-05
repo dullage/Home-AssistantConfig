@@ -1,0 +1,28 @@
+- alias: locationDoorWindowWarning
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d00019f63a5
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a67e20
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d000222cb59
+        state: 'on'
+  action:
+    - service: notify.ios_adams_iphone
+      data:
+        message: "STOP! You left a door or windwo open!"
+    - service: notify.ios_leannes_iphone
+      data:
+        message: "STOP! You left a door or window open!"

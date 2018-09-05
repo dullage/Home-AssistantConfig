@@ -208,6 +208,7 @@ security:
     - binary_sensor.door_window_sensor_158d0001a5e08d
     - binary_sensor.door_window_sensor_158d00019f63a5
     - binary_sensor.door_window_sensor_158d0001a67e20
+    - binary_sensor.door_window_sensor_158d000222cb59
 
 
 # Cameras Page
@@ -273,7 +274,6 @@ trackers:
     - device_tracker.leannes_iphone
     - device_tracker.b57a733cd0fc4493894b976cbd81ceed
     - device_tracker.iphone
-
 
 ####################
 ## LOGICAL GROUPS ##
