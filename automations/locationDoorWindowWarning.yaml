@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.all_devices
+    entity_id: group.everyone
     to: 'not_home'
   condition:
     condition: or
@@ -22,7 +22,7 @@
   action:
     - service: notify.ios_adams_iphone
       data:
-        message: "STOP! You left a door or windwo open!"
+        message: "STOP! You left a door or window open!"
     - service: notify.ios_leannes_iphone
       data:
         message: "STOP! You left a door or window open!"

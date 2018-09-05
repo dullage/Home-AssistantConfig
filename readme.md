@@ -35,6 +35,7 @@ Some highlights of our setup in no particular order:
 * Double toggle a wall switch to perform a special function e.g. turn off every light on that floor (see [this repo](https://github.com/Dullage/SwitchedSonoffSimple) and **/automations/switchDoubleToggles.yaml**).
 * iOS notifications when the doorbell is pressed (**/automations/doorbell.yaml**). These include a video of the person walking up the path (see [this forum post](https://community.home-assistant.io/t/blink-camera-as-video-doorbell/65844)).
 * iOS notifications if we both leave the house but a door is left open (**/automations/locationDoorWarning.yaml**).
+* RaspberryPi Screen running HADashboard. Screen turns on and off based on motion by the screen.
 
 # Screenshots
 Here are some screenshots from the front end:

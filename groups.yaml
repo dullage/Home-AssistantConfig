@@ -284,14 +284,18 @@ adam:
   entities:
     - device_tracker.adams_iphone
     - device_tracker.97097be28e8e4429a0cbe8f813e5d773
-    #- device_tracker.dullagesiphone
 
 leanne:
   name: Leanne
   entities:
     - device_tracker.leannes_iphone
     - device_tracker.b57a733cd0fc4493894b976cbd81ceed
-    #- device_tracker.iphone
+
+everyone:
+  name: Everyone
+  entities:
+    - group.adam
+    - group.leanne    
 
 everything:
   name: Everything

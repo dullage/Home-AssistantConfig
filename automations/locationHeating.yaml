@@ -2,7 +2,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.all_devices
+    entity_id: group.everyone
     to: 'not_home'
   condition:
     condition: and
@@ -27,7 +27,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.all_devices
+    entity_id: group.everyone
     to: 'not_home'
     for:
       minutes: 15
