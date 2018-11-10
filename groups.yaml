@@ -7,7 +7,6 @@ diningroom:
   name: Dining Room
   entities:
     - light.dining_room_lamp
-    - light.gateway_light_34ce008c05b9
 
 hyperion:
   name: Ambilight
@@ -25,6 +24,7 @@ frontroom:
     - light.frontroom_under_tv
     - light.frontroom_right
     - light.front_room_lamp
+    - light.gateway_light_34ce008c05b9
     - group.hyperion
 
 kitchen:
@@ -219,6 +219,7 @@ camera_controls:
     #- script.snapshot
     - group.biglightgroup
     - input_boolean.ghost_lights
+    #- camera.spotify_image
     
 
 # Admin Page
@@ -283,7 +284,7 @@ adam:
   name: Adam
   entities:
     - device_tracker.adams_iphone
-    - device_tracker.97097be28e8e4429a0cbe8f813e5d773
+    - device_tracker.b3d816ff8f884f7183e1809e47641bbb
 
 leanne:
   name: Leanne

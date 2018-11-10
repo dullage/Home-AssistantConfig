@@ -17,6 +17,9 @@
       event_data:
         entity_id: binary_sensor.switch_158d000128c313
         click_type: long_click_press
+  condition:
+    condition: template
+    value_template: "{{ (states.automation.doorbell.attributes.last_triggered == none) or (as_timestamp(state_attr('automation.doorbell', 'last_triggered')) < (as_timestamp(now()) - 5)) }}"
   action:
     - service: xiaomi_aqara.play_ringtone
       data:
@@ -33,3 +36,19 @@
         entity_id: media_player.google_homes
         message: "<speak>There is someone at the front door.</speak>"
     - service: shell_command.blink
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.doorbell_recently_pressed
+    - service: mqtt.publish
+      data:
+        topic: screenpi
+        payload: 2
+    - delay:
+        minutes: 3
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.doorbell_recently_pressed
+    - service: mqtt.publish
+      data:
+        topic: screenpi
+        payload: 1

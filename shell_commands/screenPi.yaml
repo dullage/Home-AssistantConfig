@@ -1,4 +1,4 @@
 screen_on: >-
-  ssh pi@ScreenPi 'sudo bash -c "echo 0 > /sys/class/backlight/rpi_backlight/bl_power"'
+  ssh pi@192.168.0.32 'sudo bash -c "echo 0 > /sys/class/backlight/rpi_backlight/bl_power"'
 screen_off: >-
-  ssh pi@ScreenPi 'sudo bash -c "echo 1 > /sys/class/backlight/rpi_backlight/bl_power"'
+  ssh pi@192.168.0.32 'sudo bash -c "echo 1 > /sys/class/backlight/rpi_backlight/bl_power"'

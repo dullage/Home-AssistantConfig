@@ -5,7 +5,7 @@
     event: start
   condition:
     condition: template
-    value_template: '{{ not is_state("device_tracker.97097be28e8e4429a0cbe8f813e5d773", "home") }}'
+    value_template: '{{ not is_state("group.adam", "home") }}'
   action:
     - service: notify.ios_adams_iphone
       data:

@@ -22,3 +22,6 @@ secrets.yaml
 entity_registry.yaml
 known_devices.yaml
 secretShellCommands.yaml
+/appdaemon
+www/BlinkImage.png
+www/pause.png

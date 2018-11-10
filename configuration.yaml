@@ -19,8 +19,8 @@ map:
 # Logging
 logger:
   default: warn
-  logs:
-    homeassistant.components.recorder: debug
+  # logs:
+    # homeassistant.components.recorder: debug
   
 # Custom Zones
 zone:
@@ -32,6 +32,8 @@ zone:
 # Misc
 updater:
 discovery:
+  ignore:
+    - igd
 conversation:
 frontend:
 
@@ -71,7 +73,10 @@ http:
   login_attempts_threshold: 5
   server_port: 8448
   base_url: !secret base_url
-
+  trusted_proxies:
+    - 127.0.0.1
+  use_x_forwarded_for: true
+    
 cloudflare:
   email: !secret cloudflare_email
   api_key: !secret cloudflare_api_key
@@ -116,7 +121,10 @@ homekit:
 camera:
   - platform: mjpeg
     name: PiCamera
-    mjpeg_url: http://192.168.0.11:8081/ 
+    mjpeg_url: http://192.168.0.11:8081/
+  - platform: generic
+    name: "HADashboard Image"
+    still_image_url: !secret ha_dashboard_image
 
 # Text to Speech
 tts:
@@ -171,8 +179,6 @@ shell_command: !include_dir_merge_named shell_commands/
 # Google Assistant
 google_assistant:
   project_id: home-assistant-f64f8
-  client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_access_token
   api_key: !secret google_assistant_api_key
   expose_by_default: false
   entity_config: !include google_assistant_devices.yaml
@@ -182,6 +188,9 @@ sun:
 
 # Sensors
 sensor:
+  - platform: starlingbank
+    accounts:
+      - access_token: !secret starlingbank_api_key
   - platform: yr
   - platform: speedtest
     server_id: 7028
@@ -295,7 +304,6 @@ mqtt:
 
 # Device Tracking
 device_tracker:
-  - platform: locative
   - platform: unifi
     host: localhost
     port: 8443
@@ -303,7 +311,8 @@ device_tracker:
     password: !secret unifi_password
     verify_ssl: false
     detection_time: 30
-    track_new_devices: no
+    track_new_devices: false
+  - platform: locative
 
 # Nest
 nest:
@@ -311,9 +320,9 @@ nest:
   client_secret: !secret nest_client_secret
 
 # Pilight
-pilight:
-  host: 192.168.0.32
-  port: 5000
+# pilight:
+  # host: 192.168.0.32
+  # port: 5000
 
 # IFTTT
 ifttt:
@@ -439,6 +448,8 @@ input_boolean:
     name: Kitchen Animation Running
   hyperion2:
     name: Whole Room Ambilight
+  doorbell_recently_pressed:
+    name: Doorbell Recently Pressed
 
 input_number:
   heatingonhour:

@@ -44,13 +44,13 @@
   action:
     - service: notify.ios_adams_iphone
       data:
-        message: "Warning: The heating is still on. Turn it off?."
+        message: "Warning: The heating is still on. Turn it off?"
         data:
           push:
             category: weekend_heating_warning
     - service: notify.ios_leannes_iphone
       data:
-        message: "Warning: The heating is still on. Turn it off?."
+        message: "Warning: The heating is still on. Turn it off?"
         data:
           push:
             category: weekend_heating_warning
