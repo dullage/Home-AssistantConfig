@@ -6,7 +6,7 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/London
   customize: !include customize.yaml
-  customize_domain: !include customize_domain.yaml 
+  customize_domain: !include customize_domain.yaml
   whitelist_external_dirs: 
     - /config/
 
@@ -149,6 +149,18 @@ notify:
     # api_key: !secret telegram_api_key
     # chat_id: -193931355
   - platform: ios
+  - name: email_adam
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: !secret email_username
+    encryption: starttls
+    username: !secret email_username
+    password: !secret email_password
+    recipient:
+      - !secret email_address_adam
+    sender_name: Home Assistant
 
 # Telegram Bot
 # telegram_bot:

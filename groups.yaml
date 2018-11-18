@@ -37,7 +37,7 @@ kitchen:
 garden:
   name: Garden
   entities:
-    - switch.garden_lights
+    - light.garden_lights
 
 stairs:
   name: Stairs
@@ -354,7 +354,7 @@ default_view:
     - group.frontroom
     - group.diningroom    
     - group.kitchen
-    #- group.garden
+    - group.garden
     - group.stairs
     - group.upstairs
 
