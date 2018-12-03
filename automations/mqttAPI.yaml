@@ -1,0 +1,9 @@
+- alias: MQTT API
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: homeassistant/#
+  action:
+    service_template: "{{ trigger.topic.split('/')[-3] }}.{{ trigger.topic.split('/')[-2] }}"
+    data_template:
+      entity_id: "{{ trigger.topic.split('/')[-1] }}"

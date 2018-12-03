@@ -60,67 +60,67 @@ firemode:
       data:
         topic: "light/kitchen_right"
         payload: "{0:4,3:55}"         
-displaymessage:
-  alias: Screen Message
-  sequence:
-    - service: mqtt.publish
-      data_template:
-        topic: "message"
-        payload: "{{ message }}"
-welcomeadam:
-  alias: Welcome Home Adam
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "message"
-        payload: "Welcome Home Adam"
-    - delay:
-        minutes: 1
-    - service: mqtt.publish
-      data:
-        topic: "messageClear"
-        payload: "Welcome Home Adam"
-welcomelea:
-  alias: Welcome Home Leanne
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "message"
-        payload: "Welcome Home Leanne"
-    - delay:
-        minutes: 1
-    - service: mqtt.publish
-      data:
-        topic: "messageClear"
-        payload: "Welcome Home Leanne"
-welcomeboth:
-  alias: Welcome Home Both
-  sequence:
-    - service: mqtt.publish
-      data:
-        topic: "message"
-        payload: "Welcome Home Adam & Lea"
-    - delay:
-        minutes: 1
-    - service: mqtt.publish
-      data:
-        topic: "messageClear"
-        payload: "Welcome Home Adam & Lea"
+# displaymessage:
+  # alias: Screen Message
+  # sequence:
+    # - service: mqtt.publish
+      # data_template:
+        # topic: "message"
+        # payload: "{{ message }}"
+# welcomeadam:
+  # alias: Welcome Home Adam
+  # sequence:
+    # - service: mqtt.publish
+      # data:
+        # topic: "message"
+        # payload: "Welcome Home Adam"
+    # - delay:
+        # minutes: 1
+    # - service: mqtt.publish
+      # data:
+        # topic: "messageClear"
+        # payload: "Welcome Home Adam"
+# welcomelea:
+  # alias: Welcome Home Leanne
+  # sequence:
+    # - service: mqtt.publish
+      # data:
+        # topic: "message"
+        # payload: "Welcome Home Leanne"
+    # - delay:
+        # minutes: 1
+    # - service: mqtt.publish
+      # data:
+        # topic: "messageClear"
+        # payload: "Welcome Home Leanne"
+# welcomeboth:
+  # alias: Welcome Home Both
+  # sequence:
+    # - service: mqtt.publish
+      # data:
+        # topic: "message"
+        # payload: "Welcome Home Adam & Lea"
+    # - delay:
+        # minutes: 1
+    # - service: mqtt.publish
+      # data:
+        # topic: "messageClear"
+        # payload: "Welcome Home Adam & Lea"
 xbox_on:
   alias: XBOX On
   sequence:
     - service: script.turn_on
       entity_id: script.input_xbox
     - service: shell_command.xbox_on
-snapshot:
-  alias: Take and Send Snapshot
-  sequence:
-    - service: shell_command.take_snapshots
-    - service: shell_command.rename_snapshots
-    - service: notify.telegram
-      data:
-        message: "Snapshot"
-        data:
-          photo:
-            file: /home/pi/snapshots/snapshot1.jpg
-            caption: "Snapshot"
+# snapshot:
+  # alias: Take and Send Snapshot
+  # sequence:
+    # - service: shell_command.take_snapshots
+    # - service: shell_command.rename_snapshots
+    # - service: notify.telegram
+      # data:
+        # message: "Snapshot"
+        # data:
+          # photo:
+            # file: /home/pi/snapshots/snapshot1.jpg
+            # caption: "Snapshot"

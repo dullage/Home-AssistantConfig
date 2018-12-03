@@ -41,6 +41,9 @@
   command_topic: "light/kitchen_left"
   rgb_state_topic: "light/kitchen_left/rgb/state"
   rgb_command_topic: "light/kitchen_left/rgb"
+  availability_topic: "light/kitchen_left/availability"
+  payload_not_available: "0"
+  payload_available: "1"
   payload_off: "0"
   payload_on: "1"
   retain: false
@@ -50,6 +53,9 @@
   command_topic: "light/kitchen_right"
   rgb_state_topic: "light/kitchen_right/rgb/state"
   rgb_command_topic: "light/kitchen_right/rgb"
+  availability_topic: "light/kitchen_right/availability"
+  payload_not_available: "0"
+  payload_available: "1"
   payload_off: "0"
   payload_on: "1"
   retain: false

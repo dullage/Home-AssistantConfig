@@ -1,0 +1,25 @@
+- alias: "Leanne (Notify Adam)"
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: group.leanne
+    to: 'home'
+  action:
+    - service: notify.ios_adams_iphone
+      data:
+        message: "Leanne is Home"
+    - service: automation.turn_off
+      entity_id: automation.leanne_notify_adam
+
+- alias: "Adam (Notify Leanne)"
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: group.adam
+    to: 'home'
+  action:
+    - service: notify.ios_leannes_iphone
+      data:
+        message: "Adam is Home"
+    - service: automation.turn_off
+      entity_id: automation.adam_notify_leanne

@@ -32,8 +32,6 @@ zone:
 # Misc
 updater:
 discovery:
-  ignore:
-    - igd
 conversation:
 frontend:
 
@@ -460,8 +458,8 @@ input_boolean:
     name: Kitchen Animation Running
   hyperion2:
     name: Whole Room Ambilight
-  doorbell_recently_pressed:
-    name: Doorbell Recently Pressed
+  # doorbell_recently_pressed:
+    # name: Doorbell Recently Pressed
 
 input_number:
   heatingonhour:

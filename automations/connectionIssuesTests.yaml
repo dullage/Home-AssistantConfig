@@ -1,9 +1,0 @@
-- alias: connection_issue_tests
-  initial_state: true
-  trigger:
-    platform: mqtt
-    topic: light/test/availability
-  action:
-    - service: notify.ios_adams_iphone
-      data:
-        message: "light/test/availability"

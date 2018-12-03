@@ -1,0 +1,23 @@
+- alias: global_shutdown_lock_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.global_shutdown_lock
+    to: 'off'
+    for:
+      seconds: 5
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.global_shutdown_lock
+- alias: global_shutdown_error_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_select.global_shutdown_message
+  action:
+    - delay:
+        seconds: 5
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.global_shutdown_message
+        option: ''

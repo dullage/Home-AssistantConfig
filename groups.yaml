@@ -290,7 +290,7 @@ leanne:
   name: Leanne
   entities:
     - device_tracker.leannes_iphone
-    - device_tracker.b57a733cd0fc4493894b976cbd81ceed
+    - device_tracker.8eb21fe155d341e0a97bb8197a66e465
 
 everyone:
   name: Everyone
@@ -412,6 +412,7 @@ admin:
     - updater.updater
     - sensor.adam_badge
     - sensor.leanne_badge
+    - sensor.bed_activity_158d0002b12379
     - group.trackers
     - group.global_shutdown
     - group.batteryLevels

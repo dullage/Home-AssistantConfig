@@ -1,0 +1,8 @@
+- alias: ghost_lights
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.ghost_lights
+    to: 'on'
+  action:
+    service: shell_command.ghost_lights

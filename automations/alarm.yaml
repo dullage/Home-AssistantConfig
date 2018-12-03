@@ -1,0 +1,51 @@
+- alias: alarm
+  initial_state: true
+  trigger:
+  # Front Door
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
+      to: 'on'
+  # Back Door
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019f63a5
+      to: 'on'
+  # Patio Doors
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0001a67e20
+      to: 'on'
+  # Master Bedroom Window
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000222cb59
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.adam
+        state: 'not_home'
+      - condition: state
+        entity_id: group.leanne
+        state: 'not_home'
+  action:
+    # - service: shell_command.take_snapshots
+    # - service: shell_command.rename_snapshots
+    - service: notify.ios_adams_iphone
+      data:
+        message: "Alarm: Door / Window Opened!"
+    - service: notify.ios_leannes_iphone
+      data:
+        message: "Alarm: Door / Window Opened!"
+    # - service: notify.telegram
+      # data:
+        # message: "Frontdoor Opened!"
+    # - service: notify.telegram
+      # data:
+        # message: "Frontdoor Opened"
+        # data:
+          # photo:
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot1.jpg
+              # caption: "Snapshot 1"
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot2.jpg
+              # caption: "Snapshot 2"
+            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot3.jpg
+              # caption: "Snapshot 3"
