@@ -2,5 +2,4 @@ xbox_on: python3 /config/shell_commands/xboxOn.py
 take_snapshots: 'rm -f /config/www/picamera_snapshots/* | vlc -q -I dummy http://192.168.0.11:8081 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snapshot --scene-path=/config/www/picamera_snapshots --run-time 5 --scene-ratio=40 vlc://quit'
 rename_snapshots: ls /config/www/picamera_snapshots | cat -n | while read n f; do mv "/config/www/picamera_snapshots/$f" "/config/www/picamera_snapshots/snapshot$n.jpg"; done
 ghost_lights: python3 /config/python_scripts/GhostLights.py
-self_shutdown: sudo shutdown now
 blink: python3 /config/python_scripts/blink.py

@@ -1,0 +1,18 @@
+heating_to_21:
+  alias: "Set to 21"
+  sequence:
+    - service: climate.set_temperature
+      data:
+        temperature: 21
+
+heating_boost:
+  alias: Heating Boost (5 min)
+  sequence:
+    - service: climate.set_temperature
+      data:
+        temperature: 25
+    - delay:
+        minutes: 5
+    - service: climate.set_temperature
+      data:
+        temperature: 21

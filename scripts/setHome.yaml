@@ -3,29 +3,29 @@ set_adam_home:
   sequence:
     - service: device_tracker.see
       data:
-        dev_id: 97097be28e8e4429a0cbe8f813e5d773
+        dev_id: b3d816ff8f884f7183e1809e47641bbb
         location_name: home
     - service: device_tracker.see
       data:
         dev_id: adams_iphone
         location_name: home
-    # - service: device_tracker.see
-      # data:
-        # dev_id: dullagesiphone
-        # location_name: home
+    - service: device_tracker.see
+      data:
+        dev_id: dullagesiphone
+        location_name: home
  
 set_lea_home:
   alias: "Set Leanne as Home"
   sequence:
     - service: device_tracker.see
       data:
-        dev_id: b57a733cd0fc4493894b976cbd81ceed
+        dev_id: 8eb21fe155d341e0a97bb8197a66e465
         location_name: home
     - service: device_tracker.see
       data:
         dev_id: leannes_iphone
         location_name: home
-    # - service: device_tracker.see
-      # data:
-        # dev_id: iphone
-        # location_name: home
+    - service: device_tracker.see
+      data:
+        dev_id: iphone
+        location_name: home

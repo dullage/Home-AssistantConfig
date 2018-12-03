@@ -14,7 +14,6 @@ hyperion:
   entities:
     - switch.ambilight_power
     - input_boolean.hyperion2
-    #- script.ambilight_on
     - input_select.hyperion
     
 frontroom:
@@ -216,11 +215,9 @@ camera_controls:
   name: Camera Controls
   control: hidden
   entities:
-    #- script.snapshot
     - group.biglightgroup
     - input_boolean.ghost_lights
-    #- camera.spotify_image
-    
+ 
 
 # Admin Page
 test:
@@ -248,32 +245,15 @@ batteryLevels:
     - sensor.kitchen_motion_sensor_battery
     - sensor.motion_sensor_battery
     
-# wifi_controllers:
-  # name: Wifi Controllers
-  # control: hidden
-  # entities:
-    # - binary_sensor.stairs
-    # - binary_sensor.bathroom_main_and_landing
-    # - binary_sensor.bathroom_mirror
-    # - binary_sensor.kitchen_main
-    # - binary_sensor.kitchen_left
-    # - binary_sensor.kitchen_right
-    # - binary_sensor.dining_room_lamp
-    # - binary_sensor.front_room_lamp
-    # - binary_sensor.master_bedroom_main
-    # - binary_sensor.ambilight
-    # - binary_sensor.clothes_dryer
-    # - script.all_available
-    
 trackers:
   name: Trackers
   control: hidden
   entities:
     - device_tracker.adams_iphone
-    - device_tracker.97097be28e8e4429a0cbe8f813e5d773
+    - device_tracker.b3d816ff8f884f7183e1809e47641bbb
     - device_tracker.dullagesiphone
     - device_tracker.leannes_iphone
-    - device_tracker.b57a733cd0fc4493894b976cbd81ceed
+    - device_tracker.8eb21fe155d341e0a97bb8197a66e465
     - device_tracker.iphone
 
 ####################
@@ -328,7 +308,6 @@ biglightgroup:
   name: The Big Light Group
   entities:
     - group.all_lights
-    #- switch.garden_lights
     - switch.ambilight_power
 
 hue_lights:
@@ -417,4 +396,3 @@ admin:
     - group.global_shutdown
     - group.batteryLevels
     - group.test
-    #- group.wifi_controllers

@@ -13,6 +13,7 @@ global_shutdown:
     - service: shell_command.hyperionpi_shutdown
     - service: shell_command.screenpi_shutdown
     - service: shell_command.self_shutdown
+
 global_shutdown_failure:
   alias: Global Shutdown Failure
   sequence:

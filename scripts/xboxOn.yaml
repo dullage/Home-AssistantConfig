@@ -1,0 +1,6 @@
+xbox_on:
+  alias: XBOX On
+  sequence:
+    - service: script.turn_on
+      entity_id: script.input_xbox
+    - service: shell_command.xbox_on
