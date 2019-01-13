@@ -330,9 +330,9 @@ nest:
   client_secret: !secret nest_client_secret
 
 # Pilight
-# pilight:
-  # host: 192.168.0.32
-  # port: 5000
+pilight:
+  host: 192.168.0.32
+  port: 5000
 
 # IFTTT
 ifttt:

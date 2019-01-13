@@ -4,6 +4,9 @@
   command_topic: "light/stairs"
   rgb_state_topic: "light/stairs/rgb/state"
   rgb_command_topic: "light/stairs/rgb"
+  availability_topic: "light/stairs/availability"
+  payload_not_available: "0"
+  payload_available: "1"
   payload_off: "0"
   payload_on: "1"
   retain: false
@@ -23,10 +26,10 @@
   retain: false
 - platform: mqtt
   name: Bathroom Mirror Lights
-  state_topic: "light/bathroom_mirror/state"
-  command_topic: "light/bathroom_mirror"
-  payload_off: "0"
-  payload_on: "1"
+  command_topic: "shellies/shelly1-2272F1/relay/0/command"
+  state_topic: "shellies/shelly1-2272F1/relay/0"
+  payload_off: "off"
+  payload_on: "on"
   retain: false
 - platform: mqtt
   name: Main Kitchen Lights

@@ -64,6 +64,9 @@ script.input_chromecast:
 script.input_guest:
   expose: true
   name: Guest HDMI
+script.sky_back:
+  expose: true
+  name: Sky Back
 scene.downstairs_movie:
   expose: true
   name: Movie Mode

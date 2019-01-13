@@ -1,0 +1,23 @@
+- alias: misc_switch_1
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000128c313
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_lights
+
+- alias: misc_switch_2
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000128c313
+      click_type: double
+  action:
+    service: light.toggle
+    entity_id: light.downstairs

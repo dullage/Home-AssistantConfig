@@ -126,3 +126,10 @@ normal_av:
     - service: script.amp
     - service: script.sky_box
     - service: script.input_sky
+sky_back:
+  alias: "Sky: Back"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_0_31
+      data:
+        packet:
+          - JgA8AFQgDBEMEQ4eDCAcDw4PDg8NEA0RDBEMEQwRHB4MEQ4PDBEODw0QHR4cHg4PHR0NEA0QDREODxwPDgANBQAAAAAAAAAAAAAAAA==

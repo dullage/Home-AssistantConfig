@@ -36,9 +36,10 @@ Some highlights of our setup in no particular order:
 * iOS notifications when the doorbell is pressed (**/automations/doorbell.yaml**). These include a video of the person walking up the path (see [this forum post](https://community.home-assistant.io/t/blink-camera-as-video-doorbell/65844)).
 * iOS notifications if we both leave the house but a door is left open (**/automations/locationDoorWarning.yaml**).
 * RaspberryPi Screen running HADashboard. Screen turns on and off based on motion by the screen.
+* Smart Microwave! See [this forum post](https://community.home-assistant.io/t/making-my-microwave-smart-ish/89843) and [this automation](/automations/microwave.yaml).
 
 # Screenshots
-Here are some screenshots from the front end:
+Here are some screenshots from the front end and HA Dashboard:
 
 ## Main Tab
 ![Main Tab](docs/main_tab.png)
@@ -57,3 +58,6 @@ Here are some screenshots from the front end:
 
 ## Admin Tab
 ![Admin Tab](docs/admin_tab.png)
+
+## HA Dashboard
+![HA Dashboard](docs/ha_dashboard.png)

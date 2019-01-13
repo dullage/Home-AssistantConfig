@@ -24,3 +24,4 @@ known_devices.yaml
 secretShellCommands.yaml
 /appdaemon
 /www
+docker/update.sh

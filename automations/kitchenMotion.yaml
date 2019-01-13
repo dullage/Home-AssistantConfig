@@ -50,24 +50,6 @@
       data:
         topic: light/kitchen_right
         payload: '{0:2,2:[255,147,41]}'
-
-
-- alias: kitchenMotionMainLightsOff
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_158d00015db8be
-      to: 'off'
-      for:
-        minutes: 5
-  condition:
-    condition: state
-    entity_id: light.main_kitchen_lights
-    state: 'on'
-  action:
-    service: light.turn_off
-    entity_id: light.main_kitchen_lights
-
     
 - alias: kitchen_animation_monitor_on
   initial_state: true

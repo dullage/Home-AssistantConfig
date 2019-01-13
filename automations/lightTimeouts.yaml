@@ -1,0 +1,53 @@
+- alias: kitchen_lights_timeout
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00015db8be
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    condition: state
+    entity_id: light.main_kitchen_lights
+    state: 'on'
+  action:
+    service: light.turn_off
+    entity_id: light.main_kitchen_lights
+
+- alias: bathroom_lights_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00015e6be1
+    to: 'off'
+    for:
+      minutes: 30
+  action:
+    - service: light.turn_off
+      entity_id: light.bathroom_lights
+    - service: light.turn_off
+      entity_id: light.bathroom_mirror_lights
+
+- alias: landing_lights_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.landing_light
+    to: 'on'
+    for:
+      minutes: 30
+  action:
+    service: light.turn_off
+    entity_id: light.landing_light
+
+- alias: master_bedroom_main_lights_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_main
+    to: 'on'
+    for:
+      minutes: 30
+  action:
+    service: light.turn_off
+    entity_id: light.master_bedroom_main

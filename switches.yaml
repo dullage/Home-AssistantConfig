@@ -1,5 +1,5 @@
-# - platform: pilight
-  # switches: !include switches/pilight.yaml
+- platform: pilight
+  switches: !include switches/pilight.yaml
 - platform: broadlink
   host: 192.168.0.31
   mac: '34:ea:34:88:dd:1d'

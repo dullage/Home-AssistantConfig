@@ -28,8 +28,6 @@ sensor.dark_sky_temperature:
   friendly_name: Outside Temperature
 sensor.dark_sky_precip_probability:
   friendly_name: Currently Raining (Probability)
-binary_sensor.switch_158d000128c313:
-  friendly_name: Doorbell
 sensor.illumination_34ce008c05b9:
   friendly_name: Dining Room Light Level
 binary_sensor.motion_sensor_158d00015db8be:
@@ -145,6 +143,10 @@ automation.bothLeftLights:
   friendly_name: Auto Lights Off (when leaving)
 automation.bothLeftHeating:
   friendly_name: Weekday Auto Heating Off (when leaving)
+automation.landing_lights_timeout:
+  friendly_name: Landing Light Timeout
+automation.master_bedroom_main_lights_timeout:
+  friendly_name: Bedroom Light Timeout
   
 ##############
 ## SWITCHES ##
@@ -251,6 +253,8 @@ script.input_xbox:
 #script.going_out:
   #emulated_hue_hidden: false
   #emulated_hue_name: Going Out
+script.sky_back:
+  icon: mdi:keyboard-backspace
 
 ############
 ## SCENES ##

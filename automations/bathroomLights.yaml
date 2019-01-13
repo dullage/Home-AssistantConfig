@@ -57,18 +57,3 @@
   action:
     service: light.turn_off
     entity_id: light.bathroom_mirror_lights
-
-# Timeout
-- alias: bathroom_lights_timeout
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: binary_sensor.motion_sensor_158d00015e6be1
-    to: 'off'
-    for:
-      minutes: 15
-  action:
-    - service: light.turn_off
-      entity_id: light.bathroom_lights
-    - service: light.turn_off
-      entity_id: light.bathroom_mirror_lights

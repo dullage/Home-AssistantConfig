@@ -3,20 +3,15 @@
   initial_state: true
   trigger:
     - platform: event
-      event_type: click
+      event_type: xiaomi_aqara.click
       event_data:
-        entity_id: binary_sensor.switch_158d000128c313
+        entity_id: binary_sensor.switch_158d0002135d1d
         click_type: single
     - platform: event
-      event_type: click
+      event_type: xiaomi_aqara.click
       event_data:
-        entity_id: binary_sensor.switch_158d000128c313
+        entity_id: binary_sensor.switch_158d0002135d1d
         click_type: double
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.switch_158d000128c313
-        click_type: long_click_press
   condition:
     condition: template
     value_template: "{{ (states.automation.doorbell.attributes.last_triggered == none) or (as_timestamp(state_attr('automation.doorbell', 'last_triggered')) < (as_timestamp(now()) - 5)) }}"

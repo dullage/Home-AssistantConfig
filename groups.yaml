@@ -58,7 +58,6 @@ scenes:
   entities:
     - scene.downstairs_general
     - scene.front_room_dim
-    - scene.downstairs_movie
     - scene.downstairs_off
     - scene.all_off
 
@@ -143,6 +142,12 @@ house_audio_volume:
     - input_number.front_room_volume
     - input_number.upstairs_volume
     
+av_other:
+  name: Other
+  control: hidden
+  entities:
+    - script.sky_back
+  
 
 # Miscellaneous Page
 away:
@@ -169,6 +174,8 @@ automationControl:
   control: hidden
   entities:
     - automation.bothLeftLights
+    - automation.landing_lights_timeout
+    - automation.master_bedroom_main_lights_timeout
 
 homeArrivalNotifications:
   name: "Home Arrival Notifications"
@@ -358,6 +365,7 @@ av_view:
     - group.amp_inputs
     - media_player.spotify
     - group.house_audio_volume
+    - group.av_other
 
 misc:
   name: Miscellaneous
@@ -391,7 +399,6 @@ admin:
     - updater.updater
     - sensor.adam_badge
     - sensor.leanne_badge
-    - sensor.bed_activity_158d0002b12379
     - group.trackers
     - group.global_shutdown
     - group.batteryLevels

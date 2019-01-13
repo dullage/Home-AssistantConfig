@@ -101,7 +101,7 @@
     - service: tts.amazon_polly_say
       data_template:
         entity_id: media_player.front_room_speaker
-        message: "<speak>Welcome Home Leanne</speak>"
+        message: "<speak>Welcome Home Woman</speak>"
     
 # Welcome Home Both
 - alias: welcome_home_both
