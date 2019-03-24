@@ -2,7 +2,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: group.leanne
+    entity_id: person.leanne
     to: 'home'
   action:
     - service: notify.ios_adams_iphone
@@ -15,7 +15,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: group.adam
+    entity_id: person.adam
     to: 'home'
   action:
     - service: notify.ios_leannes_iphone

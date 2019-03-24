@@ -20,32 +20,14 @@
   condition:
     condition: and
     conditions:
-      - condition: state
-        entity_id: group.adam
-        state: 'not_home'
-      - condition: state
-        entity_id: group.leanne
-        state: 'not_home'
+      - condition: template
+        value_template: "{{ states('person.adam') != 'home' }}"
+      - condition: template
+        value_template: "{{ states('person.leanne') != 'home' }}"
   action:
-    # - service: shell_command.take_snapshots
-    # - service: shell_command.rename_snapshots
     - service: notify.ios_adams_iphone
       data:
         message: "Alarm: Door / Window Opened!"
     - service: notify.ios_leannes_iphone
       data:
         message: "Alarm: Door / Window Opened!"
-    # - service: notify.telegram
-      # data:
-        # message: "Frontdoor Opened!"
-    # - service: notify.telegram
-      # data:
-        # message: "Frontdoor Opened"
-        # data:
-          # photo:
-            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot1.jpg
-              # caption: "Snapshot 1"
-            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot2.jpg
-              # caption: "Snapshot 2"
-            # - file: /home/homeassistant/.homeassistant/www/picamera_snapshots/snapshot3.jpg
-              # caption: "Snapshot 3"

@@ -3,6 +3,7 @@
   trigger:
     platform: state
     entity_id: group.everyone
+    from: 'home'
     to: 'not_home'
   condition:
     condition: or

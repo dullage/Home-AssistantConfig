@@ -1,55 +1,65 @@
 - type: entities
+  title: Security
+  show_header_toggle: false
+  entities:
+    - binary_sensor.motion_sensor_158d000223abef
+    - binary_sensor.motion_sensor_158d000208c9c8
+    - binary_sensor.motion_sensor_158d00015db8be
+    - binary_sensor.motion_sensor_158d00015e6be1
+    - binary_sensor.door_window_sensor_158d0001a5e08d
+    - binary_sensor.door_window_sensor_158d00019f63a5
+    - binary_sensor.door_window_sensor_158d0001a67e20
+    - binary_sensor.door_window_sensor_158d000222cb59
+
+- type: entities
   title: Away Mode
+  show_header_toggle: false
   entities:
     - input_boolean.away
 
-- type: entities
+- type: glance
   title: Internet Speeds
+  show_header_toggle: false
   entities:
-    - sensor.speedtest_download
-    - sensor.speedtest_upload
-    - sensor.speedtest_ping
+    - entity: sensor.speedtest_download
+      name: Download
+    - entity: sensor.speedtest_upload
+      name: Upload
+    - entity: sensor.speedtest_ping
+      name: Ping
 
 - type: entities
   title: "Quick Actions"
+  show_header_toggle: false
   entities:
     - script.set_adam_home
     - script.set_lea_home
 
 - type: entities
   title: Automation Control
+  show_header_toggle: false
   entities:
-    - automation.bothLeftLights
+    - automation.bothleftlights
+    - automation.landing_lights_timeout
+    - automation.master_bedroom_main_lights_timeout
 
 - type: entities
   title: "Home Arrival Notifications"
+  show_header_toggle: false
   entities:
     - automation.adam_notify_leanne
     - automation.leanne_notify_adam
     
 - type: entities
   title: "Home Arrival Reminders"
+  show_header_toggle: false
   entities:
     - input_text.arrival_reminder_adam
     - input_text.arrival_reminder_leanne
 
 - type: entities
   title: "Clothes Dryer"
+  show_header_toggle: false
   entities:
     - switch.clothes_dryer
     - input_number.dryer_timeout
-    
-- type: entities
-  title: Miscellaneous
-  entities:
-    - switch.echo_amplifier
-
-- type: entities
-  title: Security
-  entities:
-    - binary_sensor.motion_sensor_158d00015db8be
-    - binary_sensor.motion_sensor_158d00015e6be1
-    - binary_sensor.motion_sensor_158d000223abef
-    - binary_sensor.door_window_sensor_158d0001a5e08d
-    - binary_sensor.door_window_sensor_158d00019f63a5
-    - binary_sensor.door_window_sensor_158d0001a67e20

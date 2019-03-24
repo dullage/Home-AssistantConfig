@@ -1,308 +1,31 @@
-######################
-## FRONT END GROUPS ##
-######################
-
-# Home Page
-diningroom:
-  name: Dining Room
-  entities:
-    - light.dining_room_lamp
-
-hyperion:
-  name: Ambilight
-  control: hidden
-  entities:
-    - switch.ambilight_power
-    - input_boolean.hyperion2
-    - input_select.hyperion
-    
-frontroom:
-  name: Frontroom
-  entities:
-    - light.frontroom_left
-    - light.frontroom_under_tv
-    - light.frontroom_right
-    - light.front_room_lamp
-    - light.gateway_light_34ce008c05b9
-    - group.hyperion
-
-kitchen:
-  name: Kitchen
-  entities:
-    - light.main_kitchen_lights
-    - group.kitchen_low
-    - input_select.kitchen_mode
-
-garden:
-  name: Garden
-  entities:
-    - light.garden_lights
-
-stairs:
-  name: Stairs
-  entities:
-    - light.stairs
-    - input_select.stairs_mode
-
-upstairs:
-  name: Upstairs
-  entities:
-    - light.Landing_Light
-    - light.Bathroom_Lights
-    - light.bathroom_mirror_lights
-    - light.master_bedroom_main
-
-scenes:
-  name: Scenes
-  control: hidden
-  entities:
-    - scene.downstairs_general
-    - scene.front_room_dim
-    - scene.downstairs_off
-    - scene.all_off
-
-
-# Climate Page
-climate:
-  name: Outdoor Climate
-  control: hidden
-  entities:
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_precip_probability
-
-indoor_climate:
-  name: Indoor Climate
-  control: hidden
-  entities:
-    - climate.house
-    - sensor.temperature_158d00018256fa
-    - sensor.loft_temperature
-    - script.heating_to_21
-    - script.heating_boost
-    
-humidity:
-  name: Humidity
-  entities:
-    - sensor.house_thermostat_humidity
-    - sensor.humidity_158d00018256fa
-    - sensor.loft_humidity
-    
-heatingon:
-  name: One-Off Heating Timer
-  entities:
-    - sensor.heatingon_time
-    - input_number.heatingonhour
-    - input_number.heatingonminutes
-    - automation.triggerheatingon
-    
-
-# AV Page
-av:
-  name: AV Power
-  control: hidden
-  entities:
-    - script.normal_av
-    - script.tv
-    - script.amp
-    - script.sky_box
-    - script.xbox_on
-    
-volume:
-  name: Volume
-  control: hidden
-  entities:
-    - script.volume_upx4
-    - script.volume_downx4
-    - script.mute
-
-tv_inputs:
-  name: TV Inputs
-  control: hidden
-  entities:
-    - script.input_sky
-    - script.input_chromecast
-    - script.input_xbox
-    - script.input_apple_tv
-    - script.input_guest
-
-amp_inputs:
-  name: Front Room Amplifier Inputs
-  control: hidden
-  entities:
-    - script.amp_dvd
-    - script.amp_cd
-    
-house_audio_volume:
-  name: House Audio Volume
-  control: hidden
-  entities:
-    - input_number.whole_house_volume
-    - sensor.blank1
-    - input_number.downstairs_volume
-    - input_number.front_room_volume
-    - input_number.upstairs_volume
-    
-av_other:
-  name: Other
-  control: hidden
-  entities:
-    - script.sky_back
-  
-
-# Miscellaneous Page
-away:
-  name: Away Mode
-  entities:
-    - input_boolean.away
-
-speedtest:
-  name: Internet Speeds
-  entities:
-    - sensor.speedtest_download
-    - sensor.speedtest_upload
-    - sensor.speedtest_ping
-
-quickActions:
-  name: "Quick Actions"
-  control: hidden
-  entities:
-    - script.set_adam_home
-    - script.set_lea_home
-
-automationControl:
-  name: Automation Control
-  control: hidden
-  entities:
-    - automation.bothLeftLights
-    - automation.landing_lights_timeout
-    - automation.master_bedroom_main_lights_timeout
-
-homeArrivalNotifications:
-  name: "Home Arrival Notifications"
-  control: hidden
-  entities:
-    - automation.adam_notify_leanne
-    - automation.leanne_notify_adam
-    
-homeArrivalReminders:
-  name: "Home Arrival Reminders"
-  control: hidden
-  entities:
-    - input_text.arrival_reminder_adam
-    - input_text.arrival_reminder_leanne
-
-dryer:
-  name: "Clothes Dryer"
-  control: hidden
-  entities:
-    - switch.clothes_dryer
-    - input_number.dryer_timeout
-    
-misccard:
-  name: Miscellaneous
-  control: hidden
-  entities:
-    - switch.downstairs_amplifier
-
-security:
-  name: Security
-  control: hidden
-  entities:
-    - binary_sensor.motion_sensor_158d00015db8be
-    - binary_sensor.motion_sensor_158d00015e6be1
-    - binary_sensor.motion_sensor_158d000223abef
-    - binary_sensor.door_window_sensor_158d0001a5e08d
-    - binary_sensor.door_window_sensor_158d00019f63a5
-    - binary_sensor.door_window_sensor_158d0001a67e20
-    - binary_sensor.door_window_sensor_158d000222cb59
-
-
-# Cameras Page
-camera_controls:
-  name: Camera Controls
-  control: hidden
-  entities:
-    - group.biglightgroup
-    - input_boolean.ghost_lights
- 
-
-# Admin Page
-test:
-  name: Test
-  control: hidden
-  entities:
-    - light.test_1
-
-global_shutdown:
-  name: Global Shutdown
-  control: hidden
-  entities:
-    - input_boolean.global_shutdown_lock
-    - script.global_shutdown
-    - sensor.global_shutdown_message
-
-batteryLevels:
-  name: Battery Levels
-  control: hidden
-  entities:
-    - sensor.doorbell_battery
-    - sensor.front_door_sensor_battery
-    - sensor.back_door_sensor_battery
-    - sensor.upstairs_temperature_sensor_battery
-    - sensor.kitchen_motion_sensor_battery
-    - sensor.motion_sensor_battery
-    
-trackers:
-  name: Trackers
-  control: hidden
-  entities:
-    - device_tracker.adams_iphone
-    - device_tracker.b3d816ff8f884f7183e1809e47641bbb
-    - device_tracker.dullagesiphone
-    - device_tracker.leannes_iphone
-    - device_tracker.8eb21fe155d341e0a97bb8197a66e465
-    - device_tracker.iphone
-
-####################
-## LOGICAL GROUPS ##
-####################
-
-adam:
-  name: Adam
-  entities:
-    - device_tracker.adams_iphone
-    - device_tracker.b3d816ff8f884f7183e1809e47641bbb
-
-leanne:
-  name: Leanne
-  entities:
-    - device_tracker.leannes_iphone
-    - device_tracker.8eb21fe155d341e0a97bb8197a66e465
-
 everyone:
   name: Everyone
   entities:
-    - group.adam
-    - group.leanne    
+    - person.adam
+    - person.leanne    
 
+# Includes switches that are lights but not ones that aren't.
+biglightgroup:
+  name: The Big Light Group
+  entities:
+    - group.all_lights
+    - switch.ambilight_power
+
+# Everything that should be turned off when leaving
 everything:
   name: Everything
   entities:
     - group.biglightgroup
 
-downstairsExcStairs:
-  name: Downstairs Excluding Stairs
+living_room:
+  name: Living Room
   entities:
-    - group.frontroom
-    - group.kitchen
-    - group.diningroom
+    - light.front_room_lamp
+    - light.frontroom_left
+    - light.frontroom_under_tv
+    - light.frontroom_right
+    - light.gateway_light_34ce008c05b9
     - switch.ambilight_power
-
-downstairs:
-  name: Downstairs
-  entities:
-    - group.downstairsExcStairs
-    - group.stairs
 
 kitchen_low:
   name: Kitchen Low Lights
@@ -310,96 +33,26 @@ kitchen_low:
     - light.kitchen_left
     - light.kitchen_right
 
-# This includes switches that are lights but not ones that aren't.
-biglightgroup:
-  name: The Big Light Group
+kitchen:
+  name: Kitchen
   entities:
-    - group.all_lights
-    - switch.ambilight_power
+    - light.main_kitchen_lights
+    - group.kitchen_low
 
-hue_lights:
-  name: Hue Lights
+dining_room:
+  name: Dining Room
   entities:
-    - light.frontroom_left
-    - light.frontroom_under_tv
-    - light.frontroom_right
-   
+    - light.dining_room_lamp
 
-###########
-## VIEWS ##
-###########
-
-default_view:
-  name: Main
-  view: yes
-  icon: mdi:home
+downstairsExcStairs:
+  name: Downstairs Excluding Stairs
   entities:
-    - sensor.adam_badge
-    - sensor.leanne_badge
-    - group.scenes   
-    - group.frontroom
-    - group.diningroom    
+    - group.living_room
     - group.kitchen
-    - group.garden
-    - group.stairs
-    - group.upstairs
+    - group.dining_room
 
-climate_view:
-  name: Climate
-  view: yes
-  icon: mdi:thermostat
+downstairs:
+  name: Downstairs
   entities:
-    - group.indoor_climate
-    - group.climate
-    - group.humidity
-    - group.heatingon
-
-av_view:
-  name: AV
-  view: yes
-  icon: mdi:remote
-  entities:
-    - group.volume
-    - group.av
-    - group.tv_inputs
-    - group.amp_inputs
-    - media_player.spotify
-    - group.house_audio_volume
-    - group.av_other
-
-misc:
-  name: Miscellaneous
-  view: yes
-  icon: mdi:hops
-  entities:
-    - sensor.illumination_34ce008c05b9
-    - group.homeArrivalNotifications
-    - group.homeArrivalReminders
-    - group.security
-    - group.away
-    - group.quickActions
-    - group.automationControl
-    - group.speedtest
-    - group.dryer
-    - group.misccard
-
-cameras:
-  name: Cameras
-  view: yes
-  icon: mdi:camera
-  entities:
-    - camera.picamera
-    - group.camera_controls
-
-admin:
-  name: Admin
-  view: yes
-  icon: mdi:account
-  entities:
-    - updater.updater
-    - sensor.adam_badge
-    - sensor.leanne_badge
-    - group.trackers
-    - group.global_shutdown
-    - group.batteryLevels
-    - group.test
+    - group.downstairsExcStairs
+    - light.stairs

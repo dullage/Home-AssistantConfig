@@ -1,10 +1,9 @@
+- type: picture-entity
+  entity: camera.picamera  
+  
 - type: entities
   title: Camera Controls
+  show_header_toggle: false
   entities:
-    - script.snapshot
     - group.biglightgroup
     - input_boolean.ghost_lights
-
-- type: picture-entity
-  entity: camera.picamera
-  

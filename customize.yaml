@@ -34,6 +34,8 @@ binary_sensor.motion_sensor_158d00015db8be:
   friendly_name: Kitchen Motion Sensor
 binary_sensor.motion_sensor_158d000223abef:
   friendly_name: Dining Room Motion Sensor
+binary_sensor.motion_sensor_158d000208c9c8:
+  friendly_name: Stairs Motion Sensor
 binary_sensor.door_window_sensor_158d00019f63a5:
   friendly_name: Back Door
   icon: mdi:door

@@ -9,14 +9,11 @@
       state: off
     input_select.stairs_mode:
       option: Shutdown
-    # group.downstairs:
-      # state: off
 
 - name: Downstairs General
   entities:
     input_select.stairs_mode:
       option: Startup
-      #option: Baby Countdown
     light.kitchen_right:
       state: on
       rgb_color: [255,147,41]
@@ -79,9 +76,35 @@
       state: on
     input_select.hyperion:
       option: Ambilight
+      # option: 'Cinema Dim Lights'
       
 - name: Hue Dim
   entities:
+    light.frontroom_right:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
+    light.frontroom_under_tv:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
+    light.frontroom_left:
+      state: on
+      brightness: 85
+      xy_color: [0.50,0.42]
+
+- name: Downstairs Nightlight
+  entities:
+    input_select.stairs_mode:
+      option: Startup
+    light.dining_room_lamp:
+      state: on
+    light.kitchen_left:
+      state: on
+      rgb_color: [255,147,41]
+    light.kitchen_right:
+      state: on
+      rgb_color: [255,147,41]
     light.frontroom_right:
       state: on
       brightness: 85

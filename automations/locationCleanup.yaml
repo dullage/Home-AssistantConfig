@@ -1,43 +1,4 @@
-# If either of the app based trackers send an away message we set both of the app trackers to away so that the group also goes away.
-- alias: location_cleanup_adam
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: device_tracker.adams_iphone
-      to: 'not_home'
-    - platform: state
-      entity_id: device_tracker.b3d816ff8f884f7183e1809e47641bbb
-      to: 'not_home'
-  action:
-    - service: device_tracker.see
-      data:
-        dev_id: adams_iphone
-        location_name: not_home
-    - service: device_tracker.see
-      data:
-        dev_id: b3d816ff8f884f7183e1809e47641bbb
-        location_name: not_home
-
-- alias: location_cleanup_leanne
-  initial_state: true
-  trigger:
-    - platform: state
-      entity_id: device_tracker.leannes_iphone
-      to: 'not_home'
-    - platform: state
-      entity_id: device_tracker.8eb21fe155d341e0a97bb8197a66e465
-      to: 'not_home'
-  action:
-    - service: device_tracker.see
-      data:
-        dev_id: leannes_iphone
-        location_name: not_home
-    - service: device_tracker.see
-      data:
-        dev_id: 8eb21fe155d341e0a97bb8197a66e465
-        location_name: not_home
-
-# If the Unifi tracker arrives, set both the app trackers to arrived as well so that the group arrives.
+# If the Unifi tracker arrives, set the app tracker to arrived.
 - alias: location_cleanup2_adam
   initial_state: true
   trigger:
@@ -46,17 +7,12 @@
       to: 'home'
   # Only step in if we need to
   condition:
-    condition: state
-    entity_id: group.adam
-    state: 'not_home'
+    condition: template
+    value_template: "{{ states('device_tracker.adams_iphone') != 'home' }}"
   action:
     - service: device_tracker.see
       data:
         dev_id: adams_iphone
-        location_name: home
-    - service: device_tracker.see
-      data:
-        dev_id: b3d816ff8f884f7183e1809e47641bbb
         location_name: home
    # Debug
     - service: notify.ios_adams_iphone
@@ -71,17 +27,12 @@
       to: 'home'
   # Only step in if we need to
   condition:
-    condition: state
-    entity_id: group.leanne
-    state: 'not_home'
+    condition: template
+    value_template: "{{ states('device_tracker.leannes_iphone') != 'home' }}"
   action:
     - service: device_tracker.see
       data:
         dev_id: leannes_iphone
-        location_name: home
-    - service: device_tracker.see
-      data:
-        dev_id: 8eb21fe155d341e0a97bb8197a66e465
         location_name: home
    # Debug
     - service: notify.ios_adams_iphone

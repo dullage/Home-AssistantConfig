@@ -9,6 +9,9 @@ homeassistant:
   customize_domain: !include customize_domain.yaml
   whitelist_external_dirs: 
     - /config/
+  auth_providers:
+    - type: homeassistant
+    # See secrets.yaml file for list of required Access Tokens
 
 # Enable Config
 config:
@@ -23,17 +26,31 @@ logger:
     # homeassistant.components.recorder: debug
   
 # Custom Zones
-zone:
-  name: Home
-  latitude: !secret latitude
-  longitude: !secret longitude
-  radius: 200
+zone: !secret zones
       
 # Misc
 updater:
 discovery:
+  ignore:
+    - igd
 conversation:
 frontend:
+system_health:
+
+# Lovelace
+lovelace:
+  mode: yaml
+
+# People
+person:
+  - name: Adam
+    id: adam
+    device_trackers:
+      - device_tracker.adams_iphone
+  - name: Leanne
+    id: leanne
+    device_trackers:
+      - device_tracker.leannes_iphone
 
 # Recorder
 recorder:
@@ -64,7 +81,6 @@ history:
 
 # Web Interface
 http:
-  api_password: !secret api_password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
   ip_ban_enabled: true
@@ -135,17 +151,12 @@ tts:
   
 # Media Player
 media_player:
-  #- platform: cast
   - platform: spotify
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
 
 # Notification Platforms
 notify:
-  # - name: Telegram
-    # platform: telegram
-    # api_key: !secret telegram_api_key
-    # chat_id: -193931355
   - platform: ios
   - name: email_adam
     platform: smtp
@@ -160,15 +171,6 @@ notify:
       - !secret email_address_adam
     sender_name: Home Assistant
 
-# Telegram Bot
-# telegram_bot:
-  # platform: webhooks
-  # api_key: !secret telegram_api_key
-  # allowed_chat_ids:
-    # - -193931355
-    # - 142858079
-    # - 291036842
-
 # Lights, Switches, Automations, Scenes and Groups
 light: !include lights.yaml
 switch: !include switches.yaml
@@ -177,14 +179,6 @@ scene: !include scenes.yaml
 group: !include groups.yaml
 script: !include_dir_merge_named scripts/
 shell_command: !include_dir_merge_named shell_commands/
-
-# Emulated Hue
-# emulated_hue:
-  # host_ip: 192.168.0.49
-  # expose_by_default: false
-  # off_maps_to_on_domains:
-    # - scene
-    # - script
     
 # Google Assistant
 google_assistant:
@@ -202,12 +196,6 @@ sensor:
     accounts:
       - access_token: !secret starlingbank_api_key
   - platform: yr
-  - platform: speedtest
-    server_id: 7028
-    monitored_conditions:
-      - ping
-      - download
-      - upload
   - platform: template
     sensors:
       heatingon_time:
@@ -246,34 +234,42 @@ sensor:
         value_template: '{{states.input_select.global_shutdown_message.state}}'
       adam_badge:
         unit_of_measurement: Adam
+        entity_id: person.adam
         friendly_name_template: >
-          {% if is_state('group.adam', 'home') %}
+          {% if is_state('person.adam', 'home') %}
             Home
-          {% else %}
+          {% elif is_state('person.adam', 'not_home') %}
             Away
+          {% else %}
+            {{ states('person.adam') }}
           {% endif %}
-        entity_id: group.adam
         value_template: >
-          {% if is_state('group.adam', 'home') %}
+          {% if is_state('person.adam', 'home') %}
             Home
-          {% else %}
+          {% elif is_state('person.adam', 'not_home') %}
             Away
+          {% else %}
+            {{ states('person.adam') }}
           {% endif %}
         entity_picture_template: https://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg
       leanne_badge:
         unit_of_measurement: Leanne
+        entity_id: person.leanne
         friendly_name_template: >
-          {% if is_state('group.leanne', 'home') %}
+          {% if is_state('person.leanne', 'home') %}
             Home
-          {% else %}
+          {% elif is_state('person.leanne', 'not_home') %}
             Away
+          {% else %}
+            {{ states('person.leanne') }}
           {% endif %}
-        entity_id: group.leanne
         value_template: >
-          {% if is_state('group.leanne', 'home') %}
+          {% if is_state('person.leanne', 'home') %}
             Home
-          {% else %}
+          {% elif is_state('person.leanne', 'not_home') %}
             Away
+          {% else %}
+            {{ states('person.leanne') }}
           {% endif %}
         entity_picture_template: /local/leanne.jpg
       blank1:
@@ -322,7 +318,7 @@ device_tracker:
     verify_ssl: false
     detection_time: 30
     track_new_devices: false
-  - platform: locative
+  # - platform: locative
 
 # Nest
 nest:
@@ -402,7 +398,7 @@ input_select:
       - "Shutting down..."
     initial: ""
   hyperion:
-    name: Animation
+    name: Mode
     options:
      - "Select..."
      - "Backlight"
@@ -509,59 +505,6 @@ input_number:
     mode: box
     unit_of_measurement: mins
     
-# binary_sensor:
-    # - platform: mqtt
-      # name: Stairs
-      # state_topic: "light/stairs/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Bathroom Main and Landing
-      # state_topic: "light/bathroom_and_landing/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Bathroom Mirror
-      # state_topic: "light/bathroom_mirror/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Kitchen Main
-      # state_topic: "light/kitchen/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Kitchen Left
-      # state_topic: "light/kitchen_left/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Kitchen Right
-      # state_topic: "light/kitchen_right/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Dining Room Lamp
-      # state_topic: "light/dining_room_lamp/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Front Room Lamp
-      # state_topic: "light/front_room_lamp/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Master Bedroom Main
-      # state_topic: "light/master_bedroom_main/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Ambilight
-      # state_topic: "switch/ambilight_power_supply/availability"
-      # payload_on : "1"
-      # payload_off: "0"
-    # - platform: mqtt
-      # name: Clothes Dryer
-      # state_topic: "switch/dryer/availability"
-      # payload_on : "1"
-      # payload_off: "0"
+# Speedtest
+speedtestdotnet:
+  server_id: 7028

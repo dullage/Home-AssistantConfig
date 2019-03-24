@@ -1,20 +1,26 @@
 title: Home
 views:
   - title: Main
-    tab_icon: mdi:home-assistant
+    icon: mdi:home-assistant
     cards: !include ui/main_tab.yaml
+    badges:
+      - sensor.adam_badge
+      - sensor.leanne_badge
   - title: Climate
-    tab_icon: mdi:thermostat
+    icon: mdi:thermostat
     cards: !include ui/climate_tab.yaml
   - title: AV
-    tab_icon: mdi:remote
+    icon: mdi:remote
     cards: !include ui/av_tab.yaml
   - title: Miscellaneous
-    tab_icon: mdi:hops
+    icon: mdi:hops
     cards: !include ui/miscellaneous_tab.yaml
+    badges:
+      - sensor.adam_badge
+      - sensor.leanne_badge
   - title: Camera
-    tab_icon: mdi:camera
+    icon: mdi:camera
     cards: !include ui/camera_tab.yaml
   - title: Admin
-    tab_icon: mdi:account
+    icon: mdi:account
     cards: !include ui/admin_tab.yaml

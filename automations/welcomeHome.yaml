@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.adam
+    entity_id: person.adam
     to: 'home'
   action:
     service: input_boolean.turn_on
@@ -14,7 +14,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.leanne
+    entity_id: person.leanne
     to: 'home'
   action:
     service: input_boolean.turn_on
