@@ -18,7 +18,7 @@
     - service: light.turn_on
       entity_id: light.bathroom_mirror_lights
     - delay:
-        seconds: 10
+        seconds: 30
     # If there is no motion in the bathroom after 10 seconds turn the light back off again
     - condition: state
       entity_id: binary_sensor.motion_sensor_158d00015e6be1

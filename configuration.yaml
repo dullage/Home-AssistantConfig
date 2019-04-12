@@ -96,6 +96,9 @@ cloudflare:
   api_key: !secret cloudflare_api_key
   zone: !secret cloudflare_zone
   records: !secret cloudflare_records
+
+# Shopping List
+shopping_list:
   
 # Xiaomi Gateway
 xiaomi_aqara:
@@ -113,10 +116,18 @@ ios:
             title: 'Turn Heating Off'
             activationMode: 'background'
             authenticationRequired: no
-            destructive: no
+            destructive: no 
             # behavior: 'textInput'
             # textInputButtonTitle: 'Silencio!'
             # textInputPlaceholder: 'Placeholder'
+      - name: Overtime Log
+        identifier: 'overtime_log'
+        actions:
+          - identifier: 'LOG_ONE_HOUR'
+            title: 'Log 1hr Overtime'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no 
 
 # HomeKit
 homekit:

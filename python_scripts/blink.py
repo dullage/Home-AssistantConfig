@@ -1,137 +1,103 @@
-from requests import get, post
-from json import dumps as json_dumps
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from time import sleep
-from yaml import load as yaml_load, YAMLError
-from os import system
+"""A script to continuously poll Blink for a video created in the last 60
+seconds (OFFSET_SECONDS). Once found, the video is downloaded and send as an
+iOS notification using the Home Assitant API.
 
-########### USER VARIABLES ###########
+This script relises on the following entries in the secrets.yaml file.
 
-videoSavePath = "/config/www"
-secretsFileLocation = "/config"
+    blinkHassApiBaseURL - e.g. "https://www.myhass.com:8123"
+    blinkHassApiToken - a Home Assistant long live access token.
+    blinkUsername - Your Blink username
+    blinkPassword - Your blink password
 
-goBackMinutes = 1 # Videos created before this many minutes ago will be ignored
-waitTimeoutSeconds = 60 # How long to wait for a video before giving up
-
-notifyEntityNames = ["ios_adams_iphone", "ios_leannes_iphone"]
-# notifyEntityNames = ["ios_adams_iphone"]
-
+The SAVE_PATH and SECRETS_FILE constants below may also need to be changed
+depending on the setup.
 """
-This script also relises on the following entries in the secrets.yaml file.
+import json
+import os
+import time
+from datetime import datetime, timedelta
 
-blinkHassApiBaseURL - e.g. "https://www.myhass.com:8123"
-blinkHassApiToken - a Home Assistant long live access token.
-blinkUsername - Your Blink username
-blinkPassword - Your blink password
-"""
+from requests import post
 
-######################################
+import yaml
+from blinkpy import api, blinkpy
 
-# Load secrets
-with open("{0}/secrets.yaml".format(secretsFileLocation), "r") as secretsFile:
-    try:
-        secret = yaml_load(secretsFile)
-    except YAMLError as exc:
-        print(exc)
+SAVE_PATH = "/config/www"
+SECRETS_FILE = "/config/secrets.yaml"
 
-# Get an authentication token from Blink
-endpoint = "https://rest-prod.immedia-semi.com/login"
+VIDEO_FILENAME = "BlinkVideo.mp4"
+IMAGE_FILENAME = "BlinkImage.png"
+OFFSET_SECONDS = 3660  # Currently offset by 1hr 1m due to daylight savings.
+TIMEOUT_SECONDS = 60
+NOTIFY_ENTITY_NAMES = ["ios_adams_iphone", "ios_leannes_iphone"]
 
-headers = {
-    "Host": "prod.immedia-semi.com",
-    "Content-Type": "application/json"
-}
+VIDEO_FILE = os.path.join(SAVE_PATH, VIDEO_FILENAME)
+IMAGE_FILE = os.path.join(SAVE_PATH, IMAGE_FILENAME)
 
-data = {
-    "email": secret["blinkUsername"],
-    "password": secret["blinkPassword"], 
-    "client_specifier": "iPhone 9.2 | 2.2 | 222"
-}
+with open(SECRETS_FILE, "r") as secrets_file:
+    secrets = yaml.load(secrets_file)
 
-response = post(endpoint, headers=headers, data=json_dumps(data))
-token = response.json()["authtoken"]["authtoken"]
+blink = blinkpy.Blink(
+    username=secrets["blinkUsername"], password=secrets["blinkPassword"]
+)
+blink.start()
 
-# We need to grab the last video but only if it was created recently (goBackMinutes) as the camera may not have finished yet. Grab the current time help with this.
-start = datetime.today()
-since = (start - relativedelta(minutes=goBackMinutes)).strftime("%Y-%m-%dT%H:%M:%S+00:00")
-
-# Keep refreshing the video list until we have a video from the last minute.
+from_time = time.time() - OFFSET_SECONDS
+loop_start = datetime.today()
 while True:
-
-    # Get a list of videos, assume page 0 has the most recent. Convert the JSON response to a dict.
-    responseData = get(
-        "https://rest-prde.immedia-semi.com/api/v2/videos/changed?since={0}&page=1".format(since),
-        headers={"Host": "rest-prde.immedia-semi.com", "TOKEN-AUTH": token}
-    ).json()
-
-    videos = responseData["videos"]
+    videos = api.request_videos(blink, from_time)["videos"]
 
     if len(videos) >= 1:
-        latestVideoUrl = videos[0]["address"]
         break
-    else:
-        if datetime.today() > (start + relativedelta(seconds=waitTimeoutSeconds)):
-            latestVideoUrl = None
-            elapsedTime = "N/A"
-            break
-        else:
-            # Loop. Wait a second so that we"re not spamming the API too quickly.
-            sleep(1)
 
-# If we have a video send it.
-if latestVideoUrl is not None:
-    # Download the video.
-    response = get(
-        "https://rest-prde.immedia-semi.com{0}".format(latestVideoUrl),
-        headers={"Host": "prod.immedia-semi.com", "TOKEN_AUTH": token}
-    )
+    if datetime.today() >= (loop_start + timedelta(seconds=TIMEOUT_SECONDS)):
+        break
 
-    # Save it to disk.
-    f = open("{0}/BlinkVideo.mp4".format(videoSavePath), "wb")
-    f.write(response.content)
-    f.close()
+    time.sleep(1)
+
+if len(videos) >= 1:
+    video = videos[0]  # Use the first video in the list.
+    video_address = "{}{}".format(blink.urls.base_url, video["address"])
+
+    response = api.http_get(blink, url=video_address, stream=True, json=False)
+
+    with open(VIDEO_FILE, "wb") as video_file_content:
+        video_file_content.write(response.content)
 
     # Extract a still image from the frame at 4s and save that to disk
-    system("ffmpeg -y -ss 00:00:04 -i {0}/BlinkVideo.mp4 -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {0}/BlinkImage.png".format(videoSavePath))
+    os.system(
+        "ffmpeg -y -ss 00:00:04 -i {} -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {}".format(
+            VIDEO_FILE, IMAGE_FILE
+        )
+    )
 
-    # Send the iOS notification
-    headers = {
-        "content-type": "application/json",
-        "Authorization": "Bearer {0}".format(secret['blinkHassApiToken'])
-    }
-
+    # Build the notification data
     data = {
-        "message": "Doorbell!",
+        "message": "Doorbell",
         "data": {
             "attachment": {
-                "url": "{0}/local/BlinkVideo.mp4?1=1".format(secret['blinkHassApiBaseURL']),
-                "content-type": "mp4"
+                "url": "{}/local/{}?1=1".format(
+                    secrets["blinkHassApiBaseURL"], VIDEO_FILENAME
+                ),
+                "content-type": "mp4",
             }
-        }
+        },
     }
-
-    for entityName in notifyEntityNames:
-        post(
-            "{0}/api/services/notify/{1}".format(secret['blinkHassApiBaseURL'], entityName),
-            headers=headers,
-            data=json_dumps(data)
-        )
-
-# If we don"t have a video, just send a message.
 else:
-    headers = {
-        "content-type": "application/json",
-        "Authorization": "Bearer {0}".format(secret['blinkHassApiToken'])
-    }
+    # If we don"t have a video, just send a message.
+    data = {"message": "Doorbell"}
 
-    data = {
-        "message": "Doorbell!"
-    }
+# Send the notification(s)
+header = {
+    "content-type": "application/json",
+    "Authorization": "Bearer {}".format(secrets["blinkHassApiToken"]),
+}
 
-    for entityName in notifyEntityNames:
-        post(
-            "{0}/api/services/notify/{1}".format(secret['blinkHassApiBaseURL'], entityName),
-            headers=headers,
-            data=json_dumps(data)
-        )
+for entity_name in NOTIFY_ENTITY_NAMES:
+    post(
+        "{}/api/services/notify/{}".format(
+            secrets["blinkHassApiBaseURL"], entity_name
+        ),
+        headers=header,
+        data=json.dumps(data),
+    )

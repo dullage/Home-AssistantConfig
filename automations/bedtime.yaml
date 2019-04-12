@@ -13,5 +13,3 @@
     - service: climate.set_temperature
       data:
         temperature: 9
-    - service: switch.turn_off
-      entity_id: switch.downstairs_amplifier

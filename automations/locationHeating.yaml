@@ -67,4 +67,4 @@
   action:
     - service: climate.set_temperature
       data:
-        temperature: 9
+        temperature: 9 

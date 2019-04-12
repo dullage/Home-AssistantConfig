@@ -1,0 +1,35 @@
+- alias: shopping_list_notification_adam
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: 'Tesco'
+    - platform: state
+      entity_id: person.adam
+      to: 'Sainsburys'
+    - platform: state
+      entity_id: person.adam
+      to: 'Asda'
+    - platform: state
+      entity_id: person.adam
+      to: 'Morrisons'
+  action:
+    - service: shell_command.shopping_list_adam
+
+- alias: shopping_list_notification_leanne
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.leanne
+      to: 'Tesco'
+    - platform: state
+      entity_id: person.leanne
+      to: 'Sainsburys'
+    - platform: state
+      entity_id: person.leanne
+      to: 'Asda'
+    - platform: state
+      entity_id: person.leanne
+      to: 'Morrisons'
+  action:
+    - service: shell_command.shopping_list_leanne
