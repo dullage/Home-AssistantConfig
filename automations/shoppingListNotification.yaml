@@ -1,4 +1,5 @@
-- alias: shopping_list_notification_adam
+# Enter
+- alias: shopping_list_notification_enter_adam
   initial_state: true
   trigger:
     - platform: state
@@ -14,9 +15,9 @@
       entity_id: person.adam
       to: 'Morrisons'
   action:
-    - service: shell_command.shopping_list_adam
+    - service: shell_command.shopping_list_enter_adam
 
-- alias: shopping_list_notification_leanne
+- alias: shopping_list_notification_enter_leanne
   initial_state: true
   trigger:
     - platform: state
@@ -32,4 +33,52 @@
       entity_id: person.leanne
       to: 'Morrisons'
   action:
-    - service: shell_command.shopping_list_leanne
+    - service: shell_command.shopping_list_enter_leanne
+
+# Exit
+- alias: shopping_list_notification_exit_adam
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      from: 'Tesco'
+    - platform: state
+      entity_id: person.adam
+      from: 'Sainsburys'
+    - platform: state
+      entity_id: person.adam
+      from: 'Asda'
+    - platform: state
+      entity_id: person.adam
+      from: 'Morrisons'
+  action:
+    - service: shell_command.shopping_list_exit_adam
+
+- alias: shopping_list_notification_exit_leanne
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.leanne
+      from: 'Tesco'
+    - platform: state
+      entity_id: person.leanne
+      from: 'Sainsburys'
+    - platform: state
+      entity_id: person.leanne
+      from: 'Asda'
+    - platform: state
+      entity_id: person.leanne
+      from: 'Morrisons'
+  action:
+    - service: shell_command.shopping_list_exit_leanne
+
+# Clear
+- alias: clear_shopping_list
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: CLEAR_SHOPPING_LIST
+  action:
+    - service: shell_command.shopping_list_clear

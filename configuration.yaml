@@ -97,6 +97,9 @@ cloudflare:
   zone: !secret cloudflare_zone
   records: !secret cloudflare_records
 
+cloud:
+  google_actions: !include google_actions.yaml
+
 # Shopping List
 shopping_list:
   
@@ -127,7 +130,15 @@ ios:
             title: 'Log 1hr Overtime'
             activationMode: 'background'
             authenticationRequired: no
-            destructive: no 
+            destructive: no
+      - name: Clear Shopping List
+        identifier: 'clear_shopping_list'
+        actions:
+          - identifier: 'CLEAR_SHOPPING_LIST'
+            title: 'Clear Shopping List'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: yes
 
 # HomeKit
 homekit:
@@ -192,11 +203,11 @@ script: !include_dir_merge_named scripts/
 shell_command: !include_dir_merge_named shell_commands/
     
 # Google Assistant
-google_assistant:
-  project_id: home-assistant-f64f8
-  api_key: !secret google_assistant_api_key
-  expose_by_default: false
-  entity_config: !include google_assistant_devices.yaml
+# google_assistant:
+#   project_id: home-assistant-f64f8
+#   api_key: !secret google_assistant_api_key
+#   expose_by_default: false
+#   entity_config: !include google_assistant_devices.yaml
  
 # Sun Tracking
 sun:

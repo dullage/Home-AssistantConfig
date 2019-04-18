@@ -3,5 +3,8 @@ take_snapshots: 'rm -f /config/www/picamera_snapshots/* | vlc -q -I dummy http:/
 rename_snapshots: ls /config/www/picamera_snapshots | cat -n | while read n f; do mv "/config/www/picamera_snapshots/$f" "/config/www/picamera_snapshots/snapshot$n.jpg"; done
 ghost_lights: python3 /config/python_scripts/GhostLights.py
 blink: python3 /config/python_scripts/blink.py
-shopping_list_adam: python3 /config/python_scripts/shopping_list.py ios_adams_iphone
-shopping_list_leanne: python3 /config/python_scripts/shopping_list.py ios_leannes_iphone
+shopping_list_enter_adam: python3 /config/python_scripts/shopping_list.py ENTER ios_adams_iphone
+shopping_list_enter_leanne: python3 /config/python_scripts/shopping_list.py ENTER ios_leannes_iphone
+shopping_list_exit_adam: python3 /config/python_scripts/shopping_list.py EXIT ios_adams_iphone
+shopping_list_exit_leanne: python3 /config/python_scripts/shopping_list.py EXIT ios_leannes_iphone
+shopping_list_clear: python3 /config/python_scripts/shopping_list.py CLEAR

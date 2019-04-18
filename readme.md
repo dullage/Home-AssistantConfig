@@ -1,15 +1,35 @@
 # My Setup
-I run [Home Assistant](http://homeassistant.io/) in a docker contatiner on a Raspberry Pi 3. Details of my docker setup can be found in the [docker folder](https://github.com/Dullage/Home-AssistantConfig/tree/master/docker).
+I currently run [Home Assistant](http://homeassistant.io/) version 0.91.1 in a docker container on a Raspberry Pi 3. Details of my docker setup can be found in the [docker folder](https://github.com/Dullage/Home-AssistantConfig/tree/master/docker).
 
 Currently there is very little in terms of in-configuration comments but if anyone has any questions I'm happy to answer.
 
+# Entity Counts
+| Type             | Count                          |
+| ---------------- | ------------------------------ |
+| Automations      | 94     |
+| Binary Sensors   | 19  |
+| Cameras          | 2         |
+| Climate Controls | 1        |
+| Device Trackers  | 8 |
+| Groups           | 15          |
+| Input Booleans   | 8  |
+| Input Numbers    | 7   |
+| Input Selects    | 5   |
+| Input Text       | 2     |
+| Lights           | 17          |
+| Media Players    | 10   |
+| Scenes           | 7          |
+| Scripts          | 39         |
+| Sensors          | 55         |
+| Switches         | 3         |
+
 # Presence Detection
-I use 2 platforms for presence detection with a good sucess rate:
+I use 2 platforms for presence detection with a good success rate:
 
 1. [Home Assistant iOS App](https://www.home-assistant.io/docs/ecosystem/ios/)
 2. [Ubiquiti Wifi](https://www.home-assistant.io/components/device_tracker.unifi/)
 
-The Ubiquiti tracking is slow to see you leave so I don't use it in the person groups, instead I just have an automation that steps in on the odd occasion the Home Assitant app fails to see us arrive (or is just slow). See [locationCleanup.yaml](https://github.com/Dullage/Home-AssistantConfig/blob/master/automations/locationCleanup.yaml).
+The Ubiquiti tracking is slow to see you leave so I don't use it in the person groups, instead I just have an automation that steps in on the odd occasion the Home Assistant app fails to see us arrive (or is just slow). See [locationCleanup.yaml](https://github.com/Dullage/Home-AssistantConfig/blob/master/automations/locationCleanup.yaml).
 
 # Highlights
 Some highlights of our setup in no particular order:

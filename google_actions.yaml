@@ -1,0 +1,39 @@
+filter:
+  include_entities:
+    - scene.downstairs_general
+    - scene.front_room_dim
+    - scene.downstairs_off
+    - scene.all_off
+    - light.front_room_lamp
+    - script.going_out
+    - light.main_kitchen_lights
+    - light.garden_lights
+    - light.landing_light
+    - light.bathroom_lights
+    - light.master_bedroom_main
+    - script.normal_av
+    - script.sky_back
+    - script.volume_upx4
+    - script.volume_downx4
+entity_config:
+  light.main_kitchen_lights:
+    aliases:
+      - Kitchen Lights
+  light.master_bedroom_main:
+    aliases:
+      - Bedroom Lights
+  script.normal_av:
+    aliases:
+      - TV
+  script.going_out:
+    aliases:
+      - Going Out Script
+  script.sky_back:
+    aliases:
+      - Sky Back Button
+  script.volume_upx4:
+    aliases:
+      - Amp Volume Up
+  script.volume_downx4:
+    aliases:
+      - Amp Volume Down

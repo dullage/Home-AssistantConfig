@@ -1,5 +1,5 @@
 """A script to continuously poll Blink for a video created in the last 60
-seconds (OFFSET_SECONDS). Once found, the video is downloaded and send as an
+seconds (OFFSET_SECONDS). Once found, the video is downloaded and sent as an
 iOS notification using the Home Assitant API.
 
 This script relises on the following entries in the secrets.yaml file.

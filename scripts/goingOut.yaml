@@ -1,0 +1,7 @@
+going_out:
+  sequence:
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'on' }}"
+    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
+    - service: homeassistant.turn_off
+      data:
+        entity_id: group.everything
