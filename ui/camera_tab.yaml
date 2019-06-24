@@ -1,5 +1,8 @@
 - type: picture-entity
-  entity: camera.picamera  
+  entity: camera.picamera
+  
+- type: picture-entity
+  entity: camera.fire_tablet_camera
   
 - type: entities
   title: Camera Controls

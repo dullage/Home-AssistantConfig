@@ -54,9 +54,9 @@
   action:
     - service: scene.turn_on
       entity_id: scene.all_off
-    - service: notify.ios_adams_iphone
-      data:
-        message: "You left lights on! But don't worry, I've turned them off for you!"
-    - service: notify.ios_leannes_iphone
-      data:
-        message: "You left lights on! But don't worry, I've turned them off for you!"
+    # - service: notify.ios_adams_iphone
+      # data:
+        # message: "You left lights on! But don't worry, I've turned them off for you!"
+    # - service: notify.ios_leannes_iphone
+      # data:
+        # message: "You left lights on! But don't worry, I've turned them off for you!"

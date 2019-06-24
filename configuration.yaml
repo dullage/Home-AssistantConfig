@@ -158,6 +158,9 @@ camera:
   - platform: mjpeg
     name: PiCamera
     mjpeg_url: http://192.168.0.11:8081/
+  - platform: mjpeg
+    mjpeg_url: http://192.168.0.74:2971/camera/stream
+    name: "Fire Tablet Camera"
   - platform: generic
     name: "HADashboard Image"
     still_image_url: !secret ha_dashboard_image
@@ -349,7 +352,7 @@ nest:
 
 # Pilight
 pilight:
-  host: 192.168.0.32
+  host: 192.168.0.75
   port: 5000
 
 # IFTTT
@@ -394,6 +397,8 @@ input_select:
       - "Sparkle"
       - "Shoot / Drip"
       - "Rain"
+      - "Rainbow 1"
+      - "Rainbow 2"
       - "Stepped"
       - "Startup"
       - "Shutdown"
@@ -411,6 +416,8 @@ input_select:
       - "Sparkle"
       - "Shoot / Drip"
       - "Rain"
+      - "Rainbow 1"
+      - "Rainbow 2"
     initial: "Select..."
   global_shutdown_message:
     name: Global Shutdown Message

@@ -22,6 +22,10 @@
             {0:7,2:[255,147,41],8:0,10:1,9:30, 5:0 ,4:255,3:0,12:5,7:0}
           {% elif trigger.to_state.state == 'Rain' %}
             {0:8,11:1100}
+          {% elif trigger.to_state.state == 'Rainbow 1' %}
+            {0:12}
+          {% elif trigger.to_state.state == 'Rainbow 2' %}
+            {0:13}
           {% elif trigger.to_state.state == 'Stepped' %}
             {0:9}
           {% elif trigger.to_state.state == 'Startup' %}

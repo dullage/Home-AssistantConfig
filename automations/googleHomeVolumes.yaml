@@ -1,0 +1,43 @@
+- alias: google_home_volumes_day
+  initial_state: true
+  trigger:
+    platform: time
+    at: '08:00:00'
+  action:
+    # Dining Room
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.googlehome1795
+        volume_level: 0.6
+    # Front Room
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.front_room_speaker
+        volume_level: 0.4
+    # Kitchen
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.googlehomehub8155
+        volume_level: 0.7
+
+- alias: google_home_volumes_night
+  initial_state: true
+  trigger:
+    platform: time
+    at: '19:00:00'
+  action:
+    # Dining Room
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.googlehome1795
+        volume_level: 0.3
+    # Front Room
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.front_room_speaker
+        volume_level: 0.4
+    # Kitchen
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.googlehomehub8155
+        volume_level: 0.7

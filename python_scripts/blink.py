@@ -30,6 +30,7 @@ IMAGE_FILENAME = "BlinkImage.png"
 OFFSET_SECONDS = 3660  # Currently offset by 1hr 1m due to daylight savings.
 TIMEOUT_SECONDS = 60
 NOTIFY_ENTITY_NAMES = ["ios_adams_iphone", "ios_leannes_iphone"]
+# NOTIFY_ENTITY_NAMES = ["ios_adams_iphone"]  # Debug
 
 VIDEO_FILE = os.path.join(SAVE_PATH, VIDEO_FILENAME)
 IMAGE_FILE = os.path.join(SAVE_PATH, IMAGE_FILENAME)
@@ -45,7 +46,7 @@ blink.start()
 from_time = time.time() - OFFSET_SECONDS
 loop_start = datetime.today()
 while True:
-    videos = api.request_videos(blink, from_time)["videos"]
+    videos = api.request_videos(blink, time=from_time)["media"]
 
     if len(videos) >= 1:
         break
@@ -55,9 +56,14 @@ while True:
 
     time.sleep(1)
 
+# Debug
+# with open("videos.json", "w") as f:
+#     f.write(json.dumps(videos, indent=4))
+# exit(0)
+
 if len(videos) >= 1:
     video = videos[0]  # Use the first video in the list.
-    video_address = "{}{}".format(blink.urls.base_url, video["address"])
+    video_address = "{}{}".format(blink.urls.base_url, video["media"])
 
     response = api.http_get(blink, url=video_address, stream=True, json=False)
 
@@ -66,7 +72,7 @@ if len(videos) >= 1:
 
     # Extract a still image from the frame at 4s and save that to disk
     os.system(
-        "ffmpeg -y -ss 00:00:04 -i {} -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {}".format(
+        "ffmpeg -y -ss 00:00:04 -i {} -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {}".format(  # noqa
             VIDEO_FILE, IMAGE_FILE
         )
     )

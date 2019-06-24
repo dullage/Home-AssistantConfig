@@ -73,7 +73,7 @@
     - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
       data:
-        entity_id: media_player.front_room_speaker
+        entity_id: media_player.googlehome1795
         message: "<speak>Welcome Aboard Captain</speak>"
 
 # Welcome Home Leanne
@@ -100,8 +100,8 @@
     - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
       data_template:
-        entity_id: media_player.front_room_speaker
-        message: "<speak>Welcome Home Woman</speak>"
+        entity_id: media_player.googlehome1795
+        message: "<speak>Welcome Home {{ ['Woman', 'Me Lady', 'Flappers', 'Fraulein', 'Your Majesty'] | random }}</speak>"
     
 # Welcome Home Both
 - alias: welcome_home_both
@@ -129,5 +129,5 @@
     - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
     - service: tts.amazon_polly_say
       data:
-        entity_id: media_player.front_room_speaker
+        entity_id: media_player.googlehome1795
         message: "<speak>Welcome Home</speak>"      
