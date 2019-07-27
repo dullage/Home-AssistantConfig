@@ -27,7 +27,7 @@ SECRETS_FILE = "/config/secrets.yaml"
 
 VIDEO_FILENAME = "BlinkVideo.mp4"
 IMAGE_FILENAME = "BlinkImage.png"
-OFFSET_SECONDS = 3660  # Currently offset by 1hr 1m due to daylight savings.
+OFFSET_SECONDS = 60
 TIMEOUT_SECONDS = 60
 NOTIFY_ENTITY_NAMES = ["ios_adams_iphone", "ios_leannes_iphone"]
 # NOTIFY_ENTITY_NAMES = ["ios_adams_iphone"]  # Debug
@@ -89,21 +89,18 @@ if len(videos) >= 1:
             }
         },
     }
-else:
-    # If we don"t have a video, just send a message.
-    data = {"message": "Doorbell"}
 
-# Send the notification(s)
-header = {
-    "content-type": "application/json",
-    "Authorization": "Bearer {}".format(secrets["blinkHassApiToken"]),
-}
+    # Send the notification(s)
+    header = {
+        "content-type": "application/json",
+        "Authorization": "Bearer {}".format(secrets["blinkHassApiToken"]),
+    }
 
-for entity_name in NOTIFY_ENTITY_NAMES:
-    post(
-        "{}/api/services/notify/{}".format(
-            secrets["blinkHassApiBaseURL"], entity_name
-        ),
-        headers=header,
-        data=json.dumps(data),
-    )
+    for entity_name in NOTIFY_ENTITY_NAMES:
+        post(
+            "{}/api/services/notify/{}".format(
+                secrets["blinkHassApiBaseURL"], entity_name
+            ),
+            headers=header,
+            data=json.dumps(data),
+        )

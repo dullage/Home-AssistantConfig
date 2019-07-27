@@ -66,15 +66,13 @@
         entity_id: input_boolean.queue_home_lea
         state: 'off'
   action:
-    - service: script.turn_on
-      entity_id: script.welcomeadam
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_adam
-    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
-    - service: tts.amazon_polly_say
-      data:
-        entity_id: media_player.googlehome1795
-        message: "<speak>Welcome Aboard Captain</speak>"
+    # - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
+    # - service: tts.amazon_polly_say
+      # data:
+        # entity_id: media_player.googlehome1795
+        # message: "<speak>Welcome Aboard Captain</speak>"
 
 # Welcome Home Leanne
 - alias: welcome_home_lea
@@ -93,15 +91,13 @@
         entity_id: input_boolean.queue_home_lea
         state: 'on'
   action:
-    - service: script.turn_on
-      entity_id: script.welcomelea
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_lea
-    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
-    - service: tts.amazon_polly_say
-      data_template:
-        entity_id: media_player.googlehome1795
-        message: "<speak>Welcome Home {{ ['Woman', 'Me Lady', 'Flappers', 'Fraulein', 'Your Majesty'] | random }}</speak>"
+    # - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
+    # - service: tts.amazon_polly_say
+      # data_template:
+        # entity_id: media_player.googlehome1795
+        # message: "<speak>Welcome Home {{ ['Woman', 'Me Lady', 'Flappers', 'Fraulein', 'Your Majesty'] | random }}</speak>"
     
 # Welcome Home Both
 - alias: welcome_home_both
@@ -120,14 +116,12 @@
         entity_id: input_boolean.queue_home_lea
         state: 'on'
   action:
-    - service: script.turn_on
-      entity_id: script.welcomeboth
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_adam
     - service: input_boolean.turn_off
       entity_id: input_boolean.queue_home_lea
-    - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
-    - service: tts.amazon_polly_say
-      data:
-        entity_id: media_player.googlehome1795
-        message: "<speak>Welcome Home</speak>"      
+    # - wait_template: "{{ states.binary_sensor.door_window_sensor_158d0001a5e08d.state == 'off' }}"
+    # - service: tts.amazon_polly_say
+      # data:
+        # entity_id: media_player.googlehome1795
+        # message: "<speak>Welcome Home</speak>"      

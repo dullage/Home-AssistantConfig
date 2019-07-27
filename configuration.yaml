@@ -139,6 +139,14 @@ ios:
             activationMode: 'background'
             authenticationRequired: no
             destructive: yes
+      - name: Disable Alarm
+        identifier: 'disable_alarm'
+        actions:
+          - identifier: 'DISABLE_ALARM'
+            title: 'Disable Alarm (6hr)'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: yes
 
 # HomeKit
 homekit:
@@ -164,6 +172,10 @@ camera:
   - platform: generic
     name: "HADashboard Image"
     still_image_url: !secret ha_dashboard_image
+
+blink:
+  username: !secret blinkUsername
+  password: !secret blinkPassword
 
 # Text to Speech
 tts:

@@ -28,6 +28,26 @@
     - service: notify.ios_adams_iphone
       data:
         message: "Alarm: Door / Window Opened!"
+        data:
+          push:
+            category: disable_alarm
     - service: notify.ios_leannes_iphone
       data:
         message: "Alarm: Door / Window Opened!"
+        data:
+          push:
+            category: disable_alarm
+
+- alias: disable_alarm_6hr
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: DISABLE_ALARM
+  action:
+    - service: automation.turn_off
+      entity_id: automation.alarm
+    - delay: '06:00'
+    - service: automation.turn_on
+      entity_id: automation.alarm

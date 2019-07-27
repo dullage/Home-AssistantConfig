@@ -1,0 +1,85 @@
+- alias: disarm_garden_on_daytime_arrival
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: home
+    - platform: state
+      entity_id: person.leanne
+      to: home
+  condition:
+    condition: time
+    after: "07:00:00"
+    before: "22:00:00"
+  action:
+    service: camera.disable_motion_detection
+    entity_id: camera.blink_garden
+
+- alias: arm_garden_on_exit
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden
+
+- alias: disarm_garden_in_morning
+  initial_state: true
+  trigger:
+    platform: time
+    at: "07:00:00"
+  action:
+    service: camera.disable_motion_detection
+    entity_id: camera.blink_garden
+
+- alias: arm_garden_at_night
+  initial_state: true
+  trigger:
+    platform: time
+    at: "22:00:00"
+  condition:
+    condition: and
+    conditions:
+      # Back Door
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d00019f63a5
+        state: 'off'
+      # Patio Doors
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a67e20
+        state: 'off'
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden
+
+- alias: arm_garden_at_night_on_door_close
+  initial_state: true
+  trigger:
+    # Back Door
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00019f63a5
+      to: 'off'
+    # Patio Doors
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0001a67e20
+      to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '22:00:00'
+      # Back Door
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d00019f63a5
+        state: 'off'
+      # Patio Doors
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0001a67e20
+        state: 'off'
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden

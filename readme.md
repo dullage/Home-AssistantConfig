@@ -28,13 +28,15 @@ Some highlights of our setup in no particular order:
 * iOS notifications if we both leave the house but a door or window is left open ([locationDoorWarning.yaml](/automations/locationDoorWarning.yaml)).
 * Wall mounted Amazon Fire Tablet to display HADashboard.
 * Smart Microwave! See [this forum post](https://community.home-assistant.io/t/making-my-microwave-smart-ish/89843) and [this automation](/automations/microwave.yaml).
+* Google Assistant integrated with the Shopping List via IFTTT so I can say "Hey Google, add beer to my shopping list".
+* iOS notification to send me the shopping list when I go near a local supermarket. Follow-up notification when I leave the supermarket offering to clear the shopping list.
 
 # Entity Counts
 | Type             | Count                          |
 | ---------------- | ------------------------------ |
-| Automations      | 95     |
-| Binary Sensors   | 19  |
-| Cameras          | 3         |
+| Automations      | 103     |
+| Binary Sensors   | 22  |
+| Cameras          | 5         |
 | Climate Controls | 1        |
 | Device Trackers  | 8 |
 | Groups           | 15          |
@@ -46,7 +48,7 @@ Some highlights of our setup in no particular order:
 | Media Players    | 11   |
 | Scenes           | 7          |
 | Scripts          | 39         |
-| Sensors          | 55         |
+| Sensors          | 61         |
 | Switches         | 2         |
 
 # Screenshots
