@@ -1,11 +1,37 @@
-Microwave:
-  on_code:
-    protocol: clarus_switch
-    id: 'B1'
-    unit: 40
-    'on': 1
-  off_code:
-    protocol: clarus_switch
-    id: 'B1'
-    unit: 40
-    'off': 1
+- platform: pilight
+  switches:
+    microwave:
+      on_code:
+        protocol: clarus_switch
+        id: "B1"
+        unit: 40
+        "on": 1
+      off_code:
+        protocol: clarus_switch
+        id: "B1"
+        unit: 40
+        "off": 1
+
+    christmas_tree:
+      on_code:
+        protocol: clarus_switch
+        id: "B1"
+        unit: 16
+        "on": 1
+      off_code:
+        protocol: clarus_switch
+        id: "B1"
+        unit: 16
+        "off": 1
+
+    path_lights:
+      on_code:
+        protocol: clarus_switch
+        id: "C3"
+        unit: 16
+        "on": 1
+      off_code:
+        protocol: clarus_switch
+        id: "C3"
+        unit: 16
+        "off": 1

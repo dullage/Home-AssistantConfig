@@ -1,3 +1,7 @@
+####################
+## Home Assistant ##
+####################
+
 homeassistant:
   name: Home
   latitude: !secret latitude
@@ -7,79 +11,15 @@ homeassistant:
   time_zone: Europe/London
   customize: !include customize.yaml
   customize_domain: !include customize_domain.yaml
-  whitelist_external_dirs: 
-    - /config/
-  auth_providers:
-    - type: homeassistant
-    # See secrets.yaml file for list of required Access Tokens
+  # whitelist_external_dirs: #TODO
+  #   - /config/
 
-# Enable Config
-config:
-
-# Enable Map
-map:
-
-# Logging
-logger:
-  default: warn
-  # logs:
-    # homeassistant.components.recorder: debug
-  
-# Custom Zones
 zone: !secret zones
-      
-# Misc
-updater:
-discovery:
-  ignore:
-    - igd
-conversation:
-frontend:
-system_health:
 
-# Lovelace
-lovelace:
-  mode: yaml
+# Web
+cloud:
+  google_actions: !include google_actions.yaml
 
-# People
-person:
-  - name: Adam
-    id: adam
-    device_trackers:
-      - device_tracker.adams_iphone
-  - name: Leanne
-    id: leanne
-    device_trackers:
-      - device_tracker.leannes_iphone
-
-# Recorder
-recorder:
-  db_url: !secret db_url
-  purge_keep_days: 7
-  purge_interval: 1
- 
-# Logbook
-logbook:
-  exclude:
-    domains:
-      - group
-      - media_player
-      - automation
-    entities:
-      - automation.duckdns
-      - light.downstairs
-      - sensor.dark_sky_cloud_coverage
-      - sensor.dark_sky_daily_max_precip_intensity
-      - sensor.dark_sky_minutely_summary
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_wind_bearing
-      - sensor.dark_sky_wind_speed
-
-history:
-
-# Web Interface
 http:
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
@@ -90,61 +30,126 @@ http:
   trusted_proxies:
     - 127.0.0.1
   use_x_forwarded_for: true
-    
+
 cloudflare:
   email: !secret cloudflare_email
   api_key: !secret cloudflare_api_key
   zone: !secret cloudflare_zone
   records: !secret cloudflare_records
 
-cloud:
-  google_actions: !include google_actions.yaml
+# Core
+logger:
+  default: warn
 
-# Shopping List
+recorder:
+  db_url: !secret db_url
+  purge_keep_days: 7
+  purge_interval: 1
+
+logbook:
+  exclude:
+    domains:
+      - group
+      - media_player
+      - automation
+    entities:
+      - light.downstairs
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_daily_max_precip_intensity
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+
+lovelace:
+  mode: yaml
+
+person:
+  - name: Adam
+    id: adam
+    device_trackers:
+      - device_tracker.dullage_s_iphone
+  - name: Leanne
+    id: leanne
+    device_trackers:
+      - device_tracker.iphone
+
+config:
+frontend:
+history:
+map:
+mobile_app:
+sun:
+system_health:
+updater:
 shopping_list:
-  
+
+discovery:
+  ignore:
+    - igd
+
+# Include
+automation: !include_dir_merge_list automations/
+script: !include_dir_merge_named scripts/
+light: !include_dir_merge_list lights/
+switch: !include_dir_merge_list switches/
+scene: !include_dir_merge_list scenes/
+group: !include groups.yaml
+shell_command: !include_dir_merge_named shell_commands/
+sensor: !include_dir_merge_list sensors/
+input_boolean: !include inputs/input_boolean.yaml
+input_number: !include inputs/input_number.yaml
+input_select: !include inputs/input_select.yaml
+input_text: !include inputs/input_text.yaml
+
+####################
+##  Integrations  ##
+####################
+
 # Xiaomi Gateway
 xiaomi_aqara:
   gateways:
     - key: !secret xiaomi_gateway_key
-  
+
 # iOS
 ios:
   push:
     categories:
       - name: Weekend Heating Warning
-        identifier: 'weekend_heating_warning'
+        identifier: "weekend_heating_warning"
         actions:
-          - identifier: 'HEATING_TURN_OFF'
-            title: 'Turn Heating Off'
-            activationMode: 'background'
+          - identifier: "HEATING_TURN_OFF"
+            title: "Turn Heating Off"
+            activationMode: "background"
             authenticationRequired: no
-            destructive: no 
+            destructive: no
             # behavior: 'textInput'
             # textInputButtonTitle: 'Silencio!'
             # textInputPlaceholder: 'Placeholder'
       - name: Overtime Log
-        identifier: 'overtime_log'
+        identifier: "overtime_log"
         actions:
-          - identifier: 'LOG_ONE_HOUR'
-            title: 'Log 1hr Overtime'
-            activationMode: 'background'
+          - identifier: "LOG_ONE_HOUR"
+            title: "Log 1hr Overtime"
+            activationMode: "background"
             authenticationRequired: no
             destructive: no
       - name: Clear Shopping List
-        identifier: 'clear_shopping_list'
+        identifier: "clear_shopping_list"
         actions:
-          - identifier: 'CLEAR_SHOPPING_LIST'
-            title: 'Clear Shopping List'
-            activationMode: 'background'
+          - identifier: "CLEAR_SHOPPING_LIST"
+            title: "Clear Shopping List"
+            activationMode: "background"
             authenticationRequired: no
             destructive: yes
       - name: Disable Alarm
-        identifier: 'disable_alarm'
+        identifier: "disable_alarm"
         actions:
-          - identifier: 'DISABLE_ALARM'
-            title: 'Disable Alarm (6hr)'
-            activationMode: 'background'
+          - identifier: "DISABLE_ALARM"
+            title: "Disable Alarm (6hr)"
+            activationMode: "background"
             authenticationRequired: no
             destructive: yes
 
@@ -159,20 +164,15 @@ homekit:
       - light.master_bedroom_main
   entity_config:
     light.master_bedroom_main:
-      name: 'Bedroom Lights'
-            
+      name: "Bedroom Lights"
+
 # Camera
 camera:
-  - platform: mjpeg
-    name: PiCamera
-    mjpeg_url: http://192.168.0.11:8081/
-  - platform: mjpeg
-    mjpeg_url: http://192.168.0.74:2971/camera/stream
-    name: "Fire Tablet Camera"
   - platform: generic
     name: "HADashboard Image"
     still_image_url: !secret ha_dashboard_image
 
+# Blink
 blink:
   username: !secret blinkUsername
   password: !secret blinkPassword
@@ -182,10 +182,10 @@ tts:
   - platform: amazon_polly
     aws_access_key_id: !secret aws_access_key_id
     aws_secret_access_key: !secret aws_secret_access_key
-    region_name: 'eu-west-1'
+    region_name: "eu-west-1"
     text_type: ssml
     voice: Amy
-  
+
 # Media Player
 media_player:
   - platform: spotify
@@ -194,7 +194,7 @@ media_player:
 
 # Notification Platforms
 notify:
-  - platform: ios
+  # - platform: ios #TODO
   - name: email_adam
     platform: smtp
     server: smtp.gmail.com
@@ -208,154 +208,11 @@ notify:
       - !secret email_address_adam
     sender_name: Home Assistant
 
-# Lights, Switches, Automations, Scenes and Groups
-light: !include lights.yaml
-switch: !include switches.yaml
-automation: !include_dir_merge_list automations/
-scene: !include scenes.yaml
-group: !include groups.yaml
-script: !include_dir_merge_named scripts/
-shell_command: !include_dir_merge_named shell_commands/
-    
-# Google Assistant
-# google_assistant:
-#   project_id: home-assistant-f64f8
-#   api_key: !secret google_assistant_api_key
-#   expose_by_default: false
-#   entity_config: !include google_assistant_devices.yaml
- 
-# Sun Tracking
-sun:
-
-# Sensors
-sensor:
-  - platform: starlingbank
-    accounts:
-      - access_token: !secret starlingbank_api_key
-  - platform: yr
-  - platform: template
-    sensors:
-      heatingon_time:
-        friendly_name: 'Set Time'
-        value_template: '{% if states.input_number.heatingonhour.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heatingonhour.state|round(0)|string }}:{% if states.input_number.heatingonminutes.state|round(0)|string|length == 1 %}0{% endif %}{{ states.input_number.heatingonminutes.state|round(0)|string }}'
-      kitchen_motion_sensor_battery:
-        friendly_name: Kitchen Motion Sensor Battery
-        value_template: '{{states.binary_sensor.motion_sensor_158d00015db8be.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      doorbell_battery:
-        friendly_name: Doorbell Battery
-        value_template: '{{states.binary_sensor.switch_158d000128c313.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      back_door_sensor_battery:
-        friendly_name: Back Door Sensor Battery
-        value_template: '{{states.binary_sensor.door_window_sensor_158d00019f63a5.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      upstairs_humidity_sensor_battery:
-        friendly_name: Upstairs Humidity Sensor Battery
-        value_template: '{{states.sensor.humidity_158d00018256fa.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      upstairs_temperature_sensor_battery:
-        friendly_name: Upstairs Temperature Sensor Battery
-        value_template: '{{states.sensor.temperature_158d00018256fa.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      motion_sensor_battery:
-        friendly_name:  Motion Sensor Battery
-        value_template: '{{states.binary_sensor.motion_sensor_158d00015e6be1.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      front_door_sensor_battery:
-        friendly_name:  Front Door Sensor Battery
-        value_template: '{{states.binary_sensor.door_window_sensor_158d0001a5e08d.attributes.battery_level}}'
-        unit_of_measurement: '%'
-      global_shutdown_message:
-        friendly_name: ' '
-        value_template: '{{states.input_select.global_shutdown_message.state}}'
-      adam_badge:
-        unit_of_measurement: Adam
-        entity_id: person.adam
-        friendly_name_template: >
-          {% if is_state('person.adam', 'home') %}
-            Home
-          {% elif is_state('person.adam', 'not_home') %}
-            Away
-          {% else %}
-            {{ states('person.adam') }}
-          {% endif %}
-        value_template: >
-          {% if is_state('person.adam', 'home') %}
-            Home
-          {% elif is_state('person.adam', 'not_home') %}
-            Away
-          {% else %}
-            {{ states('person.adam') }}
-          {% endif %}
-        entity_picture_template: https://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg
-      leanne_badge:
-        unit_of_measurement: Leanne
-        entity_id: person.leanne
-        friendly_name_template: >
-          {% if is_state('person.leanne', 'home') %}
-            Home
-          {% elif is_state('person.leanne', 'not_home') %}
-            Away
-          {% else %}
-            {{ states('person.leanne') }}
-          {% endif %}
-        value_template: >
-          {% if is_state('person.leanne', 'home') %}
-            Home
-          {% elif is_state('person.leanne', 'not_home') %}
-            Away
-          {% else %}
-            {{ states('person.leanne') }}
-          {% endif %}
-        entity_picture_template: /local/leanne.jpg
-      blank1:
-        friendly_name: ' '
-        value_template: ' '
-      blank2:
-        friendly_name: ' '
-        value_template: ' '
-      blank3:
-        friendly_name: ' '
-        value_template: ' '
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    units: uk2
-    monitored_conditions:
-      - precip_intensity
-      - precip_probability
-      - precip_intensity_max
-      - temperature
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - minutely_summary
-  - platform: mqtt
-    state_topic: 'temperature/loft'
-    name: 'Loft Temperature'
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    state_topic: 'humidity/loft'
-    name: 'Loft Humidity'
-    unit_of_measurement: '%'
-    
 # MQTT
 mqtt:
   broker: 127.0.0.1
   username: !secret mqtt_username
   password: !secret mqtt_password
-
-# Device Tracking
-device_tracker:
-  - platform: unifi
-    host: localhost
-    port: 8443
-    username: !secret unifi_username
-    password: !secret unifi_password
-    verify_ssl: false
-    detection_time: 30
-    track_new_devices: false
-  # - platform: locative
 
 # Nest
 nest:
@@ -364,188 +221,13 @@ nest:
 
 # Pilight
 pilight:
-  host: 192.168.0.75
+  host: 192.168.0.15
   port: 5000
 
 # IFTTT
 ifttt:
   key: !secret ifttt_key
-  
-# Text Inputs
-input_text:
-  arrival_reminder_adam:
-    name: Remind Adam
-    min: 0
-    max: 255
-    initial: ''
-  arrival_reminder_leanne:
-    name: Remind Leanne
-    min: 0
-    max: 255
-    initial: ''
-  
-# Selection Inputs
-input_select:
-  stairlamp_mode:
-    name: Under Stair Lamp Mode
-    options:
-      - "Select..."
-      - "Warm Light"
-      - "Strobe"
-      - "Fire"
-      - "Colour Phase"
-      - "Sparkle"
-      - "Shoot / Drip"
-      - "Rain"
-    initial: "Select..."
-  stairs_mode:
-    name: Stairs Mode
-    options:
-      - "Select..."
-      - "Warm Light"
-      - "Strobe"
-      - "Fire"
-      - "Colour Phase"
-      - "Sparkle"
-      - "Shoot / Drip"
-      - "Rain"
-      - "Rainbow 1"
-      - "Rainbow 2"
-      - "Stepped"
-      - "Startup"
-      - "Shutdown"
-      - "All On"
-    initial: "Select..."
-  kitchen_mode:
-    name: Kitchen Mode
-    options:
-      - "Select..."
-      - "Warm Light"
-      - "Dim Light"
-      - "Strobe"
-      - "Fire"
-      - "Colour Phase"
-      - "Sparkle"
-      - "Shoot / Drip"
-      - "Rain"
-      - "Rainbow 1"
-      - "Rainbow 2"
-    initial: "Select..."
-  global_shutdown_message:
-    name: Global Shutdown Message
-    options:
-      - ""
-      - "Error: Locked"
-      - "Shutting down..."
-    initial: ""
-  hyperion:
-    name: Mode
-    options:
-     - "Select..."
-     - "Backlight"
-     - "Ambilight"
-     - "Knight Rider"
-     - "Mood Blobs Blue"
-     - "Mood Blobs Cold"
-     - "Mood Blobs Full Color"
-     - "Mood Blobs Green"
-     - "Mood Blobs Rainbow"
-     - "Mood Blobs Red"
-     - "Mood Blobs Warm"
-     - "Rainbow Swirl"
-     - "Snake"
-     - "Strobe Blue"
-     - "Strobe Raspberry"
-     - "Strobe White"
-     - "Cinema Dim Lights"
-     - "Cinema Brighten Lights"
-     - "Police Lights Single"
-     - "Police Lights Solid"
-     - "Random"
-     - "Running Dots"
-     - "System Shutdown"
-     - "Sparks Color"
-     - "Sparks"
-     - "Color Traces"
-    initial: "Select..."
 
-# Boolean Inputs
-input_boolean:
-  away:
-    name: Away
-    icon: mdi:airplane
-  # queuelights:
-    # name: Queue Lights
-    # initial: off
-  queue_home_adam:
-    name: Queue Home (Adam)
-    initial: off
-  queue_home_lea:
-    name: Queue Home (Lea)
-    initial: off
-  ghost_lights:
-    name: Ghost Lights
-    initial: off
-  global_shutdown_lock:
-    name: Global Shutdown Lock
-    initial: on
-  picamera:
-    name: PiCamera Power
-  kitchen_animation:
-    name: Kitchen Animation Running
-  hyperion2:
-    name: Whole Room Ambilight
-  # doorbell_recently_pressed:
-    # name: Doorbell Recently Pressed
-
-input_number:
-  heatingonhour:
-    name: Hour
-    icon: mdi:timer
-    initial: 0
-    min: 0
-    max: 23
-    step: 1
-  heatingonminutes:
-    name: Minutes
-    icon: mdi:timer
-    initial: 0
-    min: 0
-    max: 55
-    step: 5
-  whole_house_volume:
-    name: Whole House
-    icon: mdi:volume-high
-    step: 0.01
-    min: 0
-    max: 1
-  downstairs_volume:
-    name: Downstairs
-    icon: mdi:volume-high
-    step: 0.01
-    min: 0
-    max: 1
-  front_room_volume:
-    name: Front Room
-    icon: mdi:volume-high
-    step: 0.01
-    min: 0
-    max: 1
-  upstairs_volume:
-    name: Upstairs
-    icon: mdi:volume-high
-    step: 0.01
-    min: 0
-    max: 1
-  dryer_timeout:
-    name: Dryer Timeout
-    icon: mdi:progress-clock
-    step: 1
-    min: 0
-    max: 999
-    mode: box
-    unit_of_measurement: mins
-    
 # Speedtest
 speedtestdotnet:
   server_id: 7028

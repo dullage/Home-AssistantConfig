@@ -12,7 +12,23 @@ colourphasemode:
     - service: mqtt.publish
       data:
         topic: "light/kitchen_right"
-        payload: "{0:5,3:100}"        
+        payload: "{0:5,3:100}"
+
+rainbow2:
+  alias: "Rainbow 2"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs"
+        payload: "{0:13}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left"
+        payload: "{0:13}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right"
+        payload: "{0:13}"  
 
 strobemode:
   alias: "Strobe Mode"

@@ -18,6 +18,9 @@
   trigger:
     platform: state
     entity_id: media_player.downstairs_speakers
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.downstairs_speakers.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -50,6 +53,9 @@
   trigger:
     platform: state
     entity_id: media_player.front_room_speakers
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.front_room_speakers.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -61,7 +67,7 @@
     - service: automation.turn_on
       data:
         entity_id: automation.front_room_volume
-        
+
 ##############
 ## UPSTAIRS ##
 ##############
@@ -82,6 +88,9 @@
   trigger:
     platform: state
     entity_id: media_player.upstairs_speakers
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.upstairs_speakers.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -141,6 +150,9 @@
   trigger:
     platform: state
     entity_id: media_player.whole_house_2
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.whole_house_2.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -152,19 +164,18 @@
     - service: automation.turn_on
       data:
         entity_id: automation.whole_house_volume
-
 #######################
 ## HIDE / SHOW GROUP ##
 #######################
-        
+
 # - alias: house_audio_volume_group_hide
-  # initial_state: true
-  # trigger:
-    # platform: state
-    # entity_id: media_player.downstairs_speakers, media_player.front_room_speakers, media_player.upstairs_speakers, media_player.whole_house_2
-  # condition:
-    # condition: and
-    # conditions: 
-      # - condition: state
-        # entity_id: media_player.downstairs_speakers
-        # state: ""
+# initial_state: true
+# trigger:
+# platform: state
+# entity_id: media_player.downstairs_speakers, media_player.front_room_speakers, media_player.upstairs_speakers, media_player.whole_house_2
+# condition:
+# condition: and
+# conditions:
+# - condition: state
+# entity_id: media_player.downstairs_speakers
+# state: ""

@@ -1,0 +1,18 @@
+- alias: path_lights_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    to: "below_horizon"
+  action:
+    service: switch.turn_on
+    entity_id: switch.path_lights
+
+- alias: path_lights_off
+  initial_state: true
+  trigger:
+    platform: time
+    at: "22:00:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.path_lights

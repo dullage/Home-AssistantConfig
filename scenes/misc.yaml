@@ -1,0 +1,39 @@
+- name: All Off
+  entities:
+    group.biglightgroup:
+      state: off
+
+- name: Downstairs Off
+  entities:
+    group.downstairs_ex_stairs:
+      state: off
+    input_select.stairs_mode: "Shutdown"
+
+- name: Downstairs General
+  entities:
+    input_select.stairs_mode: "Startup"
+    light.kitchen_left:
+      state: on
+      rgb_color: [255, 147, 41]
+    light.kitchen_right:
+      state: on
+      rgb_color: [255, 147, 41]
+    light.front_room_lamp:
+      state: on
+    light.dining_room_lamp:
+      state: on
+    group.tv:
+      state: on
+      brightness: 200
+      xy_color: [0.49, 0.41]
+    switch.christmas_tree:
+      state: on
+
+- name: Front Room Dim
+  entities:
+    light.front_room_lamp:
+      state: off
+    group.tv:
+      state: on
+      brightness: 85
+      xy_color: [0.50, 0.42]

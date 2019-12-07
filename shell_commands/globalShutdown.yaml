@@ -1,4 +1,0 @@
-#picamera_shutdown: ssh -oStrictHostKeyChecking=no admin@192.168.0.11 'poweroff'
-hyperionpi_shutdown: ssh -oStrictHostKeyChecking=no pi@192.168.0.15 'sudo shutdown now'
-screenpi_shutdown: ssh -oStrictHostKeyChecking=no pi@192.168.0.32 'sudo shutdown now'
-self_shutdown: ssh -oStrictHostKeyChecking=no pi@192.168.0.49 'sudo shutdown now'

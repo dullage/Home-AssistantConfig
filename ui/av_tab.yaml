@@ -58,6 +58,17 @@
         left: 33.33%
 
 - type: entities
+  title: TV Inputs
+  show_header_toggle: false
+  entities:
+    - input_select.hdmi_input
+    # - script.input_sky
+    # - script.input_chromecast
+    # - script.input_xbox
+    # - script.input_apple_tv
+    # - script.input_guest
+
+- type: entities
   title: AV Power
   show_header_toggle: false
   entities:
@@ -67,46 +78,16 @@
     - script.sky_box
     # - script.xbox_on
 
-- type: entities
-  title: Volume
-  show_header_toggle: false
-  entities:
-    - script.volume_upx4
-    - script.volume_downx4
-    - script.mute
-
-- type: entities
-  title: TV Inputs
-  show_header_toggle: false
-  entities:
-    - script.input_sky
-    - script.input_chromecast
-    - script.input_xbox
-    - script.input_apple_tv
-    - script.input_guest
-
-- type: entities
-  title: Other
-  show_header_toggle: false
-  entities:
-    - script.sky_back
-
-- type: entities
-  title: Front Room Amplifier Inputs
-  show_header_toggle: false
-  entities:
-    - script.amp_dvd
-    - script.amp_cd
-    
 - type: media-control
   entity: media_player.spotify
-    
+
 - type: entities
   title: House Audio Volume
   show_header_toggle: false
   entities:
     - input_number.whole_house_volume
-    - sensor.blank1
+    - type: section
+      label: Areas
     - input_number.downstairs_volume
     - input_number.front_room_volume
     - input_number.upstairs_volume

@@ -29,8 +29,8 @@ VIDEO_FILENAME = "BlinkVideo.mp4"
 IMAGE_FILENAME = "BlinkImage.png"
 OFFSET_SECONDS = 60
 TIMEOUT_SECONDS = 60
-NOTIFY_ENTITY_NAMES = ["ios_adams_iphone", "ios_leannes_iphone"]
-# NOTIFY_ENTITY_NAMES = ["ios_adams_iphone"]  # Debug
+NOTIFY_ENTITY_NAMES = ["mobile_app_dullage_s_iphone", "mobile_app_iphone"]
+# NOTIFY_ENTITY_NAMES = ["mobile_app_dullage_s_iphone"]  # Debug
 
 VIDEO_FILE = os.path.join(SAVE_PATH, VIDEO_FILENAME)
 IMAGE_FILE = os.path.join(SAVE_PATH, IMAGE_FILENAME)

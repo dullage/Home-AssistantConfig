@@ -2,14 +2,15 @@ everyone:
   name: Everyone
   entities:
     - person.adam
-    - person.leanne    
+    - person.leanne
 
 # Includes switches that are lights but not ones that aren't.
 biglightgroup:
   name: The Big Light Group
   entities:
     - group.all_lights
-    - switch.ambilight_power
+    - switch.christmas_tree
+    - switch.path_lights
 
 # Everything that should be turned off when leaving
 everything:
@@ -21,11 +22,7 @@ living_room:
   name: Living Room
   entities:
     - light.front_room_lamp
-    - light.frontroom_left
-    - light.frontroom_under_tv
-    - light.frontroom_right
-    - light.gateway_light_34ce008c05b9
-    - switch.ambilight_power
+    - group.tv
 
 kitchen_low:
   name: Kitchen Low Lights
@@ -43,8 +40,17 @@ dining_room:
   name: Dining Room
   entities:
     - light.dining_room_lamp
+    - switch.christmas_tree
 
-downstairsExcStairs:
+tv:
+  name: TV
+  entities:
+    - light.tv_left
+    - light.tv_top
+    - light.tv_right
+    - light.frontroom_under_tv
+
+downstairs_ex_stairs:
   name: Downstairs Excluding Stairs
   entities:
     - group.living_room

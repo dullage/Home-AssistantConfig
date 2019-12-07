@@ -1,2 +1,0 @@
-h2_on: ssh -oStrictHostKeyChecking=no pi@192.168.0.15 'sudo systemctl start hyperion2'
-h2_off: ssh -oStrictHostKeyChecking=no pi@192.168.0.15 'sudo systemctl stop hyperion2'

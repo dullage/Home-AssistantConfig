@@ -1,0 +1,9 @@
+- platform: mqtt
+  state_topic: "temperature/loft"
+  name: "Loft Temperature"
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  state_topic: "humidity/loft"
+  name: "Loft Humidity"
+  unit_of_measurement: "%"

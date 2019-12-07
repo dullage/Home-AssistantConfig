@@ -1,0 +1,11 @@
+arrival_reminder_adam:
+  name: Remind Adam
+  min: 0
+  max: 255
+  initial: ""
+
+arrival_reminder_leanne:
+  name: Remind Leanne
+  min: 0
+  max: 255
+  initial: ""

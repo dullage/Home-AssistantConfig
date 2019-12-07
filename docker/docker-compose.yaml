@@ -1,7 +1,7 @@
 version: '3'
 services:
   homeassistant:
-    image: homeassistant/raspberrypi3-homeassistant:0.94.3
+    image: homeassistant/raspberrypi3-homeassistant:0.102.3
     container_name: "homeassistant"
     volumes:
       - "..:/config"

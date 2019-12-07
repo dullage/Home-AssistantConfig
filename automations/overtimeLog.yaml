@@ -8,7 +8,7 @@
     condition: time
     before: '07:45:00'
   action:
-    - service: notify.ios_adams_iphone
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "I see you're in early, do you want to log some overtime?"
         data:

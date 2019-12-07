@@ -3,9 +3,9 @@
   trigger:
     platform: state
     entity_id: person.leanne
-    to: 'home'
+    to: "home"
   action:
-    - service: notify.ios_adams_iphone
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Leanne is Home"
     - service: automation.turn_off
@@ -16,9 +16,9 @@
   trigger:
     platform: state
     entity_id: person.adam
-    to: 'home'
+    to: "home"
   action:
-    - service: notify.ios_leannes_iphone
+    - service: notify.mobile_app_iphone
       data:
         message: "Adam is Home"
     - service: automation.turn_off

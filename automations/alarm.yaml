@@ -1,22 +1,22 @@
 - alias: alarm
   initial_state: true
   trigger:
-  # Front Door
+    # Front Door
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0001a5e08d
-      to: 'on'
-  # Back Door
+      to: "on"
+    # Back Door
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d00019f63a5
-      to: 'on'
-  # Patio Doors
+      to: "on"
+    # Patio Doors
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0001a67e20
-      to: 'on'
-  # Master Bedroom Window
+      to: "on"
+    # Master Bedroom Window
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d000222cb59
-      to: 'on'
+      to: "on"
   condition:
     condition: and
     conditions:
@@ -25,13 +25,13 @@
       - condition: template
         value_template: "{{ states('person.leanne') != 'home' }}"
   action:
-    - service: notify.ios_adams_iphone
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Alarm: Door / Window Opened!"
         data:
           push:
             category: disable_alarm
-    - service: notify.ios_leannes_iphone
+    - service: notify.mobile_app_iphone
       data:
         message: "Alarm: Door / Window Opened!"
         data:
@@ -48,6 +48,6 @@
   action:
     - service: automation.turn_off
       entity_id: automation.alarm
-    - delay: '06:00'
+    - delay: "06:00"
     - service: automation.turn_on
       entity_id: automation.alarm

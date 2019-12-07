@@ -11,26 +11,19 @@
   title: Frontroom
   entities:
     - light.front_room_lamp
-    - light.frontroom_left
-    - light.frontroom_under_tv
-    - light.frontroom_right
-    - light.gateway_light_34ce008c05b9
-    
-- type: entities
-  title: Ambilight
-  show_header_toggle: false
-  entities:
-    - entity: switch.ambilight_power
-      name: Ambilight
-      icon: mdi:lightbulb
-    - input_select.hyperion
-    - input_boolean.hyperion2
+    - group.tv
 
 - type: entities
-  title: Dining Room
-  show_header_toggle: false
+  title: Bathroom
   entities:
-    - light.dining_room_lamp
+    - light.bathroom_lights
+    - light.bathroom_mirror_lights
+
+- type: entities
+  title: Bedroom
+  entities:
+    - light.master_bedroom_main
+    - light.bedroom_lamps
 
 - type: entities
   title: Kitchen
@@ -40,12 +33,6 @@
     - input_select.kitchen_mode
 
 - type: entities
-  title: Garden
-  show_header_toggle: false
-  entities:
-    - light.garden_lights
-
-- type: entities
   title: Stairs
   show_header_toggle: false
   entities:
@@ -53,12 +40,24 @@
     - input_select.stairs_mode
 
 - type: entities
-  title: Upstairs
+  title: Landing
+  show_header_toggle: false
   entities:
     - light.landing_light
-    - light.bathroom_lights
-    - light.bathroom_mirror_lights
-    - light.master_bedroom_main
+
+- type: entities
+  title: Dining Room
+  # show_header_toggle: false
+  entities:
+    - light.dining_room_lamp
+    - switch.christmas_tree
+
+- type: entities
+  title: Outdoors
+  show_header_toggle: false
+  entities:
+    - light.garden_lights
+    - switch.path_lights
 
 - type: shopping-list
   title: Shopping List

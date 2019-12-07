@@ -3,6 +3,7 @@ heating_to_21:
   sequence:
     - service: climate.set_temperature
       data:
+        entity_id: climate.house
         temperature: 21
 
 heating_boost:
@@ -10,9 +11,11 @@ heating_boost:
   sequence:
     - service: climate.set_temperature
       data:
+        entity_id: climate.house
         temperature: 25
     - delay:
         minutes: 5
     - service: climate.set_temperature
       data:
+        entity_id: climate.house
         temperature: 21

@@ -3,17 +3,17 @@
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d000208c9c8
-    to: 'on'
+    to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: sun.sun
-        state: 'below_horizon'
+        state: "below_horizon"
       # Make sure someone's home otherwise it may just be the cat!
       - condition: state
         entity_id: group.everyone
-        state: 'home'
+        state: "home"
   action:
     - service: light.turn_on
       entity_id: light.bathroom_mirror_lights
@@ -22,7 +22,7 @@
     # If there is no motion in the bathroom after 10 seconds turn the light back off again
     - condition: state
       entity_id: binary_sensor.motion_sensor_158d00015e6be1
-      state: 'off'
+      state: "off"
     - service: light.turn_off
       entity_id: light.bathroom_mirror_lights
 
@@ -31,20 +31,20 @@
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d000208c9c8
-    to: 'on'
+    to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: sun.sun
-        state: 'below_horizon'
+        state: "below_horizon"
       - condition: state
         entity_id: group.downstairs
-        state: 'off'
+        state: "off"
       # Make sure someone's home otherwise it may just be the cat!
       - condition: state
         entity_id: group.everyone
-        state: 'home'
+        state: "home"
   action:
     service: scene.turn_on
-    entity_id: scene.downstairs_nightlight
+    entity_id: scene.downstairs_general

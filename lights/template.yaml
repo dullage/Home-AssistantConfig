@@ -1,0 +1,12 @@
+- platform: template
+  lights:
+    downstairs:
+      value_template: "{{ is_state('group.downstairs_ex_stairs', 'on') }}"
+      turn_on:
+        service: scene.turn_on
+        data:
+          entity_id: scene.downstairs_general
+      turn_off:
+        service: scene.turn_on
+        data:
+          entity_id: scene.downstairs_off

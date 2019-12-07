@@ -1,0 +1,14 @@
+away:
+  name: Away
+  icon: mdi:airplane
+
+queue_home_adam:
+  name: Queue Home (Adam)
+  initial: off
+
+queue_home_lea:
+  name: Queue Home (Lea)
+  initial: off
+
+kitchen_animation:
+  name: Kitchen Animation Running

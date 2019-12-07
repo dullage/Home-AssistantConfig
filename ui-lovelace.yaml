@@ -6,21 +6,15 @@ views:
     badges:
       - sensor.adam_badge
       - sensor.leanne_badge
-  - title: Climate
-    icon: mdi:thermostat
-    cards: !include ui/climate_tab.yaml
   - title: AV
     icon: mdi:remote
     cards: !include ui/av_tab.yaml
+  - title: Climate
+    icon: mdi:thermostat
+    cards: !include ui/climate_tab.yaml
   - title: Miscellaneous
     icon: mdi:hops
     cards: !include ui/miscellaneous_tab.yaml
     badges:
       - sensor.adam_badge
       - sensor.leanne_badge
-  - title: Camera
-    icon: mdi:camera
-    cards: !include ui/camera_tab.yaml
-  - title: Admin
-    icon: mdi:account
-    cards: !include ui/admin_tab.yaml

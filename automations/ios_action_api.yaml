@@ -1,0 +1,9 @@
+- alias: ios_action_api
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.action_fired
+  action:
+    service_template: "{{ trigger.event.data.actionName.split('/', 1)[0] }}"
+    data_template:
+      entity_id: "{{ trigger.event.data.actionName.split('/', 1)[1] }}"

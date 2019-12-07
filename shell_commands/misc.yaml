@@ -1,10 +1,8 @@
-xbox_on: python3 /config/shell_commands/xboxOn.py
-take_snapshots: 'rm -f /config/www/picamera_snapshots/* | vlc -q -I dummy http://192.168.0.11:8081 --video-filter=scene --vout=dummy --scene-format=jpg --scene-ratio=1 --scene-prefix=snapshot --scene-path=/config/www/picamera_snapshots --run-time 5 --scene-ratio=40 vlc://quit'
-rename_snapshots: ls /config/www/picamera_snapshots | cat -n | while read n f; do mv "/config/www/picamera_snapshots/$f" "/config/www/picamera_snapshots/snapshot$n.jpg"; done
-ghost_lights: python3 /config/python_scripts/GhostLights.py
 blink: python3 /config/python_scripts/blink.py
-shopping_list_enter_adam: python3 /config/python_scripts/shopping_list.py ENTER ios_adams_iphone
-shopping_list_enter_leanne: python3 /config/python_scripts/shopping_list.py ENTER ios_leannes_iphone
-shopping_list_exit_adam: python3 /config/python_scripts/shopping_list.py EXIT ios_adams_iphone
-shopping_list_exit_leanne: python3 /config/python_scripts/shopping_list.py EXIT ios_leannes_iphone
+shopping_list_enter_adam: python3 /config/python_scripts/shopping_list.py ENTER mobile_app_dullage_s_iphone
+shopping_list_enter_leanne: python3 /config/python_scripts/shopping_list.py ENTER mobile_app_iphone
+shopping_list_exit_adam: python3 /config/python_scripts/shopping_list.py EXIT mobile_app_dullage_s_iphone
+shopping_list_exit_leanne: python3 /config/python_scripts/shopping_list.py EXIT mobile_app_iphone
 shopping_list_clear: python3 /config/python_scripts/shopping_list.py CLEAR
+healthcheck: "curl --retry 3 https://hc-ping.com/c56f4efa-bf94-4112-9a4d-2ceb506891ed"
+pause_healthcheck: "curl https://healthchecks.io/api/v1/checks/c56f4efa-bf94-4112-9a4d-2ceb506891ed/pause --request POST --header 'X-Api-Key: AsBVcO-naDetvxPZ0XdC8oBGmovo8IfC' --data ''"

@@ -3,13 +3,13 @@
   trigger:
     platform: state
     entity_id: group.everyone
-    from: 'home'
-    to: 'not_home'
+    from: "home"
+    to: "not_home"
   condition:
     condition: and
     conditions:
       - condition: time
-        before: '15:00:00'
+        before: "15:00:00"
         weekday:
           - mon
           - tue
@@ -22,41 +22,42 @@
   action:
     - service: climate.set_temperature
       data:
+        entity_id: climate.house
         temperature: 9
-        
+
 - alias: heating_warning
   initial_state: true
   trigger:
     platform: state
     entity_id: group.everyone
-    from: 'home'
-    to: 'not_home'
+    from: "home"
+    to: "not_home"
     for:
       minutes: 15
   condition:
     condition: and
     conditions:
       # - condition: time
-        # weekday:
-          # - sat
-          # - sun
+      # weekday:
+      # - sat
+      # - sun
       - condition: numeric_state
         entity_id: sensor.house_thermostat_target
         above: 9
   action:
-    - service: notify.ios_adams_iphone
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Warning: The heating is still on. Turn it off?"
         data:
           push:
             category: weekend_heating_warning
-    - service: notify.ios_leannes_iphone
+    - service: notify.mobile_app_iphone
       data:
         message: "Warning: The heating is still on. Turn it off?"
         data:
           push:
             category: weekend_heating_warning
-          
+
 - alias: notification_action_heating_off
   initial_state: true
   trigger:
@@ -67,4 +68,5 @@
   action:
     - service: climate.set_temperature
       data:
-        temperature: 9 
+        entity_id: climate.house
+        temperature: 9

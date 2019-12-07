@@ -1,0 +1,9 @@
+- platform: mqtt
+  name: Clothes Dryer
+  command_topic: "switch/dryer"
+  state_topic: "switch/dryer/state"
+  #availability_topic: "switch/dryer/availability"
+  payload_available: "1"
+  payload_not_available: "0"
+  payload_on: "1"
+  payload_off: "0"
