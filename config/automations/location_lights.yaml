@@ -1,0 +1,54 @@
+# Set the house lights to the normal scene when Adam arrives (after sunset). Don't do anything if Leanne is already home.
+- alias: location_lights_adam_arriving
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.adam
+    to: "home"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+      - condition: template
+        value_template: "{{ states('person.leanne') != 'home' }}"
+  action:
+    # Wait until the front door is opened.
+    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    - service: scene.turn_on
+      entity_id: scene.downstairs_general
+
+# Set the house lights to the normal scene when Leanne arrives (after sunset). Don't do anything if Adam is already home.
+- alias: location_lights_leanne_arriving
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.leanne
+    to: "home"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+      - condition: template
+        value_template: "{{ states('person.adam') != 'home' }}"
+  action:
+    # Wait until the front door is opened.
+    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    - service: scene.turn_on
+      entity_id: scene.downstairs_general
+
+# Turn off the lights if we've both left.
+- alias: location_lights_auto_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.all_off

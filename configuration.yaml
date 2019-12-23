@@ -9,16 +9,15 @@ homeassistant:
   elevation: !secret elevation
   unit_system: metric
   time_zone: Europe/London
-  customize: !include customize.yaml
-  customize_domain: !include customize_domain.yaml
-  # whitelist_external_dirs: #TODO
-  #   - /config/
+  customize_domain:
+    switch:
+      assumed_state: false
 
 zone: !secret zones
 
 # Web
 cloud:
-  google_actions: !include google_actions.yaml
+  google_actions: !include config/voice_assistants/google.yaml
 
 http:
   ssl_certificate: !secret ssl_certificate
@@ -91,34 +90,28 @@ discovery:
     - igd
 
 # Include
-automation: !include_dir_merge_list automations/
-script: !include_dir_merge_named scripts/
-light: !include_dir_merge_list lights/
-switch: !include_dir_merge_list switches/
-scene: !include_dir_merge_list scenes/
-group: !include groups.yaml
-shell_command: !include_dir_merge_named shell_commands/
-sensor: !include_dir_merge_list sensors/
-input_boolean: !include inputs/input_boolean.yaml
-input_number: !include inputs/input_number.yaml
-input_select: !include inputs/input_select.yaml
-input_text: !include inputs/input_text.yaml
+automation: !include_dir_merge_list config/automations/
+script: !include_dir_merge_named config/scripts/
+light: !include_dir_merge_list config/lights/
+switch: !include_dir_merge_list config/switches/
+scene: !include_dir_merge_list config/scenes/
+group: !include config/groups.yaml
+shell_command: !include_dir_merge_named config/shell_commands/
+sensor: !include_dir_merge_list config/sensors/
+input_boolean: !include config/inputs/input_boolean.yaml
+input_number: !include config/inputs/input_number.yaml
+input_select: !include config/inputs/input_select.yaml
 
 ####################
 ##  Integrations  ##
 ####################
-
-# Xiaomi Gateway
-xiaomi_aqara:
-  gateways:
-    - key: !secret xiaomi_gateway_key
 
 # iOS
 ios:
   push:
     categories:
       - name: Weekend Heating Warning
-        identifier: "weekend_heating_warning"
+        identifier: "location_heating_warning"
         actions:
           - identifier: "HEATING_TURN_OFF"
             title: "Turn Heating Off"
@@ -154,17 +147,7 @@ ios:
             destructive: yes
 
 # HomeKit
-homekit:
-  filter:
-    include_entities:
-      - light.downstairs
-      - light.bathroom_lights
-      - light.bathroom_mirror_lights
-      - light.landing_light
-      - light.master_bedroom_main
-  entity_config:
-    light.master_bedroom_main:
-      name: "Bedroom Lights"
+homekit: !include config/voice_assistants/siri.yaml
 
 # Camera
 camera:
@@ -194,7 +177,6 @@ media_player:
 
 # Notification Platforms
 notify:
-  # - platform: ios #TODO
   - name: email_adam
     platform: smtp
     server: smtp.gmail.com
@@ -210,6 +192,7 @@ notify:
 
 # MQTT
 mqtt:
+  discovery: true
   broker: 127.0.0.1
   username: !secret mqtt_username
   password: !secret mqtt_password

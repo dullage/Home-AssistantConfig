@@ -1,0 +1,69 @@
+# If we both leave the house on a weekday before 3pm turn the heating off (set to a low temp).
+- alias: location_heating_auto_off_weekdays
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    from: "home"
+    to: "not_home"
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        before: "15:00:00"
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: numeric_state
+        entity_id: sensor.house_thermostat_target
+        above: 9
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 9
+
+# On any day, if we've both been out of the house for more than 15 minutes, ask (via an iOS notification) whether we want to turn the heating off.
+- alias: location_heating_warning
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    from: "home"
+    to: "not_home"
+    for:
+      minutes: 15
+  condition:
+    condition: numeric_state
+    entity_id: sensor.house_thermostat_target
+    above: 9
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Warning: The heating is still on. Turn it off?"
+        data:
+          push:
+            category: location_heating_warning
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Warning: The heating is still on. Turn it off?"
+        data:
+          push:
+            category: location_heating_warning
+
+# Turn the heating off (set to a low temp) if we press the button in the iOS notification.
+- alias: location_heating_warning_action
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: HEATING_TURN_OFF
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 9

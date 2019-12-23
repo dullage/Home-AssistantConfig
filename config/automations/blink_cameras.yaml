@@ -1,0 +1,93 @@
+# Arm the garden camera when we've both left the house.
+- alias: blink_cameras_arm_garden_on_exit
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden
+
+# Disarm the garden camera if either of us come home between 7am and 10pm.
+- alias: blink_cameras_disarm_garden_on_daytime_arrival
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: home
+    - platform: state
+      entity_id: person.leanne
+      to: home
+  condition:
+    condition: time
+    after: "07:00:00"
+    before: "22:00:00"
+  action:
+    service: camera.disable_motion_detection
+    entity_id: camera.blink_garden
+
+# Arm the garden camera at 10pm as long as both back doors are shut. If either are open we're probably having a late BBQ.
+- alias: blink_cameras_arm_garden_at_night
+  initial_state: true
+  trigger:
+    platform: time
+    at: "22:00:00"
+  condition:
+    condition: and
+    conditions:
+      # Back Door
+      - condition: state
+        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        state: "off"
+      # Patio Doors
+      - condition: state
+        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        state: "off"
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden
+
+# After 10pm, arm the garden camera once both back doors are shut (the BBQ is over).
+- alias: blink_cameras_arm_garden_at_night_on_door_close
+  initial_state: true
+  trigger:
+    # Back Door
+    - platform: state
+      entity_id: binary_sensor.0x00158d00019f63a5_contact
+      to: "off"
+    # Patio Doors
+    - platform: state
+      entity_id: binary_sensor.0x00158d0001a67e20_contact
+      to: "off"
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: "22:00:00"
+      # Back Door
+      - condition: state
+        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        state: "off"
+      # Patio Doors
+      - condition: state
+        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        state: "off"
+  action:
+    service: camera.enable_motion_detection
+    entity_id: camera.blink_garden
+
+# As long as one of us is home, disarm the garden camera at 7am.
+- alias: blink_cameras_disarm_garden_in_morning
+  initial_state: true
+  trigger:
+    platform: time
+    at: "07:00:00"
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') == 'home' }}"
+  action:
+    service: camera.disable_motion_detection
+    entity_id: camera.blink_garden

@@ -1,0 +1,48 @@
+# Toggle the bedroom lamps when the bedroom Xiaomi switch is pressed once.
+- alias: bedroom_xiaomi_switch_single_click
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000128c313_click
+    to: "single"
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_lamps
+
+# Set a warm colour when the bedroom Xiaomi switch is pressed twice.
+- alias: bedroom_xiaomi_switch_double_click
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000128c313_click
+    to: "double"
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.bedroom_lamps
+      xy_color: [0.50, 0.42]
+
+# Toggle the main bedroom lights when the bedroom Xiaomi switch is quadruple pressed
+- alias: bedroom_xiaomi_switch_quadruple_click
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000128c313_click
+    to: "quadruple"
+  action:
+    service: light.toggle
+    data:
+      entity_id: light.master_bedroom_main
+
+# Set a darker warm colour when the bedroom Xiaomi switch is long pressed.
+- alias: bedroom_xiaomi_switch_long_press
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000128c313_click
+    to: "long"
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.bedroom_lamps
+      xy_color: [0.638, 0.288]

@@ -1,0 +1,34 @@
+# If we've both left the house and a door or window is left open, send an iOS notification to both of us.
+- alias: leaving_open_cover_warning
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    from: "home"
+    to: "not_home"
+  condition:
+    condition: or
+    conditions:
+      # Front Door
+      - condition: state
+        entity_id: binary_sensor.0x00158d0001a5e08d_contact
+        state: "on"
+      # Back Door
+      - condition: state
+        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        state: "on"
+      # Patio Doors
+      - condition: state
+        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        state: "on"
+      # Master Bedroom Window
+      - condition: state
+        entity_id: binary_sensor.0x00158d000222cb59_contact
+        state: "on"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "STOP! You left a door or window open!"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "STOP! You left a door or window open!"

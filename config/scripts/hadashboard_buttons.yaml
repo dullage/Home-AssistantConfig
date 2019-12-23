@@ -1,0 +1,87 @@
+colourphasemode:
+  alias: "Colour Phase Mode"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs"
+        payload: "{0:5,3:100}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left"
+        payload: "{0:5,3:100}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right"
+        payload: "{0:5,3:100}"
+
+rainbow2:
+  alias: "Rainbow 2"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs"
+        payload: "{0:13}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left"
+        payload: "{0:13}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right"
+        payload: "{0:13}"
+
+strobemode:
+  alias: "Strobe Mode"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs"
+        payload: "{0:3}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left"
+        payload: "{0:3}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right"
+        payload: "{0:3}"
+
+firemode:
+  alias: "Fire Mode"
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "light/stairs"
+        payload: "{0:4}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_left"
+        payload: "{0:4,3:55}"
+    - service: mqtt.publish
+      data:
+        topic: "light/kitchen_right"
+        payload: "{0:4,3:55}"
+
+spotify_play_pause:
+  sequence:
+    - service: media_player.media_play_pause
+      data:
+        entity_id: media_player.spotify
+
+spotify_next_track:
+  sequence:
+    - service: media_player.media_next_track
+      data:
+        entity_id: media_player.spotify
+
+whole_house_volume_down:
+  sequence:
+    - service: media_player.volume_down
+      data:
+        entity_id: media_player.whole_house_2
+
+whole_house_volume_up:
+  sequence:
+    - service: media_player.volume_up
+      data:
+        entity_id: media_player.whole_house_2

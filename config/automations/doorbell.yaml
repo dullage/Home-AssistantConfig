@@ -1,0 +1,23 @@
+# Doorbell
+- alias: doorbell
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000204a3c3_click
+    from: ""
+  condition:
+    # 5s Debounce
+    condition: template
+    value_template: "{{ (states.automation.doorbell.attributes.last_triggered == none) or (as_timestamp(state_attr('automation.doorbell', 'last_triggered')) < (as_timestamp(now()) - 5)) }}"
+  action:
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.google_homes
+        message: "<speak>Humans. There is someone at the front door.</speak>"
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Doorbell"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Doorbell"
+    - service: shell_command.blink

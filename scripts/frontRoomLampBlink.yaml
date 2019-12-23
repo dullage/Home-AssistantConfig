@@ -1,8 +1,0 @@
-front_room_lamp_blink:
-  sequence:
-    - service: light.toggle
-      entity_id: light.front_room_lamp
-    - delay:
-        seconds: 0.5
-    - service: light.toggle
-      entity_id: light.front_room_lamp

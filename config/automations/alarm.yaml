@@ -1,0 +1,55 @@
+# Send occupants an iOS notification is a door or window is opened whilst the house is unoccupied.
+- alias: alarm
+  initial_state: true
+  trigger:
+    # Front Door
+    - platform: state
+      entity_id: binary_sensor.0x00158d0001a5e08d_contact
+      to: "on"
+    # Kitchen Door
+    - platform: state
+      entity_id: binary_sensor.0x00158d00019f63a5_contact
+      to: "on"
+    # Patio Doors
+    - platform: state
+      entity_id: binary_sensor.0x00158d0001a67e20_contact
+      to: "on"
+    # Master Bedroom Window
+    - platform: state
+      entity_id: binary_sensor.0x00158d000222cb59_contact
+      to: "on"
+  condition:
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ states('person.adam') != 'home' }}"
+      - condition: template
+        value_template: "{{ states('person.leanne') != 'home' }}"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Alarm: Door / Window Opened!"
+        data:
+          push:
+            category: disable_alarm
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Alarm: Door / Window Opened!"
+        data:
+          push:
+            category: disable_alarm
+
+# Disable the alarm for 6 hours if "Disable" button pressed in the iOS notification.
+- alias: alarm_disable
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: DISABLE_ALARM
+  action:
+    - service: automation.turn_off
+      entity_id: automation.alarm
+    - delay: "06:00"
+    - service: automation.turn_on
+      entity_id: automation.alarm

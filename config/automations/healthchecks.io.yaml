@@ -1,0 +1,17 @@
+# Report into healthchecks.io every minute.
+- alias: healthcheck
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: "/1"
+  action:
+    service: shell_command.healthcheck
+
+# Pause the healthchecks.io monitoring if Home Assistant is shut down cleanly.
+- alias: pause_healthcheck
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: homeassistant_stop
+  action:
+    service: shell_command.pause_healthcheck

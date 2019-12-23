@@ -1,0 +1,30 @@
+scene.downstairs_general:
+  name: Downstairs General
+scene.front_room_dim:
+  name: Front Room Dim
+scene.downstairs_off:
+  name: Downstairs
+scene.all_off:
+  name: Everything
+light.front_room_lamp:
+  name: Front Room Lamp
+script.going_out:
+  name: Going Out Script
+light.main_kitchen_lights:
+  name: Kitchen Lights
+light.garden_lights:
+  name: Garden Lights
+light.landing_light:
+  name: Landing Light
+light.bathroom_lights:
+  name: Bathroom Lights
+light.master_bedroom_main:
+  name: Bedroom Lights
+script.normal_av:
+  name: TV
+script.sky_back:
+  name: Sky Back Button
+script.volume_upx4:
+  name: Amp Volume Up
+script.volume_downx4:
+  name: Amp Volume Down

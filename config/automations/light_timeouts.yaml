@@ -1,0 +1,53 @@
+# Turn off the main kitchen lights after 5 minutes without motion.
+- alias: light_timeouts_kitchen
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x00158d00015db8be_occupancy
+      to: "off"
+      for:
+        minutes: 5
+  action:
+    service: light.turn_off
+    entity_id: light.main_kitchen_lights
+
+# Turn off the bathroom lights after 30 minutes without motion.
+- alias: light_timeouts_bathroom
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00015e6be1_occupancy
+    to: "off"
+    for:
+      minutes: 30
+  action:
+    - service: light.turn_off
+      entity_id: light.bathroom_lights
+    - service: light.turn_off
+      entity_id: light.bathroom_mirror_lights
+
+# Turn off the landing lights after 30 minutes of being on.
+- alias: light_timeouts_landing
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.landing_light
+    to: "on"
+    for:
+      minutes: 30
+  action:
+    service: light.turn_off
+    entity_id: light.landing_light
+
+# Turn off the main bedroom lights after 30 minutes of being on.
+- alias: light_timeouts_master_bedroom
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_main
+    to: "on"
+    for:
+      minutes: 30
+  action:
+    service: light.turn_off
+    entity_id: light.master_bedroom_main

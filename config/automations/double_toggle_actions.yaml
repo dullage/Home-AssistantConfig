@@ -1,0 +1,34 @@
+# Toggle the downstairs lights when the landing light switch is double toggled.
+- alias: double_toggle_actions_landing
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "landingSwitch"
+  action:
+    service: light.toggle
+    entity_id: light.downstairs
+
+# Toggle the under cupboard lights in the kitchen when the kitchen light switch is double toggled.
+- alias: double_toggle_actions_kitchen
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "kitchen"
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen_left
+    - service: light.toggle
+      entity_id: light.kitchen_right
+
+# Toggle the bedroom lamps when the bedroom light switch is double toggled.
+- alias: double_toggle_actions_bedroom
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: automation
+    payload: "master_bedroom_main"
+  action:
+    service: light.toggle
+    entity_id: light.bedroom_lamps

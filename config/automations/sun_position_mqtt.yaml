@@ -1,0 +1,30 @@
+# Publish the sun setting via MQTT. This is used by the stair lights to know what mode to be in. TODO: Move this logic to Home Assistant.
+- alias: sun_position_mqtt_setting
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    from: 'above_horizon'
+    to: 'below_horizon'
+  action:
+    service: mqtt.publish
+    data:
+      topic: sunPosition
+      payload: 0
+      retain: true
+
+# Publish the sun rising via MQTT. This is used by the stair lights to know what mode to be in. TODO: Move this logic to Home Assistant.
+- alias: sun_position_mqtt_rising
+  hide_entity: true
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    from: 'below_horizon'
+    to: 'above_horizon'
+  action:
+    service: mqtt.publish
+    data:
+      topic: sunPosition
+      payload: 1
+      retain: true

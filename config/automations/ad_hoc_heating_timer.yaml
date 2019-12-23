@@ -1,0 +1,17 @@
+# Turn on the heating at the time set using the ad_hoc_heating_time_hour and ad_hoc_heating_time_minute inputs (available as sliders in the UI). Inspiration: https://community.home-assistant.io/t/creating-a-alarm-clock/410/105)
+- alias: ad_hoc_heating_timer
+  initial_state: False
+  trigger:
+    - platform: time_pattern
+      minutes: "/1"
+  condition:
+    - condition: template
+      value_template: "{{ now().hour == (states.input_number.ad_hoc_heating_time_hour.state | round(0)) and now().minute == (states.input_number.ad_hoc_heating_time_minute.state | round(0)) }}"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 21
+    - service: homeassistant.turn_off
+      data:
+        entity_id: automation.ad_hoc_heating_timer

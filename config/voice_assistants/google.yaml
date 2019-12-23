@@ -1,0 +1,23 @@
+# THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
+
+entity_config:
+  light.bathroom_lights: {name: Bathroom Lights}
+  light.front_room_lamp: {name: Front Room Lamp}
+  light.garden_lights: {name: Garden Lights}
+  light.landing_light: {name: Landing Light}
+  light.main_kitchen_lights: {name: Kitchen Lights}
+  light.master_bedroom_main: {name: Bedroom Lights}
+  scene.all_off: {name: Everything}
+  scene.downstairs_general: {name: Downstairs General}
+  scene.downstairs_off: {name: Downstairs}
+  scene.front_room_dim: {name: Front Room Dim}
+  script.going_out: {name: Going Out Script}
+  script.normal_av: {name: TV}
+  script.sky_back: {name: Sky Back Button}
+  script.volume_downx4: {name: Amp Volume Down}
+  script.volume_upx4: {name: Amp Volume Up}
+filter:
+  include_entities: [scene.downstairs_general, scene.front_room_dim, scene.downstairs_off,
+    scene.all_off, light.front_room_lamp, script.going_out, light.main_kitchen_lights,
+    light.garden_lights, light.landing_light, light.bathroom_lights, light.master_bedroom_main,
+    script.normal_av, script.sky_back, script.volume_upx4, script.volume_downx4]

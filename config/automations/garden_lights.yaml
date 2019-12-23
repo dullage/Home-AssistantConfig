@@ -1,0 +1,53 @@
+# Turn on the garden lights if either of the back doors are opened after sunset.
+- alias: garden_lights_on
+  initial_state: true
+  trigger:
+    # Kitchen Door
+    - platform: state
+      entity_id: binary_sensor.0x00158d00019f63a5_contact
+      to: "on"
+    # Patio Doors
+    - platform: state
+      entity_id: binary_sensor.0x00158d0001a67e20_contact
+      to: "on"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    service: light.turn_on
+    entity_id: light.garden_lights
+
+# Turn off the garden lights 2 minutes after the kitchen door is shut (as long as the patio doors are also shut).
+- alias: garden_lights_off_kitchen_door
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d00019f63a5_contact
+    to: "off"
+    for:
+      minutes: 2
+  condition:
+    condition: state
+    entity_id: binary_sensor.0x00158d0001a67e20_contact
+    state: "off"
+  action:
+    service: light.turn_off
+    entity_id: light.garden_lights
+
+# Turn off the garden lights 2 minutes after the patio doors are shut (as long as the kitchen door is also shut).
+- alias: garden_lights_off_patio_doors
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d0001a67e20_contact
+    to: "off"
+    for:
+      minutes: 2
+  condition:
+    condition: state
+    entity_id: binary_sensor.0x00158d00019f63a5_contact
+    state: "off"
+  action:
+    service: light.turn_off
+    entity_id: light.garden_lights

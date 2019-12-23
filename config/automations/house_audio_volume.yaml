@@ -1,0 +1,140 @@
+# Automations to update media player volumes based on input sliders and also to keep sliders in sync with volume if changed outside Home Assistant.
+
+# Downstairs
+- alias: house_audio_volume_downstairs
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_number.downstairs_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.downstairs_speakers
+      volume_level: "{{ (trigger.to_state.state | int) / 100 }}"
+
+- alias: house_audio_volume_downstairs_update
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.downstairs_speakers
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.downstairs_speakers.attributes.volume_level is defined }}"
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.house_audio_volume_downstairs
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.downstairs_volume
+        value: "{{ (states.media_player.downstairs_speakers.attributes.volume_level * 100) | int }}"
+    - service: automation.turn_on
+      data:
+        entity_id: automation.house_audio_volume_downstairs
+
+# Front Room
+- alias: house_audio_volume_front_room
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_number.front_room_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.chromecast3116
+      volume_level: "{{ (trigger.to_state.state | int) / 100 }}"
+
+- alias: house_audio_volume_front_room_update
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.chromecast3116
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.chromecast3116.attributes.volume_level is defined }}"
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.house_audio_volume_front_room
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.front_room_volume
+        value: "{{ (states.media_player.chromecast3116.attributes.volume_level * 100) | int }}"
+    - service: automation.turn_on
+      data:
+        entity_id: automation.house_audio_volume_front_room
+
+# Bathroom
+- alias: house_audio_volume_bathroom
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_number.bathroom_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.googlehome1632
+      volume_level: "{{ (trigger.to_state.state | int) / 100 }}"
+
+- alias: house_audio_volume_bathroom_update
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.googlehome1632
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.googlehome1632.attributes.volume_level is defined }}"
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.house_audio_volume_bathroom
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.bathroom_volume
+        value: "{{ (states.media_player.googlehome1632.attributes.volume_level * 100) | int }}"
+    - service: automation.turn_on
+      data:
+        entity_id: automation.house_audio_volume_bathroom
+
+# Whole House - Note: The slider sets the volumes individually but the the slider is updated by the speaker *group* volume.
+- alias: house_audio_volume_whole_house
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_number.whole_house_volume
+  action:
+    # Downstairs
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.downstairs_volume
+        value: "{{ trigger.to_state.state }}"
+    # Front Room
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.front_room_volume
+        value: "{{ trigger.to_state.state }}"
+    # Bathroom
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.bathroom_volume
+        value: "{{ trigger.to_state.state }}"
+
+- alias: house_audio_volume_whole_house_update
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.whole_house_2
+  condition:
+    condition: template
+    value_template: "{{ states.media_player.whole_house_2.attributes.volume_level is defined }}"
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.house_audio_volume_whole_house
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.whole_house_volume
+        value: "{{ (states.media_player.whole_house_2.attributes.volume_level * 100) | int }}"
+    - service: automation.turn_on
+      data:
+        entity_id: automation.house_audio_volume_whole_house

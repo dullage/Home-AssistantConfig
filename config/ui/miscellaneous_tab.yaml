@@ -1,0 +1,91 @@
+- type: entities
+  title: Security
+  show_header_toggle: false
+  entities:
+    - type: section
+      label: Motion Sensors
+    - entity: binary_sensor.0x00158d000223abef_occupancy
+      name: Dining Room Motion Sensor
+    - entity: binary_sensor.0x00158d000208c9c8_occupancy
+      name: Stairs Motion Sensor
+    - entity: binary_sensor.0x00158d00015db8be_occupancy
+      name: Kitchen Motion Sensor
+    - entity: binary_sensor.0x00158d00015e6be1_occupancy
+      name: Bathroom Motion Sensor
+
+    - type: section
+      label: Door Sensors
+    - entity: binary_sensor.0x00158d0001a5e08d_contact
+      name: Front Door
+    - entity: binary_sensor.0x00158d00019f63a5_contact
+      name: Kitchen Door
+    - entity: binary_sensor.0x00158d0001a67e20_contact
+      name: Patio Doors
+
+    - type: section
+      label: Window Sensors
+    - entity: binary_sensor.0x00158d000222cb59_contact
+      name: Bedroom Window
+      icon: mdi:window-open-variant
+
+- type: entities
+  title: Away Mode
+  show_header_toggle: false
+  entities:
+    - input_boolean.away
+
+- type: glance
+  title: Internet Speeds
+  entities:
+    - entity: sensor.speedtest_download
+      name: Download
+    - entity: sensor.speedtest_upload
+      name: Upload
+    - entity: sensor.speedtest_ping
+      name: Ping
+
+- type: entities
+  title: Automation Control
+  show_header_toggle: false
+  entities:
+    - entity: automation.location_lights_auto_off
+      name: Auto Light Off (Leaving)
+    - entity: automation.light_timeouts_landing
+      name: Landing Light Timeout
+    - entity: automation.light_timeouts_master_bedroom
+      name: Bedroom Light Timeout
+    - entity: automation.alarm
+      name: Alarm
+
+- type: entities
+  title: "Home Arrival Notifications"
+  show_header_toggle: false
+  entities:
+    - entity: automation.home_arrival_notifications_adam_arriving
+      name: Adam (Notify Leanne)
+      icon: mdi:bell-outline
+    - entity: automation.home_arrival_notifications_leanne_arriving
+      name: Leanne (Notify Adam)
+      icon: mdi:bell-outline
+
+- type: entities
+  title: "Clothes Dryer"
+  show_header_toggle: false
+  entities:
+    - switch.clothes_dryer
+    - input_number.dryer_timeout
+
+- type: entities
+  title: "Zigbee"
+  show_header_toggle: false
+  entities:
+    - entity: switch.zigbee_pairing
+      name: Enable Pairing
+      icon: mdi:zigbee
+
+- type: entities
+  title: "Misc"
+  show_header_toggle: false
+  entities:
+    - entity: sensor.starling_effective_balance
+      name: "Stock Price"

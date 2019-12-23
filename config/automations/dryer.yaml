@@ -1,0 +1,54 @@
+# If the clothes dryer is on, decrement the countdown input_number by 1 every minute.
+- alias: dryer_timeout_decrement
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    # Every minute
+    minutes: "/1"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.clothes_dryer
+        state: "on"
+      - condition: numeric_state
+        entity_id: input_number.dryer_timeout
+        above: 0
+  action:
+    service: input_number.decrement
+    data:
+      entity_id: input_number.dryer_timeout
+
+# When the timer reaches 0, turn the clothes dryer off and reset the timer to 360 (6 hours).
+- alias: dryer_timeout_turn_off_and_reset
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    # Every minute (on the minute)
+    minutes: "/1"
+  condition:
+    condition: numeric_state
+    entity_id: input_number.dryer_timeout
+    below: 1
+  action:
+    - service: switch.turn_off
+      entity_id: switch.clothes_dryer
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.dryer_timeout
+        value: 360
+
+# Reset the timer in cases where the dryer is turned off manually. Waits for 5 minutes in case it's an accidental or fault caused power off.
+- alias: dryer_timeout_backup_reset
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.clothes_dryer
+    to: "off"
+    for:
+      minutes: 5
+  action:
+    service: input_number.set_value
+    data:
+      entity_id: input_number.dryer_timeout
+      value: 360

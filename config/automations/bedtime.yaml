@@ -1,0 +1,17 @@
+# After 9pm, turn off the heating once the downstairs lights have all been off for 5 minutes.
+- alias: bedtime
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.downstairs
+    to: "off"
+    for:
+      minutes: 5
+  condition:
+    condition: time
+    after: "21:00:00"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 9

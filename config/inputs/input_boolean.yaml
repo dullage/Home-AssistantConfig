@@ -1,0 +1,6 @@
+away:
+  name: Away
+  icon: mdi:airplane
+
+kitchen_animation:
+  name: Kitchen Animation Running

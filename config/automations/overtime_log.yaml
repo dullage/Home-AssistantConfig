@@ -1,0 +1,32 @@
+# If Adam arrives at work before 7:45am, ask (via an iOS notification) if he wants to log overtime.
+- alias: overtime_log_notification
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.adam
+    to: "Work"
+  condition:
+    condition: time
+    before: "07:45:00"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "I see you're in early, do you want to log some overtime?"
+        data:
+          push:
+            category: overtime_log
+
+# Log 1 hour overtime to a Google Sheet (via IFTTT) if the button is pressed in the iOS notification.
+- alias: overtime_log_notification_action
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: LOG_ONE_HOUR
+  action:
+    service: ifttt.trigger
+    data:
+      event: overtimeLog
+      value1: 1
+      value2: "Started work at 7:30"

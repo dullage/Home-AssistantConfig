@@ -1,0 +1,8 @@
+blink: python3 /config/config/python_scripts/blink.py
+shopping_list_enter_adam: python3 /config/config/python_scripts/shopping_list.py ENTER mobile_app_dullage_s_iphone
+shopping_list_enter_leanne: python3 /config/config/python_scripts/shopping_list.py ENTER mobile_app_iphone
+shopping_list_exit_adam: python3 /config/config/python_scripts/shopping_list.py EXIT mobile_app_dullage_s_iphone
+shopping_list_exit_leanne: python3 /config/config/python_scripts/shopping_list.py EXIT mobile_app_iphone
+shopping_list_clear: python3 /config/config/python_scripts/shopping_list.py CLEAR
+healthcheck: "curl --retry 3 https://hc-ping.com/c56f4efa-bf94-4112-9a4d-2ceb506891ed"
+pause_healthcheck: "curl https://healthchecks.io/api/v1/checks/c56f4efa-bf94-4112-9a4d-2ceb506891ed/pause --request POST --header 'X-Api-Key: AsBVcO-naDetvxPZ0XdC8oBGmovo8IfC' --data ''"

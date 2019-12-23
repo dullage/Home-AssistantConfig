@@ -1,0 +1,67 @@
+- type: entities
+  title: Scenes
+  show_header_toggle: false
+  entities:
+    - scene.downstairs_general
+    - scene.front_room_dim
+    - scene.downstairs_off
+    - scene.all_off
+
+- type: entities
+  title: Frontroom
+  entities:
+    - light.front_room_lamp
+    - group.tv
+
+- type: entities
+  title: Bathroom
+  entities:
+    - light.bathroom_lights
+    - light.bathroom_mirror_lights
+
+- type: entities
+  title: Bedroom
+  entities:
+    - light.master_bedroom_main
+    - light.bedroom_lamps
+
+- type: entities
+  title: Kitchen
+  entities:
+    - light.main_kitchen_lights
+    - group.kitchen_low
+    - input_select.kitchen_mode
+
+- type: entities
+  title: Stairs
+  show_header_toggle: false
+  entities:
+    - light.stairs
+    - input_select.stairs_mode
+
+- type: entities
+  title: Landing
+  show_header_toggle: false
+  entities:
+    - light.landing_light
+
+- type: entities
+  title: Dining Room
+  # show_header_toggle: false
+  entities:
+    - light.dining_room_lamp
+    - entity: switch.christmas_tree
+      name: Christmas Tree
+      icon: mdi:pine-tree
+
+- type: entities
+  title: Outdoors
+  show_header_toggle: false
+  entities:
+    - light.garden_lights
+    - entity: switch.path_lights
+      name: Path Lights
+      icon: mdi:shoe-print
+
+- type: shopping-list
+  title: Shopping List

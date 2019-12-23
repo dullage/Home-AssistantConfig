@@ -1,0 +1,34 @@
+stairs_mode:
+  name: Stairs Mode
+  options:
+    - "Select..."
+    - "Warm Light"
+    - "Strobe"
+    - "Fire"
+    - "Colour Phase"
+    - "Sparkle"
+    - "Shoot / Drip"
+    - "Rain"
+    - "Rainbow 1"
+    - "Rainbow 2"
+    - "Stepped"
+    - "Startup"
+    - "Shutdown"
+    - "All On"
+  initial: "Select..."
+
+kitchen_mode:
+  name: Kitchen Mode
+  options:
+    - "Select..."
+    - "Warm Light"
+    - "Dim Light"
+    - "Strobe"
+    - "Fire"
+    - "Colour Phase"
+    - "Sparkle"
+    - "Shoot / Drip"
+    - "Rain"
+    - "Rainbow 1"
+    - "Rainbow 2"
+  initial: "Select..."

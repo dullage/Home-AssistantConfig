@@ -1,0 +1,23 @@
+# Quick action to set the heating to 21 deg.
+heating_quick_actions_21:
+  alias: "Set to 21"
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 21
+
+# Quick action to boost the heating to 25 deg for 5 minutes.
+heating_quick_actions_boost:
+  alias: Heating Boost (5 min)
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 25
+    - delay:
+        minutes: 5
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 21
