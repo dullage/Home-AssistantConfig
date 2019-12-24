@@ -9,19 +9,18 @@
 !*.sh
 !*.png
 !*.md
+!*.py
 
 # Allow these specific files 
 !.HA_VERSION
 !Dockerfile
-!xboxOn.py
-!blink.py
 !.gitignore
 
 # Re-exclude these files as their extensions were allowed above
 secrets.yaml
-entity_registry.yaml
-known_devices.yaml
-secretShellCommands.yaml
+docker/update.sh
+
+# Re-exclude these directories as they were allowed above
 /appdaemon
 /www
-docker/update.sh
+/.vscode
