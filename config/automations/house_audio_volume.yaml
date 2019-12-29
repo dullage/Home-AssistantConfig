@@ -41,17 +41,17 @@
   action:
     service: media_player.volume_set
     data_template:
-      entity_id: media_player.chromecast3116
+      entity_id: media_player.front_room_tv
       volume_level: "{{ (trigger.to_state.state | int) / 100 }}"
 
 - alias: house_audio_volume_front_room_update
   initial_state: true
   trigger:
     platform: state
-    entity_id: media_player.chromecast3116
+    entity_id: media_player.front_room_tv
   condition:
     condition: template
-    value_template: "{{ states.media_player.chromecast3116.attributes.volume_level is defined }}"
+    value_template: "{{ states.media_player.front_room_tv.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -59,7 +59,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: input_number.front_room_volume
-        value: "{{ (states.media_player.chromecast3116.attributes.volume_level * 100) | int }}"
+        value: "{{ (states.media_player.front_room_tv.attributes.volume_level * 100) | int }}"
     - service: automation.turn_on
       data:
         entity_id: automation.house_audio_volume_front_room
@@ -73,17 +73,17 @@
   action:
     service: media_player.volume_set
     data_template:
-      entity_id: media_player.googlehome1632
+      entity_id: media_player.nest_mini_bathroom
       volume_level: "{{ (trigger.to_state.state | int) / 100 }}"
 
 - alias: house_audio_volume_bathroom_update
   initial_state: true
   trigger:
     platform: state
-    entity_id: media_player.googlehome1632
+    entity_id: media_player.nest_mini_bathroom
   condition:
     condition: template
-    value_template: "{{ states.media_player.googlehome1632.attributes.volume_level is defined }}"
+    value_template: "{{ states.media_player.nest_mini_bathroom.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -91,7 +91,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: input_number.bathroom_volume
-        value: "{{ (states.media_player.googlehome1632.attributes.volume_level * 100) | int }}"
+        value: "{{ (states.media_player.nest_mini_bathroom.attributes.volume_level * 100) | int }}"
     - service: automation.turn_on
       data:
         entity_id: automation.house_audio_volume_bathroom
@@ -123,10 +123,10 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: media_player.whole_house_2
+    entity_id: media_player.whole_house
   condition:
     condition: template
-    value_template: "{{ states.media_player.whole_house_2.attributes.volume_level is defined }}"
+    value_template: "{{ states.media_player.whole_house.attributes.volume_level is defined }}"
   action:
     - service: automation.turn_off
       data:
@@ -134,7 +134,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: input_number.whole_house_volume
-        value: "{{ (states.media_player.whole_house_2.attributes.volume_level * 100) | int }}"
+        value: "{{ (states.media_player.whole_house.attributes.volume_level * 100) | int }}"
     - service: automation.turn_on
       data:
         entity_id: automation.house_audio_volume_whole_house

@@ -1,6 +1,6 @@
 # My Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 0.102.3 in a docker container on a Raspberry Pi 3. Details of my docker setup can be found in the [docker folder](/docker).
+I currently run [Home Assistant](http://homeassistant.io/) version 0.102.3 in a docker container on a Raspberry Pi 4. Details of my docker setup can be found in the [docker folder](/docker).
 
 All of the automations we run are commented, see the [automations folder](/config/automations).
 
@@ -27,24 +27,23 @@ Some highlights of our setup in no particular order:
 
 # Entity Counts
 
-| Type             | Count |
-| ---------------- | ----- |
-| Automations      | 79    |
-| Binary Sensors   | 20    |
-| Cameras          | 3     |
-| Climate Controls | 1     |
-| Device Trackers  | 2     |
-| Groups           | 16    |
-| Input Booleans   | 2     |
-| Input Numbers    | 7     |
-| Input Selects    | 2     |
-| Input Text       | 0     |
-| Lights           | 22    |
-| Media Players    | 11    |
-| Scenes           | 4     |
-| Scripts          | 27    |
-| Sensors          | 85    |
-| Switches         | 5     |
+| Type | Count |
+| ---- | ----- |
+| Scene | 4 |
+| Input Select | 2 |
+| Input Number | 7 |
+| Input Boolean | 2 |
+| Binary Sensor | 14 |
+| Sensor | 65 |
+| Script | 25 |
+| Device Tracker | 1 |
+| Switch | 5 |
+| Light | 24 |
+| Media Player | 10 |
+| Camera | 3 |
+| Alarm Control Panel | 1 |
+| Automation | 77 |
+
 
 # Screenshots
 

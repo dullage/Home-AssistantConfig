@@ -78,10 +78,10 @@ whole_house_volume_down:
   sequence:
     - service: media_player.volume_down
       data:
-        entity_id: media_player.whole_house_2
+        entity_id: media_player.whole_house
 
 whole_house_volume_up:
   sequence:
     - service: media_player.volume_up
       data:
-        entity_id: media_player.whole_house_2
+        entity_id: media_player.whole_house

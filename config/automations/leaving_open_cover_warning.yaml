@@ -1,5 +1,50 @@
+# If the front door is opened (looks like someone is leaving) and the bedroom window is open (most likely thing left open) then blink the entrance lights as a warning.
+- alias: leaving_open_cover_warning_door
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d0001a5e08d_contact
+    to: "on"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.0x00158d000222cb59_contact
+        state: "on"
+      # 30s Debounce
+      - condition: template
+        value_template: >
+          {% set automation_name = "leaving_open_cover_warning_door" %}
+          {% set debounce_seconds = 30 %}
+          {{ 
+            (states.automation[automation_name].attributes.last_triggered == none) 
+            or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
+          }}
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.entrance_light
+    - delay:
+        seconds: 0.5
+    - service: light.toggle
+      data:
+        entity_id: light.entrance_light
+    - delay:
+        seconds: 0.5
+    - service: light.toggle
+      data:
+        entity_id: light.entrance_light
+    - delay:
+        seconds: 0.5
+    - service: light.toggle
+      data:
+        entity_id: light.entrance_light
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Bedroom Window Warning Activated!"
+
 # If we've both left the house and a door or window is left open, send an iOS notification to both of us.
-- alias: leaving_open_cover_warning
+- alias: leaving_open_cover_warning_gps
   initial_state: true
   trigger:
     platform: state

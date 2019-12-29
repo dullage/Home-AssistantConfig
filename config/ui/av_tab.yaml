@@ -61,20 +61,29 @@
   title: TV Inputs
   show_header_toggle: false
   entities:
-    - script.input_sky
-    - script.input_chromecast
-    - script.input_xbox
-    - script.input_apple_tv
-    - script.input_guest
+    - entity: script.input_sky
+      icon: mdi:video-input-hdmi
+    - entity: script.input_chromecast
+      icon: mdi:video-input-hdmi
+    - entity: script.input_xbox
+      icon: mdi:video-input-hdmi
+    - entity: script.input_apple_tv
+      icon: mdi:video-input-hdmi
+    - entity: script.input_guest
+      icon: mdi:video-input-hdmi
 
 - type: entities
   title: AV Power
   show_header_toggle: false
   entities:
-    - script.normal_av
-    - script.tv
-    - script.amp
-    - script.sky_box
+    - entity: script.normal_av
+      icon: mdi:power
+    - entity: script.tv
+      icon: mdi:power
+    - entity: script.amp
+      icon: mdi:power
+    - entity: script.sky_box
+      icon: mdi:power
 
 - type: entities
   title: House Audio Volume

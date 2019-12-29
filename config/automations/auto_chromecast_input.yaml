@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: media_player.chromecast3116
+    entity_id: media_player.front_room_tv
     to: "idle"
   action:
     service: script.input_chromecast
@@ -13,7 +13,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: media_player.chromecast3116
+    entity_id: media_player.front_room_tv
     to: "off"
   action:
     service: script.input_sky

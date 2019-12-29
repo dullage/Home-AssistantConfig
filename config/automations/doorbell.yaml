@@ -8,7 +8,13 @@
   condition:
     # 5s Debounce
     condition: template
-    value_template: "{{ (states.automation.doorbell.attributes.last_triggered == none) or (as_timestamp(state_attr('automation.doorbell', 'last_triggered')) < (as_timestamp(now()) - 5)) }}"
+    value_template: >
+      {% set automation_name = "doorbell" %}
+      {% set debounce_seconds = 5 %}
+      {{ 
+        (states.automation[automation_name].attributes.last_triggered == none) 
+        or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
+      }}
   action:
     - service: tts.amazon_polly_say
       data:
