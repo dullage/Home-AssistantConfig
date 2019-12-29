@@ -100,3 +100,19 @@
   payload_on: "on"
   payload_off: "off"
   retain: false
+
+- platform: mqtt
+  name: porch_light
+  command_topic: "shellies/shelly1-227D0A/relay/0/command"
+  state_topic: "shellies/shelly1-227D0A/relay/0"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false
+
+- platform: mqtt
+  name: entrance_light
+  command_topic: "shellies/shelly1-76F1B6/relay/0/command"
+  state_topic: "shellies/shelly1-76F1B6/relay/0"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false

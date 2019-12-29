@@ -3,6 +3,8 @@
 entity_config:
   light.bathroom_lights:
     name: Bathroom Lights
+  light.entrance_light:
+    name: Entrance Light
   light.front_room_lamp:
     name: Front Room Lamp
   light.garden_lights:
@@ -13,6 +15,8 @@ entity_config:
     name: Kitchen Lights
   light.master_bedroom_main:
     name: Bedroom Lights
+  light.porch_light:
+    name: Porch Light
   scene.all_off:
     name: Everything
   scene.downstairs_general:
@@ -33,18 +37,20 @@ entity_config:
     name: Amp Volume Up
 filter:
   include_entities:
-  - script.normal_av
-  - scene.all_off
   - scene.downstairs_general
-  - light.garden_lights
-  - light.front_room_lamp
-  - script.volume_upx4
   - scene.front_room_dim
-  - light.main_kitchen_lights
-  - script.volume_downx4
-  - light.landing_light
-  - script.sky_back
   - scene.downstairs_off
+  - scene.all_off
+  - light.front_room_lamp
   - script.going_out
-  - light.master_bedroom_main
+  - light.main_kitchen_lights
+  - light.garden_lights
+  - light.landing_light
   - light.bathroom_lights
+  - light.master_bedroom_main
+  - script.normal_av
+  - script.sky_back
+  - script.volume_upx4
+  - script.volume_downx4
+  - light.porch_light
+  - light.entrance_light

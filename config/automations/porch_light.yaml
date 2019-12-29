@@ -1,0 +1,49 @@
+# Turn on the porch light if the front door opens after sunset.
+- alias: porch_light_on_door
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.0x00158d0001a5e08d_contact
+      to: "on"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    service: light.turn_on
+    entity_id: light.porch_light
+
+# Turn on the porch light if either of us arrive after sunset.
+- alias: porch_light_on_location
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: "home"
+    - platform: state
+      entity_id: person.leanne
+      to: "home"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    service: light.turn_on
+    entity_id: light.porch_light
+
+# Turn off the porch light if it has been on for 5 minutes (unless the motion sensor has been triggered in which case rely on that to turn it off).
+- alias: porch_light_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.porch_light
+    to: "on"
+    for:
+      minutes: 5
+  condition:
+    condition: state
+    entity_id: binary_sensor.porch_motion
+    state: "off"
+  action:
+    service: light.turn_off
+    entity_id: light.porch_light

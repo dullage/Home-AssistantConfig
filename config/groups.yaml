@@ -42,6 +42,7 @@ dining_room:
   entities:
     - light.dining_room_lamp
     - switch.christmas_tree
+    - light.entrance_light
 
 tv:
   name: TV

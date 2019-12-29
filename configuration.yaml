@@ -97,6 +97,7 @@ switch: !include_dir_merge_list config/switches/
 scene: !include_dir_merge_list config/scenes/
 group: !include config/groups.yaml
 shell_command: !include_dir_merge_named config/shell_commands/
+binary_sensor: !include_dir_merge_list config/binary_sensors/
 sensor: !include_dir_merge_list config/sensors/
 input_boolean: !include config/inputs/input_boolean.yaml
 input_number: !include config/inputs/input_number.yaml
@@ -175,32 +176,12 @@ media_player:
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
 
-# Notification Platforms
-notify:
-  - name: email_adam
-    platform: smtp
-    server: smtp.gmail.com
-    port: 587
-    timeout: 15
-    sender: !secret email_username
-    encryption: starttls
-    username: !secret email_username
-    password: !secret email_password
-    recipient:
-      - !secret email_address_adam
-    sender_name: Home Assistant
-
 # MQTT
 mqtt:
   discovery: true
   broker: 127.0.0.1
   username: !secret mqtt_username
   password: !secret mqtt_password
-
-# Nest
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
 
 # Pilight
 pilight:

@@ -4,6 +4,8 @@
   entities:
     - type: section
       label: Motion Sensors
+    - entity: binary_sensor.porch_motion
+      name: Porch Motion Sensor (Night)
     - entity: binary_sensor.0x00158d000223abef_occupancy
       name: Dining Room Motion Sensor
     - entity: binary_sensor.0x00158d000208c9c8_occupancy

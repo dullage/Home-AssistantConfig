@@ -47,8 +47,10 @@
 
 - type: entities
   title: Dining Room
-  # show_header_toggle: false
+  #show_header_toggle: false
   entities:
+    - entity: light.entrance_light
+      name: Entrance Light
     - light.dining_room_lamp
     - entity: switch.christmas_tree
       name: Christmas Tree
@@ -56,9 +58,12 @@
 
 - type: entities
   title: Outdoors
-  show_header_toggle: false
+  #show_header_toggle: false
   entities:
     - light.garden_lights
+    - entity: light.porch_light
+      name: Porch Light
+      icon: mdi:coach-lamp
     - entity: switch.path_lights
       name: Path Lights
       icon: mdi:shoe-print

@@ -28,3 +28,7 @@ script.volume_upx4:
   name: Amp Volume Up
 script.volume_downx4:
   name: Amp Volume Down
+light.porch_light:
+  name: Porch Light
+light.entrance_light:
+  name: Entrance Light

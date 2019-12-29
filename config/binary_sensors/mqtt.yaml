@@ -1,0 +1,6 @@
+- platform: mqtt
+  state_topic: "shellies/shelly1-227D0A/input/0"
+  name: porch_motion
+  device_class: motion
+  payload_on: 1
+  payload_off: 0
