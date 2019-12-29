@@ -1,3 +1,5 @@
+# Currently not working thanks to the Google overlords!!!
+
 # Turn Nest off when "away" input turned on
 - alias: away_nest_away
   initial_state: true
