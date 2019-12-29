@@ -12,15 +12,10 @@
 !*.py
 
 # Allow these specific files 
-!.HA_VERSION
-!Dockerfile
 !.gitignore
 
 # Re-exclude these files as their extensions were allowed above
 secrets.yaml
-docker/update.sh
 
 # Re-exclude these directories as they were allowed above
-/appdaemon
 /www
-/.vscode
