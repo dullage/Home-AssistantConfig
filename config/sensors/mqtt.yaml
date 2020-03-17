@@ -7,3 +7,15 @@
   state_topic: "humidity/loft"
   name: "Loft Humidity"
   unit_of_measurement: "%"
+
+# - platform: mqtt
+#   name: coat_rack_power_consumption
+#   state_topic: 2NICE-1/tele/SENSOR
+#   value_template: '{{ value_json["ENERGY"]["Current"] }}'
+#   unit_of_measurement: A
+
+- platform: mqtt
+  name: tv_power_consumption
+  state_topic: 2NICE-2/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: W

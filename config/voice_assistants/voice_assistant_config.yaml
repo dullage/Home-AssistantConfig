@@ -20,15 +20,17 @@ light.bathroom_lights:
   name: Bathroom Lights
 light.master_bedroom_main:
   name: Bedroom Lights
+light.bedroom_lamps:
+  name: Bedroom Lamps
 script.normal_av:
   name: TV
-script.sky_back:
-  name: Sky Back Button
-script.volume_upx4:
-  name: Amp Volume Up
-script.volume_downx4:
-  name: Amp Volume Down
 light.porch_light:
   name: Porch Light
 light.entrance_light:
   name: Entrance Light
+switch.coat_rack:
+  name: Coat Rack Lights
+light.dining_room_lamp:
+  name: Dining Room Lamp
+input_boolean.cartoons:
+  name: Cartoons

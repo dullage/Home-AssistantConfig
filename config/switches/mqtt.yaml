@@ -16,4 +16,17 @@
   payload_on: true
   payload_off: false
   value_template: "{{ value_json.permit_join }}"
-  
+
+- platform: mqtt
+  name: coat_rack
+  command_topic: 2NICE-1/cmnd/POWER
+  state_topic: 2NICE-1/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: microwave
+  command_topic: 2NICE-3/cmnd/POWER
+  state_topic: 2NICE-3/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"

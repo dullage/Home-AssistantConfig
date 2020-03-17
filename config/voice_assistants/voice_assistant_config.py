@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # This script takes the contents of voice_assistant_config.yaml and converts it into two configuration
 # files, one for the HomeKit integration and one for the Google Assistant integration. This serves 
 # two purposes:
@@ -12,7 +14,7 @@
 import yaml
 from os import path
 
-ROOT_DIR = r"./config/voice_assistants"
+ROOT_DIR = r"/config/config/voice_assistants/"
 
 CONFIG_FILE = path.join(ROOT_DIR, "voice_assistant_config.yaml")
 GOOGLE_FILE = path.join(ROOT_DIR, "google.yaml")

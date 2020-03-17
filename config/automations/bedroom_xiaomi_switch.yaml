@@ -3,18 +3,18 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d000128c313_click
+    entity_id: sensor.0x00158d0002337f01_click
     to: "single"
   action:
-    service: light.toggle
-    entity_id: light.bedroom_lamps
+    - service: light.toggle
+      entity_id: light.bedroom_lamps
 
 # Set a warm colour when the bedroom Xiaomi switch is pressed twice.
 - alias: bedroom_xiaomi_switch_double_click
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d000128c313_click
+    entity_id: sensor.0x00158d0002337f01_click
     to: "double"
   action:
     service: light.turn_on
@@ -27,7 +27,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d000128c313_click
+    entity_id: sensor.0x00158d0002337f01_click
     to: "quadruple"
   action:
     service: light.toggle
@@ -39,7 +39,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d000128c313_click
+    entity_id: sensor.0x00158d0002337f01_click
     to: "long"
   action:
     service: light.turn_on

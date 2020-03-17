@@ -66,13 +66,13 @@ spotify_play_pause:
   sequence:
     - service: media_player.media_play_pause
       data:
-        entity_id: media_player.spotify
+        entity_id: media_player.spotify_adam
 
 spotify_next_track:
   sequence:
     - service: media_player.media_next_track
       data:
-        entity_id: media_player.spotify
+        entity_id: media_player.spotify_adam
 
 whole_house_volume_down:
   sequence:

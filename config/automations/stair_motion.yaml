@@ -15,6 +15,10 @@
       - condition: state
         entity_id: group.everyone
         state: "home"
+      # Don't worry if they're already on. This is more relevant if the bathroom motion sensor isn't reporting.
+      - condition: state
+        entity_id: light.bathroom_mirror_lights
+        state: "off"
   action:
     - service: light.turn_on
       entity_id: light.bathroom_mirror_lights
@@ -23,6 +27,10 @@
     # If there is no motion in the bathroom after 30 seconds turn the light back off again
     - condition: state
       entity_id: binary_sensor.0x00158d00015e6be1_occupancy
+      state: "off"
+    # As long as the main lights haven't been turned on. Again, this is more relevant if the bathroom motion sensor isn't reporting.
+    - condition: state
+      entity_id: light.bathroom_lights
       state: "off"
     - service: light.turn_off
       entity_id: light.bathroom_mirror_lights

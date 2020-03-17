@@ -1,0 +1,19 @@
+morning_routine:
+  alias: Morning Routine
+  sequence:
+      # Wait until the motion sensor on the stairs changes to 'off' then back to 'on' indicating that the cat is fed and I'm going back upstairs for a shower. Then turn the downstairs lights off and the main bathroom lights on. 
+    - wait_template: "{{ states.binary_sensor['0x00158d000208c9c8_occupancy'].state == 'off' }}"
+    - wait_template: "{{ states.binary_sensor['0x00158d000208c9c8_occupancy'].state == 'on' }}"
+    - service: light.turn_off
+      entity_id: light.downstairs
+    - service: light.turn_on
+      entity_id: light.bathroom_lights
+    # Wait until the motion sensor on the stairs changes to 'off' then back to 'on' indicating that I've finished showering and I'm now going back down for breakfast. Then turn the bathroom lights off (the downstairs lights will be turned on automatically by another automation).
+    - wait_template: "{{ states.binary_sensor['0x00158d000208c9c8_occupancy'].state == 'off' }}"
+    - wait_template: "{{ states.binary_sensor['0x00158d000208c9c8_occupancy'].state == 'on' }}"
+    - service: light.turn_off
+      entity_id: light.bathroom_lights
+    # Wait until the front door opens then turn the downstairs lights off.
+    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    - service: light.turn_off
+      entity_id: light.downstairs

@@ -1,8 +1,14 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
+  input_boolean.cartoons:
+    name: Cartoons
   light.bathroom_lights:
     name: Bathroom Lights
+  light.bedroom_lamps:
+    name: Bedroom Lamps
+  light.dining_room_lamp:
+    name: Dining Room Lamp
   light.entrance_light:
     name: Entrance Light
   light.front_room_lamp:
@@ -29,12 +35,8 @@ entity_config:
     name: Going Out Script
   script.normal_av:
     name: TV
-  script.sky_back:
-    name: Sky Back Button
-  script.volume_downx4:
-    name: Amp Volume Down
-  script.volume_upx4:
-    name: Amp Volume Up
+  switch.coat_rack:
+    name: Coat Rack Lights
 filter:
   include_entities:
   - scene.downstairs_general
@@ -48,9 +50,10 @@ filter:
   - light.landing_light
   - light.bathroom_lights
   - light.master_bedroom_main
+  - light.bedroom_lamps
   - script.normal_av
-  - script.sky_back
-  - script.volume_upx4
-  - script.volume_downx4
   - light.porch_light
   - light.entrance_light
+  - switch.coat_rack
+  - light.dining_room_lamp
+  - input_boolean.cartoons

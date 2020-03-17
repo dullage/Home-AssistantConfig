@@ -21,13 +21,13 @@
     - service: mqtt.publish
       data:
         topic: light/kitchen_left
-        # payload: '{0:1,2:[26,15,4],3:100}'
-        payload: "{0:8,1:[0,0,0],2:[0,200,0],11:10000,3:20}"
+        payload: '{0:1,2:[26,15,4],3:100}'
+        # payload: "{0:8,1:[0,0,0],2:[0,200,0],11:10000,3:20}"
     - service: mqtt.publish
       data:
         topic: light/kitchen_right
-        # payload: '{0:1,2:[26,15,4],3:100}'
-        payload: "{0:8,1:[0,0,0],2:[200,0,0],11:10000,3:20}"
+        payload: '{0:1,2:[26,15,4],3:100}'
+        # payload: "{0:8,1:[0,0,0],2:[200,0,0],11:10000,3:20}"
 
 # When there is motion in the kitchen, providing the kitchen LED lights are on set them to a bright warm light.
 - alias: kitchen_motion_leds_up
@@ -73,13 +73,13 @@
     - service: mqtt.publish
       data:
         topic: light/kitchen_left
-        # payload: '{0:1,2:[26,15,4],3:100}'
-        payload: "{0:8,1:[0,0,0],2:[0,200,0],11:10000,3:20}"
+        payload: '{0:1,2:[26,15,4],3:100}'
+        # payload: "{0:8,1:[0,0,0],2:[0,200,0],11:10000,3:20}"
     - service: mqtt.publish
       data:
         topic: light/kitchen_right
-        # payload: '{0:1,2:[26,15,4],3:100}'
-        payload: "{0:8,1:[0,0,0],2:[200,0,0],11:10000,3:20}"
+        payload: '{0:1,2:[26,15,4],3:100}'
+        # payload: "{0:8,1:[0,0,0],2:[200,0,0],11:10000,3:20}"
 
 # Set the kitchen_animation input boolean to false if the kicthen LEDs report that they are running a non animation mode.
 - alias: kitchen_motion_animation_monitor_off
@@ -94,18 +94,17 @@
   action:
     service: input_boolean.turn_off
     entity_id: input_boolean.kitchen_animation
-# The below is currently commented out as the "down" mode is an animation (a Christmassy one!).
 
-## Set the kitchen_animation input boolean to true if the kicthen LEDs report that they are running an animation mode.
-# - alias: kitchen_motion_animation_monitor_on
-#   initial_state: true
-#   trigger:
-#     # Only need check 1 of the lights.
-#     platform: mqtt
-#     topic: "light/kitchen_right/recovery"
-#   condition:
-#     condition: template
-#     value_template: "{{ trigger.payload_json['0'] >= 3 }}"
-#   action:
-#     service: input_boolean.turn_on
-#     entity_id: input_boolean.kitchen_animation
+## Set the kitchen_animation input boolean to true if the kicthen LEDs report that they are running an animation mode. This needs to be commented out if the low mode is christmassy, see above.
+- alias: kitchen_motion_animation_monitor_on
+  initial_state: true
+  trigger:
+    # Only need check 1 of the lights.
+    platform: mqtt
+    topic: "light/kitchen_right/recovery"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json['0'] >= 3 }}"
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.kitchen_animation

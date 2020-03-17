@@ -1,0 +1,32 @@
+- alias: cartoons_on_tv_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.cartoons
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.tv_power_consumption
+    below: 30
+  action:
+    - service: script.normal_av
+    - delay:
+        seconds: 10
+    - service: script.cbeebies
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.cartoons
+
+- alias: cartoons_on_tv_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.cartoons
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.tv_power_consumption
+    above: 29
+  action:
+    - service: script.cbeebies
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.cartoons

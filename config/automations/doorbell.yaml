@@ -27,3 +27,36 @@
       data:
         message: "Doorbell"
     - service: shell_command.blink
+
+# Blue's Doorbell
+- alias: doorbell_blues
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d00023377e3_click
+    from: ""
+  condition:
+    # 5s Debounce
+    condition: template
+    value_template: >
+      {% set automation_name = "doorbell_blues" %}
+      {% set debounce_seconds = 5 %}
+      {{ 
+        (states.automation[automation_name].attributes.last_triggered == none) 
+        or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
+      }}
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Blue's Doorbell xOx"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Blue's Doorbell xOx"
+    - service: light.toggle
+      data:
+        entity_id: light.porch_light
+    - delay:
+        seconds: 0.5
+    - service: light.toggle
+      data:
+        entity_id: light.porch_light

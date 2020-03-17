@@ -1,0 +1,60 @@
+# If the house has been unoccupied for a while and the away mode is not set, check to see if we're away.
+- alias: away_warning
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    to: away
+    for:
+      hours: 1
+  condition:
+    condition: state
+    entity_id: input_boolean.away
+    state: "off"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "It's been a while, are you away?"
+    # - service: notify.notify.mobile_app_iphone
+    #   data:
+    #     message: "It's been a while, are you away?"
+
+# Currently not working thanks to the Google overlords!!!
+
+# Turn Nest off when "away" input turned on
+- alias: away_nest_away
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.away
+    to: "on"
+  action:
+    # - service: climate.set_operation_mode
+    #   data:
+    #     entity_id: climate.house
+    #     operation_mode: "off"
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "I have put the house into 'Away Mode', have a nice trip!"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "I have put the house into 'Away Mode', have a nice trip!"
+
+# Turn Nest on when "away" input turned off
+- alias: away_nest_home
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.away
+    to: "off"
+  action:
+    # - service: climate.set_operation_mode
+    #   data:
+    #     entity_id: climate.house
+    #     operation_mode: "heat"
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Welcome Home!"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Welcome Home!"

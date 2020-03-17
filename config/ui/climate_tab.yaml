@@ -14,7 +14,6 @@
 
 - type: glance
   title: Indoor Climate
-  show_header_toggle: false
   entities:
     # - entity: sensor.house_thermostat_temperature
     #   name: Downstairs
@@ -25,7 +24,6 @@
 
 - type: glance
   title: Humidity
-  show_header_toggle: false
   entities:
     # - entity: sensor.house_thermostat_humidity
     #   name: Downstairs

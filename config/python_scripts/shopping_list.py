@@ -78,7 +78,10 @@ if MODE == "ENTER":
     incomplete_items = get_incomplete_item_list()
 
     if incomplete_items:
-        data = {"message": "Shopping List:\n" + "\n".join(incomplete_items)}
+        data = {
+            "message": "Shopping List:\n" + "\n".join(incomplete_items),
+            "data": {"push": {"category": "clear_shopping_list"}},
+        }
         send_notification(NOTIFY_ENTITY, data)
     exit(0)
 

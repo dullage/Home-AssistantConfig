@@ -1,0 +1,4 @@
+render_voice_assistant_config:
+  alias: "Render Voice Assistant Config"
+  sequence:
+    - service: shell_command.render_voice_assistant_config

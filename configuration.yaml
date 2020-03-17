@@ -45,6 +45,14 @@ recorder:
   purge_keep_days: 7
   purge_interval: 1
 
+influxdb:
+  host: 192.168.0.49
+  database: homeassistant
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+
 logbook:
   exclude:
     domains:
@@ -170,23 +178,12 @@ tts:
     text_type: ssml
     voice: Amy
 
-# Media Player
-media_player:
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
-
 # MQTT
 mqtt:
   discovery: true
   broker: 127.0.0.1
   username: !secret mqtt_username
   password: !secret mqtt_password
-
-# Pilight
-pilight:
-  host: 192.168.0.15
-  port: 5000
 
 # IFTTT
 ifttt:
@@ -195,3 +192,8 @@ ifttt:
 # Speedtest
 speedtestdotnet:
   server_id: 7028
+
+# Spotify
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_secret

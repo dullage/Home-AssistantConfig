@@ -5,7 +5,9 @@
     - scene.downstairs_general
     - scene.front_room_dim
     - scene.downstairs_off
-    - scene.all_off
+    - entity: group.everything
+      name: All Lights
+      icon: mdi:lighthouse
 
 - type: entities
   title: Frontroom
@@ -47,26 +49,22 @@
 
 - type: entities
   title: Dining Room
-  #show_header_toggle: false
   entities:
+    - entity: switch.coat_rack
+      name: Coat Rack
+      icon: mdi:hanger
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp
-    - entity: switch.christmas_tree
-      name: Christmas Tree
-      icon: mdi:pine-tree
 
 - type: entities
   title: Outdoors
-  #show_header_toggle: false
+  # show_header_toggle: false
   entities:
     - light.garden_lights
     - entity: light.porch_light
       name: Porch Light
       icon: mdi:coach-lamp
-    - entity: switch.path_lights
-      name: Path Lights
-      icon: mdi:shoe-print
 
 - type: shopping-list
   title: Shopping List

@@ -15,7 +15,6 @@
 
 # Publish the sun rising via MQTT. This is used by the stair lights to know what mode to be in. TODO: Move this logic to Home Assistant.
 - alias: sun_position_mqtt_rising
-  hide_entity: true
   initial_state: true
   trigger:
     platform: state

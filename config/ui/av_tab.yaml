@@ -41,16 +41,16 @@
         left: 83.33%
         width: 80px
         height: 80px
-    - type: image
-      image: /local/remote/arrow-left.png
-      tap_action:
-        action: call-service
-        service: script.sky_back
-      style:
-        top: 16.66%
-        left: 50%
-        width: 80px
-        height: 80px
+    # - type: image
+    #   image: /local/remote/arrow-left.png
+    #   tap_action:
+    #     action: call-service
+    #     service: script.sky_back
+    #   style:
+    #     top: 16.66%
+    #     left: 50%
+    #     width: 80px
+    #     height: 80px
     - type: image
       image: /local/remote/remote.png
       style:
@@ -61,7 +61,7 @@
   title: TV Inputs
   show_header_toggle: false
   entities:
-    - entity: script.input_sky
+    - entity: script.input_freeview
       icon: mdi:video-input-hdmi
     - entity: script.input_chromecast
       icon: mdi:video-input-hdmi
@@ -82,6 +82,8 @@
       icon: mdi:power
     - entity: script.amp
       icon: mdi:power
+    - entity: script.freeview_box
+      icon: mdi:power
     - entity: script.sky_box
       icon: mdi:power
 
@@ -97,4 +99,4 @@
     - input_number.bathroom_volume
 
 - type: media-control
-  entity: media_player.spotify
+  entity: media_player.spotify_adam

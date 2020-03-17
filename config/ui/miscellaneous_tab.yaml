@@ -31,10 +31,13 @@
       icon: mdi:window-open-variant
 
 - type: entities
-  title: Away Mode
+  title: Modes
   show_header_toggle: false
   entities:
-    - input_boolean.away
+    - entity: input_boolean.guest_mode
+      icon: mdi:account-group
+    - entity: input_boolean.away
+      icon: mdi:airplane
 
 - type: glance
   title: Internet Speeds
@@ -50,14 +53,15 @@
   title: Automation Control
   show_header_toggle: false
   entities:
-    - entity: automation.location_lights_auto_off
-      name: Auto Light Off (Leaving)
+    # - entity: automation.location_lights_auto_off
+    #   name: Auto Light Off (Leaving)
     - entity: automation.light_timeouts_landing
       name: Landing Light Timeout
     - entity: automation.light_timeouts_master_bedroom
       name: Bedroom Light Timeout
-    - entity: automation.alarm
-      name: Alarm
+    # - entity: automation.alarm
+    #   name: Alarm
+    #- script.morning_routine
 
 - type: entities
   title: "Home Arrival Notifications"
@@ -91,3 +95,10 @@
   entities:
     - entity: sensor.starling_effective_balance
       name: "Stock Price"
+    - script.render_voice_assistant_config
+    - entity: switch.microwave
+      name: Microwave
+      icon: mdi:microwave
+    - entity: sensor.tv_power_consumption
+      name: TV Power Consumption
+      icon: mdi:television

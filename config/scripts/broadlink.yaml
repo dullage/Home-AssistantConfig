@@ -4,7 +4,7 @@ volume_up:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
 
@@ -13,7 +13,7 @@ volume_upx4:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
@@ -25,7 +25,7 @@ volume_down:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
 
@@ -34,7 +34,7 @@ volume_downx4:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
@@ -46,37 +46,46 @@ mute:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABJpISEhI4EhISOBI3EzcSNxISEzcSEhM3EhITEhMSEhITNxISExISNxM3EjcTEhISExITNhM3EhITEhMSEjcTNhM3EgAFGAABJkkTAA0FAAAAAAAAAAA=
 
 # Power
 tv:
-  alias: TV Power (Toggle)
+  alias: TV
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBGAJCUEDkQOhA5ERQPFRAVEBQRFBA5ETkPOhEUDxURFBEUDxUQFRA5ERQQFQ8VEBUQFQ8VEDoQFBA6EDkQORE5DzoROBIADQUAAA==
 
 amp:
-  alias: Amp Power (Toggle)
+  alias: Amp
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
 
 sky_box:
-  alias: Sky Box Power (Toggle)
+  alias: Sky Box
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgA+AFcdDw4PDg8dDx0dDg8ODw8ODw4PDg8ODw4PHR0PDg8ODw4PDw4PHQ4PHR0dDw4PDg8ODw4dDw8dDg8OAA0FAAAAAAAAAAAAAA==
+
+freeview_box:
+  alias: Freeview Box
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.0.33
+        packet:
+          - JgBQAAABKJMTEhM3EzYTEhM3ExITEhMSExITEhMSExITEhM2ExITExI3EzcSExITEjcTNxITEjcTEhMSEzYUNhM3ExITEhM2EwAFjwABJ0oSAA0FAAAAAAAAAAA=
 
 # HMDI Switcher
 input_xbox:
@@ -84,18 +93,18 @@ input_xbox:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
 
-input_sky:
-  alias: Sky Q
+input_freeview:
+  alias: Freeview Box
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
           - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
@@ -106,7 +115,7 @@ input_chromecast:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
           - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
@@ -117,7 +126,7 @@ input_apple_tv:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
           - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
@@ -128,7 +137,7 @@ input_guest:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
           - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
           - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
@@ -140,7 +149,7 @@ input_guest:
 #   sequence:
 #     - service: broadlink.send
 #       data:
-#         host: 192.168.0.31
+#         host: 192.168.0.33
 #         packet:
 #           - JgBQAAABJpQSEhI4EhISOBE4EjcSNxITEjcSExI3EhMTERITEhMSNxI3EhMSExISEhMSExI3EjcSExI3EjcSOBI3EjcSExITEgAFIwABJksSAA0FAAAAAAAAAAA=
 
@@ -149,25 +158,55 @@ input_guest:
 #   sequence:
 #     - service: broadlink.send
 #       data:
-#         host: 192.168.0.31
+#         host: 192.168.0.33
 #         packet:
 #           - JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
 
 # Sky Remote
-sky_back:
-  alias: "Sky: Back"
+# sky_back:
+#   alias: "Sky: Back"
+#   sequence:
+#     - service: broadlink.send
+#       data:
+#         host: 192.168.0.33
+#         packet:
+#           - JgA8AFQgDBEMEQ4eDCAcDw4PDg8NEA0RDBEMEQwRHB4MEQ4PDBEODw0QHR4cHg4PHR0NEA0QDREODxwPDgANBQAAAAAAAAAAAAAAAA==
+
+# Channel Numbers
+channel_0:
+  alias: Channel 0
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.31
+        host: 192.168.0.33
         packet:
-          - JgA8AFQgDBEMEQ4eDCAcDw4PDg8NEA0RDBEMEQwRHB4MEQ4PDBEODw0QHR4cHg4PHR0NEA0QDREODxwPDgANBQAAAAAAAAAAAAAAAA==
+          - JgBQAAABJpQRFBE5ETgRFBE5EBUQFRAVEBUQFRAVEBUQFRA5ERQRFBE4ERQRFBE5ERQQFRA5ETkROBE5EBUQORE5EDkRFBEUEQAFjQABJUsRAA0FAAAAAAAAAAA=
+
+channel_2:
+  alias: Channel 2
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.0.33
+        packet:
+          - JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
 
 # Scripts
 normal_av:
-  alias: TV, Sky & Amp (Toggle)
+  alias: TV, Freeview & Amp
   sequence:
     - service: script.tv
     - service: script.amp
-    - service: script.sky_box
-    - service: script.input_sky
+    - service: script.freeview_box
+    - service: script.input_freeview
+
+cbeebies:
+  alias: CBeebies
+  sequence:
+    - service: script.channel_2
+    - delay:
+        seconds: 0.5
+    - service: script.channel_0
+    - delay:
+        seconds: 0.5
+    - service: script.channel_2

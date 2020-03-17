@@ -16,4 +16,4 @@
     entity_id: media_player.front_room_tv
     to: "off"
   action:
-    service: script.input_sky
+    service: script.input_freeview

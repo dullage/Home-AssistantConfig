@@ -1,0 +1,46 @@
+# Turn the Alarm and Auto Lights Off automations off if the Guest Mode is enabled.
+- alias: guest_mode_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.guest_mode
+    to: "on"
+  action:
+    - service: automation.turn_off
+      data:
+        entity_id: automation.alarm
+    - service: automation.turn_off
+      data:
+        entity_id: automation.location_lights_auto_off
+
+# Turn the Alarm and Auto Lights Off automations on if the Guest Mode is disabled.
+- alias: guest_mode_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.guest_mode
+    to: "off"
+  action:
+    - service: automation.turn_on
+      data:
+        entity_id: automation.alarm
+    - service: automation.turn_on
+      data:
+        entity_id: automation.location_lights_auto_off
+
+# Automatically turn the Guest Mode off after being on for 6 hours.
+- alias: guest_mode_auto_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.guest_mode
+    to: "on"
+    for:
+      hours: 6
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.guest_mode
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Guest mode automatically disabled"

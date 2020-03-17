@@ -4,20 +4,29 @@ everyone:
     - person.adam
     - person.leanne
 
-# Includes switches that are lights but not ones that aren't.
-biglightgroup:
-  name: The Big Light Group
-  entities:
-    - group.all_lights
-    - switch.christmas_tree
-    - switch.path_lights
-
 # Everything that should be turned off when leaving
 everything:
   name: Everything
   entities:
-    - group.all_lights
-    - switch.christmas_tree
+    - switch.coat_rack
+    - light.entrance_light
+    - light.dining_room_lamp
+    - light.tv_left
+    - light.tv_top
+    - light.tv_right
+    - light.frontroom_under_tv
+    - light.dining_room_lamp
+    - light.main_kitchen_lights
+    - light.front_room_lamp
+    - light.kitchen_left
+    - light.kitchen_right
+    - light.stairs
+    - light.landing_light
+    - light.bathroom_lights
+    - light.bathroom_mirror_lights
+    - light.master_bedroom_main
+    - light.bedroom_lamps
+    - light.garden_lights
 
 living_room:
   name: Living Room
@@ -41,7 +50,6 @@ dining_room:
   name: Dining Room
   entities:
     - light.dining_room_lamp
-    - switch.christmas_tree
     - light.entrance_light
 
 tv:

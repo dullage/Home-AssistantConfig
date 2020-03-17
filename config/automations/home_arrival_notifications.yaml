@@ -10,7 +10,7 @@
       data:
         message: "Leanne is Home"
     - service: automation.turn_off
-      entity_id: automation.leanne_notify_adam
+      entity_id: automation.home_arrival_notifications_leanne_arriving
 
 # If enabled, notify Leanne when Adam gets home.
 - alias: home_arrival_notifications_adam_arriving
@@ -24,4 +24,4 @@
       data:
         message: "Adam is Home"
     - service: automation.turn_off
-      entity_id: automation.adam_notify_leanne
+      entity_id: automation.home_arrival_notifications_adam_arriving

@@ -1,8 +1,3 @@
-- name: All Off
-  entities:
-    group.biglightgroup:
-      state: off
-
 - name: Downstairs Off
   entities:
     group.downstairs_ex_stairs:
@@ -26,8 +21,6 @@
       state: on
       brightness: 200
       xy_color: [0.49, 0.41]
-    switch.christmas_tree:
-      state: on
 
 - name: Front Room Dim
   entities:
