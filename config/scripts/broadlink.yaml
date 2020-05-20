@@ -69,15 +69,6 @@ amp:
         packet:
           - JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
 
-sky_box:
-  alias: Sky Box
-  sequence:
-    - service: broadlink.send
-      data:
-        host: 192.168.0.33
-        packet:
-          - JgA+AFcdDw4PDg8dDx0dDg8ODw8ODw4PDg8ODw4PHR0PDg8ODw4PDw4PHQ4PHR0dDw4PDg8ODw4dDw8dDg8OAA0FAAAAAAAAAAAAAA==
-
 freeview_box:
   alias: Freeview Box
   sequence:
@@ -162,16 +153,6 @@ input_guest:
 #         packet:
 #           - JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
 
-# Sky Remote
-# sky_back:
-#   alias: "Sky: Back"
-#   sequence:
-#     - service: broadlink.send
-#       data:
-#         host: 192.168.0.33
-#         packet:
-#           - JgA8AFQgDBEMEQ4eDCAcDw4PDg8NEA0RDBEMEQwRHB4MEQ4PDBEODw0QHR4cHg4PHR0NEA0QDREODxwPDgANBQAAAAAAAAAAAAAAAA==
-
 # Channel Numbers
 channel_0:
   alias: Channel 0
@@ -192,7 +173,7 @@ channel_2:
           - JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
 
 # Scripts
-normal_av:
+all_av:
   alias: TV, Freeview & Amp
   sequence:
     - service: script.tv

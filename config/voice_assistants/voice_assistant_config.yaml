@@ -3,9 +3,7 @@ scene.downstairs_general:
 scene.front_room_dim:
   name: Front Room Dim
 scene.downstairs_off:
-  name: Downstairs
-scene.all_off:
-  name: Everything
+  name: Downstairs Off
 light.front_room_lamp:
   name: Front Room Lamp
 script.going_out:
@@ -22,7 +20,7 @@ light.master_bedroom_main:
   name: Bedroom Lights
 light.bedroom_lamps:
   name: Bedroom Lamps
-script.normal_av:
+input_boolean.all_av:
   name: TV
 light.porch_light:
   name: Porch Light

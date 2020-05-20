@@ -1,6 +1,8 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
+  input_boolean.all_av:
+    name: TV
   input_boolean.cartoons:
     name: Cartoons
   light.bathroom_lights:
@@ -23,18 +25,14 @@ entity_config:
     name: Bedroom Lights
   light.porch_light:
     name: Porch Light
-  scene.all_off:
-    name: Everything
   scene.downstairs_general:
     name: Downstairs General
   scene.downstairs_off:
-    name: Downstairs
+    name: Downstairs Off
   scene.front_room_dim:
     name: Front Room Dim
   script.going_out:
     name: Going Out Script
-  script.normal_av:
-    name: TV
   switch.coat_rack:
     name: Coat Rack Lights
 filter:
@@ -42,7 +40,6 @@ filter:
   - scene.downstairs_general
   - scene.front_room_dim
   - scene.downstairs_off
-  - scene.all_off
   - light.front_room_lamp
   - script.going_out
   - light.main_kitchen_lights
@@ -51,7 +48,7 @@ filter:
   - light.bathroom_lights
   - light.master_bedroom_main
   - light.bedroom_lamps
-  - script.normal_av
+  - input_boolean.all_av
   - light.porch_light
   - light.entrance_light
   - switch.coat_rack

@@ -18,7 +18,11 @@
     # - entity: sensor.house_thermostat_temperature
     #   name: Downstairs
     - entity: sensor.upstairs_temperature_sensor_temperature
-      name: Upstairs
+      name: Landing
+    - entity: sensor.0x00158d00044fc898_temperature
+      name: Master Bedroom
+    - entity: sensor.0x00158d0004649178_temperature
+      name: Blue's Room
     - entity: sensor.loft_temperature
       name: Loft
 
@@ -28,7 +32,11 @@
     # - entity: sensor.house_thermostat_humidity
     #   name: Downstairs
     - entity: sensor.upstairs_temperature_sensor_humidity
-      name: Upstairs
+      name: Landing
+    - entity: sensor.0x00158d00044fc898_humidity
+      name: Master Bedroom
+    - entity: sensor.0x00158d0004649178_humidity
+      name: Blue's Room
     - entity: sensor.loft_humidity
       name: Loft
       icon: mdi:water-percent

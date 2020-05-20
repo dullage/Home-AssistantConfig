@@ -5,11 +5,11 @@
     entity_id: input_boolean.cartoons
     to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.tv_power_consumption
-    below: 30
+    condition: state
+    entity_id: input_boolean.all_av
+    state: "off"
   action:
-    - service: script.normal_av
+    - service: script.all_av
     - delay:
         seconds: 10
     - service: script.cbeebies
@@ -23,9 +23,9 @@
     entity_id: input_boolean.cartoons
     to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.tv_power_consumption
-    above: 29
+    condition: state
+    entity_id: input_boolean.all_av
+    state: "on"
   action:
     - service: script.cbeebies
     - service: input_boolean.turn_off

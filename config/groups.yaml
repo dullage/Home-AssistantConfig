@@ -4,9 +4,9 @@ everyone:
     - person.adam
     - person.leanne
 
-# Everything that should be turned off when leaving
-everything:
-  name: Everything
+# A group containing all lights including lights that are in the switch domain. 
+all_lights:
+  name: All Lights
   entities:
     - switch.coat_rack
     - light.entrance_light
@@ -27,6 +27,13 @@ everything:
     - light.master_bedroom_main
     - light.bedroom_lamps
     - light.garden_lights
+
+# Everything that should be turned off when leaving
+everything:
+  name: Everything
+  entities:
+    - group.all_lights
+    - input_boolean.all_av
 
 living_room:
   name: Living Room

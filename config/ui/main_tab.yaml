@@ -5,7 +5,7 @@
     - scene.downstairs_general
     - scene.front_room_dim
     - scene.downstairs_off
-    - entity: group.everything
+    - entity: group.all_lights
       name: All Lights
       icon: mdi:lighthouse
 

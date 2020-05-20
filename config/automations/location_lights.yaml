@@ -50,5 +50,5 @@
     condition: template
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
-    - service: scene.turn_on
-      entity_id: scene.all_off
+    - service: homeassistant.turn_off
+      entity_id: group.everything

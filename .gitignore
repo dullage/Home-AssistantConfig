@@ -16,6 +16,7 @@
 
 # Re-exclude these files as their extensions were allowed above
 secrets.yaml
+known_devices.yaml
 
 # Re-exclude these directories as they were allowed above
 /www

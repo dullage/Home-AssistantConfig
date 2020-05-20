@@ -4,9 +4,9 @@
   trigger:
     platform: state
     entity_id: group.everyone
-    to: away
+    to: not_home
     for:
-      hours: 1
+      hours: 18
   condition:
     condition: state
     entity_id: input_boolean.away
@@ -15,9 +15,9 @@
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "It's been a while, are you away?"
-    # - service: notify.notify.mobile_app_iphone
-    #   data:
-    #     message: "It's been a while, are you away?"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "It's been a while, are you away?"
 
 # Currently not working thanks to the Google overlords!!!
 

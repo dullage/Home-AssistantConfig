@@ -1,4 +1,4 @@
-# Saying "Hey Google, I'm going out" will start this script. It waits until the front door is shut then turns off all the lights.
+# Saying "Hey Google, I'm going out" will start this script. It waits until the front door is shut then turns off all the lights and the TV.
 going_out:
   sequence:
     - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"

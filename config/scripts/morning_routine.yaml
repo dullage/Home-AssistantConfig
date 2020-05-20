@@ -14,6 +14,6 @@ morning_routine:
     - service: light.turn_off
       entity_id: light.bathroom_lights
     # Wait until the front door opens then turn the downstairs lights off.
-    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
-    - service: light.turn_off
-      entity_id: light.downstairs
+    # - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    # - service: light.turn_off
+    #   entity_id: light.downstairs

@@ -5,7 +5,7 @@
       image: /local/remote/power.png
       tap_action:
         action: call-service
-        service: script.normal_av
+        service: script.all_av
       style:
         top: 16.66%
         left: 16.66%
@@ -76,15 +76,15 @@
   title: AV Power
   show_header_toggle: false
   entities:
-    - entity: script.normal_av
+    # - entity: script.all_av
+    #   icon: mdi:power
+    - entity: input_boolean.all_av
       icon: mdi:power
     - entity: script.tv
       icon: mdi:power
     - entity: script.amp
       icon: mdi:power
     - entity: script.freeview_box
-      icon: mdi:power
-    - entity: script.sky_box
       icon: mdi:power
 
 - type: entities

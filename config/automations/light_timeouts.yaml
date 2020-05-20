@@ -1,4 +1,4 @@
-# Turn off the main kitchen lights after 5 minutes without motion.
+# Turn off the main kitchen lights after 30 minutes without motion.
 - alias: light_timeouts_kitchen
   initial_state: true
   trigger:
@@ -6,7 +6,7 @@
       entity_id: binary_sensor.0x00158d00015db8be_occupancy
       to: "off"
       for:
-        minutes: 5
+        minutes: 30
   action:
     service: light.turn_off
     entity_id: light.main_kitchen_lights

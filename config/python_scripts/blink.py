@@ -11,6 +11,10 @@ This script relises on the following entries in the secrets.yaml file.
 
 The SAVE_PATH and SECRETS_FILE constants below may also need to be changed
 depending on the setup.
+
+The first time the script runs it will fail as the device "Doorbell Script"
+needs to be authorised. Blink will send you an email to do this and once
+confirmed the script should run ok.
 """
 import json
 import os
@@ -39,7 +43,10 @@ with open(SECRETS_FILE, "r") as secrets_file:
     secrets = yaml.load(secrets_file)
 
 blink = blinkpy.Blink(
-    username=secrets["blinkUsername"], password=secrets["blinkPassword"]
+    username=secrets["blinkUsername"],
+    password=secrets["blinkPassword"],
+    device_id="Doorbell Script",
+    no_prompt=True,
 )
 blink.start()
 

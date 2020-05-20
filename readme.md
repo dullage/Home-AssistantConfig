@@ -1,8 +1,8 @@
-# My Setup
+# Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 0.102.3 in a docker container on a Raspberry Pi 4. Details of my docker setup can be found in the [docker folder](/docker).
+I currently run [Home Assistant](http://homeassistant.io/) version 0.110.0 in a docker container on a Raspberry Pi 4.
 
-All of the automations we run are commented, see the [automations folder](/config/automations).
+All of the automations are commented, see the [automations folder](/config/automations).
 
 # Highlights
 
@@ -29,20 +29,20 @@ Some highlights of our setup in no particular order:
 
 | Type | Count |
 | ---- | ----- |
+| Binary Sensor | 16 |
+| Sensor | 107 |
+| Script | 30 |
+| Light | 24 |
 | Scene | 3 |
 | Input Select | 2 |
 | Input Number | 7 |
-| Input Boolean | 4 |
-| Binary Sensor | 16 |
-| Sensor | 99 |
-| Media Player | 18 |
-| Automation | 85 |
-| Camera | 3 |
-| Alarm Control Panel | 1 |
-| Device Tracker | 2 |
-| Light | 24 |
+| Input Boolean | 5 |
+| Media Player | 22 |
 | Switch | 5 |
-| Script | 32 |
+| Alarm Control Panel | 1 |
+| Camera | 3 |
+| Device Tracker | 4 |
+| Automation | 90 |
 
 
 # Screenshots
