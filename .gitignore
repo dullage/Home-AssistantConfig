@@ -20,3 +20,5 @@ known_devices.yaml
 
 # Re-exclude these directories as they were allowed above
 /www
+README_TEMPLATE.md
+render_readme.py
