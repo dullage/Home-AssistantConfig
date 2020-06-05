@@ -29,20 +29,21 @@ Some highlights of our setup in no particular order:
 
 | Type | Count |
 | ---- | ----- |
-| Script | 30 |
+| Script | 31 |
 | Scene | 3 |
 | Light | 24 |
 | Sensor | 107 |
 | Binary Sensor | 16 |
 | Input Select | 2 |
-| Input Number | 7 |
 | Input Boolean | 5 |
+| Input Number | 7 |
+| Cover | 1 |
 | Media Player | 22 |
+| Switch | 5 |
 | Alarm Control Panel | 1 |
 | Camera | 3 |
-| Switch | 5 |
 | Device Tracker | 4 |
-| Automation | 90 |
+| Automation | 89 |
 
 
 # Screenshots
