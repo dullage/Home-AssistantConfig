@@ -1,6 +1,8 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
+  cover.master_bedroom:
+    name: Bedroom Blinds
   input_boolean.all_av:
     name: TV
   input_boolean.cartoons:
@@ -54,3 +56,4 @@ filter:
   - switch.coat_rack
   - light.dining_room_lamp
   - input_boolean.cartoons
+  - cover.master_bedroom

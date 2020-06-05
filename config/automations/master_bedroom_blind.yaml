@@ -1,0 +1,9 @@
+- alias: master_bedroom_blind_night
+  trigger:
+    platform: time
+    at: "18:50:00"
+  action:
+    service: cover.set_cover_position
+    data:
+      entity_id: cover.master_bedroom
+      position: 38

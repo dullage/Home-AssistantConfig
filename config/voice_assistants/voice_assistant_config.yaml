@@ -32,3 +32,5 @@ light.dining_room_lamp:
   name: Dining Room Lamp
 input_boolean.cartoons:
   name: Cartoons
+cover.master_bedroom:
+  name: Bedroom Blinds

@@ -1,0 +1,7 @@
+master_bedroom_blind_62:
+  alias: Set blind to 62%
+  sequence:
+    service: cover.set_cover_position
+    data:
+      entity_id: cover.master_bedroom
+      position: 38

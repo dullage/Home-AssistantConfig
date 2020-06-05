@@ -26,6 +26,9 @@
   entities:
     - light.master_bedroom_main
     - light.bedroom_lamps
+    - entity: cover.master_bedroom
+      name: Blind
+    - script.master_bedroom_blind_62
 
 - type: entities
   title: Kitchen
