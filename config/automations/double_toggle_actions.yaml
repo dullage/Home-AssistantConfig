@@ -17,10 +17,8 @@
     topic: automation
     payload: "kitchen"
   action:
-    - service: light.toggle
-      entity_id: light.kitchen_left
-    - service: light.toggle
-      entity_id: light.kitchen_right
+    - service: homeassistant.toggle
+      entity_id: group.kitchen_low
 
 # Toggle the bedroom lamps when the bedroom light switch is double toggled.
 - alias: double_toggle_actions_bedroom

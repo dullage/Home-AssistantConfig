@@ -5,14 +5,6 @@ colourphasemode:
       data:
         topic: "light/stairs"
         payload: "{0:5,3:100}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_left"
-        payload: "{0:5,3:100}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_right"
-        payload: "{0:5,3:100}"
 
 rainbow2:
   alias: "Rainbow 2"
@@ -20,14 +12,6 @@ rainbow2:
     - service: mqtt.publish
       data:
         topic: "light/stairs"
-        payload: "{0:13}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_left"
-        payload: "{0:13}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_right"
         payload: "{0:13}"
 
 strobemode:
@@ -37,14 +21,6 @@ strobemode:
       data:
         topic: "light/stairs"
         payload: "{0:3}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_left"
-        payload: "{0:3}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_right"
-        payload: "{0:3}"
 
 firemode:
   alias: "Fire Mode"
@@ -53,14 +29,6 @@ firemode:
       data:
         topic: "light/stairs"
         payload: "{0:4}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_left"
-        payload: "{0:4,3:55}"
-    - service: mqtt.publish
-      data:
-        topic: "light/kitchen_right"
-        payload: "{0:4,3:55}"
 
 spotify_play_pause:
   sequence:

@@ -9,10 +9,12 @@
     input_select.stairs_mode: "Startup"
     light.kitchen_left:
       state: on
-      rgb_color: [255, 147, 41]
+      rgb_color: [255,200,145]
+      brightness: 255
     light.kitchen_right:
       state: on
-      rgb_color: [255, 147, 41]
+      rgb_color: [255,200,145]
+      brightness: 255
     light.front_room_lamp:
       state: on
     light.dining_room_lamp:

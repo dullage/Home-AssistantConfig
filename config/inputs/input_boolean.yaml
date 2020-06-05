@@ -1,9 +1,6 @@
 away:
   name: Away
 
-kitchen_animation:
-  name: Kitchen Animation Running
-
 cartoons:
   name: Cartoons
 
