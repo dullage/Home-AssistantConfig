@@ -1,0 +1,44 @@
+# Turn the fan off if the blind closes by more than 70%.
+- alias: fan_auto_off_blind
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: cover.master_bedroom
+  condition:
+    condition: template
+    value_template: "{{ state_attr('cover.master_bedroom', 'current_position') < 30 }}"
+  action:
+    service: switch.turn_off
+    entity_id: switch.fan
+
+# Turn the fan off if the bedroom window is closed.
+- alias: fan_auto_off_window
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.0x00158d000222cb59_contact
+    to: "off"
+  action:
+    service: switch.turn_off
+    entity_id: switch.fan
+
+# Turn the fan on if the blind is open and the bedroom window is open.
+- alias: fan_auto_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: cover.master_bedroom
+    - platform: state
+      entity_id: binary_sensor.0x00158d000222cb59_contact
+      to: "on"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.0x00158d000222cb59_contact
+        state: "on"
+      - condition: template
+        value_template: "{{ state_attr('cover.master_bedroom', 'current_position') >= 30 }}"
+  action:
+    service: switch.turn_on
+    entity_id: switch.fan

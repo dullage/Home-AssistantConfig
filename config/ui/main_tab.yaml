@@ -23,19 +23,23 @@
 
 - type: entities
   title: Bedroom
+  show_header_toggle: false
   entities:
     - light.master_bedroom_main
     - light.bedroom_lamps
     - entity: cover.master_bedroom
       name: Blind
-    - script.master_bedroom_blind_62
+      secondary_info: position
+    - script.master_bedroom_blind_36
+    - entity: switch.fan
+      name: Fan
+      icon: mdi:fan
 
 - type: entities
   title: Kitchen
   entities:
     - light.main_kitchen_lights
     - group.kitchen_low
-    - input_select.kitchen_mode
 
 - type: entities
   title: Stairs

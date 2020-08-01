@@ -43,14 +43,6 @@ logger:
 recorder:
   db_url: !secret db_url
 
-influxdb:
-  host: 192.168.0.49
-  database: homeassistant
-  include:
-    domains:
-      - sensor
-      - binary_sensor
-
 logbook:
   exclude:
     domains:
@@ -191,7 +183,7 @@ ifttt:
 
 # Speedtest
 speedtestdotnet:
-  server_id: 7028
+  server_id: 1675
 
 # Spotify
 spotify:

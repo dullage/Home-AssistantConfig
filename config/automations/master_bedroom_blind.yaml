@@ -1,4 +1,6 @@
+# Close the blind so it rests above the window fan.
 - alias: master_bedroom_blind_night
+  initial_state: true
   trigger:
     platform: time
     at: "18:50:00"
@@ -6,4 +8,40 @@
     service: cover.set_cover_position
     data:
       entity_id: cover.master_bedroom
-      position: 38
+      position: 36
+
+# Close the blind fully at 11pm if we are both out
+- alias: master_bedroom_blind_evening_out
+  initial_state: true
+  trigger:
+    platform: time
+    at: "23:00:00"
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: cover.close_cover
+    entity_id: cover.master_bedroom
+
+# Open the blind at 10am
+- alias: master_bedroom_blind_morning
+  initial_state: true
+  trigger:
+    platform: time
+    at: "10:00:00"
+  action:
+    service: cover.open_cover
+    entity_id: cover.master_bedroom
+
+# Open the blind if we both leave
+- alias: master_bedroom_blind_open_on_leave
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: cover.open_cover
+    entity_id: cover.master_bedroom

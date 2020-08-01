@@ -1,0 +1,32 @@
+# Toggle the bathroom lights on single click of the bathroom Xiaomi switch
+- alias: bathroom_xiaomi_switch_single_click
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000355a3ff_click
+    to: single
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_lights
+
+# Toggle the bathroom mirror lights on double click of the bathroom Xiaomi switch
+- alias: bathroom_xiaomi_switch_double_click
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000355a3ff_click
+    to: double
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_mirror_lights
+
+# Toggle the bedroom blinds on hold of the bathroom Xiaomi switch
+- alias: bathroom_xiaomi_switch_hold
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x00158d000355a3ff_action
+    to: hold
+  action:
+    service: cover.toggle
+    entity_id: cover.master_bedroom

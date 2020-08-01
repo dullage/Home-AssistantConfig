@@ -73,6 +73,13 @@
       icon: mdi:video-input-hdmi
 
 - type: entities
+  title: Misc
+  show_header_toggle: false
+  entities:
+    - entity: input_boolean.cartoons
+      icon: mdi:duck
+
+- type: entities
   title: AV Power
   show_header_toggle: false
   entities:

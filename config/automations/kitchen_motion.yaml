@@ -68,3 +68,26 @@
         entity_id: light.kitchen_right
         rgb_color: [255,200,145]
         brightness: 100
+
+# If the kitchen lights are turned on and the kitchen is occupied (motion detected) then go straight to the bright mode.
+- alias: kitchen_motion_start_down_if_unoccupied
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.kitchen_right
+    to: "on"
+  condition:
+    condition: state
+    entity_id: binary_sensor.0x00158d00015db8be_occupancy
+    state: "on"
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_left
+        rgb_color: [255,200,145]
+        brightness: 255
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_right
+        rgb_color: [255,200,145]
+        brightness: 255
