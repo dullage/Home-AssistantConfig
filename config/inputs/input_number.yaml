@@ -15,39 +15,6 @@ ad_hoc_heating_time_minute:
   max: 55
   step: 5
 
-# Music Volume
-whole_house_volume:
-  name: Whole House
-  icon: mdi:volume-high
-  unit_of_measurement: "%"
-  step: 1
-  min: 0
-  max: 100
-
-downstairs_volume:
-  name: Downstairs
-  icon: mdi:volume-high
-  unit_of_measurement: "%"
-  step: 1
-  min: 0
-  max: 100
-
-front_room_volume:
-  name: Front Room
-  icon: mdi:volume-high
-  unit_of_measurement: "%"
-  step: 1
-  min: 0
-  max: 100
-
-bathroom_volume:
-  name: Bathroom
-  icon: mdi:volume-high
-  unit_of_measurement: "%"
-  step: 1
-  min: 0
-  max: 100
-
 # Dryer Timeout
 dryer_timeout:
   name: Dryer Timeout

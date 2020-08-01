@@ -32,16 +32,16 @@ Some highlights of our setup in no particular order:
 | Binary Sensor | 12 |
 | Script | 31 |
 | Scene | 3 |
-| Light | 24 |
-| Input Select | 2 |
 | Input Number | 7 |
 | Input Boolean | 5 |
+| Input Select | 2 |
+| Light | 24 |
 | Sensor | 129 |
 | Cover | 1 |
 | Switch | 6 |
 | Media Player | 23 |
 | Device Tracker | 5 |
-| Automation | 99 |
+| Automation | 91 |
 | Camera | 3 |
 | Alarm Control Panel | 1 |
 
