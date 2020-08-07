@@ -73,7 +73,7 @@ if MODE == "CLEAR":
         complete_item(item["name"])
     exit(0)
 
-if MODE == "ENTER":
+elif MODE == "ENTER":
     NOTIFY_ENTITY = sys.argv[2]
     incomplete_items = get_incomplete_item_list()
 
@@ -85,7 +85,7 @@ if MODE == "ENTER":
         send_notification(NOTIFY_ENTITY, data)
     exit(0)
 
-if MODE == "EXIT":
+elif MODE == "EXIT":
     NOTIFY_ENTITY = sys.argv[2]
     incomplete_items = get_incomplete_item_list()
 
