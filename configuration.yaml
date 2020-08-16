@@ -4,6 +4,8 @@
 
 homeassistant:
   name: Home
+  external_url: !secret external_url
+  internal_url: !secret internal_url
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: !secret elevation
@@ -25,7 +27,6 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
   server_port: 8448
-  base_url: !secret base_url
   trusted_proxies:
     - 127.0.0.1
   use_x_forwarded_for: true
@@ -156,11 +157,6 @@ camera:
     name: "HADashboard Image"
     still_image_url: !secret ha_dashboard_image
 
-# Blink
-blink:
-  username: !secret blinkUsername
-  password: !secret blinkPassword
-
 # Text to Speech
 tts:
   - platform: amazon_polly
@@ -198,3 +194,8 @@ device_tracker:
     password: !secret unifi_ssh_password
     new_device_defaults:
       track_new_devices: false
+
+# Pi-hole
+pi_hole:
+  - host: '192.168.0.50'
+    api_key: !secret pi_hole_api_key

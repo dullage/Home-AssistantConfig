@@ -61,7 +61,8 @@
       name: Bedroom Light Timeout
     # - entity: automation.alarm
     #   name: Alarm
-    #- script.morning_routine
+    - entity: script.morning_routine
+      icon: mdi:weather-sunset-up
 
 - type: entities
   title: "Home Arrival Notifications"
@@ -99,6 +100,5 @@
     - entity: switch.microwave
       name: Microwave
       icon: mdi:microwave
-    - entity: sensor.tv_power_consumption
-      name: TV Power Consumption
-      icon: mdi:television
+    - entity: switch.pi_hole
+      name: Pi-hole Ad-Blocking

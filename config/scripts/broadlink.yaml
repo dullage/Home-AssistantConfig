@@ -4,7 +4,7 @@ volume_up:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
 
@@ -13,7 +13,7 @@ volume_upx4:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
           - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
@@ -25,7 +25,7 @@ volume_down:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
 
@@ -34,7 +34,7 @@ volume_downx4:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
           - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
@@ -46,7 +46,7 @@ mute:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABJpISEhI4EhISOBI3EzcSNxISEzcSEhM3EhITEhMSEhITNxISExISNxM3EjcTEhISExITNhM3EhITEhMSEjcTNhM3EgAFGAABJkkTAA0FAAAAAAAAAAA=
 
@@ -56,7 +56,7 @@ tv:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBGAJCUEDkQOhA5ERQPFRAVEBQRFBA5ETkPOhEUDxURFBEUDxUQFRA5ERQQFQ8VEBUQFQ8VEDoQFBA6EDkQORE5DzoROBIADQUAAA==
 
@@ -65,7 +65,7 @@ amp:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
 
@@ -74,7 +74,7 @@ freeview_box:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABKJMTEhM3EzYTEhM3ExITEhMSExITEhMSExITEhM2ExITExI3EzcSExITEjcTNxITEjcTEhMSEzYUNhM3ExITEhM2EwAFjwABJ0oSAA0FAAAAAAAAAAA=
 
@@ -84,7 +84,7 @@ input_xbox:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
           - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
@@ -95,7 +95,7 @@ input_freeview:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
           - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
@@ -106,7 +106,7 @@ input_chromecast:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
           - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
@@ -117,7 +117,7 @@ input_apple_tv:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
           - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
@@ -128,7 +128,7 @@ input_guest:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
           - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
@@ -140,7 +140,7 @@ input_guest:
 #   sequence:
 #     - service: broadlink.send
 #       data:
-#         host: 192.168.0.33
+#         host: 192.168.0.215
 #         packet:
 #           - JgBQAAABJpQSEhI4EhISOBE4EjcSNxITEjcSExI3EhMTERITEhMSNxI3EhMSExISEhMSExI3EjcSExI3EjcSOBI3EjcSExITEgAFIwABJksSAA0FAAAAAAAAAAA=
 
@@ -149,7 +149,7 @@ input_guest:
 #   sequence:
 #     - service: broadlink.send
 #       data:
-#         host: 192.168.0.33
+#         host: 192.168.0.215
 #         packet:
 #           - JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
 
@@ -159,7 +159,7 @@ channel_0:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBQAAABJpQRFBE5ETgRFBE5EBUQFRAVEBUQFRAVEBUQFRA5ERQRFBE4ERQRFBE5ERQQFRA5ETkROBE5EBUQORE5EDkRFBEUEQAFjQABJUsRAA0FAAAAAAAAAAA=
 
@@ -168,7 +168,7 @@ channel_2:
   sequence:
     - service: broadlink.send
       data:
-        host: 192.168.0.33
+        host: 192.168.0.215
         packet:
           - JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
 
