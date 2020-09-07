@@ -1,4 +1,4 @@
-# Arm the garden camera when we've both left the house.
+# Arm the garden and entrance cameras when we've both left the house.
 - alias: blink_cameras_arm_garden_on_exit
   initial_state: true
   trigger:
@@ -8,10 +8,12 @@
     condition: template
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
-    service: camera.enable_motion_detection
-    entity_id: camera.blink_garden
+    - service: camera.enable_motion_detection
+      entity_id: camera.blink_garden
+    - service: camera.enable_motion_detection
+      entity_id: camera.entrance
 
-# Disarm the garden camera if either of us come home between 7am and 10pm.
+# Disarm the garden and entrance cameras if either of us come home between 7am and 10pm.
 - alias: blink_cameras_disarm_garden_on_daytime_arrival
   initial_state: true
   trigger:
@@ -26,8 +28,10 @@
     after: "07:00:00"
     before: "22:00:00"
   action:
-    service: camera.disable_motion_detection
-    entity_id: camera.blink_garden
+    - service: camera.disable_motion_detection
+      entity_id: camera.blink_garden
+    - service: camera.disable_motion_detection
+      entity_id: camera.entrance
 
 # Arm the garden camera at 10pm as long as both back doors are shut. If either are open we're probably having a late BBQ.
 - alias: blink_cameras_arm_garden_at_night
@@ -79,15 +83,19 @@
     service: camera.enable_motion_detection
     entity_id: camera.blink_garden
 
-# As long as one of us is home, disarm the garden camera at 7am.
+# Note: The entrance camera is armed when the Google "Goodnight" routine is run.
+
+# As long as one of us is home, disarm the garden and entrance cameras at 6am.
 - alias: blink_cameras_disarm_garden_in_morning
   initial_state: true
   trigger:
     platform: time
-    at: "07:00:00"
+    at: "06:00:00"
   condition:
     condition: template
     value_template: "{{ states('group.everyone') == 'home' }}"
   action:
-    service: camera.disable_motion_detection
-    entity_id: camera.blink_garden
+    - service: camera.disable_motion_detection
+      entity_id: camera.blink_garden
+    - service: camera.disable_motion_detection
+      entity_id: camera.entrance

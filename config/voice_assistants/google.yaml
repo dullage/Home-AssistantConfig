@@ -33,6 +33,8 @@ entity_config:
     name: Downstairs Off
   scene.front_room_dim:
     name: Front Room Dim
+  script.arm_entrance_camera:
+    name: Arm Entrance Camera
   script.going_out:
     name: Going Out Script
   switch.coat_rack:
@@ -57,3 +59,4 @@ filter:
   - light.dining_room_lamp
   - input_boolean.cartoons
   - cover.master_bedroom
+  - script.arm_entrance_camera

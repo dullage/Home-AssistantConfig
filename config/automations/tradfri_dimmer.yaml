@@ -1,0 +1,38 @@
+# Open the blinds if the dimmer on button is pressed or held.
+- alias: tradfri_dimmer_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0x588e81fffe3ea302_click
+      to: "on"
+    - platform: state
+      entity_id: sensor.0x588e81fffe3ea302_click
+      to: "brightness_up"
+  action:
+    service: cover.open_cover
+    entity_id: cover.master_bedroom
+
+# Close the blinds if the dimmer off button is pressed or held.
+- alias: tradfri_dimmer_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.0x588e81fffe3ea302_click
+      to: "off"
+    - platform: state
+      entity_id: sensor.0x588e81fffe3ea302_click
+      to: "brightness_down"
+  action:
+    service: cover.close_cover
+    entity_id: cover.master_bedroom
+
+# Stop the blinds if a dimmer button is held then released. 
+- alias: tradfri_dimmer_stop
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.0x588e81fffe3ea302_click
+    to: "brightness_stop"
+  action:
+    service: cover.stop_cover
+    entity_id: cover.master_bedroom

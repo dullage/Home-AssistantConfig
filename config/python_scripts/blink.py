@@ -12,10 +12,11 @@ This script relises on the following entries in the secrets.yaml file.
 The SAVE_PATH and SECRETS_FILE constants below may also need to be changed
 depending on the setup.
 
-The first time the script runs it will fail as the device "Doorbell Script"
-needs to be authorised. Blink will send you an email to do this and once
-confirmed the script should run ok.
+The first time you run the script you should set auth no_prompt to False 
+and run it interactively so that you can enter the pin sent via email.
+After this you should be able to switch it back to True.
 """
+
 import json
 import os
 import time
@@ -25,6 +26,7 @@ from requests import post
 
 import yaml
 from blinkpy import api, blinkpy
+from blinkpy.auth import Auth
 
 SAVE_PATH = "/config/www"
 SECRETS_FILE = "/config/secrets.yaml"
@@ -42,12 +44,16 @@ IMAGE_FILE = os.path.join(SAVE_PATH, IMAGE_FILENAME)
 with open(SECRETS_FILE, "r") as secrets_file:
     secrets = yaml.load(secrets_file)
 
-blink = blinkpy.Blink(
-    username=secrets["blinkUsername"],
-    password=secrets["blinkPassword"],
-    device_id="Doorbell Script",
+blink = blinkpy.Blink()
+auth = Auth(
+    {
+        "username": secrets["blinkUsername"],
+        "password": secrets["blinkPassword"],
+        "device_id": "Doorbell Script",
+    },
     no_prompt=True,
 )
+blink.auth = auth
 blink.start()
 
 from_time = time.time() - OFFSET_SECONDS

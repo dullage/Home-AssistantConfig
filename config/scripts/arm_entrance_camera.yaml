@@ -1,0 +1,5 @@
+arm_entrance_camera:
+  alias: Arm Entrance Camera
+  sequence:
+    - service: camera.enable_motion_detection
+      entity_id: camera.blink_garden

@@ -1,0 +1,12 @@
+# Turn the Pi-hole ad-blocking back on if off for more than 30 minutes
+- alias: pihole_auto_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.pi_hole
+    to: "off"
+    for:
+      minutes: 30
+  action:
+    service: switch.turn_on
+    entity_id: switch.pi_hole

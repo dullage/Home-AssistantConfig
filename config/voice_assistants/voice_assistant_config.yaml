@@ -34,3 +34,5 @@ input_boolean.cartoons:
   name: Cartoons
 cover.master_bedroom:
   name: Bedroom Blinds
+script.arm_entrance_camera:
+  name: Arm Entrance Camera
