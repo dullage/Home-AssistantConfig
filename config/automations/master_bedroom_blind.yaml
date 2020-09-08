@@ -5,10 +5,7 @@
     platform: time
     at: "18:50:00"
   action:
-    service: cover.set_cover_position
-    data:
-      entity_id: cover.master_bedroom
-      position: 36
+    service: script.master_bedroom_blind_fan
 
 # Close the blind fully at 11pm if we are both out
 - alias: master_bedroom_blind_evening_out

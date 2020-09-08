@@ -30,7 +30,7 @@
     - entity: cover.master_bedroom
       name: Blind
       secondary_info: position
-    - script.master_bedroom_blind_36
+    - script.master_bedroom_blind_fan
     - entity: switch.fan
       name: Fan
       icon: mdi:fan

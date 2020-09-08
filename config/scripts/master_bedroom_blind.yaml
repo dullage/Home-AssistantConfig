@@ -1,7 +1,7 @@
-master_bedroom_blind_36:
-  alias: Set blind to 36%
+master_bedroom_blind_fan:
+  alias: Close Blind to Fan Height
   sequence:
     service: cover.set_cover_position
     data:
       entity_id: cover.master_bedroom
-      position: 36
+      position: 38

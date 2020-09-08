@@ -103,4 +103,4 @@
     - entity: switch.pi_hole
       name: Pi-hole Ad-Blocking
     - entity: switch.0x680ae2fffe712766_switch
-      name: Ikea switch
+      name: Ikea Switch
