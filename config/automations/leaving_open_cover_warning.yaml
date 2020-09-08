@@ -3,13 +3,13 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d0001a5e08d_contact
+    entity_id: binary_sensor.front_door_contact
     to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: binary_sensor.0x00158d000222cb59_contact
+        entity_id: binary_sensor.bedroom_window_contact
         state: "on"
       # Do not alert before 8:30, do not wake the baby!
       - condition: time
@@ -42,13 +42,13 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d0001a5e08d_contact
+    entity_id: binary_sensor.front_door_contact
     to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: binary_sensor.0x00158d000222cb59_contact
+        entity_id: binary_sensor.bedroom_window_contact
         state: "on"
       # Do not alert before 8:30, do not wake the baby!
       - condition: time
@@ -89,19 +89,19 @@
     conditions:
       # Front Door
       - condition: state
-        entity_id: binary_sensor.0x00158d0001a5e08d_contact
+        entity_id: binary_sensor.front_door_contact
         state: "on"
       # Back Door
       - condition: state
-        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        entity_id: binary_sensor.kitchen_door_contact
         state: "on"
       # Patio Doors
       - condition: state
-        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        entity_id: binary_sensor.patio_doors_contact
         state: "on"
       # Master Bedroom Window
       - condition: state
-        entity_id: binary_sensor.0x00158d000222cb59_contact
+        entity_id: binary_sensor.bedroom_window_contact
         state: "on"
   action:
     - service: notify.mobile_app_dullage_s_iphone

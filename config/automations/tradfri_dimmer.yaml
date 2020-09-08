@@ -3,10 +3,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.0x588e81fffe3ea302_click
+      entity_id: sensor.master_bedroom_tradfri_dimmer_click
       to: "on"
     - platform: state
-      entity_id: sensor.0x588e81fffe3ea302_click
+      entity_id: sensor.master_bedroom_tradfri_dimmer_click
       to: "brightness_up"
   action:
     service: cover.open_cover
@@ -17,10 +17,10 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: sensor.0x588e81fffe3ea302_click
+      entity_id: sensor.master_bedroom_tradfri_dimmer_click
       to: "off"
     - platform: state
-      entity_id: sensor.0x588e81fffe3ea302_click
+      entity_id: sensor.master_bedroom_tradfri_dimmer_click
       to: "brightness_down"
   action:
     service: cover.close_cover
@@ -31,7 +31,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x588e81fffe3ea302_click
+    entity_id: sensor.master_bedroom_tradfri_dimmer_click
     to: "brightness_stop"
   action:
     service: cover.stop_cover

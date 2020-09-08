@@ -16,7 +16,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d000222cb59_contact
+    entity_id: binary_sensor.bedroom_window_contact
     to: "off"
   action:
     service: switch.turn_off
@@ -29,13 +29,13 @@
     - platform: state
       entity_id: cover.master_bedroom
     - platform: state
-      entity_id: binary_sensor.0x00158d000222cb59_contact
+      entity_id: binary_sensor.bedroom_window_contact
       to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: binary_sensor.0x00158d000222cb59_contact
+        entity_id: binary_sensor.bedroom_window_contact
         state: "on"
       - condition: template
         value_template: "{{ state_attr('cover.master_bedroom', 'current_position') >= 30 }}"

@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.0x00158d0001a5e08d_contact
+      entity_id: binary_sensor.front_door_contact
       to: "on"
   condition:
     condition: state

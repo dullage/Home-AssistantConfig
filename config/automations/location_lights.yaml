@@ -15,7 +15,7 @@
         value_template: "{{ states('person.leanne') != 'home' }}"
   action:
     # Wait until the front door is opened.
-    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
     - service: scene.turn_on
       entity_id: scene.downstairs_general
 
@@ -36,7 +36,7 @@
         value_template: "{{ states('person.adam') != 'home' }}"
   action:
     # Wait until the front door is opened.
-    - wait_template: "{{ states.binary_sensor['0x00158d0001a5e08d_contact'].state == 'on' }}"
+    - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
     - service: scene.turn_on
       entity_id: scene.downstairs_general
 

@@ -25,7 +25,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d00015e6be1_occupancy
+    entity_id: binary_sensor.bathroom_motion_sensor_occupancy
     to: "on"
   condition:
     condition: state
@@ -40,7 +40,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d00015e6be1_occupancy
+    entity_id: binary_sensor.bathroom_motion_sensor_occupancy
     to: "off"
     for:
       seconds: 5

@@ -17,11 +17,11 @@
   entities:
     # - entity: sensor.house_thermostat_temperature
     #   name: Downstairs
-    - entity: sensor.upstairs_temperature_sensor_temperature
+    - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
-    - entity: sensor.0x00158d00044fc898_temperature
+    - entity: sensor.master_bedroom_tempurature_sensor_temperature
       name: Master Bedroom
-    - entity: sensor.0x00158d0004649178_temperature
+    - entity: sensor.blues_room_tempurature_sensor_temperature
       name: Blue's Room
     - entity: sensor.loft_temperature
       name: Loft
@@ -31,11 +31,11 @@
   entities:
     # - entity: sensor.house_thermostat_humidity
     #   name: Downstairs
-    - entity: sensor.upstairs_temperature_sensor_humidity
+    - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
-    - entity: sensor.0x00158d00044fc898_humidity
+    - entity: sensor.master_bedroom_tempurature_sensor_humidity
       name: Master Bedroom
-    - entity: sensor.0x00158d0004649178_humidity
+    - entity: sensor.blues_room_tempurature_sensor_humidity
       name: Blue's Room
     - entity: sensor.loft_humidity
       name: Loft

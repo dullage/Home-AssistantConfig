@@ -44,11 +44,11 @@
     conditions:
       # Back Door
       - condition: state
-        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        entity_id: binary_sensor.kitchen_door_contact
         state: "off"
       # Patio Doors
       - condition: state
-        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        entity_id: binary_sensor.patio_doors_contact
         state: "off"
   action:
     service: camera.enable_motion_detection
@@ -60,11 +60,11 @@
   trigger:
     # Back Door
     - platform: state
-      entity_id: binary_sensor.0x00158d00019f63a5_contact
+      entity_id: binary_sensor.kitchen_door_contact
       to: "off"
     # Patio Doors
     - platform: state
-      entity_id: binary_sensor.0x00158d0001a67e20_contact
+      entity_id: binary_sensor.patio_doors_contact
       to: "off"
   condition:
     condition: and
@@ -73,11 +73,11 @@
         after: "22:00:00"
       # Back Door
       - condition: state
-        entity_id: binary_sensor.0x00158d00019f63a5_contact
+        entity_id: binary_sensor.kitchen_door_contact
         state: "off"
       # Patio Doors
       - condition: state
-        entity_id: binary_sensor.0x00158d0001a67e20_contact
+        entity_id: binary_sensor.patio_doors_contact
         state: "off"
   action:
     service: camera.enable_motion_detection

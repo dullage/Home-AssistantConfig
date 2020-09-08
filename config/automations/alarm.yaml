@@ -4,19 +4,19 @@
   trigger:
     # Front Door
     - platform: state
-      entity_id: binary_sensor.0x00158d0001a5e08d_contact
+      entity_id: binary_sensor.front_door_contact
       to: "on"
     # Kitchen Door
     - platform: state
-      entity_id: binary_sensor.0x00158d00019f63a5_contact
+      entity_id: binary_sensor.kitchen_door_contact
       to: "on"
     # Patio Doors
     - platform: state
-      entity_id: binary_sensor.0x00158d0001a67e20_contact
+      entity_id: binary_sensor.patio_doors_contact
       to: "on"
     # Master Bedroom Window
     - platform: state
-      entity_id: binary_sensor.0x00158d000222cb59_contact
+      entity_id: binary_sensor.bedroom_window_contact
       to: "on"
   condition:
     condition: and

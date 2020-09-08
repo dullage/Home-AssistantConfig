@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.0x00158d00015db8be_occupancy
+      entity_id: binary_sensor.kitchen_motion_sensor_occupancy
       to: "off"
   condition:
     condition: state
@@ -28,7 +28,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: binary_sensor.0x00158d00015db8be_occupancy
+      entity_id: binary_sensor.kitchen_motion_sensor_occupancy
       to: "on"
   condition:
     condition: state
@@ -55,7 +55,7 @@
     to: "on"
   condition:
     condition: state
-    entity_id: binary_sensor.0x00158d00015db8be_occupancy
+    entity_id: binary_sensor.kitchen_motion_sensor_occupancy
     state: "off"
   action:
     - service: light.turn_on
@@ -78,7 +78,7 @@
     to: "on"
   condition:
     condition: state
-    entity_id: binary_sensor.0x00158d00015db8be_occupancy
+    entity_id: binary_sensor.kitchen_motion_sensor_occupancy
     state: "on"
   action:
     - service: light.turn_on

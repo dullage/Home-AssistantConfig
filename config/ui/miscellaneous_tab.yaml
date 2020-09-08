@@ -6,27 +6,27 @@
       label: Motion Sensors
     - entity: binary_sensor.porch_motion
       name: Porch Motion Sensor (Night)
-    - entity: binary_sensor.0x00158d000223abef_occupancy
+    - entity: binary_sensor.dining_room_motion_sensor_occupancy
       name: Dining Room Motion Sensor
-    - entity: binary_sensor.0x00158d000208c9c8_occupancy
+    - entity: binary_sensor.stairs_motion_sensor_occupancy
       name: Stairs Motion Sensor
-    - entity: binary_sensor.0x00158d00015db8be_occupancy
+    - entity: binary_sensor.kitchen_motion_sensor_occupancy
       name: Kitchen Motion Sensor
-    - entity: binary_sensor.0x00158d00015e6be1_occupancy
+    - entity: binary_sensor.bathroom_motion_sensor_occupancy
       name: Bathroom Motion Sensor
 
     - type: section
       label: Door Sensors
-    - entity: binary_sensor.0x00158d0001a5e08d_contact
+    - entity: binary_sensor.front_door_contact
       name: Front Door
-    - entity: binary_sensor.0x00158d00019f63a5_contact
+    - entity: binary_sensor.kitchen_door_contact
       name: Kitchen Door
-    - entity: binary_sensor.0x00158d0001a67e20_contact
+    - entity: binary_sensor.patio_doors_contact
       name: Patio Doors
 
     - type: section
       label: Window Sensors
-    - entity: binary_sensor.0x00158d000222cb59_contact
+    - entity: binary_sensor.bedroom_window_contact
       name: Bedroom Window
       icon: mdi:window-open-variant
 
@@ -102,5 +102,5 @@
       icon: mdi:microwave
     - entity: switch.pi_hole
       name: Pi-hole Ad-Blocking
-    - entity: switch.0x680ae2fffe712766_switch
-      name: Ikea Switch
+    - entity: switch.ikea_socket_switch
+      name: Ikea Socket

@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d000208c9c8_occupancy
+    entity_id: binary_sensor.stairs_motion_sensor_occupancy
     to: "on"
   condition:
     condition: and
@@ -26,7 +26,7 @@
         seconds: 30
     # If there is no motion in the bathroom after 30 seconds turn the light back off again
     - condition: state
-      entity_id: binary_sensor.0x00158d00015e6be1_occupancy
+      entity_id: binary_sensor.bathroom_motion_sensor_occupancy
       state: "off"
     # As long as the main lights haven't been turned on. Again, this is more relevant if the bathroom motion sensor isn't reporting.
     - condition: state
@@ -40,7 +40,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.0x00158d000208c9c8_occupancy
+    entity_id: binary_sensor.stairs_motion_sensor_occupancy
     to: "on"
   condition:
     condition: and

@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d000204a3c3_click
+    entity_id: sensor.doorbell_click
     from: ""
   condition:
     # 5s Debounce
@@ -33,7 +33,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.0x00158d00023377e3_click
+    entity_id: sensor.blues_doorbell_click
     from: ""
   condition:
     # 5s Debounce
