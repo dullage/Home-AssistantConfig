@@ -6,7 +6,6 @@
 
     adam_badge:
       unit_of_measurement: Adam
-      entity_id: person.adam
       friendly_name_template: >
         {% if is_state('person.adam', 'home') %}
           Home
@@ -27,7 +26,6 @@
 
     leanne_badge:
       unit_of_measurement: Leanne
-      entity_id: person.leanne
       friendly_name_template: >
         {% if is_state('person.leanne', 'home') %}
           Home
