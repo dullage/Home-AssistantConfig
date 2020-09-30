@@ -2,175 +2,149 @@
 volume_up:
   alias: Volume Up
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
 
 volume_upx4:
   alias: Volume Up
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
-          - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
-          - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
-          - JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
+        num_repeats: 4
 
 volume_down:
   alias: Volume Down
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
 
 volume_downx4:
   alias: Volume Down
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
-          - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
-          - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
-          - JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
+        num_repeats: 4
 
 mute:
   alias: Mute
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABJpISEhI4EhISOBI3EzcSNxISEzcSEhM3EhITEhMSEhITNxISExISNxM3EjcTEhISExITNhM3EhITEhMSEjcTNhM3EgAFGAABJkkTAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABJpISEhI4EhISOBI3EzcSNxISEzcSEhM3EhITEhMSEhITNxISExISNxM3EjcTEhISExITNhM3EhITEhMSEjcTNhM3EgAFGAABJkkTAA0FAAAAAAAAAAA=
 
 # Power
 tv:
   alias: TV
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBGAJCUEDkQOhA5ERQPFRAVEBQRFBA5ETkPOhEUDxURFBEUDxUQFRA5ERQQFQ8VEBUQFQ8VEDoQFBA6EDkQORE5DzoROBIADQUAAA==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBGAJCUEDkQOhA5ERQPFRAVEBQRFBA5ETkPOhEUDxURFBEUDxUQFRA5ERQQFQ8VEBUQFQ8VEDoQFBA6EDkQORE5DzoROBIADQUAAA==
 
 amp:
   alias: Amp
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
 
 freeview_box:
   alias: Freeview Box
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABKJMTEhM3EzYTEhM3ExITEhMSExITEhMSExITEhM2ExITExI3EzcSExITEjcTNxITEjcTEhMSEzYUNhM3ExITEhM2EwAFjwABJ0oSAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABKJMTEhM3EzYTEhM3ExITEhMSExITEhMSExITEhM2ExITExI3EzcSExITEjcTNxITEjcTEhMSEzYUNhM3ExITEhM2EwAFjwABJ0oSAA0FAAAAAAAAAAA=
 
 # HMDI Switcher
 input_xbox:
   alias: Xbox
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
-          - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
-          - JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+        num_repeats: 3
 
 input_freeview:
   alias: Freeview Box
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
-          - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
-          - JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
+        num_repeats: 3
 
 input_chromecast:
   alias: Chromecast
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
-          - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
-          - JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
+        num_repeats: 3
 
 input_apple_tv:
   alias: Apple TV
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
-          - JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
+        num_repeats: 3
 
 input_guest:
   alias: Guest HDMI
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
-          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
-          - JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
+        num_repeats: 3
 
 # Amp Input
 # amp_dvd:
 #   alias: TV Audio
 #   sequence:
-#     - service: broadlink.send
+#     - service: remote.send_command
 #       data:
-#         host: 192.168.0.215
-#         packet:
-#           - JgBQAAABJpQSEhI4EhISOBE4EjcSNxITEjcSExI3EhMTERITEhMSNxI3EhMSExISEhMSExI3EjcSExI3EjcSOBI3EjcSExITEgAFIwABJksSAA0FAAAAAAAAAAA=
+#         entity_id: remote.broadlink_remote
+#         command: b64:JgBQAAABJpQSEhI4EhISOBE4EjcSNxITEjcSExI3EhMTERITEhMSNxI3EhMSExISEhMSExI3EjcSExI3EjcSOBI3EjcSExITEgAFIwABJksSAA0FAAAAAAAAAAA=
 
 # amp_cd:
 #   alias: House Audio
 #   sequence:
-#     - service: broadlink.send
+#     - service: remote.send_command
 #       data:
-#         host: 192.168.0.215
-#         packet:
-#           - JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
+#         entity_id: remote.broadlink_remote
+#         command: b64:JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
 
 # Channel Numbers
 channel_0:
   alias: Channel 0
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBQAAABJpQRFBE5ETgRFBE5EBUQFRAVEBUQFRAVEBUQFRA5ERQRFBE4ERQRFBE5ERQQFRA5ETkROBE5EBUQORE5EDkRFBEUEQAFjQABJUsRAA0FAAAAAAAAAAA=
+        entity_id: remote.broadlink_remote
+        command: b64:JgBQAAABJpQRFBE5ETgRFBE5EBUQFRAVEBUQFRAVEBUQFRA5ERQRFBE4ERQRFBE5ERQQFRA5ETkROBE5EBUQORE5EDkRFBEUEQAFjQABJUsRAA0FAAAAAAAAAAA=
 
 channel_2:
   alias: Channel 2
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: 192.168.0.215
-        packet:
-          - JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
+        entity_id: remote.broadlink_remote
+        command: b64:JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
 
 # Scripts
 all_av:
