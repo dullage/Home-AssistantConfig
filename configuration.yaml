@@ -103,6 +103,7 @@ sensor: !include_dir_merge_list config/sensors/
 input_boolean: !include config/inputs/input_boolean.yaml
 input_number: !include config/inputs/input_number.yaml
 input_select: !include config/inputs/input_select.yaml
+input_datetime: !include config/inputs/input_datetime.yaml
 
 ####################
 ##  Integrations  ##

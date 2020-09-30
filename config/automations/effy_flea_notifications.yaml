@@ -1,0 +1,34 @@
+# Upon arrival to the house, notify Adam if Effy (cat) is due flea treatment.
+- alias: effy_flea_notification_adam
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.adam
+    to: "home"
+  condition:
+    condition: template
+    value_template: "{{ as_timestamp(now()) - states.input_datetime.last_effy_flea.attributes.timestamp > 864000 }}"
+    # 10 days. 30 days would be 2592000.
+  action:
+    # Wait until the front door is opened.
+    - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Effy is due her flea treatment!"
+
+# Upon arrival to the house, notify Leanne if Effy (cat) is due flea treatment.
+- alias: effy_flea_notification_leanne
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.leanne
+    to: "home"
+  condition:
+    condition: template
+    value_template: "{{ as_timestamp(now()) - states.input_datetime.last_effy_flea.attributes.timestamp > 2592000 }}"
+  action:
+    # Wait until the front door is opened.
+    - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Effy is due her flea treatment!"

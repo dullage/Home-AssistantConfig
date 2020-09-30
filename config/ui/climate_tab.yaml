@@ -57,3 +57,11 @@
 #     - entity: automation.ad_hoc_heating_timer
 #       name: Activated
 #       icon: mdi:alarm-multiple
+
+- type: entities
+  title: Blue's Room
+  show_header_toggle: false
+  entities:
+    - entity: switch.ikea_socket_switch
+      name: Oil Heater
+      icon: mdi:radiator

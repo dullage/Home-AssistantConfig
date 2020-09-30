@@ -102,5 +102,14 @@
       icon: mdi:microwave
     - entity: switch.pi_hole
       name: Pi-hole Ad-Blocking
-    - entity: switch.ikea_socket_switch
-      name: Ikea Socket
+
+- type: entities
+  title: Effy Flea Treatment
+  show_header_toggle: false
+  entities:
+    - entity: input_datetime.last_effy_flea
+      name: Last Effy Flea
+      icon: mdi:cat
+    - entity: script.last_effy_flea_today
+      name: Set to Today
+      icon: mdi:calendar-month
