@@ -1,18 +1,17 @@
-stairs_mode:
-  name: Stairs Mode
+maestro_corner_lamp:
+  name: "Corner Lamp - Maestro"
   options:
-    - "Select..."
-    - "Warm Light"
-    - "Strobe"
+    - "Off"
     - "Fire"
-    - "Colour Phase"
+    - "Police"
     - "Sparkle"
-    - "Shoot / Drip"
-    - "Rain"
-    - "Rainbow 1"
-    - "Rainbow 2"
-    - "Stepped"
+
+maestro_stairs:
+  name: "Stairs - Maestro"
+  options:
+    - "Off"
+    - "Fire"
+    - "Police"
+    - "Sparkle"
     - "Startup"
     - "Shutdown"
-    - "All On"
-  initial: "Select..."
