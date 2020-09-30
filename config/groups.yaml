@@ -18,8 +18,8 @@ all_lights:
     - light.dining_room_lamp
     - light.main_kitchen_lights
     - light.front_room_lamp
-    - light.kitchen_left
-    - light.kitchen_right
+    # - light.kitchen_left
+    # - light.kitchen_right
     - light.stairs
     - light.landing_light
     - light.bathroom_lights
@@ -41,23 +41,24 @@ living_room:
     - light.front_room_lamp
     - group.tv
 
-kitchen_low:
-  name: Kitchen Low Lights
-  entities:
-    - light.kitchen_left
-    - light.kitchen_right
+# kitchen_low:
+#   name: Kitchen Low Lights
+#   entities:
+#     - light.kitchen_left
+#     - light.kitchen_right
 
 kitchen:
   name: Kitchen
   entities:
     - light.main_kitchen_lights
-    - group.kitchen_low
+    # - group.kitchen_low
 
 dining_room:
   name: Dining Room
   entities:
     - light.dining_room_lamp
     - light.entrance_light
+    - light.corner_lamp
 
 tv:
   name: TV

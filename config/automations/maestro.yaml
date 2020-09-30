@@ -1,0 +1,103 @@
+- alias: maestro_corner_lamp_input
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: input_select.maestro_corner_lamp
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.to_state.state == 'Off' }}"
+          sequence:
+            - service: light.turn_off
+              entity_id: light.corner_lamp
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.corner_lamp
+            effect: UDP
+        - service: mqtt.publish
+          data_template:
+            topic: maestro/corner_lamp/animation/start
+            payload: >
+              {% if trigger.to_state.state == 'Fire' %}
+                fire
+              {% elif trigger.to_state.state == 'Police' %}
+                police
+              {% elif trigger.to_state.state == 'Sparkle' %}
+                sparkle
+              {% endif %}
+
+- alias: maestro_corner_lamp_off
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: light.corner_lamp
+    to: "off"
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: maestro/corner_lamp/animation/stop
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.maestro_corner_lamp
+        option: "Off"
+
+- alias: maestro_stairs_input
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: input_select.maestro_stairs
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.to_state.state == 'Off' }}"
+          sequence:
+            - service: light.turn_off
+              entity_id: light.stairs
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.stairs
+            effect: UDP
+        - service: mqtt.publish
+          data_template:
+            topic: maestro/stairs/animation/start
+            payload: >
+              {% if trigger.to_state.state == 'Fire' %}
+                fire
+              {% elif trigger.to_state.state == 'Police' %}
+                police
+              {% elif trigger.to_state.state == 'Sparkle' %}
+                sparkle
+              {% elif trigger.to_state.state == 'Startup' %}
+                stairs_startup
+              {% elif trigger.to_state.state == 'Shutdown' %}
+                stairs_shutdown
+              {% endif %}
+
+- alias: maestro_stairs_off
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: light.stairs
+    to: "off"
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: maestro/stairs/animation/stop
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.maestro_stairs
+        option: "Off"
+
+- alias: maestro_stairs_shutdown_finished
+  initial_state: true
+  trigger:
+    platform: mqtt
+    topic: maestro/animation/finished
+    payload: "stairs_shutdown"
+  action:
+    service: light.turn_off
+    entity_id: light.stairs

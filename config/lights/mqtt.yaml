@@ -1,17 +1,4 @@
 - platform: mqtt
-  name: Stairs
-  state_topic: "light/stairs/state"
-  command_topic: "light/stairs"
-  rgb_state_topic: "light/stairs/rgb/state"
-  rgb_command_topic: "light/stairs/rgb"
-  availability_topic: "light/stairs/availability"
-  payload_not_available: "0"
-  payload_available: "1"
-  payload_off: "0"
-  payload_on: "1"
-  retain: false
-
-- platform: mqtt
   name: Landing Light
   state_topic: "light/landing/state"
   command_topic: "light/landing"

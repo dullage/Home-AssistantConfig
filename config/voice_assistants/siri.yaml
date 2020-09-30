@@ -11,6 +11,8 @@ entity_config:
     name: Bathroom Lights
   light.bedroom_lamps:
     name: Bedroom Lamps
+  light.corner_lamp:
+    name: Corner Lamp
   light.dining_room_lamp:
     name: Dining Room Lamp
   light.entrance_light:
@@ -27,12 +29,12 @@ entity_config:
     name: Bedroom Lights
   light.porch_light:
     name: Porch Light
+  scene.downstairs_dim:
+    name: Front Room Dim
   scene.downstairs_general:
     name: Downstairs General
   scene.downstairs_off:
     name: Downstairs Off
-  scene.front_room_dim:
-    name: Front Room Dim
   script.arm_entrance_camera:
     name: Arm Entrance Camera
   script.going_out:
@@ -42,7 +44,7 @@ entity_config:
 filter:
   include_entities:
   - scene.downstairs_general
-  - scene.front_room_dim
+  - scene.downstairs_dim
   - scene.downstairs_off
   - light.front_room_lamp
   - script.going_out
@@ -57,6 +59,7 @@ filter:
   - light.entrance_light
   - switch.coat_rack
   - light.dining_room_lamp
+  - light.corner_lamp
   - input_boolean.cartoons
   - cover.master_bedroom
   - script.arm_entrance_camera

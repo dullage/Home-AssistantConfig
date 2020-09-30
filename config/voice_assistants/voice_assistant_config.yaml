@@ -1,6 +1,6 @@
 scene.downstairs_general:
   name: Downstairs General
-scene.front_room_dim:
+scene.downstairs_dim:
   name: Front Room Dim
 scene.downstairs_off:
   name: Downstairs Off
@@ -30,6 +30,8 @@ switch.coat_rack:
   name: Coat Rack Lights
 light.dining_room_lamp:
   name: Dining Room Lamp
+light.corner_lamp:
+  name: Corner Lamp
 input_boolean.cartoons:
   name: Cartoons
 cover.master_bedroom:

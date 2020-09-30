@@ -5,7 +5,7 @@ dim_toggler:
       data_template:
         entity_id: >
           {% if is_state('light.front_room_lamp', 'on') %}
-            scene.front_room_dim
+            scene.downstairs_dim
           {% else %}
             scene.downstairs_general
           {% endif %}

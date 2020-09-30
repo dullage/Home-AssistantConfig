@@ -3,7 +3,7 @@
   show_header_toggle: false
   entities:
     - scene.downstairs_general
-    - scene.front_room_dim
+    - scene.downstairs_dim
     - scene.downstairs_off
     - entity: group.all_lights
       name: All Lights
@@ -39,14 +39,14 @@
   title: Kitchen
   entities:
     - light.main_kitchen_lights
-    - group.kitchen_low
+    # - group.kitchen_low
 
 - type: entities
   title: Stairs
   show_header_toggle: false
   entities:
     - light.stairs
-    - input_select.stairs_mode
+    - input_select.maestro_stairs
 
 - type: entities
   title: Landing
@@ -63,6 +63,10 @@
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp
+    - entity: light.corner_lamp
+      name: Corner Lamp
+      icon: mdi:star-three-points-outline
+    - input_select.maestro_corner_lamp
 
 - type: entities
   title: Outdoors
