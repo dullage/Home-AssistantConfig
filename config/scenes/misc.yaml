@@ -7,16 +7,8 @@
 - name: Downstairs General
   entities:
     input_select.maestro_stairs: "Startup"
-    # light.kitchen_left:
-    #   state: "on"
-    #   effect: "None"
-    #   rgb_color: [255,200,145]
-    #   brightness: 255
-    # light.kitchen_right:
-    #   state: "on"
-    #   effect: "None"
-    #   rgb_color: [255,200,145]
-    #   brightness: 255
+    group.kitchen_leds:
+      state: "on"
     light.front_room_lamp:
       state: "on"
     light.dining_room_lamp:
@@ -24,8 +16,6 @@
     light.corner_lamp:
       state: "on"
       effect: "Rainbow"
-      # brightness: 255
-      # rgb_color: [255,181,108]
     group.tv:
       state: "on"
       brightness: 200
@@ -44,5 +34,60 @@
     light.corner_lamp:
       state: "on"
       effect: "Rainbow"
-      # brightness: 100
-      # rgb_color: [255,181,108]
+
+- name: kitchen_leds_dim
+  entities:
+    light.kitchen_left_bottom:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 100
+    light.kitchen_right_bottom:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 100
+    light.kitchen_left_top:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 0
+    light.kitchen_right_top:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 0
+
+- name: kitchen_leds_bright
+  entities:
+    light.kitchen_left_bottom:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 255
+    light.kitchen_right_bottom:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 255
+    light.kitchen_left_top:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 255
+    light.kitchen_right_top:
+      state: "on"
+      rgb_color: [255,200,145]
+      brightness: 255
+
+- name: kitchen_leds_super_bright
+  entities:
+    light.kitchen_left_bottom:
+      state: "on"
+      rgb_color: [255,255,255]
+      brightness: 255
+    light.kitchen_right_bottom:
+      state: "on"
+      rgb_color: [255,255,255]
+      brightness: 255
+    light.kitchen_left_top:
+      state: "on"
+      rgb_color: [255,255,255]
+      brightness: 255
+    light.kitchen_right_top:
+      state: "on"
+      rgb_color: [255,255,255]
+      brightness: 255

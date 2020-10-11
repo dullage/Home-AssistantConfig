@@ -39,7 +39,9 @@
   title: Kitchen
   entities:
     - light.main_kitchen_lights
-    # - group.kitchen_low
+    - group.kitchen_leds
+    - group.kitchen_leds_top
+    - group.kitchen_leds_bottom
 
 - type: entities
   title: Stairs

@@ -11,6 +11,7 @@ all_lights:
     - switch.coat_rack
     - light.entrance_light
     - light.dining_room_lamp
+    - light.corner_lamp
     - light.tv_left
     - light.tv_top
     - light.tv_right
@@ -18,8 +19,10 @@ all_lights:
     - light.dining_room_lamp
     - light.main_kitchen_lights
     - light.front_room_lamp
-    # - light.kitchen_left
-    # - light.kitchen_right
+    - light.kitchen_left_top
+    - light.kitchen_left_bottom
+    - light.kitchen_right_top
+    - light.kitchen_right_bottom
     - light.stairs
     - light.landing_light
     - light.bathroom_lights
@@ -41,17 +44,31 @@ living_room:
     - light.front_room_lamp
     - group.tv
 
-# kitchen_low:
-#   name: Kitchen Low Lights
-#   entities:
-#     - light.kitchen_left
-#     - light.kitchen_right
+kitchen_leds:
+  name: Kitchen LEDs
+  entities:
+    - light.kitchen_left_bottom
+    - light.kitchen_left_top
+    - light.kitchen_right_bottom
+    - light.kitchen_right_top
+
+kitchen_leds_bottom:
+  name: Bottom Kitchen LEDs
+  entities:
+    - light.kitchen_left_bottom
+    - light.kitchen_right_bottom
+
+kitchen_leds_top:
+  name: Top Kitchen LEDs
+  entities:
+    - light.kitchen_left_top
+    - light.kitchen_right_top
 
 kitchen:
   name: Kitchen
   entities:
     - light.main_kitchen_lights
-    # - group.kitchen_low
+    - group.kitchen_leds
 
 dining_room:
   name: Dining Room
