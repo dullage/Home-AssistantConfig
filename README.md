@@ -30,7 +30,7 @@ Some highlights of our setup in no particular order:
 | Type | Count |
 | ---- | ----- |
 | Alarm Control Panel | 1 |
-| Automation | 92 |
+| Automation | 100 |
 | Binary Sensor | 23 |
 | Camera | 4 |
 | Cover | 1 |
@@ -39,9 +39,9 @@ Some highlights of our setup in no particular order:
 | Input Datetime | 1 |
 | Input Number | 7 |
 | Input Select | 4 |
-| Light | 26 |
+| Light | 29 |
 | Media Player | 27 |
-| Scene | 3 |
+| Scene | 6 |
 | Script | 33 |
 | Sensor | 121 |
 | Switch | 8 |
