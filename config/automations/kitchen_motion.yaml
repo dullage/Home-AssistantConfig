@@ -5,12 +5,14 @@
     - platform: state
       entity_id: binary_sensor.kitchen_motion_sensor_occupancy
       to: "off"
+      for:
+        minutes: 3
   condition:
     condition: state
     entity_id: group.kitchen_leds
     state: "on"
   action:
-    - service: scene.apply
+    - service: scene.turn_on
       entity_id: scene.kitchen_leds_dim
 
 # When there is motion in the kitchen, providing the kitchen LED lights are on set them to a bright warm light.
@@ -25,7 +27,7 @@
     entity_id: group.kitchen_leds
     state: "on"
   action:
-    - service: scene.apply
+    - service: scene.turn_on
       entity_id: scene.kitchen_leds_bright
 
 # If the kitchen lights are turned on and the kitchen is unoccupied (no motion) then go straight to the dim mode.
@@ -40,7 +42,7 @@
     entity_id: binary_sensor.kitchen_motion_sensor_occupancy
     state: "off"
   action:
-    - service: scene.apply
+    - service: scene.turn_on
       entity_id: scene.kitchen_leds_dim
 
 # If the kitchen lights are turned on and the kitchen is occupied (motion detected) then go straight to the bright mode.
@@ -55,5 +57,5 @@
     entity_id: binary_sensor.kitchen_motion_sensor_occupancy
     state: "on"
   action:
-    - service: scene.apply
+    - service: scene.turn_on
       entity_id: scene.kitchen_leds_bright
