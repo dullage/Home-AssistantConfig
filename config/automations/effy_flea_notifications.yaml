@@ -7,8 +7,8 @@
     to: "home"
   condition:
     condition: template
-    value_template: "{{ as_timestamp(now()) - states.input_datetime.last_effy_flea.attributes.timestamp > 864000 }}"
-    # 10 days. 30 days would be 2592000.
+    # Last done more than 30 days ago.
+    value_template: "{{ as_timestamp(now()) - states.input_datetime.last_effy_flea.attributes.timestamp > 2592000 }}"
   action:
     # Wait until the front door is opened.
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
@@ -25,6 +25,7 @@
     to: "home"
   condition:
     condition: template
+    # Last done more than 30 days ago.
     value_template: "{{ as_timestamp(now()) - states.input_datetime.last_effy_flea.attributes.timestamp > 2592000 }}"
   action:
     # Wait until the front door is opened.
