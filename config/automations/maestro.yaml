@@ -21,11 +21,15 @@
             topic: maestro/corner_lamp/animation/start
             payload: >
               {% if trigger.to_state.state == 'Fire' %}
-                fire
+                {"animation": "fire"}
               {% elif trigger.to_state.state == 'Police' %}
-                police
+                {"animation": "police"}
               {% elif trigger.to_state.state == 'Sparkle' %}
-                sparkle
+                {"animation": "sparkle"}
+              {% elif trigger.to_state.state == 'Bouncing Ball' %}
+                {"animation": "bouncing_ball"}
+              {% elif trigger.to_state.state == 'Bouncing Balls' %}
+                {"animation": "bouncing_balls"}
               {% endif %}
 
 - alias: maestro_corner_lamp_off
@@ -66,15 +70,19 @@
             topic: maestro/stairs/animation/start
             payload: >
               {% if trigger.to_state.state == 'Fire' %}
-                fire
+                {"animation": "fire"}
               {% elif trigger.to_state.state == 'Police' %}
-                police
+                {"animation": "police"}
               {% elif trigger.to_state.state == 'Sparkle' %}
-                sparkle
+                {"animation": "sparkle"}
+              {% elif trigger.to_state.state == 'Bouncing Ball' %}
+                {"animation": "bouncing_ball"}
+              {% elif trigger.to_state.state == 'Bouncing Balls' %}
+                {"animation": "bouncing_balls"}
               {% elif trigger.to_state.state == 'Startup' %}
-                stairs_startup
+                {"animation": "fade_sequence", "config": {"sequence": [111, 105, 96, 86, 77, 68, 58, 49, 40, 30, 21, 12, 3], "target_rgb": [255, 200, 145], "speed": 50}}
               {% elif trigger.to_state.state == 'Shutdown' %}
-                stairs_shutdown
+                {"animation": "fade_sequence", "config": {"sequence": [3, 12, 21, 30, 40, 49, 58, 68, 77, 86, 96, 105, 111], "target_rgb": [0, 0, 0], "speed": 5, "clear_first": false}}
               {% endif %}
 
 - alias: maestro_stairs_off
@@ -95,9 +103,13 @@
 - alias: maestro_stairs_shutdown_finished
   initial_state: true
   trigger:
-    platform: mqtt
-    topic: maestro/animation/finished
-    payload: "stairs_shutdown"
+    platform: state
+    entity_id: input_select.maestro_stairs
+    to: "Shutdown"
   action:
-    service: light.turn_off
-    entity_id: light.stairs
+    - wait_for_trigger:
+        platform: mqtt
+        topic: maestro/animation/finished
+        payload: "fade_sequence"
+    - service: light.turn_off
+      entity_id: light.stairs

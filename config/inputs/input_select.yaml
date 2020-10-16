@@ -5,6 +5,8 @@ maestro_corner_lamp:
     - "Fire"
     - "Police"
     - "Sparkle"
+    - "Bouncing Ball"
+    - "Bouncing Balls"
 
 maestro_stairs:
   name: "Stairs - Maestro"
@@ -13,5 +15,7 @@ maestro_stairs:
     - "Fire"
     - "Police"
     - "Sparkle"
+    - "Bouncing Ball"
+    - "Bouncing Balls"
     - "Startup"
     - "Shutdown"
