@@ -1,4 +1,4 @@
-# When there is no motion in the kitchen, providing the kitchen LED lights are on set them to a dim.
+# When there is no motion in the kitchen, providing the LED lights are on, set them to a dim.
 - alias: kitchen_motion_leds_down
   initial_state: true
   trigger:
@@ -8,9 +8,9 @@
       for:
         minutes: 3
   condition:
-    condition: state
-    entity_id: group.kitchen_leds
-    state: "on"
+      condition: state
+      entity_id: group.kitchen_leds
+      state: "on"
   action:
     - service: scene.turn_on
       entity_id: scene.kitchen_leds_dim
