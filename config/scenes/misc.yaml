@@ -62,21 +62,21 @@
   entities:
     light.kitchen_left_bottom:
       state: "on"
-      rgb_color: [255,200,145]
+      rgb_color: [255,195,135]
       brightness: 255
       effect: None
     light.kitchen_right_bottom:
       state: "on"
-      rgb_color: [255,200,145]
+      rgb_color: [255,195,135]
       brightness: 255
       effect: None
     light.kitchen_left_top:
       state: "on"
-      rgb_color: [255,200,145]
+      rgb_color: [255,195,135]
       brightness: 255
       effect: None
     light.kitchen_right_top:
       state: "on"
-      rgb_color: [255,200,145]
+      rgb_color: [255,195,135]
       brightness: 255
       effect: None
