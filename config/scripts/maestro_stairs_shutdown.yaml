@@ -1,0 +1,32 @@
+maestro_stairs_shutdown:
+  alias: Maestro Stairs Shutdown
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: maestro/stairs/animation/start
+        payload: >-
+          {
+            "animation": "BouncingBalls",
+            "config": {
+              "balls": [
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 3},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 12},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 21},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 30},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 40},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 49},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 58},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 68},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 77},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 86},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 96},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 105},
+                {"colour": [255, 200, 145], "trail_length": 2, "starting_height": 111}
+              ]
+            }
+          }
+    - wait_for_trigger:
+        platform: mqtt
+        topic: maestro/stairs/animation/finished
+    - service: light.turn_off
+      entity_id: light.stairs

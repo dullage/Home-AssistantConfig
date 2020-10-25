@@ -102,6 +102,7 @@
       icon: mdi:microwave
     - entity: switch.pi_hole
       name: Pi-hole Ad-Blocking
+    - script.maestro_stairs_shutdown
 
 - type: entities
   title: Effy Flea Treatment
