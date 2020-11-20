@@ -4,7 +4,7 @@ heating_quick_actions_21:
   sequence:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 21
 
 # Quick action to boost the heating to 25 deg for 5 minutes.
@@ -13,11 +13,11 @@ heating_quick_actions_boost:
   sequence:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 25
     - delay:
         minutes: 5
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 21

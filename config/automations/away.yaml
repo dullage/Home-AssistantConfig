@@ -19,8 +19,6 @@
       data:
         message: "It's been a while, are you away?"
 
-# Currently not working thanks to the Google overlords!!!
-
 # Turn Nest off when "away" input turned on
 - alias: away_nest_away
   initial_state: true
@@ -29,10 +27,8 @@
     entity_id: input_boolean.away
     to: "on"
   action:
-    # - service: climate.set_operation_mode
-    #   data:
-    #     entity_id: climate.house
-    #     operation_mode: "off"
+    - service: climate.turn_off
+      entity_id: climate.nest
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "I have put the house into 'Away Mode', have a nice trip!"
@@ -48,10 +44,8 @@
     entity_id: input_boolean.away
     to: "off"
   action:
-    # - service: climate.set_operation_mode
-    #   data:
-    #     entity_id: climate.house
-    #     operation_mode: "heat"
+    - service: climate.turn_on
+      entity_id: climate.nest
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Welcome Home!"

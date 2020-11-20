@@ -31,12 +31,6 @@ http:
     - 127.0.0.1
   use_x_forwarded_for: true
 
-cloudflare:
-  email: !secret cloudflare_email
-  api_key: !secret cloudflare_api_key
-  zone: !secret cloudflare_zone
-  records: !secret cloudflare_records
-
 # Core
 logger:
   default: warn
@@ -200,3 +194,10 @@ device_tracker:
 pi_hole:
   - host: '192.168.0.50'
     api_key: !secret pi_hole_api_key
+
+# Nest
+nest:
+  project_id: !secret google_sdm_project_id
+  client_id: !secret google_sdm_client_id
+  client_secret: !secret google_sdm_client_secret
+  subscriber_id: !secret google_sdm_subscriber_id

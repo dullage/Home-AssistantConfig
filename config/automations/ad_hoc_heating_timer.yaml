@@ -12,7 +12,7 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 21
     - service: homeassistant.turn_off
       data:

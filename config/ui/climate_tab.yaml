@@ -1,22 +1,22 @@
-# - type: thermostat
-#   entity: climate.house
+- type: thermostat
+  entity: climate.nest
 
-# - type: entities
-#   title: Heating Controls
-#   show_header_toggle: false
-#   entities:
-#     - entity: script.heating_quick_actions_21
-#       name: Set to 21
-#       icon: mdi:temperature-celsius
-#     - entity: script.heating_quick_actions_boost
-#       name: Heating Boost (5 min)
-#       icon: mdi:fire
+- type: entities
+  title: Quick Heating Controls
+  show_header_toggle: false
+  entities:
+    - entity: script.heating_quick_actions_21
+      name: Set to 21
+      icon: mdi:temperature-celsius
+    - entity: script.heating_quick_actions_boost
+      name: Heating Boost (5 min)
+      icon: mdi:fire
 
 - type: glance
   title: Indoor Climate
   entities:
-    # - entity: sensor.house_thermostat_temperature
-    #   name: Downstairs
+    - entity: sensor.nest_temperature
+      name: Downstairs
     - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
     - entity: sensor.master_bedroom_tempurature_sensor_temperature
@@ -29,8 +29,8 @@
 - type: glance
   title: Humidity
   entities:
-    # - entity: sensor.house_thermostat_humidity
-    #   name: Downstairs
+    - entity: sensor.nest_humidity
+      name: Downstairs
     - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
     - entity: sensor.master_bedroom_tempurature_sensor_humidity
@@ -47,21 +47,22 @@
   entities:
     - sensor.dark_sky_temperature
     - sensor.dark_sky_precip_probability
-# - type: entities
-#   title: One-Off Heating Timer
-#   show_header_toggle: false
-#   entities:
-#     - sensor.ad_hoc_heating_time
-#     - input_number.ad_hoc_heating_time_hour
-#     - input_number.ad_hoc_heating_time_minute
-#     - entity: automation.ad_hoc_heating_timer
-#       name: Activated
-#       icon: mdi:alarm-multiple
 
 - type: entities
-  title: Blue's Room
+  title: One-Off Heating Timer
   show_header_toggle: false
   entities:
-    - entity: switch.ikea_socket_switch
-      name: Oil Heater
-      icon: mdi:radiator
+    - sensor.ad_hoc_heating_time
+    - input_number.ad_hoc_heating_time_hour
+    - input_number.ad_hoc_heating_time_minute
+    - entity: automation.ad_hoc_heating_timer
+      name: Activated
+      icon: mdi:alarm-multiple
+
+# - type: entities
+#   title: Blue's Room
+#   show_header_toggle: false
+#   entities:
+#     - entity: switch.ikea_socket_switch
+#       name: Oil Heater
+#       icon: mdi:radiator

@@ -4,11 +4,11 @@
   trigger:
     platform: state
     entity_id: group.everyone
-    from: "home"
-    to: "not_home"
   condition:
     condition: and
     conditions:
+      - condition: template
+        value_template: "{{ states('group.everyone') != 'home' }}"
       - condition: time
         before: "15:00:00"
         weekday:
@@ -23,7 +23,7 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 9
 
 # On any day, if we've both been out of the house for more than 15 minutes, ask (via an iOS notification) whether we want to turn the heating off.
@@ -65,5 +65,5 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: climate.nest
         temperature: 9
