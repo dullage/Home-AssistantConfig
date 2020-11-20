@@ -84,11 +84,11 @@ if len(videos) >= 1:
         video_file_content.write(response.content)
 
     # Extract a still image from the frame at 4s and save that to disk
-    os.system(
-        "ffmpeg -y -ss 00:00:04 -i {} -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {}".format(  # noqa
-            VIDEO_FILE, IMAGE_FILE
-        )
-    )
+    # os.system(
+    #     "ffmpeg -y -ss 00:00:04 -i {} -vf 'crop=720:720:280:0' -vframes 1 -vcodec png {}".format(  # noqa
+    #         VIDEO_FILE, IMAGE_FILE
+    #     )
+    # )
 
     # Build the notification data
     data = {
@@ -98,7 +98,7 @@ if len(videos) >= 1:
                 "url": "{}/local/{}?1=1".format(
                     secrets["blinkHassApiBaseURL"], VIDEO_FILENAME
                 ),
-                "content-type": "mp4",
+                "content-type": "MPEG4",
             }
         },
     }
