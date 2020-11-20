@@ -41,6 +41,8 @@ entity_config:
     name: Going Out Script
   switch.coat_rack:
     name: Coat Rack Lights
+  switch.ikea_socket_switch:
+    name: Office Lamp
 filter:
   include_entities:
   - scene.downstairs_general
@@ -63,3 +65,4 @@ filter:
   - input_boolean.cartoons
   - cover.master_bedroom
   - script.arm_entrance_camera
+  - switch.ikea_socket_switch

@@ -57,6 +57,13 @@
     - light.landing_light
 
 - type: entities
+  title: Office
+  entities:
+    - entity: switch.ikea_socket_switch
+      name: Office Lamp
+      icon: mdi:lightbulb
+
+- type: entities
   title: Dining Room
   entities:
     - entity: switch.coat_rack
