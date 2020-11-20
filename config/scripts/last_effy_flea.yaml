@@ -1,7 +1,0 @@
-last_effy_flea_today:
-  alias: "Set to Today"
-  sequence:
-    - service: input_datetime.set_datetime
-      entity_id: input_datetime.last_effy_flea
-      data:
-        date: "{{ now().strftime('%Y-%m-%d') }}"
