@@ -97,3 +97,9 @@ downstairs:
   entities:
     - group.downstairsExcStairs
     - light.stairs
+
+pi_holes:
+  name: Pi-holes
+  entities:
+    - switch.pi_hole
+    - switch.pi_hole2

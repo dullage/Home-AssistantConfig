@@ -3,10 +3,10 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: switch.pi_hole
+    entity_id: group.pi_holes
     to: "off"
     for:
       minutes: 30
   action:
-    service: switch.turn_on
-    entity_id: switch.pi_hole
+    service: homeassistant.turn_on
+    entity_id: group.pi_holes
