@@ -1,4 +1,4 @@
-# After 9pm, turn off the heating once the downstairs lights have all been off for 5 minutes.
+# After 9pm, once the downstairs lights have all been off for 5 minutes turn off the heating and TV.
 - alias: bedtime
   initial_state: true
   trigger:
@@ -15,3 +15,5 @@
       data:
         entity_id: climate.nest
         temperature: 9
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.all_av
