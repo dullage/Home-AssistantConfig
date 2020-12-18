@@ -81,6 +81,3 @@
       icon: mdi:power
     - entity: script.freeview_box
       icon: mdi:power
-
-- type: media-control
-  entity: media_player.spotify_adam
