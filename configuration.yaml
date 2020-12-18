@@ -146,12 +146,6 @@ ios:
 # HomeKit
 homekit: !include config/voice_assistants/siri.yaml
 
-# Camera
-camera:
-  - platform: generic
-    name: "HADashboard Image"
-    still_image_url: !secret ha_dashboard_image
-
 # Text to Speech
 tts:
   - platform: amazon_polly
