@@ -1,0 +1,8 @@
+# Update Cloudflare on startup, good for power cuts when a new IP is issued.
+- alias: cloudflare_on_startup
+  initial_state: true
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: cloudflare.update_records
