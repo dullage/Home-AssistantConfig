@@ -18,7 +18,7 @@
           - thu
           - fri
       - condition: numeric_state
-        entity_id: sensor.house_thermostat_target
+        entity_id: sensor.nest_temperature
         above: 9
   action:
     - service: climate.set_temperature
@@ -32,14 +32,14 @@
   trigger:
     platform: state
     entity_id: group.everyone
-    from: "home"
-    to: "not_home"
-    for:
-      minutes: 15
   condition:
-    condition: numeric_state
-    entity_id: sensor.house_thermostat_target
-    above: 9
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ states('group.everyone') != 'home' }}"
+      - condition: numeric_state
+        entity_id: sensor.nest_temperature
+        above: 9
   action:
     - service: notify.mobile_app_dullage_s_iphone
       data:
