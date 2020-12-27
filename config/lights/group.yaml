@@ -3,3 +3,11 @@
   entities:
     - light.bedroom_left
     - light.bedroom_right
+
+- platform: group
+  name: Bathroom All
+  entities:
+    - light.bathroom_1
+    - light.bathroom_2
+    - light.bathroom_3
+    - light.bathroom_4

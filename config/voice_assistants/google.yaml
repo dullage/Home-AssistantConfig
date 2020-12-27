@@ -3,11 +3,13 @@
 entity_config:
   cover.master_bedroom:
     name: Bedroom Blinds
+  group.kitchen_leds:
+    name: Kitchen Cupboard Lights
   input_boolean.all_av:
     name: TV
   input_boolean.cartoons:
     name: Cartoons
-  light.bathroom_lights:
+  light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
     name: Bedroom Lamps
@@ -53,7 +55,7 @@ filter:
   - light.main_kitchen_lights
   - light.garden_lights
   - light.landing_light
-  - light.bathroom_lights
+  - light.bathroom_all
   - light.master_bedroom_main
   - light.bedroom_lamps
   - input_boolean.all_av
@@ -66,3 +68,4 @@ filter:
   - cover.master_bedroom
   - script.arm_entrance_camera
   - switch.ikea_socket_switch
+  - group.kitchen_leds

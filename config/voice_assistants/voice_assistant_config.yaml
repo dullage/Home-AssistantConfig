@@ -14,7 +14,7 @@ light.garden_lights:
   name: Garden Lights
 light.landing_light:
   name: Landing Light
-light.bathroom_lights:
+light.bathroom_all:
   name: Bathroom Lights
 light.master_bedroom_main:
   name: Bedroom Lights
@@ -40,3 +40,5 @@ script.arm_entrance_camera:
   name: Arm Entrance Camera
 switch.ikea_socket_switch:
   name: Office Lamp
+group.kitchen_leds:
+  name: Kitchen Cupboard Lights

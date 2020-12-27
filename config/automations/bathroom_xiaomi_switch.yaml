@@ -7,7 +7,7 @@
     to: single
   action:
     service: light.toggle
-    entity_id: light.bathroom_lights
+    entity_id: light.bathroom_all
 
 # Toggle the bathroom mirror lights on double click of the bathroom Xiaomi switch
 - alias: bathroom_xiaomi_switch_double_click

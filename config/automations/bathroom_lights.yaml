@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: light.bathroom_lights
+    entity_id: light.bathroom_all
     to: "on"
   action:
     service: light.turn_on
@@ -14,7 +14,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: light.bathroom_lights
+    entity_id: light.bathroom_all
     to: "off"
   action:
     service: light.turn_off
@@ -46,8 +46,35 @@
       seconds: 5
   condition:
     condition: state
-    entity_id: light.bathroom_lights
+    entity_id: light.bathroom_all
     state: "off"
   action:
     service: light.turn_off
     entity_id: light.bathroom_mirror_lights
+
+- alias: bathroom_light_temperature
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.bathroom_all
+    to: "on"
+  action:
+    - choose:
+      # IF after sunset
+      - conditions:
+          condition: state
+          entity_id: sun.sun
+          state: "below_horizon"
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.bathroom_all
+              color_temp: 370
+              brightness: 200
+      # ELSE
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.bathroom_all
+            color_temp: 230
+            brightness: 255
