@@ -8,12 +8,12 @@
     # Dining Room
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_dining_room
+        entity_id: media_player.dining_room_nest_mini
         volume_level: 0.3
     # Front Room
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_front_room
+        entity_id: media_player.front_room_nest_mini
         volume_level: 0.4
     # Kitchen
     - service: media_player.volume_set
@@ -23,7 +23,7 @@
     # Bathroom
     - service: media_player.volume_set
       data:
-        entity_id: media_player.nest_mini_bathroom
+        entity_id: media_player.bathroom_nest_mini
         volume_level: 0.2
 
 # Turn the volumes up on the google homes in the morning.
@@ -36,12 +36,12 @@
     # Dining Room
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_dining_room
+        entity_id: media_player.dining_room_nest_mini
         volume_level: 0.6
     # Front Room
     - service: media_player.volume_set
       data:
-        entity_id: media_player.google_home_front_room
+        entity_id: media_player.front_room_nest_mini
         volume_level: 0.4
     # Kitchen
     - service: media_player.volume_set
@@ -51,5 +51,5 @@
     # Bathroom
     - service: media_player.volume_set
       data:
-        entity_id: media_player.nest_mini_bathroom
+        entity_id: media_player.bathroom_nest_mini
         volume_level: 0.4

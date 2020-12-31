@@ -18,7 +18,7 @@
   action:
     - service: tts.amazon_polly_say
       data:
-        entity_id: media_player.google_homes
+        entity_id: media_player.nest_minis
         message: "<speak>Humans. There is someone at the front door.</speak>"
     - service: notify.mobile_app_dullage_s_iphone
       data:

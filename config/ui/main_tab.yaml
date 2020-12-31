@@ -14,11 +14,14 @@
   entities:
     - light.front_room_lamp
     - group.tv
+    - entity: switch.ambilight
+      name: Ambilight
+      icon: mdi:television-ambient-light
 
 - type: entities
   title: Bathroom
   entities:
-    - light.bathroom_lights
+    - light.bathroom_all
     - light.bathroom_mirror_lights
 
 - type: entities
@@ -66,12 +69,12 @@
 - type: entities
   title: Dining Room
   entities:
-    - entity: switch.coat_rack
-      name: Coat Rack
-      icon: mdi:hanger
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp
+    - entity: switch.coat_rack
+      name: Coat Rack
+      icon: mdi:hanger
     - entity: light.corner_lamp
       name: Corner Lamp
       icon: mdi:star-three-points-outline

@@ -193,3 +193,16 @@ nest:
   client_id: !secret google_sdm_client_id
   client_secret: !secret google_sdm_client_secret
   subscriber_id: !secret google_sdm_subscriber_id
+
+# Rest Commands
+rest_command:
+  ambilight_on:
+    url: 'http://192.168.0.118:8090/json-rpc'
+    method: 'post'
+    content_type: 'application/json'
+    payload: '{"command":"componentstate", "componentstate":{"component": "LEDDEVICE", "state":true}}'
+  ambilight_off:
+    url: 'http://192.168.0.118:8090/json-rpc'
+    method: 'post'
+    content_type: 'application/json'
+    payload: '{"command":"componentstate", "componentstate":{"component": "LEDDEVICE", "state":false}}'

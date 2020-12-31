@@ -9,53 +9,47 @@
     input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
-    light.front_room_lamp:
-      state: "on"
-    light.dining_room_lamp:
-      state: "on"
-    light.corner_lamp:
-      state: "on"
-      effect: "Rainbow"
+    switch.ambilight:
+      state: "off"
     group.tv:
       state: "on"
       brightness: 200
       xy_color: [0.49, 0.41]
+    light.front_room_lamp:
+      state: "on"
+    light.dining_room_lamp:
+      state: "on"
+    light.corner_lamp:
+      state: "on"
+      effect: "Fire 2012"
 
 - name: Downstairs Dim
   entities:
+    input_select.maestro_stairs: "Startup"
+    group.kitchen_leds:
+      state: "on"
+    switch.ambilight:
+      state: "on"
     light.front_room_lamp:
       state: "off"
-    group.tv:
-      state: "on"
-      brightness: 85
-      xy_color: [0.50, 0.42]
     light.dining_room_lamp:
       state: "off"
     light.corner_lamp:
-      state: "on"
-      effect: "Rainbow"
+      state: "off"
 
 - name: kitchen_leds_dim
   entities:
     light.kitchen_left_bottom:
       state: "on"
-      # rgb_color: [255,200,145]
-      # brightness: 100
       effect: Rainbow
     light.kitchen_right_bottom:
       state: "on"
-      # rgb_color: [255,200,145]
-      # brightness: 100
       effect: Rainbow
     light.kitchen_left_top:
       state: "on"
-      # rgb_color: [255,200,145]
-      # brightness: 0
       effect: Rainbow
     light.kitchen_right_top:
       state: "on"
-      # rgb_color: [255,200,145]
-      # brightness: 0
       effect: Rainbow
 
 - name: kitchen_leds_bright
