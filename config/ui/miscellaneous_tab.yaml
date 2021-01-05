@@ -103,7 +103,6 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
-    - script.maestro_stairs_shutdown
 
 - type: entities
   title: Effy Flea Treatment

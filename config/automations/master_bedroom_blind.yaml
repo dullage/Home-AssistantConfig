@@ -1,9 +1,23 @@
-# Close the blind so it rests above the window fan.
+# Close the bedroom blind at sunset
+- alias: master_bedroom_blind_sunset
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    to: 'below_horizon'
+  condition:
+    condition: time
+    before: "21:00:00"
+  action:
+    service: cover.close_cover
+    entity_id: cover.master_bedroom
+
+# Close the blind so it rests above the window fan at 9pm.
 - alias: master_bedroom_blind_night
   initial_state: true
   trigger:
     platform: time
-    at: "18:50:00"
+    at: "21:00:00"
   action:
     service: script.master_bedroom_blind_fan
 

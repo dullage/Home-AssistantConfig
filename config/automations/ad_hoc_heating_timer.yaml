@@ -1,5 +1,3 @@
-# Currently not working thanks to the Google overlords!!!
-
 # Turn on the heating at the time set using the ad_hoc_heating_time_hour and ad_hoc_heating_time_minute inputs (available as sliders in the UI). Inspiration: https://community.home-assistant.io/t/creating-a-alarm-clock/410/105)
 - alias: ad_hoc_heating_timer
   initial_state: False

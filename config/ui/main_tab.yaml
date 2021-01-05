@@ -43,8 +43,6 @@
   entities:
     - light.main_kitchen_lights
     - group.kitchen_leds
-    - group.kitchen_leds_top
-    - group.kitchen_leds_bottom
 
 - type: entities
   title: Stairs
@@ -82,7 +80,6 @@
 
 - type: entities
   title: Outdoors
-  # show_header_toggle: false
   entities:
     - light.garden_lights
     - entity: light.porch_light
