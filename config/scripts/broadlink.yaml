@@ -7,14 +7,14 @@ volume_up:
         entity_id: remote.broadlink_remote
         command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
 
-volume_upx4:
+volume_upx2:
   alias: Volume Up
   sequence:
     - service: remote.send_command
       data:
         entity_id: remote.broadlink_remote
         command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
-        num_repeats: 4
+        num_repeats: 2
 
 volume_down:
   alias: Volume Down
@@ -24,14 +24,14 @@ volume_down:
         entity_id: remote.broadlink_remote
         command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
 
-volume_downx4:
+volume_downx2:
   alias: Volume Down
   sequence:
     - service: remote.send_command
       data:
         entity_id: remote.broadlink_remote
         command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
-        num_repeats: 4
+        num_repeats: 2
 
 mute:
   alias: Mute

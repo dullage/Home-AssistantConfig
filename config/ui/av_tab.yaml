@@ -15,7 +15,7 @@
       image: /local/remote/volume-plus.png
       tap_action:
         action: call-service
-        service: script.volume_upx4
+        service: script.volume_upx2
       style:
         top: 16.66%
         left: 83.33%
@@ -25,7 +25,7 @@
       image: /local/remote/volume-minus.png
       tap_action:
         action: call-service
-        service: script.volume_downx4
+        service: script.volume_downx2
       style:
         top: 50%
         left: 83.33%
