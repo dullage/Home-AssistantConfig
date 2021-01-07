@@ -42,3 +42,5 @@ switch.ikea_socket_switch:
   name: Office Lamp
 group.kitchen_leds:
   name: Kitchen Cupboard Lights
+switch.ambilight:
+  name: Ambilight
