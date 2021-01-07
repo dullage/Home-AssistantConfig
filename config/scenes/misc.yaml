@@ -3,6 +3,8 @@
     group.downstairs_ex_stairs:
       state: "off"
     input_select.maestro_stairs: "Shutdown"
+    switch.abilight:
+      state: "off"
 
 - name: Downstairs General
   entities:
@@ -29,7 +31,11 @@
     group.kitchen_leds:
       state: "on"
     switch.ambilight:
+      state: "off"
+    group.tv:
       state: "on"
+      brightness: 100
+      xy_color: [0.49, 0.41]
     light.front_room_lamp:
       state: "off"
     light.dining_room_lamp:
