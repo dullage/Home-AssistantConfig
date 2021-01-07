@@ -9,7 +9,7 @@
     service: light.toggle
     entity_id: light.bathroom_all
 
-# Toggle the bathroom mirror lights on double click of the bathroom Xiaomi switch
+# Toggle the office lamp on double click of the bathroom Xiaomi switch
 - alias: bathroom_xiaomi_switch_double_click
   initial_state: true
   trigger:
@@ -17,8 +17,8 @@
     entity_id: sensor.bathroom_xiaomi_switch_click
     to: double
   action:
-    service: light.toggle
-    entity_id: light.bathroom_mirror_lights
+    service: switch.toggle
+    entity_id: switch.ikea_socket_switch
 
 # Toggle the bedroom blinds on hold of the bathroom Xiaomi switch
 - alias: bathroom_xiaomi_switch_hold
