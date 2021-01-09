@@ -14,7 +14,7 @@
   entities:
     - light.front_room_lamp
     - group.tv
-    - entity: switch.ambilight
+    - entity: light.ambilight
       name: Ambilight
       icon: mdi:television-ambient-light
 

@@ -1,8 +1,0 @@
-- platform: rest
-  name: 'ambilight'
-  resource: 'http://192.168.0.118:8090/json-rpc'
-  method: 'POST'
-  headers:
-    Content-Type: 'application/json'
-  payload: '{"command": "serverinfo"}'
-  value_template: "{{ value_json['info']['components'][7]['enabled'] }}"

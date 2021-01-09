@@ -11,7 +11,7 @@
     input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
-    switch.ambilight:
+    light.ambilight:
       state: "off"
     group.tv:
       state: "on"
@@ -30,7 +30,7 @@
     input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
-    switch.ambilight:
+    light.ambilight:
       state: "off"
     group.tv:
       state: "on"

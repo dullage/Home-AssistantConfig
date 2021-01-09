@@ -41,7 +41,7 @@ entity_config:
     name: Arm Entrance Camera
   script.going_out:
     name: Going Out Script
-  switch.ambilight:
+  light.ambilight:
     name: Ambilight
   switch.coat_rack:
     name: Coat Rack Lights
@@ -71,4 +71,4 @@ filter:
   - script.arm_entrance_camera
   - switch.ikea_socket_switch
   - group.kitchen_leds
-  - switch.ambilight
+  - light.ambilight
