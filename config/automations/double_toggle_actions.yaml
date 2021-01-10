@@ -9,17 +9,6 @@
     service: light.toggle
     entity_id: light.downstairs
 
-# Toggle the under cupboard lights in the kitchen when the kitchen light switch is double toggled.
-- alias: double_toggle_actions_kitchen
-  initial_state: true
-  trigger:
-    platform: mqtt
-    topic: automation
-    payload: "kitchen"
-  action:
-    - service: homeassistant.toggle
-      entity_id: group.kitchen_leds
-
 # Toggle the bedroom lamps when the bedroom light switch is double toggled.
 - alias: double_toggle_actions_bedroom
   initial_state: true

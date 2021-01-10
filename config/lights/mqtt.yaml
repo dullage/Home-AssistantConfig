@@ -24,10 +24,10 @@
 
 - platform: mqtt
   name: Main Kitchen Lights
-  state_topic: "light/kitchen/state"
-  command_topic: "light/kitchen"
-  payload_off: "0"
-  payload_on: "1"
+  command_topic: "shellies/shelly1-76F1C8/relay/0/command"
+  state_topic: "shellies/shelly1-76F1C8/relay/0"
+  payload_on: "on"
+  payload_off: "off"
   retain: false
 
 - platform: mqtt

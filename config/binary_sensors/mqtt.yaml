@@ -4,3 +4,9 @@
   device_class: motion
   payload_on: 1
   payload_off: 0
+
+- platform: mqtt
+  name: kitchen_switch
+  state_topic: "shellies/shelly1-76F1C8/input/0"
+  payload_on: 1
+  payload_off: 0
