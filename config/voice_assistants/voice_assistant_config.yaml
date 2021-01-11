@@ -44,3 +44,5 @@ group.kitchen_leds:
   name: Kitchen Cupboard Lights
 light.ambilight:
   name: Ambilight
+script.goodnight:
+  name: Goodnight Script

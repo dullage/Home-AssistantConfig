@@ -17,6 +17,9 @@
     - entity: light.ambilight
       name: Ambilight
       icon: mdi:television-ambient-light
+    - entity: light.ambilight_corner_lamp
+      name: Ambilight (Corner Lamp)
+      icon: mdi:television-ambient-light
 
 - type: entities
   title: Bathroom

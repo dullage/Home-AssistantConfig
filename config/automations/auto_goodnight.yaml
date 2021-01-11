@@ -1,0 +1,14 @@
+# Turn everything off downstairs once the front room door has been closed for a bit
+- alias: auto_goodnight
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_room_door_sensor_contact
+    to: "off"
+    for:
+      seconds: 10
+  condition:
+    condition: time
+    after: "20:00:00"
+  action:
+    - service: script.goodnight

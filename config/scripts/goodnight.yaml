@@ -1,0 +1,11 @@
+# Actions to run when we go to bed
+goodnight:
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.nest
+        temperature: 9
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.all_av
+    - service: scene.turn_on
+      entity_id: scene.downstairs_off

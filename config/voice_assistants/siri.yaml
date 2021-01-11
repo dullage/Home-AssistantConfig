@@ -9,6 +9,8 @@ entity_config:
     name: TV
   input_boolean.cartoons:
     name: Cartoons
+  light.ambilight:
+    name: Ambilight
   light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
@@ -41,8 +43,8 @@ entity_config:
     name: Arm Entrance Camera
   script.going_out:
     name: Going Out Script
-  light.ambilight:
-    name: Ambilight
+  script.goodnight:
+    name: Goodnight Script
   switch.coat_rack:
     name: Coat Rack Lights
   switch.ikea_socket_switch:
@@ -72,3 +74,4 @@ filter:
   - switch.ikea_socket_switch
   - group.kitchen_leds
   - light.ambilight
+  - script.goodnight

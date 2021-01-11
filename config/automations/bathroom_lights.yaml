@@ -35,7 +35,30 @@
     service: light.turn_on
     entity_id: light.bathroom_mirror_lights
 
-# As long as the main bathroom lights are off, turn the bathroom mirror lights off once there has been no motion in the bathroom for 5 seconds (debounce). In reality this timeout is more like 2 minutes due to the polling frequency of the Xiaomi mothion sensors.
+# Turn the bathroom mirror lights on if the master bedroom door is opened after sunset
+- alias: bathroom_lights_night_light_on_2
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.master_bedroom_door_sensor_contact
+    to: "on"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    - service: light.turn_on
+      entity_id: light.bathroom_mirror_lights
+    # If no motion in bathroom after 10 seconds, turn the light back off again
+    - delay:
+        seconds: 10
+    - condition: state
+      entity_id: binary_sensor.bathroom_motion_sensor_occupancy
+      state: "off"
+    - service: light.turn_off
+      entity_id: light.bathroom_mirror_lights
+
+# As long as the main bathroom lights are off, turn the bathroom mirror lights off once there has been no motion in the bathroom for 5 seconds (debounce). In reality this timeout is more like 2 minutes due to the polling frequency of the Xiaomi motion sensors.
 - alias: bathroom_lights_night_light_off
   initial_state: true
   trigger:
