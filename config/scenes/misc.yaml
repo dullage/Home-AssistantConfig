@@ -3,7 +3,7 @@
     group.downstairs_ex_stairs:
       state: "off"
     input_select.maestro_stairs: "Shutdown"
-    switch.abilight:
+    switch.ambilight:
       state: "off"
 
 - name: Downstairs General
@@ -41,6 +41,35 @@
     light.dining_room_lamp:
       state: "off"
     light.corner_lamp:
+      state: "off"
+
+- name: Downstairs Timeout
+  entities:
+    group.kitchen_leds:
+      state: "on"
+      effect: "None"
+      rgb_color: [255,0,0]
+      brightness: 255
+    light.main_kitchen_lights:
+      state: "off"
+    light.entrance_light:
+      state: "off"
+    light.ambilight:
+      state: "off"
+    group.tv:
+      state: "on"
+      rgb_color: [255,0,0]
+      brightness: 255
+    light.front_room_lamp:
+      state: "off"
+    light.dining_room_lamp:
+      state: "off"
+    light.corner_lamp:
+      state: "on"
+      effect: "Solid"
+      rgb_color: [255,0,0]
+      brightness: 255
+    switch.coat_rack:
       state: "off"
 
 - name: kitchen_leds_dim

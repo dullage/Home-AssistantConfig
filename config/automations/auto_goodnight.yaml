@@ -5,10 +5,25 @@
     platform: state
     entity_id: binary_sensor.front_room_door_sensor_contact
     to: "off"
-    for:
-      seconds: 10
   condition:
     condition: time
     after: "20:00:00"
   action:
+    - service: automation.turn_off
+      entity_id: automation.kitchen_motion_leds_up
+    - service: automation.turn_off
+      entity_id: automation.kitchen_motion_leds_down
+
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.all_av
+    - service: scene.turn_on
+      entity_id: scene.downstairs_timeout
+    - delay:
+        minutes: 2
+
     - service: script.goodnight
+
+    - service: automation.turn_on
+      entity_id: automation.kitchen_motion_leds_up
+    - service: automation.turn_on
+      entity_id: automation.kitchen_motion_leds_down
