@@ -37,3 +37,10 @@
   state_topic: 2NICE-4/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
+
+- platform: mqtt
+  name: heater
+  command_topic: 2NICE-6/cmnd/POWER
+  state_topic: 2NICE-6/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"

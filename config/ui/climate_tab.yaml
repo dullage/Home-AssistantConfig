@@ -19,8 +19,6 @@
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
-    - entity: sensor.master_bedroom_temperature_sensor_temperature
-      name: Master Bedroom
     - entity: sensor.blues_room_temperature_sensor_temperature
       name: Blue's Room
     - entity: sensor.loft_temperature
@@ -33,8 +31,6 @@
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_humidity
       name: Landing
-    - entity: sensor.master_bedroom_temperature_sensor_humidity
-      name: Master Bedroom
     - entity: sensor.blues_room_temperature_sensor_humidity
       name: Blue's Room
     - entity: sensor.loft_humidity
@@ -59,10 +55,18 @@
       name: Activated
       icon: mdi:alarm-multiple
 
-# - type: entities
-#   title: Blue's Room
-#   show_header_toggle: false
-#   entities:
-#     - entity: switch.ikea_socket_switch
-#       name: Oil Heater
-#       icon: mdi:radiator
+- type: entities
+  title: Office
+  show_header_toggle: false
+  entities:
+    - entity: automation.heater_on
+      name: Auto Mode
+      icon: mdi:home-thermometer-outline
+    - input_number.heater_target
+    - entity: switch.heater
+      name: Oil Heater
+      icon: mdi:radiator
+    - entity: sensor.master_bedroom_temperature_sensor_temperature
+      name: Temperature
+    - entity: sensor.master_bedroom_temperature_sensor_humidity
+      name: Humidity

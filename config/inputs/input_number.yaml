@@ -24,3 +24,12 @@ dryer_timeout:
   max: 999
   mode: box
   unit_of_measurement: mins
+
+heater_target:
+  name: Heater Target
+  icon: mdi:temperature-celsius
+  initial: 21
+  min: 18
+  max: 24
+  step: 0.5
+  unit_of_measurement: "°C"
