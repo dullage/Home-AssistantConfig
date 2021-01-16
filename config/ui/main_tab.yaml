@@ -14,11 +14,11 @@
   entities:
     - light.front_room_lamp
     - group.tv
-    - entity: light.ambilight
-      name: Ambilight
-      icon: mdi:television-ambient-light
-    - entity: light.ambilight_corner_lamp
-      name: Ambilight (Corner Lamp)
+    - entity: light.corner_lamp
+      name: Corner Lamp
+      icon: mdi:star-three-points-outline
+    - input_select.maestro_corner_lamp
+    - entity: group.ambilight
       icon: mdi:television-ambient-light
 
 - type: entities
@@ -76,10 +76,6 @@
     - entity: switch.coat_rack
       name: Coat Rack
       icon: mdi:hanger
-    - entity: light.corner_lamp
-      name: Corner Lamp
-      icon: mdi:star-three-points-outline
-    - input_select.maestro_corner_lamp
 
 - type: entities
   title: Outdoors

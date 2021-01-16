@@ -1,0 +1,9 @@
+- alias: ambilight_corner_lamp_on
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: light.ambilight_corner_lamp
+    to: "on"
+  action:
+    service: light.turn_on
+    entity_id: light.corner_lamp

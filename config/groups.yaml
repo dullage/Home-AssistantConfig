@@ -105,3 +105,9 @@ pi_holes:
   entities:
     - switch.pi_hole
     - switch.pi_hole2
+
+ambilight:
+  name: Ambilight
+  entities:
+    - light.ambilight
+    - light.ambilight_corner_lamp
