@@ -3,7 +3,7 @@
     group.downstairs_ex_stairs:
       state: "off"
     input_select.maestro_stairs: "Shutdown"
-    switch.ambilight:
+    group.ambilight:
       state: "off"
 
 - name: Downstairs General
@@ -11,7 +11,7 @@
     input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
-    light.ambilight:
+    group.ambilight:
       state: "off"
     group.tv:
       state: "on"
@@ -30,7 +30,7 @@
     input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
-    light.ambilight:
+    group.ambilight:
       state: "off"
     group.tv:
       state: "on"
@@ -54,7 +54,7 @@
       state: "off"
     light.entrance_light:
       state: "off"
-    light.ambilight:
+    group.ambilight:
       state: "off"
     group.tv:
       state: "on"
