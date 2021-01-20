@@ -3,7 +3,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_click
+    entity_id: sensor.bathroom_xiaomi_switch_action
     to: single
   action:
     service: light.toggle
@@ -14,7 +14,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_click
+    entity_id: sensor.bathroom_xiaomi_switch_action
     to: double
   action:
     service: switch.toggle
