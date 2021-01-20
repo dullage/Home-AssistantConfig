@@ -13,7 +13,8 @@
       icon: mdi:fire
 
 - type: glance
-  title: Indoor Climate
+  title: Indoor Temperatures
+  columns: 3
   entities:
     - entity: sensor.nest_temperature
       name: Downstairs
@@ -23,9 +24,14 @@
       name: Blue's Room
     - entity: sensor.loft_temperature
       name: Loft
+    - entity: sensor.master_bedroom_temperature_sensor_temperature
+      name: Master Bedroom
+    - entity: sensor.office_temperature_sensor_temperature
+      name: Office
 
 - type: glance
-  title: Humidity
+  title: Indoor Humidity
+  columns: 3
   entities:
     - entity: sensor.nest_humidity
       name: Downstairs
@@ -36,6 +42,10 @@
     - entity: sensor.loft_humidity
       name: Loft
       icon: mdi:water-percent
+    - entity: sensor.master_bedroom_temperature_sensor_humidity
+      name: Master Bedroom
+    - entity: sensor.office_temperature_sensor_humidity
+      name: Office
 
 - type: entities
   title: Outdoor Climate
@@ -62,11 +72,10 @@
     - entity: automation.heater_on
       name: Auto Mode
       icon: mdi:home-thermometer-outline
-    - input_number.heater_target
+    - entity: input_number.heater_target
+      name: Target Temperature
+    - entity: sensor.office_temperature_sensor_temperature
+      name: Current Temperature
     - entity: switch.heater
       name: Oil Heater
       icon: mdi:radiator
-    - entity: sensor.master_bedroom_temperature_sensor_temperature
-      name: Temperature
-    - entity: sensor.master_bedroom_temperature_sensor_humidity
-      name: Humidity

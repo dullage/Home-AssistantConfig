@@ -2,10 +2,10 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: sensor.master_bedroom_temperature_sensor_temperature
+    entity_id: sensor.office_temperature_sensor_temperature
   condition:
     condition: template
-    value_template: "{{ (states('sensor.master_bedroom_temperature_sensor_temperature') | float) < ((states('input_number.heater_target') | float) - 0.5) }}"
+    value_template: "{{ (states('sensor.office_temperature_sensor_temperature') | float) < ((states('input_number.heater_target') | float) - 0.5) }}"
   action:
     service: switch.turn_on
     entity_id: switch.heater
@@ -14,10 +14,10 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: sensor.master_bedroom_temperature_sensor_temperature
+    entity_id: sensor.office_temperature_sensor_temperature
   condition:
     condition: template
-    value_template: "{{ (states('sensor.master_bedroom_temperature_sensor_temperature') | float) >= ((states('input_number.heater_target') | float)) }}"
+    value_template: "{{ (states('sensor.office_temperature_sensor_temperature') | float) >= ((states('input_number.heater_target') | float)) }}"
   action:
     service: switch.turn_off
     entity_id: switch.heater
