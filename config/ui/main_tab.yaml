@@ -16,7 +16,7 @@
     - group.tv
     - entity: light.corner_lamp
       name: Corner Lamp
-      icon: mdi:star-three-points-outline
+      icon: mdi:led-strip-variant
     - input_select.maestro_corner_lamp
     - entity: group.ambilight
       icon: mdi:television-ambient-light
@@ -45,7 +45,8 @@
   title: Kitchen
   entities:
     - light.main_kitchen_lights
-    - group.kitchen_leds
+    - entity: group.kitchen_leds
+      icon: mdi:led-strip-variant
 
 - type: entities
   title: Stairs
