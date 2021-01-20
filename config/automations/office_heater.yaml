@@ -1,0 +1,50 @@
+# Turn the office heater on when the office tempurate falls below the target - 0.5c .
+- alias: office_heater_on
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.office_temperature_sensor_temperature
+    - platform: state
+      entity_id: input_number.office_heater_target
+    - platform: state
+      entity_id: automation.office_heater_on
+      to: "on"
+  condition:
+    condition: template
+    value_template: "{{ (states('sensor.office_temperature_sensor_temperature') | float) < ((states('input_number.office_heater_target') | float) - 0.5) }}"
+  action:
+    service: switch.turn_on
+    entity_id: switch.heater
+
+# Turn the office heater off when the office tempurate reaches the target.
+- alias: office_heater_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sensor.office_temperature_sensor_temperature
+    - platform: state
+      entity_id: input_number.office_heater_target
+    - platform: state
+      entity_id: automation.office_heater_on
+      to: "on"
+  condition:
+    condition: template
+    value_template: "{{ (states('sensor.office_temperature_sensor_temperature') | float) >= ((states('input_number.office_heater_target') | float)) }}"
+  action:
+    service: switch.turn_off
+    entity_id: switch.heater
+
+# Turn the office heater and the auto on automation off if the house is left unnocupied.
+- alias: office_heater_location_safety
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.office_heater_on
+    - service: switch.turn_off
+      entity_id: switch.heater

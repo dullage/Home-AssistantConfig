@@ -69,10 +69,10 @@
   title: Office
   show_header_toggle: false
   entities:
-    - entity: automation.heater_on
+    - entity: automation.office_heater_on
       name: Auto Mode
       icon: mdi:home-thermometer-outline
-    - entity: input_number.heater_target
+    - entity: input_number.office_heater_target
       name: Target Temperature
     - entity: sensor.office_temperature_sensor_temperature
       name: Current Temperature

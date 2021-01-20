@@ -25,8 +25,8 @@ dryer_timeout:
   mode: box
   unit_of_measurement: mins
 
-heater_target:
-  name: Heater Target
+office_heater_target:
+  name: Office Heater Target
   icon: mdi:temperature-celsius
   initial: 21
   min: 18
