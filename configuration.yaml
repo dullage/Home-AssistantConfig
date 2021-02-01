@@ -64,15 +64,11 @@ person:
     device_trackers:
       # iOS App
       - device_tracker.dullage_s_iphone
-      # Unifi
-      - device_tracker.dullages_iphone
   - name: Leanne
     id: leanne
     device_trackers:
       # iOS App
       - device_tracker.iphone
-      # Unifi
-      - device_tracker.fc_2a_9c_8e_0d_e0
 
 config:
 frontend:
@@ -170,15 +166,6 @@ ifttt:
 speedtestdotnet:
   server_id: 1675
 
-# Device Trackers
-device_tracker:
-  - platform: unifi_direct
-    host: 192.168.0.8
-    username: admin
-    password: !secret unifi_ssh_password
-    new_device_defaults:
-      track_new_devices: false
-
 # Pi-hole
 pi_hole:
   - host: '192.168.0.50'
@@ -193,3 +180,43 @@ nest:
   client_id: !secret google_sdm_client_id
   client_secret: !secret google_sdm_client_secret
   subscriber_id: !secret google_sdm_subscriber_id
+
+# Office Heater Thermostat
+climate:
+  - platform: generic_thermostat
+    name: Office Heater
+    heater: switch.office_heater
+    target_sensor: sensor.office_temperature_sensor_temperature
+    target_temp: 21
+
+# Covers
+cover:
+  - platform: template
+    covers:
+      bedroom_blind:
+        device_class: shade
+        position_template: "{{ states('sensor.bedroom_blind_position') }}"
+        availability_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+        set_cover_position:
+          - service: mqtt.publish
+            data:
+              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001526-b87f-490c-92cb-11ba5ea5167c/Set"
+              payload: "{{ 100 - position }}"
+          - delay:
+              seconds: 30
+          - service: mqtt.publish
+            data:
+              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001525-b87f-490c-92cb-11ba5ea5167c/Get"
+        stop_cover:
+          - service: mqtt.publish
+            data:
+              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001530-b87f-490c-92cb-11ba5ea5167c/Set"
+              payload: 0
+          - service: mqtt.publish
+            data:
+              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001525-b87f-490c-92cb-11ba5ea5167c/Get"
+
+# Rest Commands
+rest_command:
+  override_stair_light_live:
+    url: "http://192.168.0.156/win&LO=1"

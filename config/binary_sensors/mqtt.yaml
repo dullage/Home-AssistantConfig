@@ -10,3 +10,9 @@
   state_topic: "shellies/shelly1-76F1C8/input/0"
   payload_on: 1
   payload_off: 0
+
+- platform: mqtt
+  name: bedroom_blind_availability
+  state_topic: "de:66:92:69:03:8c/Connected"
+  payload_on: "true"
+  payload_off: "false"

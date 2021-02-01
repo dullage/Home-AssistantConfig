@@ -1,8 +1,9 @@
 - type: thermostat
   entity: climate.nest
+  name: Central Heating
 
 - type: entities
-  title: Quick Heating Controls
+  title: Central Heating Controls
   show_header_toggle: false
   entities:
     - entity: script.heating_quick_actions_21
@@ -11,6 +12,9 @@
     - entity: script.heating_quick_actions_boost
       name: Heating Boost (5 min)
       icon: mdi:fire
+
+- type: thermostat
+  entity: climate.office_heater
 
 - type: glance
   title: Indoor Temperatures
@@ -65,17 +69,17 @@
       name: Activated
       icon: mdi:alarm-multiple
 
-- type: entities
-  title: Office
-  show_header_toggle: false
-  entities:
-    - entity: automation.office_heater_on
-      name: Auto Mode
-      icon: mdi:home-thermometer-outline
-    - entity: input_number.office_heater_target
-      name: Target Temperature
-    - entity: sensor.office_temperature_sensor_temperature
-      name: Current Temperature
-    - entity: switch.heater
-      name: Oil Heater
-      icon: mdi:radiator
+# - type: entities
+#   title: Office
+#   show_header_toggle: false
+#   entities:
+#     - entity: automation.office_heater_on
+#       name: Auto Mode
+#       icon: mdi:home-thermometer-outline
+#     - entity: input_number.office_heater_target
+#       name: Target Temperature
+#     - entity: sensor.office_temperature_sensor_temperature
+#       name: Current Temperature
+#     - entity: switch.office_heater
+#       name: Oil Heater
+#       icon: mdi:radiator

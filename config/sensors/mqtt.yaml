@@ -8,14 +8,20 @@
   name: "Loft Humidity"
   unit_of_measurement: "%"
 
-# - platform: mqtt
-#   name: coat_rack_power_consumption
-#   state_topic: 2NICE-1/tele/SENSOR
-#   value_template: '{{ value_json["ENERGY"]["Current"] }}'
-#   unit_of_measurement: A
-
 - platform: mqtt
   name: tv_power_consumption
-  state_topic: 2NICE-2/tele/SENSOR
+  state_topic: 2NICE-7/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
+
+- platform: mqtt
+  name: bedroom_blind_position
+  state_topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001525-b87f-490c-92cb-11ba5ea5167c"
+  value_template: "{% set position = 100 - (value.split(',')[0] | int) %}{{ position }}"
+  unit_of_measurement: "%"
+
+- platform: mqtt
+  name: bedroom_blind_battery
+  device_class: battery
+  state_topic: "de:66:92:69:03:8c/BatteryService/BatteryLevel"
+  unit_of_measurement: "%"

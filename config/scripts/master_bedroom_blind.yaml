@@ -3,5 +3,5 @@ master_bedroom_blind_fan:
   sequence:
     service: cover.set_cover_position
     data:
-      entity_id: cover.master_bedroom
+      entity_id: cover.bedroom_blind
       position: 38

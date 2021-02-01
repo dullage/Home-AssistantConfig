@@ -1,7 +1,7 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
-  cover.master_bedroom:
+  cover.bedroom_blind:
     name: Bedroom Blinds
   group.kitchen_leds:
     name: Kitchen Cupboard Lights
@@ -69,7 +69,7 @@ filter:
   - light.dining_room_lamp
   - light.corner_lamp
   - input_boolean.cartoons
-  - cover.master_bedroom
+  - cover.bedroom_blind
   - script.arm_entrance_camera
   - switch.ikea_socket_switch
   - group.kitchen_leds

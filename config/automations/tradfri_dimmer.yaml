@@ -10,7 +10,7 @@
       to: "brightness_up"
   action:
     service: cover.open_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
 
 # Close the blinds if the dimmer off button is pressed or held.
 - alias: tradfri_dimmer_off
@@ -24,7 +24,7 @@
       to: "brightness_down"
   action:
     service: cover.close_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
 
 # Stop the blinds if a dimmer button is held then released. 
 - alias: tradfri_dimmer_stop
@@ -35,4 +35,4 @@
     to: "brightness_stop"
   action:
     service: cover.stop_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind

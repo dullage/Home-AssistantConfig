@@ -34,7 +34,7 @@ light.corner_lamp:
   name: Corner Lamp
 input_boolean.cartoons:
   name: Cartoons
-cover.master_bedroom:
+cover.bedroom_blind:
   name: Bedroom Blinds
 script.arm_entrance_camera:
   name: Arm Entrance Camera

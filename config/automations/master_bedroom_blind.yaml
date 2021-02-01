@@ -10,7 +10,7 @@
     before: "21:00:00"
   action:
     service: cover.close_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
 
 # Close the blind so it rests above the window fan at 9pm.
 - alias: master_bedroom_blind_night
@@ -32,7 +32,7 @@
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
     service: cover.close_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
 
 # Open the blind at 10am
 - alias: master_bedroom_blind_morning
@@ -42,7 +42,7 @@
     at: "10:00:00"
   action:
     service: cover.open_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
 
 # Open the blind if we both leave
 - alias: master_bedroom_blind_open_on_leave
@@ -55,4 +55,4 @@
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
     service: cover.open_cover
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind

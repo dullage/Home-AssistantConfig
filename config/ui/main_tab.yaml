@@ -3,6 +3,7 @@
   show_header_toggle: false
   entities:
     - scene.downstairs_general
+    - scene.downstairs_timeout
     - scene.downstairs_dim
     - scene.downstairs_off
     - entity: group.all_lights
@@ -33,9 +34,11 @@
   entities:
     - light.master_bedroom_main
     - light.bedroom_lamps
-    - entity: cover.master_bedroom
+    - entity: cover.bedroom_blind
       name: Blind
       secondary_info: position
+    - entity: sensor.bedroom_blind_battery
+      name: Blind Battery
     - script.master_bedroom_blind_fan
     - entity: switch.fan
       name: Fan

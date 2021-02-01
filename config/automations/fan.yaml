@@ -3,10 +3,10 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
   condition:
     condition: template
-    value_template: "{{ state_attr('cover.master_bedroom', 'current_position') < 30 }}"
+    value_template: "{{ state_attr('cover.bedroom_blind', 'current_position') < 30 }}"
   action:
     service: switch.turn_off
     entity_id: switch.fan
@@ -27,7 +27,7 @@
   initial_state: true
   trigger:
     - platform: state
-      entity_id: cover.master_bedroom
+      entity_id: cover.bedroom_blind
     - platform: state
       entity_id: binary_sensor.bedroom_window_contact
       to: "on"
@@ -38,7 +38,7 @@
         entity_id: binary_sensor.bedroom_window_contact
         state: "on"
       - condition: template
-        value_template: "{{ state_attr('cover.master_bedroom', 'current_position') >= 30 }}"
+        value_template: "{{ state_attr('cover.bedroom_blind', 'current_position') >= 30 }}"
   action:
     service: switch.turn_on
     entity_id: switch.fan

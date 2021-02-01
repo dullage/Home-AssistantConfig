@@ -16,6 +16,7 @@
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.all_av
+    - service: rest_command.override_stair_light_live
     - service: scene.turn_on
       entity_id: scene.downstairs_timeout
     - delay:

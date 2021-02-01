@@ -29,4 +29,4 @@
     to: hold
   action:
     service: cover.toggle
-    entity_id: cover.master_bedroom
+    entity_id: cover.bedroom_blind
