@@ -30,8 +30,8 @@ Some highlights of our setup in no particular order:
 | Type | Count |
 | ---- | ----- |
 | Alarm Control Panel | 1 |
-| Automation | 104 |
-| Binary Sensor | 27 |
+| Automation | 106 |
+| Binary Sensor | 30 |
 | Camera | 3 |
 | Climate | 3 |
 | Cover | 1 |
@@ -44,8 +44,8 @@ Some highlights of our setup in no particular order:
 | Media Player | 13 |
 | Scene | 6 |
 | Script | 28 |
-| Sensor | 142 |
-| Switch | 16 |
+| Sensor | 151 |
+| Switch | 17 |
 
 
 # Screenshots
