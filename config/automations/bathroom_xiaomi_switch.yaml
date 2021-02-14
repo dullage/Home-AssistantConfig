@@ -28,5 +28,7 @@
     entity_id: sensor.bathroom_xiaomi_switch_action
     to: hold
   action:
-    service: cover.toggle
-    entity_id: cover.bedroom_blind
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:00:10"
+    - service: cover.toggle
+      entity_id: cover.bedroom_blind

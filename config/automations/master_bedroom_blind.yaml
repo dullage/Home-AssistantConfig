@@ -9,8 +9,10 @@
     condition: time
     before: "21:00:00"
   action:
-    service: cover.close_cover
-    entity_id: cover.bedroom_blind
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:01:00"
+    - service: cover.close_cover
+      entity_id: cover.bedroom_blind
 
 # Close the blind so it rests above the window fan at 9pm.
 - alias: master_bedroom_blind_night
@@ -31,18 +33,42 @@
     condition: template
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
-    service: cover.close_cover
-    entity_id: cover.bedroom_blind
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:01:00"
+    - service: cover.close_cover
+      entity_id: cover.bedroom_blind
 
-# Open the blind at 10am
+# Open the blind when everyone is up
 - alias: master_bedroom_blind_morning
   initial_state: true
   trigger:
-    platform: time
-    at: "10:00:00"
+    - platform: state
+      entity_id: binary_sensor.blues_room_door_sensor_contact
+      to: "on"
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.master_bedroom_door_sensor_contact
+      to: "on"
+      for:
+        minutes: 5
+  condition:
+    - condition: and
+      conditions:
+        - condition: time
+          after: "06:00:00"
+          before: "10:00:00"
+        - condition: state
+          entity_id: binary_sensor.blues_room_door_sensor_contact
+          state: "on"
+        - condition: state
+          entity_id: binary_sensor.master_bedroom_door_sensor_contact
+          state: "on"
   action:
-    service: cover.open_cover
-    entity_id: cover.bedroom_blind
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:01:00"
+    - service: cover.open_cover
+      entity_id: cover.bedroom_blind
 
 # Open the blind if we both leave
 - alias: master_bedroom_blind_open_on_leave
@@ -54,5 +80,24 @@
     condition: template
     value_template: "{{ states('group.everyone') != 'home' }}"
   action:
-    service: cover.open_cover
-    entity_id: cover.bedroom_blind
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:01:00"
+    - service: cover.open_cover
+      entity_id: cover.bedroom_blind
+
+# Restart the wifi bridge if the blinds become unavailable
+- alias: master_bedroom_blind_auto_restart
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_blind_availability
+    to: "off"
+    for:
+      seconds: 20
+  action:
+    - service: switch.turn_off
+      entity_id: switch.ble2mqtt
+    - delay:
+        seconds: 2
+    - service: switch.turn_on
+      entity_id: switch.ble2mqtt

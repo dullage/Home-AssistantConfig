@@ -37,12 +37,9 @@
     - entity: cover.bedroom_blind
       name: Blind
       secondary_info: position
+    - script.master_bedroom_blind_fan
     - entity: sensor.bedroom_blind_battery
       name: Blind Battery
-    - script.master_bedroom_blind_fan
-    - entity: switch.fan
-      name: Fan
-      icon: mdi:fan
 
 - type: entities
   title: Kitchen

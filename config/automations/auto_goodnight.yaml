@@ -1,10 +1,13 @@
 # Turn everything off downstairs once the front room door has been closed for a bit
 - alias: auto_goodnight
   initial_state: true
+  mode: restart
   trigger:
     platform: state
-    entity_id: binary_sensor.front_room_door_sensor_contact
+    entity_id: group.downstairs_internal_doors
     to: "off"
+    for:
+      seconds: 3
   condition:
     condition: time
     after: "20:00:00"
@@ -20,11 +23,15 @@
     - service: scene.turn_on
       entity_id: scene.downstairs_timeout
     - delay:
-        minutes: 2
-
-    - service: script.goodnight
+        minutes: 3
 
     - service: automation.turn_on
       entity_id: automation.kitchen_motion_leds_up
     - service: automation.turn_on
       entity_id: automation.kitchen_motion_leds_down
+
+    - condition: state
+      entity_id: group.downstairs_internal_doors
+      state: "off"
+
+    - service: script.goodnight

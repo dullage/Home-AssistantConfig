@@ -44,7 +44,7 @@
     conditions:
       # Back Door
       - condition: state
-        entity_id: binary_sensor.kitchen_door_contact
+        entity_id: binary_sensor.garden_door_contact
         state: "off"
       # Patio Doors
       - condition: state
@@ -60,7 +60,7 @@
   trigger:
     # Back Door
     - platform: state
-      entity_id: binary_sensor.kitchen_door_contact
+      entity_id: binary_sensor.garden_door_contact
       to: "off"
     # Patio Doors
     - platform: state
@@ -73,7 +73,7 @@
         after: "22:00:00"
       # Back Door
       - condition: state
-        entity_id: binary_sensor.kitchen_door_contact
+        entity_id: binary_sensor.garden_door_contact
         state: "off"
       # Patio Doors
       - condition: state

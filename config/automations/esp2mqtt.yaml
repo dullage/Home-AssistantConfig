@@ -1,0 +1,14 @@
+# Publish Connected=false for blind when no uptime pings from esp2mqtt device for 1m 30s
+- alias: esp2mqtt_uptime_monitor
+  initial_state: true
+  mode: restart
+  trigger:
+    platform: mqtt
+    topic: "BLE2MQTT-AAB8/Uptime"
+  action:
+    - delay: "00:01:06"
+    - service: mqtt.publish
+      data:
+        topic: "de:66:92:69:03:8c/Connected"
+        payload: "false"
+        retain: true

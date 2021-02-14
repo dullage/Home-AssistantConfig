@@ -1,7 +1,9 @@
 master_bedroom_blind_fan:
   alias: Close Blind to Fan Height
   sequence:
-    service: cover.set_cover_position
-    data:
-      entity_id: cover.bedroom_blind
-      position: 38
+    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
+      timeout: "00:00:10"
+    - service: cover.set_cover_position
+      data:
+        entity_id: cover.bedroom_blind
+        position: 38

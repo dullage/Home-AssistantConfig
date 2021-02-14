@@ -8,7 +8,7 @@
       to: "on"
     # Kitchen Door
     - platform: state
-      entity_id: binary_sensor.kitchen_door_contact
+      entity_id: binary_sensor.garden_door_contact
       to: "on"
     # Patio Doors
     - platform: state

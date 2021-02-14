@@ -44,3 +44,10 @@
   state_topic: 2NICE-6/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
+
+- platform: mqtt
+  name: ble2mqtt
+  command_topic: 2NICE-3/cmnd/POWER
+  state_topic: 2NICE-3/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"

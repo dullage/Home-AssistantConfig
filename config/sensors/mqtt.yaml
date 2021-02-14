@@ -24,4 +24,14 @@
   name: bedroom_blind_battery
   device_class: battery
   state_topic: "de:66:92:69:03:8c/BatteryService/BatteryLevel"
+  availability_topic: "de:66:92:69:03:8c/Connected"
+  value_template: "{{ [((value | int) * 1.2) | int, 100] | min }}"
+  payload_available: "true"
+  payload_not_available: "false"
   unit_of_measurement: "%"
+
+- platform: mqtt
+  name: ble2mqtt_uptime2
+  state_topic: "BLE2MQTT-AAB8/Uptime"
+  value_template: "{{ value | int }}"
+  unit_of_measurement: "s"

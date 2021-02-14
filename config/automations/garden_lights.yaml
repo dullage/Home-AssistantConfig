@@ -4,7 +4,7 @@
   trigger:
     # Kitchen Door
     - platform: state
-      entity_id: binary_sensor.kitchen_door_contact
+      entity_id: binary_sensor.garden_door_contact
       to: "on"
     # Patio Doors
     - platform: state
@@ -23,7 +23,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.kitchen_door_contact
+    entity_id: binary_sensor.garden_door_contact
     to: "off"
     for:
       minutes: 2
@@ -46,7 +46,7 @@
       minutes: 2
   condition:
     condition: state
-    entity_id: binary_sensor.kitchen_door_contact
+    entity_id: binary_sensor.garden_door_contact
     state: "off"
   action:
     service: light.turn_off

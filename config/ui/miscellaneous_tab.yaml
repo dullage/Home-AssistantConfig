@@ -16,20 +16,29 @@
       name: Bathroom Motion Sensor
 
     - type: section
-      label: Door Sensors
+      label: External Doors
     - entity: binary_sensor.front_door_contact
       name: Front Door
-    - entity: binary_sensor.kitchen_door_contact
-      name: Kitchen Door
+    - entity: binary_sensor.garden_door_contact
+      name: Garden Door
     - entity: binary_sensor.patio_doors_contact
       name: Patio Doors
-    - entity: binary_sensor.front_room_door_sensor_contact
-      name: Front Room Door
-    - entity: binary_sensor.master_bedroom_door_sensor_contact
-      name: Master Bedroom Door
 
     - type: section
-      label: Window Sensors
+      label: Internal Doors
+    - entity: binary_sensor.kitchen_door_sensor_contact
+      name: Kitchen Door
+    - entity: binary_sensor.front_room_door_sensor_contact
+      name: Front Room Door
+    - entity: binary_sensor.bathroom_door_sensor_contact
+      name: Bathroom Door
+    - entity: binary_sensor.master_bedroom_door_sensor_contact
+      name: Master Bedroom Door
+    - entity: binary_sensor.blues_room_door_sensor_contact
+      name: Blue's Bedroom Door
+
+    - type: section
+      label: Windows
     - entity: binary_sensor.bedroom_window_contact
       name: Bedroom Window
       icon: mdi:window-open-variant

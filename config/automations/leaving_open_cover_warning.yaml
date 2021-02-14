@@ -93,7 +93,7 @@
         state: "on"
       # Back Door
       - condition: state
-        entity_id: binary_sensor.kitchen_door_contact
+        entity_id: binary_sensor.garden_door_contact
         state: "on"
       # Patio Doors
       - condition: state

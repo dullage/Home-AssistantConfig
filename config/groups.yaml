@@ -111,3 +111,15 @@ ambilight:
   entities:
     - light.ambilight
     - light.ambilight_corner_lamp
+
+downstairs_internal_doors:
+  name: Downstairs Internal Doors
+  entities:
+    - binary_sensor.kitchen_door_sensor_contact
+    - binary_sensor.front_room_door_sensor_contact
+
+bedroom_doors:
+  name: Bedroom Doors
+  entities:
+    - binary_sensor.master_bedroom_door_sensor_contact
+    - binary_sensor.blues_room_door_sensor_contact
