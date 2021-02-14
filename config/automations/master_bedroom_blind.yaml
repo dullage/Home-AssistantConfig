@@ -42,28 +42,15 @@
 - alias: master_bedroom_blind_morning
   initial_state: true
   trigger:
-    - platform: state
-      entity_id: binary_sensor.blues_room_door_sensor_contact
-      to: "on"
-      for:
-        minutes: 5
-    - platform: state
-      entity_id: binary_sensor.master_bedroom_door_sensor_contact
-      to: "on"
-      for:
-        minutes: 5
+    platform: state
+    entity_id: group.bedroom_doors
+    to: "on"
+    for:
+      minutes: 5
   condition:
-    - condition: and
-      conditions:
-        - condition: time
-          after: "06:00:00"
-          before: "10:00:00"
-        - condition: state
-          entity_id: binary_sensor.blues_room_door_sensor_contact
-          state: "on"
-        - condition: state
-          entity_id: binary_sensor.master_bedroom_door_sensor_contact
-          state: "on"
+    condition: time
+    after: "06:00:00"
+    before: "10:00:00"
   action:
     - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
       timeout: "00:01:00"

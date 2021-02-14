@@ -120,6 +120,7 @@ downstairs_internal_doors:
 
 bedroom_doors:
   name: Bedroom Doors
+  all: true
   entities:
     - binary_sensor.master_bedroom_door_sensor_contact
     - binary_sensor.blues_room_door_sensor_contact
