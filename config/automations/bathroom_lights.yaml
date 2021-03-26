@@ -103,3 +103,20 @@
             entity_id: light.bathroom_all
             color_temp: 230
             brightness: 255
+
+- alias: bathroom_light_temperature_2
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    to: 'below_horizon'
+  condition:
+    condition: state
+    entity_id: light.bathroom_all
+    state: "on"
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.bathroom_all
+      color_temp: 370
+      brightness: 200

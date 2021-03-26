@@ -34,7 +34,7 @@
       state: "off"
     group.tv:
       state: "on"
-      brightness: 100
+      brightness: 60
       xy_color: [0.49, 0.41]
     light.front_room_lamp:
       state: "off"

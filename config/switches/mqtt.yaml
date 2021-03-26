@@ -51,3 +51,10 @@
   state_topic: 2NICE-3/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
+
+- platform: mqtt
+  name: sprinklers
+  command_topic: 2NICE-2/cmnd/POWER
+  state_topic: 2NICE-2/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"

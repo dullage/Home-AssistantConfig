@@ -80,11 +80,21 @@
     entity_id: binary_sensor.bedroom_blind_availability
     to: "off"
     for:
-      seconds: 20
+      seconds: 60
   action:
-    - service: switch.turn_off
-      entity_id: switch.ble2mqtt
-    - delay:
-        seconds: 2
-    - service: switch.turn_on
-      entity_id: switch.ble2mqtt
+    - repeat:
+        while:
+          - condition: state
+            entity_id: binary_sensor.bedroom_blind_availability
+            state: "off"
+          - condition: template
+            value_template: "{{ repeat.index <= 20 }}"
+        sequence:
+          - service: switch.turn_off
+            entity_id: switch.ble2mqtt
+          - delay:
+              seconds: 10
+          - service: switch.turn_on
+            entity_id: switch.ble2mqtt
+          - delay:
+              minutes: 3
