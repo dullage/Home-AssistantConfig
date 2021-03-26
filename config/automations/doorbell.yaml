@@ -28,14 +28,41 @@
         or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
       }}
   action:
-    - service: tts.amazon_polly_say
+    - service: tts.cloud_say
       data:
         entity_id: media_player.nest_minis
-        message: "<speak>Humans. There is someone at the front door.</speak>"
+        message: "Humans. There is someone at the front door."
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Doorbell"
+        data:
+          attachment:
+            content-type: jpeg
+          push:
+            category: camera
+          entity_id: camera.front_door
     - service: notify.mobile_app_iphone
       data:
         message: "Doorbell"
-    - service: shell_command.blink
+        data:
+          attachment:
+            content-type: jpeg
+          push:
+            category: camera
+          entity_id: camera.front_door
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_display
+        volume_level: 0
+    - service: camera.play_stream
+      data:
+        entity_id: camera.front_door
+        media_player: media_player.kitchen_display
+    - delay:
+        minutes: 2
+    - service: media_player.media_stop
+      entity_id: media_player.kitchen_display
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_display
+        volume_level: 0.7

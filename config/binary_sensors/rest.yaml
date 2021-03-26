@@ -1,0 +1,13 @@
+- platform: rest
+  resource: !secret front_door_camera_motion_url
+  name: front_door_camera_motion
+  scan_interval: 5
+  value_template: "{{ value_json[0].value.state }}"
+  device_class: motion
+
+- platform: rest
+  resource: !secret garden_camera_motion_url
+  name: garden_camera_motion
+  scan_interval: 5
+  value_template: "{{ value_json[0].value.state }}"
+  device_class: motion

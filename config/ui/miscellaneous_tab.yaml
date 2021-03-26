@@ -1,49 +1,4 @@
 - type: entities
-  title: Security
-  show_header_toggle: false
-  entities:
-    - type: section
-      label: Motion Sensors
-    - entity: binary_sensor.porch_motion
-      name: Porch Motion Sensor (Night)
-    - entity: binary_sensor.dining_room_motion_sensor_occupancy
-      name: Dining Room Motion Sensor
-    - entity: binary_sensor.stairs_motion_sensor_occupancy
-      name: Stairs Motion Sensor
-    - entity: binary_sensor.kitchen_motion_sensor_occupancy
-      name: Kitchen Motion Sensor
-    - entity: binary_sensor.bathroom_motion_sensor_occupancy
-      name: Bathroom Motion Sensor
-
-    - type: section
-      label: External Doors
-    - entity: binary_sensor.front_door_contact
-      name: Front Door
-    - entity: binary_sensor.garden_door_contact
-      name: Garden Door
-    - entity: binary_sensor.patio_doors_contact
-      name: Patio Doors
-
-    - type: section
-      label: Internal Doors
-    - entity: binary_sensor.kitchen_door_sensor_contact
-      name: Kitchen Door
-    - entity: binary_sensor.front_room_door_sensor_contact
-      name: Front Room Door
-    - entity: binary_sensor.bathroom_door_sensor_contact
-      name: Bathroom Door
-    - entity: binary_sensor.master_bedroom_door_sensor_contact
-      name: Master Bedroom Door
-    - entity: binary_sensor.blues_room_door_sensor_contact
-      name: Blue's Bedroom Door
-
-    - type: section
-      label: Windows
-    - entity: binary_sensor.bedroom_window_contact
-      name: Bedroom Window
-      icon: mdi:window-open-variant
-
-- type: entities
   title: Modes
   show_header_toggle: false
   entities:
@@ -124,3 +79,11 @@
     - entity: input_datetime.last_effy_flea
       name: Last Effy Flea
       icon: mdi:cat
+
+- type: entities
+  title: "Sprinklers"
+  show_header_toggle: false
+  entities:
+    - entity: switch.sprinklers
+      name: Sprinklers
+      icon: mdi:sprinkler-variant

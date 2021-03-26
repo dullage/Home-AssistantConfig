@@ -79,6 +79,8 @@ sun:
 system_health:
 updater:
 shopping_list:
+ffmpeg:
+stream:
 
 # Include
 automation: !include_dir_merge_list config/automations/
@@ -187,7 +189,6 @@ climate:
     name: Office Heater
     heater: switch.office_heater
     target_sensor: sensor.office_temperature_sensor_temperature
-    target_temp: 21
 
 # Covers
 cover:
@@ -220,3 +221,10 @@ cover:
 rest_command:
   override_stair_light_live:
     url: "http://192.168.0.156/win&LO=1"
+
+# Cameras
+camera:
+  - platform: mjpeg
+    name: Kitchen
+    mjpeg_url: http://192.168.0.108:8081
+    still_image_url: http://192.168.0.108/picture/1/current/
