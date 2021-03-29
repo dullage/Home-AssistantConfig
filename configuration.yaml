@@ -28,7 +28,7 @@ http:
   login_attempts_threshold: 5
   server_port: 8448
   trusted_proxies:
-    - 127.0.0.1
+    - 172.16.0.0/12
   use_x_forwarded_for: true
 
 # Core
