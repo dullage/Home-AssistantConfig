@@ -36,8 +36,6 @@ input_boolean.cartoons:
   name: Cartoons
 cover.bedroom_blind:
   name: Bedroom Blinds
-script.arm_entrance_camera:
-  name: Arm Entrance Camera
 switch.ikea_socket_switch:
   name: Office Lamp
 group.kitchen_leds:

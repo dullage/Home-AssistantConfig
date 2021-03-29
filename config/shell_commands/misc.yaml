@@ -1,4 +1,3 @@
-blink: python3 /config/config/python_scripts/blink.py
 shopping_list_enter_adam: python3 /config/config/python_scripts/shopping_list.py ENTER mobile_app_dullage_s_iphone
 shopping_list_enter_leanne: python3 /config/config/python_scripts/shopping_list.py ENTER mobile_app_iphone
 shopping_list_exit_adam: python3 /config/config/python_scripts/shopping_list.py EXIT mobile_app_dullage_s_iphone
