@@ -28,10 +28,10 @@
         or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
       }}
   action:
-    - service: tts.cloud_say
+    - service: tts.amazon_polly_say
       data:
         entity_id: media_player.nest_minis
-        message: "Humans. There is someone at the front door."
+        message: "<speak>Humans. There is someone at the front door.</speak>"
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Doorbell"
