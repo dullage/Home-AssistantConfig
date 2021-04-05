@@ -25,7 +25,7 @@ entity_config:
     name: Front Room Lamp
   light.garden_lights:
     name: Garden Lights
-  light.landing_light:
+  light.landing:
     name: Landing Light
   light.main_kitchen_lights:
     name: Kitchen Lights
@@ -58,7 +58,7 @@ filter:
   - script.going_out
   - light.main_kitchen_lights
   - light.garden_lights
-  - light.landing_light
+  - light.landing
   - light.bathroom_all
   - light.master_bedroom_main
   - light.bedroom_lamps

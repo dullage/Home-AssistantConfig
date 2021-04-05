@@ -59,7 +59,7 @@
   title: Landing
   show_header_toggle: false
   entities:
-    - light.landing_light
+    - light.landing
 
 - type: entities
   title: Office

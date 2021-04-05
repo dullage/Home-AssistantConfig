@@ -12,7 +12,7 @@ light.main_kitchen_lights:
   name: Kitchen Lights
 light.garden_lights:
   name: Garden Lights
-light.landing_light:
+light.landing:
   name: Landing Light
 light.bathroom_all:
   name: Bathroom Lights

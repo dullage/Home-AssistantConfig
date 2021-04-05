@@ -1,0 +1,21 @@
+- alias: landing_switch
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.landing_switch
+  action:
+    - wait_for_trigger:
+      - platform: state
+        entity_id: binary_sensor.landing_switch
+      timeout:
+        seconds: 0.5
+    - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ wait.trigger is not none }}"
+        sequence:
+          - service: light.toggle
+            entity_id: light.downstairs
+      default:
+        - service: light.toggle
+          entity_id: light.landing

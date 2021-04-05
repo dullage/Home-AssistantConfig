@@ -31,13 +31,13 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: light.landing_light
+    entity_id: light.landing
     to: "on"
     for:
       minutes: 30
   action:
     service: light.turn_off
-    entity_id: light.landing_light
+    entity_id: light.landing
 
 # Turn off the main bedroom lights after 30 minutes of being on.
 - alias: light_timeouts_master_bedroom

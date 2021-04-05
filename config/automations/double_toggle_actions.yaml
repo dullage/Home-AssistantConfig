@@ -1,14 +1,3 @@
-# Toggle the downstairs lights when the landing light switch is double toggled.
-- alias: double_toggle_actions_landing
-  initial_state: true
-  trigger:
-    platform: mqtt
-    topic: automation
-    payload: "landingSwitch"
-  action:
-    service: light.toggle
-    entity_id: light.downstairs
-
 # Toggle the bedroom lamps when the bedroom light switch is double toggled.
 - alias: double_toggle_actions_bedroom
   initial_state: true

@@ -25,7 +25,7 @@ all_lights:
     - light.kitchen_right_top
     - light.kitchen_right_bottom
     - light.stairs
-    - light.landing_light
+    - light.landing
     - light.bathroom_all
     - light.bathroom_mirror_lights
     - light.master_bedroom_main
