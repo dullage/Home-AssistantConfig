@@ -1,20 +1,4 @@
 - platform: mqtt
-  name: Landing Light
-  state_topic: "light/landing/state"
-  command_topic: "light/landing"
-  payload_off: "0"
-  payload_on: "1"
-  retain: false
-
-- platform: mqtt
-  name: Bathroom Lights
-  state_topic: "light/bathroom/state"
-  command_topic: "light/bathroom"
-  payload_off: "0"
-  payload_on: "1"
-  retain: false
-
-- platform: mqtt
   name: Bathroom Mirror Lights
   command_topic: "shellies/shelly1-2272F1/relay/0/command"
   state_topic: "shellies/shelly1-2272F1/relay/0"
