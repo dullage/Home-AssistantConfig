@@ -11,3 +11,10 @@
   scan_interval: 5
   value_template: "{{ value_json[0].value.state }}"
   device_class: motion
+
+- platform: rest
+  resource: !secret side_camera_motion_url
+  name: side_camera_motion
+  scan_interval: 5
+  value_template: "{{ value_json[0].value.state }}"
+  device_class: motion

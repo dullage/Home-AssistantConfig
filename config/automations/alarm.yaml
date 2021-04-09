@@ -6,7 +6,7 @@
     - platform: state
       entity_id: binary_sensor.front_door_contact
       to: "on"
-    # Kitchen Door
+    # Garden Door
     - platform: state
       entity_id: binary_sensor.garden_door_contact
       to: "on"
@@ -53,3 +53,21 @@
     - delay: "06:00"
     - service: automation.turn_on
       entity_id: automation.alarm
+
+- alias: alarm_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.alarm
+    to: "on"
+  action:
+    service: shell_command.start_cctv_uploader
+
+- alias: alarm_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.alarm
+    to: "off"
+  action:
+    service: shell_command.stop_cctv_uploader

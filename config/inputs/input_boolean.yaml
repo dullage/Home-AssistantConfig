@@ -9,3 +9,6 @@ guest_mode:
 
 all_av:
   name: TV, Freeview & Amp
+
+alarm:
+  name: Alarm

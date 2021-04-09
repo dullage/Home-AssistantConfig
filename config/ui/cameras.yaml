@@ -1,11 +1,19 @@
+- type: entities
+  # title: Alarm
+  entities:
+    - input_boolean.alarm
+
 - type: picture-entity
   entity: camera.front_door
 
 - type: picture-entity
-  entity: camera.kitchen
+  entity: camera.side
 
 - type: picture-entity
   entity: camera.garden
+
+- type: picture-entity
+  entity: camera.kitchen
 
 - type: entities
   title: Motion Sensors
@@ -25,6 +33,8 @@
       name: Bathroom Motion Sensor
     - entity: binary_sensor.garden_camera_motion
       name: Garden Camera
+    - entity: binary_sensor.side_camera_motion
+      name: Side Camera
 
 - type: entities
   title: Doors / Windows
