@@ -1,0 +1,12 @@
+# Turn off the sprinklers after they've been on for 2 minutes
+- alias: sprinklers_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.sprinklers
+    to: "on"
+    for:
+      minutes: 2
+  action:
+    service: switch.turn_off
+    entity_id: switch.sprinklers

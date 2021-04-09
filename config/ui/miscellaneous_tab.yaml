@@ -1,4 +1,12 @@
 - type: entities
+  title: "Sprinklers"
+  show_header_toggle: false
+  entities:
+    - entity: switch.sprinklers
+      name: Sprinklers
+      icon: mdi:sprinkler-variant
+
+- type: entities
   title: Modes
   show_header_toggle: false
   entities:
@@ -79,11 +87,3 @@
     - entity: input_datetime.last_effy_flea
       name: Last Effy Flea
       icon: mdi:cat
-
-- type: entities
-  title: "Sprinklers"
-  show_header_toggle: false
-  entities:
-    - entity: switch.sprinklers
-      name: Sprinklers
-      icon: mdi:sprinkler-variant
