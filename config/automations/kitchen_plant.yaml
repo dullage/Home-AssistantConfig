@@ -1,0 +1,18 @@
+# Announce if the kitchen plant needs watering when someone walks into the kitchen
+- alias: garden_lights_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion_sensor_occupancy
+    to: "on"
+  condition:
+    condition: numeric_state
+    entity_id: sensor.kitchen_plant_moisture
+    below: 31
+  action:
+    - service: tts.amazon_polly_say
+      data:
+        entity_id: media_player.kitchen_display
+        message: "<speak>Human. The kitchen plant needs watering.</speak>"
+    - delay:
+        minutes: 5

@@ -69,17 +69,15 @@
       name: Activated
       icon: mdi:alarm-multiple
 
-# - type: entities
-#   title: Office
-#   show_header_toggle: false
-#   entities:
-#     - entity: automation.office_heater_on
-#       name: Auto Mode
-#       icon: mdi:home-thermometer-outline
-#     - entity: input_number.office_heater_target
-#       name: Target Temperature
-#     - entity: sensor.office_temperature_sensor_temperature
-#       name: Current Temperature
-#     - entity: switch.office_heater
-#       name: Oil Heater
-#       icon: mdi:radiator
+- type: glance
+  title: Kitchen plant
+  columns: 4
+  entities:
+    - entity: sensor.kitchen_plant_moisture
+      name: Moisture
+    - entity: sensor.kitchen_plant_illuminance
+      name: Brightness
+    - entity: sensor.kitchen_plant_temperature
+      name: Temperature
+    - entity: sensor.kitchen_plant_soil_conductivity
+      name: Soil Conductivity
