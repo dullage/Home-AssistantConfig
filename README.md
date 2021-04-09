@@ -43,7 +43,7 @@ Some highlights of our setup in no particular order:
 | Media Player | 15 |
 | Scene | 6 |
 | Script | 27 |
-| Sensor | 145 |
+| Sensor | 149 |
 | Switch | 18 |
 
 
