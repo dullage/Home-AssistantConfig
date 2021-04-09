@@ -1,10 +1,12 @@
-# Close the bedroom blind at sunset
+# Close the bedroom blind at sunset or Blue's bedtime, whatever is earlier
 - alias: master_bedroom_blind_sunset
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sun.sun
-    to: 'below_horizon'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: time
+      at: "18:30:00"
   condition:
     condition: time
     before: "21:00:00"
