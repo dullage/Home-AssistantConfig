@@ -6,7 +6,7 @@
     entity_id: switch.sprinklers
     to: "on"
     for:
-      minutes: 2
+      minutes: 4
   action:
     service: switch.turn_off
     entity_id: switch.sprinklers
