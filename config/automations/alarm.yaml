@@ -2,22 +2,23 @@
 - alias: alarm
   initial_state: true
   trigger:
-    # Front Door
     - platform: state
-      entity_id: binary_sensor.front_door_contact
-      to: "on"
-    # Garden Door
-    - platform: state
-      entity_id: binary_sensor.garden_door_contact
-      to: "on"
-    # Patio Doors
-    - platform: state
-      entity_id: binary_sensor.patio_doors_contact
-      to: "on"
-    # Master Bedroom Window
-    - platform: state
-      entity_id: binary_sensor.bedroom_window_contact
-      to: "on"
+      entity_id:
+        # External Doors
+        - binary_sensor.front_door_contact
+        - binary_sensor.garden_door_contact
+        - binary_sensor.patio_doors_contact
+        # Internal Doors
+        - binary_sensor.kitchen_door_sensor_contact
+        - binary_sensor.front_room_door_sensor_contact
+        - binary_sensor.bathroom_door_sensor_contact
+        - binary_sensor.master_bedroom_door_sensor_contact
+        - binary_sensor.blues_room_door_sensor_contact
+        # Windows
+        - binary_sensor.bedroom_window_contact
+      to:
+        - "on"
+        - "off"
   condition:
     condition: and
     conditions:
@@ -26,20 +27,22 @@
       - condition: template
         value_template: "{{ states('person.leanne') != 'home' }}"
   action:
-    - service: notify.mobile_app_dullage_s_iphone
-      data:
-        message: "Alarm: Door / Window Opened!"
-        data:
-          push:
-            category: disable_alarm
-    - service: notify.mobile_app_iphone
-      data:
-        message: "Alarm: Door / Window Opened!"
-        data:
-          push:
-            category: disable_alarm
+    service: input_boolean.turn_on
+    entity_id: input_boolean.alarm
 
-# Disable the alarm for 6 hours if "Disable" button pressed in the iOS notification.
+# Stop the alarm if "Stop" button pressed in the iOS notification.
+- alias: alarm_disable
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: STOP_ALARM
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alarm
+
+# Stop and disable the alarm for 6 hours if "Disable" button pressed in the iOS notification.
 - alias: alarm_disable
   initial_state: true
   trigger:
@@ -50,11 +53,43 @@
   action:
     - service: automation.turn_off
       entity_id: automation.alarm
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alarm
     - delay: "06:00"
     - service: automation.turn_on
       entity_id: automation.alarm
 
-- alias: alarm_on
+# Notifiy us if the alarm goes off
+- alias: alarm_notify
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.alarm
+    to: "on"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Alarm!"
+        data:
+          push:
+            sound:
+              name: default
+              critical: 1
+              volume: 1.0
+            category: alarm
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Alarm!"
+        data:
+          push:
+            sound:
+              name: default
+              critical: 1
+              volume: 1.0
+            category: alarm
+
+# If the alarm goes off, start uploading CCTV footage to the cloud.
+- alias: alarm_cctv_upload_on
   initial_state: true
   trigger:
     platform: state
@@ -63,7 +98,8 @@
   action:
     service: shell_command.start_cctv_uploader
 
-- alias: alarm_off
+# When the alarm is stopped, stop uploading CCTV footage to the cloud.
+- alias: alarm_cctv_upload_off
   initial_state: true
   trigger:
     platform: state

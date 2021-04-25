@@ -132,11 +132,16 @@ ios:
             activationMode: "background"
             authenticationRequired: no
             destructive: yes
-      - name: Disable Alarm
-        identifier: "disable_alarm"
+      - name: Alarm
+        identifier: "alarm"
         actions:
+          - identifier: "STOP_ALARM"
+            title: "Stop Alarm"
+            activationMode: "background"
+            authenticationRequired: no
+            destructive: no
           - identifier: "DISABLE_ALARM"
-            title: "Disable Alarm (6hr)"
+            title: "Disable Alarm for 6hr"
             activationMode: "background"
             authenticationRequired: no
             destructive: yes
@@ -164,15 +169,11 @@ mqtt:
 ifttt:
   key: !secret ifttt_key
 
-# Speedtest
-speedtestdotnet:
-  server_id: 1675
-
 # Pi-hole
 pi_hole:
-  - host: '192.168.0.50'
-    api_key: !secret pi_hole_api_key
   - host: '192.168.0.49:50003'
+    api_key: !secret pi_hole_api_key
+  - host: '192.168.0.50'
     name: 'Pi Hole2'
     api_key: !secret pi_hole_api_key
 

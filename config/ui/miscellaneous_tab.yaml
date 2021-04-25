@@ -5,6 +5,8 @@
     - entity: switch.sprinklers
       name: Sprinklers
       icon: mdi:sprinkler-variant
+    - entity: script.bird_blaster
+      icon: mdi:pistol
 
 - type: entities
   title: Modes
@@ -14,16 +16,6 @@
       icon: mdi:account-group
     - entity: input_boolean.away
       icon: mdi:airplane
-
-- type: glance
-  title: Internet Speeds
-  entities:
-    - entity: sensor.speedtest_download
-      name: Download
-    - entity: sensor.speedtest_upload
-      name: Upload
-    - entity: sensor.speedtest_ping
-      name: Ping
 
 - type: entities
   title: Automation Control
