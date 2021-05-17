@@ -30,7 +30,7 @@ Some highlights of our setup in no particular order:
 | Type | Count |
 | ---- | ----- |
 | Automation | 105 |
-| Binary Sensor | 26 |
+| Binary Sensor | 24 |
 | Camera | 7 |
 | Climate | 3 |
 | Cover | 1 |
@@ -43,7 +43,7 @@ Some highlights of our setup in no particular order:
 | Media Player | 15 |
 | Scene | 6 |
 | Script | 28 |
-| Sensor | 146 |
+| Sensor | 147 |
 | Switch | 18 |
 
 
