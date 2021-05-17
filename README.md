@@ -45,28 +45,3 @@ Some highlights of our setup in no particular order:
 | Script | 28 |
 | Sensor | 147 |
 | Switch | 18 |
-
-
-# Screenshots
-
-Here are some screenshots from the front end and HA Dashboard:
-
-## Main Tab
-
-![Main Tab](docs/main_tab.png)
-
-## AV Tab
-
-![AV Tab](docs/av_tab.png)
-
-## Climate Tab
-
-![Climate Tab](docs/climate_tab.png)
-
-## Miscellaneous Tab
-
-![Miscellaneous Tab](docs/miscellaneous_tab.png)
-
-## HADashboard
-
-![HADashboard](docs/hadashboard.png)
