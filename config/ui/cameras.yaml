@@ -19,8 +19,6 @@
   title: Motion Sensors
   show_header_toggle: false
   entities:
-    - entity: binary_sensor.front_door_camera_motion
-      name: Front Door Camera
     - entity: binary_sensor.porch_motion
       name: Porch Motion Sensor (Night)
     - entity: binary_sensor.dining_room_motion_sensor_occupancy
@@ -31,10 +29,6 @@
       name: Kitchen Motion Sensor
     - entity: binary_sensor.bathroom_motion_sensor_occupancy
       name: Bathroom Motion Sensor
-    - entity: binary_sensor.garden_camera_motion
-      name: Garden Camera
-    - entity: binary_sensor.side_camera_motion
-      name: Side Camera
 
 - type: entities
   title: Doors / Windows

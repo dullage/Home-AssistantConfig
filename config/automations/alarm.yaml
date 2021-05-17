@@ -1,4 +1,4 @@
-# Send occupants an iOS notification is a door or window is opened whilst the house is unoccupied.
+# Turn the alarm input boolean on if a door or window is opened whilst the house is unoccupied.
 - alias: alarm
   initial_state: true
   trigger:
@@ -87,23 +87,3 @@
               critical: 1
               volume: 1.0
             category: alarm
-
-# If the alarm goes off, start uploading CCTV footage to the cloud.
-- alias: alarm_cctv_upload_on
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.alarm
-    to: "on"
-  action:
-    service: shell_command.start_cctv_uploader
-
-# When the alarm is stopped, stop uploading CCTV footage to the cloud.
-- alias: alarm_cctv_upload_off
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: input_boolean.alarm
-    to: "off"
-  action:
-    service: shell_command.stop_cctv_uploader

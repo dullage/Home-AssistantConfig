@@ -6,5 +6,3 @@ shopping_list_clear: python3 /config/config/python_scripts/shopping_list.py CLEA
 healthcheck: "curl --retry 3 https://hc-ping.com/c56f4efa-bf94-4112-9a4d-2ceb506891ed"
 pause_healthcheck: "curl https://healthchecks.io/api/v1/checks/c56f4efa-bf94-4112-9a4d-2ceb506891ed/pause --request POST --header 'X-Api-Key: AsBVcO-naDetvxPZ0XdC8oBGmovo8IfC' --data ''"
 render_voice_assistant_config: python3 /config/config/voice_assistants/voice_assistant_config.py
-start_cctv_uploader: touch /cctv-uploader/upload
-stop_cctv_uploader: rm /cctv-uploader/upload
