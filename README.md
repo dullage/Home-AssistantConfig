@@ -1,6 +1,6 @@
 # Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 2021.4.6 in a docker container on a Raspberry Pi 4.
+I currently run [Home Assistant](http://homeassistant.io/) version 2021.5.4 in a docker container on a Raspberry Pi 4.
 
 All of the automations are commented, see the [automations folder](/config/automations).
 
