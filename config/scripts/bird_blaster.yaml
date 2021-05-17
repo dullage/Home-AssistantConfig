@@ -2,6 +2,14 @@
 bird_blaster:
   alias: Bird Blaster
   sequence:
+    - service: camera.record
+      target:
+        entity_id: camera.garden_hd
+      data:
+        filename: "/config/bird_blaster_recordings/{{ now().strftime('%Y-%m-%d %H-%M-%S') }}.mp4"
+        duration: 8
+    - delay:
+        seconds: 6
     - service: switch.turn_on
       entity_id: switch.sprinklers
     - delay:

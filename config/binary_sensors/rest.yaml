@@ -1,20 +1,8 @@
-- platform: rest
-  resource: !secret front_door_camera_motion_url
-  name: front_door_camera_motion
-  scan_interval: 5
-  value_template: "{{ value_json[0].value.state }}"
-  device_class: motion
-
-- platform: rest
-  resource: !secret garden_camera_motion_url
-  name: garden_camera_motion
-  scan_interval: 5
-  value_template: "{{ value_json[0].value.state }}"
-  device_class: motion
-
-- platform: rest
-  resource: !secret side_camera_motion_url
-  name: side_camera_motion
-  scan_interval: 5
-  value_template: "{{ value_json[0].value.state }}"
-  device_class: motion
+  - platform: rest
+    name: bird_on_lawn
+    device_class: motion
+    resource: "http://localhost:50007"
+    method: POST
+    payload: !secret bird_on_lawn_payload
+    value_template: "{{ value_json.predictions | length > 0 }}"
+    scan_interval: 3

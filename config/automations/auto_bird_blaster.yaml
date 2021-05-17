@@ -1,0 +1,11 @@
+- alias: auto_bird_blaster
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bird_on_lawn
+    to: "on"
+  action:
+    - service: script.bird_blaster
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Bird Blasted!"

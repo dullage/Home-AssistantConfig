@@ -14,6 +14,8 @@ homeassistant:
   customize_domain:
     switch:
       assumed_state: false
+  allowlist_external_dirs:
+    - "/config/bird_blaster_recordings"
 
 zone: !secret zones
 
@@ -22,8 +24,6 @@ cloud:
   google_actions: !include config/voice_assistants/google.yaml
 
 http:
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
   ip_ban_enabled: true
   login_attempts_threshold: 5
   server_port: 8448
