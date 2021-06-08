@@ -8,9 +8,12 @@
   condition:
     condition: and
     conditions:
+      - condition: state
+        entity_id: binary_sensor.sm_p610_is_charging
+        state: "off"
       - condition: numeric_state
         entity_id: sensor.sm_p610_battery_level
-        below: 31
+        below: 40
       - condition: state
         entity_id: person.adam
         state: "home"
