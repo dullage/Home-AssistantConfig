@@ -77,6 +77,7 @@
     service: light.turn_off
     entity_id: light.bathroom_mirror_lights
 
+# When the bathroom lights are turned on (by any means), update the colour temperature based on the sunset/time.
 - alias: bathroom_light_temperature
   initial_state: true
   trigger:
@@ -85,11 +86,15 @@
     to: "on"
   action:
     - choose:
-      # IF after sunset
+      # IF after sunset or Blue's bedtime
       - conditions:
-          condition: state
-          entity_id: sun.sun
-          state: "below_horizon"
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: sun.sun
+                state: "below_horizon"
+              - condition: time
+                after: "18:30:00"
         sequence:
           - service: light.turn_on
             data:
@@ -104,12 +109,15 @@
             color_temp: 230
             brightness: 255
 
+# When the sun sets or when it's Blue's bedtime, if the bathroom lights are already on, update the colour temperature.
 - alias: bathroom_light_temperature_2
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sun.sun
-    to: 'below_horizon'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: time
+      at: "18:30:00"
   condition:
     condition: state
     entity_id: light.bathroom_all
