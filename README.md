@@ -1,6 +1,6 @@
 # Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 2021.5.4 in a docker container on a Raspberry Pi 4.
+I currently run [Home Assistant](http://homeassistant.io/) version 2021.6.2 in a docker container on a Raspberry Pi 4.
 
 All of the automations are commented, see the [automations folder](/config/automations).
 
@@ -29,8 +29,9 @@ Some highlights of our setup in no particular order:
 
 | Type | Count |
 | ---- | ----- |
-| Automation | 105 |
-| Binary Sensor | 24 |
+| Alarm Control Panel | 1 |
+| Automation | 110 |
+| Binary Sensor | 23 |
 | Camera | 7 |
 | Climate | 3 |
 | Cover | 1 |
@@ -39,9 +40,35 @@ Some highlights of our setup in no particular order:
 | Input Datetime | 1 |
 | Input Number | 8 |
 | Input Select | 4 |
+| Input Text | 1 |
 | Light | 32 |
 | Media Player | 15 |
 | Scene | 6 |
-| Script | 28 |
-| Sensor | 147 |
+| Script | 29 |
+| Sensor | 148 |
 | Switch | 18 |
+
+
+# Screenshots
+
+Here are some screenshots from the front end and HA Dashboard:
+
+## Main Tab
+
+![Main Tab](docs/main_tab.png)
+
+## AV Tab
+
+![AV Tab](docs/av_tab.png)
+
+## Climate Tab
+
+![Climate Tab](docs/climate_tab.png)
+
+## Miscellaneous Tab
+
+![Miscellaneous Tab](docs/miscellaneous_tab.png)
+
+## HADashboard
+
+![HADashboard](docs/hadashboard.png)
