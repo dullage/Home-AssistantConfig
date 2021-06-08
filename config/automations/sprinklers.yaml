@@ -1,4 +1,20 @@
-# Turn off the sprinklers after they've been on for 2 minutes
+- alias: sprinklers_auto
+  trigger:
+    platform: time
+    at: "20:55:00"
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Automatic Sprinklers: 5 minute warning!"
+    - service: notify.mobile_app_iphone
+      data:
+        message: "Automatic Sprinklers: 5 minute warning!"
+    - delay:
+        minutes: 5
+    - service: switch.turn_on
+      entity_id: switch.sprinklers
+
+# Turn off the sprinklers after they've been on for 4 minutes
 - alias: sprinklers_off
   initial_state: true
   trigger:
