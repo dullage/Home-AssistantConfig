@@ -1,8 +1,6 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
-  cover.bedroom_blind:
-    name: Bedroom Blinds
   group.kitchen_leds:
     name: Kitchen Cupboard Lights
   input_boolean.all_av:
@@ -39,8 +37,6 @@ entity_config:
     name: Downstairs General
   scene.downstairs_off:
     name: Downstairs Off
-  script.arm_entrance_camera:
-    name: Arm Entrance Camera
   script.going_out:
     name: Going Out Script
   script.goodnight:
@@ -69,8 +65,6 @@ filter:
   - light.dining_room_lamp
   - light.corner_lamp
   - input_boolean.cartoons
-  - cover.bedroom_blind
-  - script.arm_entrance_camera
   - switch.ikea_socket_switch
   - group.kitchen_leds
   - light.ambilight

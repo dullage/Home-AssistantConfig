@@ -34,8 +34,6 @@ light.corner_lamp:
   name: Corner Lamp
 input_boolean.cartoons:
   name: Cartoons
-cover.bedroom_blind:
-  name: Bedroom Blinds
 switch.ikea_socket_switch:
   name: Office Lamp
 group.kitchen_leds:

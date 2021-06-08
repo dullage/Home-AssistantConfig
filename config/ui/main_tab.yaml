@@ -34,12 +34,6 @@
   entities:
     - light.master_bedroom_main
     - light.bedroom_lamps
-    - entity: cover.bedroom_blind
-      name: Blind
-      secondary_info: position
-    - script.master_bedroom_blind_fan
-    - entity: sensor.bedroom_blind_battery
-      name: Blind Battery
 
 - type: entities
   title: Kitchen

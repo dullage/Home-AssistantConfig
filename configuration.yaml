@@ -179,33 +179,6 @@ climate:
     heater: switch.office_heater
     target_sensor: sensor.office_temperature_sensor_temperature
 
-# Covers
-cover:
-  - platform: template
-    covers:
-      bedroom_blind:
-        device_class: shade
-        position_template: "{{ states('sensor.bedroom_blind_position') }}"
-        availability_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
-        set_cover_position:
-          - service: mqtt.publish
-            data:
-              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001526-b87f-490c-92cb-11ba5ea5167c/Set"
-              payload: "{{ 100 - position }}"
-          - delay:
-              seconds: 30
-          - service: mqtt.publish
-            data:
-              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001525-b87f-490c-92cb-11ba5ea5167c/Get"
-        stop_cover:
-          - service: mqtt.publish
-            data:
-              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001530-b87f-490c-92cb-11ba5ea5167c/Set"
-              payload: 0
-          - service: mqtt.publish
-            data:
-              topic: "de:66:92:69:03:8c/00001861-b87f-490c-92cb-11ba5ea5167c/00001525-b87f-490c-92cb-11ba5ea5167c/Get"
-
 # Rest Commands
 rest_command:
   override_stair_light_live:

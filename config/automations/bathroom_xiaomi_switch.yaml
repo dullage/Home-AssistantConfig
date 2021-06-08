@@ -20,15 +20,3 @@
     service: switch.toggle
     entity_id: switch.ikea_socket_switch
 
-# Toggle the bedroom blinds on hold of the bathroom Xiaomi switch
-- alias: bathroom_xiaomi_switch_hold
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_action
-    to: hold
-  action:
-    - wait_template: "{{ states('binary_sensor.bedroom_blind_availability') == 'on' }}"
-      timeout: "00:00:10"
-    - service: cover.toggle
-      entity_id: cover.bedroom_blind
