@@ -1,8 +1,0 @@
-  - platform: rest
-    name: bird_on_lawn
-    device_class: motion
-    resource: "http://localhost:50007"
-    method: POST
-    payload: !secret bird_on_lawn_payload
-    value_template: "{{ value_json.predictions | length > 0 }}"
-    scan_interval: 3

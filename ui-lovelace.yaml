@@ -12,9 +12,9 @@ views:
   - title: Climate
     icon: mdi:thermostat
     cards: !include config/ui/climate_tab.yaml
-  - title: Cameras
+  - title: Security
     icon: mdi:cctv
-    cards: !include config/ui/cameras.yaml
+    cards: !include config/ui/security.yaml
   - title: Miscellaneous
     icon: mdi:hops
     cards: !include config/ui/miscellaneous_tab.yaml

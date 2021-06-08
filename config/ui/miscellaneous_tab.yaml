@@ -7,9 +7,9 @@
       icon: mdi:sprinkler-variant
     - entity: script.bird_blaster
       icon: mdi:pistol
-    - entity: binary_sensor.bird_on_lawn
-      name: Birds on the Lawn
-      icon: mdi:bird
+    # - entity: binary_sensor.bird_on_lawn
+    #   name: Birds on the Lawn
+    #   icon: mdi:bird
 
 - type: entities
   title: Modes
@@ -24,16 +24,12 @@
   title: Automation Control
   show_header_toggle: false
   entities:
-    # - entity: automation.location_lights_auto_off
-    #   name: Auto Light Off (Leaving)
     - entity: automation.light_timeouts_landing
       name: Landing Light Timeout
     - entity: automation.light_timeouts_master_bedroom
       name: Bedroom Light Timeout
-    # - entity: automation.alarm
-    #   name: Alarm
-    - entity: script.morning_routine
-      icon: mdi:weather-sunset-up
+    - entity: automation.sprinklers_auto
+      name: Automatic Sprinklers
 
 - type: entities
   title: "Home Arrival Notifications"
@@ -74,6 +70,10 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
+    - entity: sensor.sm_p610_battery_level
+      name: Tablet Battery
+    - entity: sensor.sm_p610_battery_state
+      name: Tablet Charging State
 
 - type: entities
   title: Effy Flea Treatment

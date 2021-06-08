@@ -1,13 +1,75 @@
-# Turn the alarm input boolean on if a door or window is opened whilst the house is unoccupied.
-- alias: alarm
+# Arm the alarm when we both leave
+- alias: alarm_arm_on_leaving
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.ha_alarm
+
+# Arm the alarm if HA starts and we're both out. Wait 1 minute for the sensors to check-in.
+- alias: alarm_arm_on_startup_if_out
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay:
+        minutes: 1
+    - condition: template
+      value_template: "{{ states('group.everyone') != 'home' }}"
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.ha_alarm
+
+# Disarm the alarm when either of us come home
+- alias: alarm_disarm_on_arrival
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: "home"
+    - platform: state
+      entity_id: person.leanne
+      to: "home"
+  action:
+    service: alarm_control_panel.alarm_disarm
+    entity_id: alarm_control_panel.ha_alarm
+
+# Disarm the night alarm when there is motion downstairs (exc where the cat can get) after 4am.
+- alias: alarm_disarm_on_wake
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id:
+      - binary_sensor.stairs_motion_sensor_occupancy
+      - binary_sensor.dining_room_motion_sensor_occupancy
+      - binary_sensor.kitchen_door_sensor_contact
+      - binary_sensor.front_door_contact
+    to:
+      - "on"
+      - "off"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.ha_alarm
+        state: "armed_night"
+      - condition: time
+        after: "04:00:00"
+  action:
+    service: alarm_control_panel.alarm_disarm
+    entity_id: alarm_control_panel.ha_alarm        
+
+# Alarms sensors active only when alarm is in armed_away mode.
+- alias: alarm_sensors_away_only
   initial_state: true
   trigger:
     - platform: state
       entity_id:
-        # External Doors
-        - binary_sensor.front_door_contact
-        - binary_sensor.garden_door_contact
-        - binary_sensor.patio_doors_contact
         # Internal Doors
         - binary_sensor.kitchen_door_sensor_contact
         - binary_sensor.front_room_door_sensor_contact
@@ -20,56 +82,76 @@
         - "on"
         - "off"
   condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ states('person.adam') != 'home' }}"
-      - condition: template
-        value_template: "{{ states('person.leanne') != 'home' }}"
+    condition: state
+    entity_id: alarm_control_panel.ha_alarm
+    state: "armed_away"
   action:
-    service: input_boolean.turn_on
-    entity_id: input_boolean.alarm
+    - service: input_text.set_value
+      entity_id: input_text.last_alarm_trigger
+      data:
+        value: >
+          {% if trigger.entity_id == "binary_sensor.kitchen_door_sensor_contact" %}
+            Kitchen door (internal) opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.front_room_door_sensor_contact" %}
+            Front room door opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.bathroom_door_sensor_contact" %}
+            Bathroom door opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.master_bedroom_door_sensor_contact" %}
+            Master bedroom door opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.blues_room_door_sensor_contact" %}
+            Blue's room door opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.bedroom_window_contact" %}
+            Master bedroom window opened/closed!
+          {% endif %}
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
 
-# Stop the alarm if "Stop" button pressed in the iOS notification.
-- alias: alarm_disable
+# Alarms sensors active when alarm is in armed_away or armed_night mode.
+- alias: alarm_sensors_away_or_night
   initial_state: true
   trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
-      actionName: STOP_ALARM
+    - platform: state
+      entity_id:
+        # External Doors
+        - binary_sensor.front_door_contact
+        - binary_sensor.garden_door_contact
+        - binary_sensor.patio_doors_contact
+      to:
+        - "on"
+        - "off"
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.ha_alarm
+    state:
+      - "armed_away"
+      - "armed_night"
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.alarm
-
-# Stop and disable the alarm for 6 hours if "Disable" button pressed in the iOS notification.
-- alias: alarm_disable
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
-      actionName: DISABLE_ALARM
-  action:
-    - service: automation.turn_off
-      entity_id: automation.alarm
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.alarm
-    - delay: "06:00"
-    - service: automation.turn_on
-      entity_id: automation.alarm
+    - service: input_text.set_value
+      entity_id: input_text.last_alarm_trigger
+      data:
+        value: >
+          {% if trigger.entity_id == "binary_sensor.front_door_contact" %}
+            Front door opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.garden_door_contact" %}
+            Kitchen door (external) opened/closed!
+          {% elif trigger.entity_id == "binary_sensor.patio_doors_contact" %}
+            Patio doors opened/closed!
+          {% endif %}
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
 
 # Notifiy us if the alarm goes off
 - alias: alarm_notify
   initial_state: true
   trigger:
     platform: state
-    entity_id: input_boolean.alarm
-    to: "on"
+    entity_id: alarm_control_panel.ha_alarm
+    to: "triggered"
   action:
     - service: notify.mobile_app_dullage_s_iphone
       data:
-        message: "Alarm!"
+        title: "Alarm!"
+        message: "{{ states('input_text.last_alarm_trigger') }}"
         data:
           push:
             sound:
@@ -79,7 +161,8 @@
             category: alarm
     - service: notify.mobile_app_iphone
       data:
-        message: "Alarm!"
+        title: "Alarm!"
+        message: "{{ states('input_text.last_alarm_trigger') }}"
         data:
           push:
             sound:
@@ -87,3 +170,47 @@
               critical: 1
               volume: 1.0
             category: alarm
+
+# Disarm the alarm if the "Disarm" button is pressed in the iOS notification.
+- alias: alarm_disarm
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: DISARM_ALARM
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm
+
+# Debug
+- alias: alarm_debug_armed_away
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ha_alarm
+    to: "armed_away"
+  action:
+    service: notify.mobile_app_dullage_s_iphone
+    data:
+      message: "Alarm Armed (Away)"
+- alias: alarm_debug_armed_night
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ha_alarm
+    to: "armed_night"
+  action:
+    service: notify.mobile_app_dullage_s_iphone
+    data:
+      message: "Alarm Armed (Night)"
+- alias: alarm_debug_disarmed
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ha_alarm
+    to: "disarmed"
+  action:
+    service: notify.mobile_app_dullage_s_iphone
+    data:
+      message: "Alarm Disarmed"

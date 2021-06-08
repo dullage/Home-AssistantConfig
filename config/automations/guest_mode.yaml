@@ -8,7 +8,7 @@
   action:
     - service: automation.turn_off
       data:
-        entity_id: automation.alarm
+        entity_id: automation.alarm_arm_on_leaving
     - service: automation.turn_off
       data:
         entity_id: automation.location_lights_auto_off
@@ -29,7 +29,7 @@
   action:
     - service: automation.turn_on
       data:
-        entity_id: automation.alarm
+        entity_id: automation.alarm_arm_on_leaving
     - service: automation.turn_on
       data:
         entity_id: automation.location_lights_auto_off

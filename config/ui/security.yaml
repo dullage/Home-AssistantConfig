@@ -1,7 +1,9 @@
-- type: entities
-  # title: Alarm
-  entities:
-    - input_boolean.alarm
+- type: alarm-panel
+  entity: alarm_control_panel.ha_alarm
+  name: Alarm
+  states:
+    - arm_away
+    - arm_night
 
 - type: picture-entity
   entity: camera.front_door

@@ -96,6 +96,7 @@ input_boolean: !include config/inputs/input_boolean.yaml
 input_number: !include config/inputs/input_number.yaml
 input_select: !include config/inputs/input_select.yaml
 input_datetime: !include config/inputs/input_datetime.yaml
+input_text: !include config/inputs/input_text.yaml
 
 ####################
 ##  Integrations  ##
@@ -135,13 +136,8 @@ ios:
       - name: Alarm
         identifier: "alarm"
         actions:
-          - identifier: "STOP_ALARM"
-            title: "Stop Alarm"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: no
-          - identifier: "DISABLE_ALARM"
-            title: "Disable Alarm for 6hr"
+          - identifier: "DISARM_ALARM"
+            title: "Disarm"
             activationMode: "background"
             authenticationRequired: no
             destructive: yes
@@ -168,14 +164,6 @@ mqtt:
 # IFTTT
 ifttt:
   key: !secret ifttt_key
-
-# Pi-hole
-pi_hole:
-  - host: '192.168.0.49:50003'
-    api_key: !secret pi_hole_api_key
-  - host: '192.168.0.50'
-    name: 'Pi Hole2'
-    api_key: !secret pi_hole_api_key
 
 # Nest
 nest:
@@ -229,3 +217,11 @@ camera:
     name: Kitchen
     mjpeg_url: http://192.168.0.108:8081
     still_image_url: http://192.168.0.108/picture/1/current/
+
+# Alarm
+alarm_control_panel:
+  - platform: manual
+    delay_time: 0
+    arming_time: 0
+    disarmed:
+      trigger_time: 0

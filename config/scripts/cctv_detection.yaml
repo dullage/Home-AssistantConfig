@@ -1,0 +1,19 @@
+cctv_detection:
+  alias: CCTV Detection
+  sequence:
+    - condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state:
+        - "armed_away"
+        - "armed_night"
+    - condition: state
+      entity_id: sun.sun
+      state: "above_horizon"  # Don't trust detections in the dark
+    - condition: template
+      value_template: "{{ camera in ['Side', 'Garden'] }}"
+    - service: input_text.set_value
+      entity_id: input_text.last_alarm_trigger
+      data:
+        value: "Person detected on {{ camera }} camera!"
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
