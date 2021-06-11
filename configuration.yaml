@@ -16,6 +16,7 @@ homeassistant:
       assumed_state: false
   allowlist_external_dirs:
     - "/config/bird_blaster_recordings"
+    - "/media/cctv"
 
 zone: !secret zones
 
@@ -96,7 +97,6 @@ input_boolean: !include config/inputs/input_boolean.yaml
 input_number: !include config/inputs/input_number.yaml
 input_select: !include config/inputs/input_select.yaml
 input_datetime: !include config/inputs/input_datetime.yaml
-input_text: !include config/inputs/input_text.yaml
 
 ####################
 ##  Integrations  ##
@@ -198,3 +198,16 @@ alarm_control_panel:
     arming_time: 0
     disarmed:
       trigger_time: 0
+
+# Used for the CCTV notifications
+media_source:
+folder_watcher:
+  - folder: /media/cctv
+
+# Notification Groups
+notify:
+  - name: iphones
+    platform: group
+    services:
+      - service: mobile_app_dullage_s_iphone
+      - service: mobile_app_iphone

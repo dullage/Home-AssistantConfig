@@ -1,0 +1,115 @@
+trigger_alarm:
+  alias: Trigger Alarm
+  sequence:
+    # Ignore triggers in the first 30 seconds after boot
+    - condition: template
+      value_template: "{{ as_timestamp(now()) - as_timestamp(states('sensor.uptime')) > 30 }}"
+    # Trigger the alarm
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
+    # Send notifications
+    - choose:
+      # Basic
+      - conditions:
+        - condition: template
+          value_template: "{{ trigger in ['binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'binary_sensor.master_bedroom_door_sensor_contact', 'binary_sensor.blues_room_door_sensor_contact', 'binary_sensor.bedroom_window_contact'] }}"
+        sequence:
+          - service: notify.iphones
+            data:
+              title: "Alarm!"
+              message: >
+                {% if trigger == 'binary_sensor.front_room_door_sensor_contact' %}
+                  Front Room door opened/closed!
+                {% elif trigger == 'binary_sensor.bathroom_door_sensor_contact' %}
+                  Bathroom door opened/closed!
+                {% elif trigger == 'binary_sensor.master_bedroom_door_sensor_contact' %}
+                  Master Bedroom door opened/closed!
+                {% elif trigger == 'binary_sensor.blues_room_door_sensor_contact' %}
+                  Blue's Room door opened/closed!
+                {% elif trigger == 'binary_sensor.bedroom_window_contact' %}
+                  Master Bedroom window opened/closed!
+                {% endif %}
+              data:
+                push:
+                  sound:
+                    name: default
+                    critical: 1
+                    volume: 1.0
+                  category: alarm
+
+      # Camera Feed
+      - conditions:
+        - condition: template
+          value_template: "{{ trigger in ['binary_sensor.kitchen_door_sensor_contact', 'binary_sensor.front_door_contact', 'binary_sensor.garden_door_contact', 'binary_sensor.patio_doors_contact'] }}"
+        sequence:
+          - service: notify.iphones
+            data:
+              title: "Alarm!"
+              message: >
+                {% if trigger == 'binary_sensor.kitchen_door_sensor_contact' %}
+                  Kitchen door (internal) opened/closed!
+                {% elif trigger == 'binary_sensor.front_door_contact' %}
+                  Front door opened/closed!
+                {% elif trigger == 'binary_sensor.garden_door_contact' %}
+                  Kitchen door (external) opened/closed!
+                {% elif trigger == 'binary_sensor.patio_doors_contact' %}
+                  Patio doors opened/closed!
+                {% endif %}
+              data:
+                entity_id: >
+                  {% if trigger == 'binary_sensor.kitchen_door_sensor_contact' %}
+                    camera.kitchen
+                  {% elif trigger == 'binary_sensor.front_door_contact' %}
+                    camera.front_door
+                  {% elif trigger == 'binary_sensor.garden_door_contact' %}
+                    camera.garden
+                  {% elif trigger == 'binary_sensor.patio_doors_contact' %}
+                    camera.garden
+                  {% endif %}
+                push:
+                  sound:
+                    name: default
+                    critical: 1
+                    volume: 1.0
+                  category: alarm
+      # Image
+      - conditions:
+        - condition: template
+          value_template: "{{ trigger in ['side.jpg', 'garden.jpg'] }}"
+        sequence:
+          - service: notify.iphones
+            data:
+              title: "Alarm!"
+              message: >
+                {% if trigger == 'side.jpg' %}
+                  Person detected on the side camera!
+                {% elif trigger == 'garden.jpg' %}
+                  Person detected on the garden camera!
+                {% endif %}
+              data:
+                image: >
+                  {% if trigger == 'side.jpg' %}
+                    /media/local/cctv/side.jpg
+                  {% elif trigger == 'garden.jpg' %}
+                    /media/local/cctv/garden.jpg
+                  {% endif %}
+                push:
+                  sound:
+                    name: default
+                    critical: 1
+                    volume: 1.0
+                  category: alarm
+
+      # Default
+      default:
+        - service: notify.iphones
+          data:
+            title: "Alarm!"
+            message: "Unknown Trigger"
+            data:
+              push:
+                sound:
+                  name: default
+                  critical: 1
+                  volume: 1.0
+                category: alarm

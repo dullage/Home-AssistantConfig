@@ -11,19 +11,18 @@
     service: alarm_control_panel.alarm_arm_away
     entity_id: alarm_control_panel.ha_alarm
 
-# Arm the alarm if HA starts and we're both out. Wait 1 minute for the sensors to check-in.
+# Arm the alarm if HA starts and we're both out.
 - alias: alarm_arm_on_startup_if_out
   initial_state: true
   trigger:
-    - platform: homeassistant
-      event: start
+    platform: homeassistant
+    event: start
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
   action:
-    - delay:
-        minutes: 1
-    - condition: template
-      value_template: "{{ states('group.everyone') != 'home' }}"
-    - service: alarm_control_panel.alarm_arm_away
-      entity_id: alarm_control_panel.ha_alarm
+    service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.ha_alarm
 
 # Disarm the alarm when either of us come home
 - alias: alarm_disarm_on_arrival
@@ -39,7 +38,7 @@
     service: alarm_control_panel.alarm_disarm
     entity_id: alarm_control_panel.ha_alarm
 
-# Disarm the night alarm when there is motion downstairs (exc where the cat can get) after 4am.
+# Disarm the night alarm when there is motion downstairs (excl where the cat can get) after 4am.
 - alias: alarm_disarm_on_wake
   initial_state: true
   trigger:
@@ -62,7 +61,19 @@
         after: "04:00:00"
   action:
     service: alarm_control_panel.alarm_disarm
-    entity_id: alarm_control_panel.ha_alarm        
+    entity_id: alarm_control_panel.ha_alarm
+
+# Disarm the alarm if the "Disarm" button is pressed in the iOS notification.
+- alias: alarm_disarm
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: DISARM_ALARM
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm
 
 # Alarms sensors active only when alarm is in armed_away mode.
 - alias: alarm_sensors_away_only
@@ -86,25 +97,26 @@
     entity_id: alarm_control_panel.ha_alarm
     state: "armed_away"
   action:
-    - service: input_text.set_value
-      entity_id: input_text.last_alarm_trigger
-      data:
-        value: >
-          {% if trigger.entity_id == "binary_sensor.kitchen_door_sensor_contact" %}
-            Kitchen door (internal) opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.front_room_door_sensor_contact" %}
-            Front room door opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.bathroom_door_sensor_contact" %}
-            Bathroom door opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.master_bedroom_door_sensor_contact" %}
-            Master bedroom door opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.blues_room_door_sensor_contact" %}
-            Blue's room door opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.bedroom_window_contact" %}
-            Master bedroom window opened/closed!
-          {% endif %}
-    - service: alarm_control_panel.alarm_trigger
+    service: script.trigger_alarm
+    data:
+      trigger: "{{ trigger.entity_id }}"
+
+- alias: alarm_sensors_away_only_detections
+  trigger:
+    platform: event
+    event_type: folder_watcher
+    event_data:
+      event_type: modified
+  condition:
+    - condition: state
       entity_id: alarm_control_panel.ha_alarm
+      state: "armed_away"
+    - condition: template
+      value_template: "{{ trigger.event.data.file in ['side.jpg', 'garden.jpg'] }}"
+  action:
+    service: script.trigger_alarm
+    data:
+      trigger: "{{ trigger.event.data.file }}"
 
 # Alarms sensors active when alarm is in armed_away or armed_night mode.
 - alias: alarm_sensors_away_or_night
@@ -126,62 +138,9 @@
       - "armed_away"
       - "armed_night"
   action:
-    - service: input_text.set_value
-      entity_id: input_text.last_alarm_trigger
-      data:
-        value: >
-          {% if trigger.entity_id == "binary_sensor.front_door_contact" %}
-            Front door opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.garden_door_contact" %}
-            Kitchen door (external) opened/closed!
-          {% elif trigger.entity_id == "binary_sensor.patio_doors_contact" %}
-            Patio doors opened/closed!
-          {% endif %}
-    - service: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.ha_alarm
-
-# Notifiy us if the alarm goes off
-- alias: alarm_notify
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: alarm_control_panel.ha_alarm
-    to: "triggered"
-  action:
-    - service: notify.mobile_app_dullage_s_iphone
-      data:
-        title: "Alarm!"
-        message: "{{ states('input_text.last_alarm_trigger') }}"
-        data:
-          push:
-            sound:
-              name: default
-              critical: 1
-              volume: 1.0
-            category: alarm
-    - service: notify.mobile_app_iphone
-      data:
-        title: "Alarm!"
-        message: "{{ states('input_text.last_alarm_trigger') }}"
-        data:
-          push:
-            sound:
-              name: default
-              critical: 1
-              volume: 1.0
-            category: alarm
-
-# Disarm the alarm if the "Disarm" button is pressed in the iOS notification.
-- alias: alarm_disarm
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: ios.notification_action_fired
-    event_data:
-      actionName: DISARM_ALARM
-  action:
-    - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.ha_alarm
+    service: script.trigger_alarm
+    data:
+      trigger: "{{ trigger.entity_id }}"
 
 # Debug
 - alias: alarm_debug_armed_away
