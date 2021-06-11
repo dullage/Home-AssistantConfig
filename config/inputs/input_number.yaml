@@ -14,14 +14,3 @@ ad_hoc_heating_time_minute:
   min: 0
   max: 55
   step: 5
-
-# Dryer Timeout
-dryer_timeout:
-  name: Dryer Timeout
-  icon: mdi:progress-clock
-  step: 1
-  min: 0
-  max: 999
-  mode: box
-  unit_of_measurement: mins
-

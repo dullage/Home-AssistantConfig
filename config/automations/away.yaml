@@ -15,9 +15,20 @@
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "It's been a while, are you away?"
-    - service: notify.mobile_app_iphone
-      data:
-        message: "It's been a while, are you away?"
+
+# Disable away mode if either of us come home
+- alias: alarm_disarm_on_arrival
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: "home"
+    - platform: state
+      entity_id: person.leanne
+      to: "home"
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.away
 
 # Turn Nest off when "away" input turned on
 - alias: away_nest_away

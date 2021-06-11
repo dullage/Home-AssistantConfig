@@ -35,3 +35,18 @@
       state: "off"
 
     - service: script.goodnight
+
+# After 9pm, once the downstairs lights have all been off for 5 minutes turn off the heating and TV.
+- alias: bedtime
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.downstairs
+    to: "off"
+    for:
+      minutes: 5
+  condition:
+    condition: time
+    after: "21:00:00"
+  action:
+    - service: script.goodnight

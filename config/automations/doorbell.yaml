@@ -4,35 +4,18 @@
   trigger:
     - platform: state
       entity_id: sensor.doorbell_action
-      to: "single"
-    - platform: state
-      entity_id: sensor.doorbell_action
-      to: "double"
-    - platform: state
-      entity_id: sensor.doorbell_action
-      to: "triple"
-    - platform: state
-      entity_id: sensor.doorbell_action
-      to: "quadruple"
-    - platform: state
-      entity_id: sensor.doorbell_action
-      to: "release"
-  condition:
-    # 5s Debounce
-    condition: template
-    value_template: >
-      {% set automation_name = "doorbell" %}
-      {% set debounce_seconds = 5 %}
-      {{ 
-        (states.automation[automation_name].attributes.last_triggered == none) 
-        or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
-      }}
+      to: 
+        - "single"
+        - "double"
+        - "triple"
+        - "quadruple"
+        - "release"
   action:
     - service: tts.amazon_polly_say
       data:
         entity_id: media_player.nest_minis
         message: "<speak>Humans. There is someone at the front door.</speak>"
-    - service: notify.mobile_app_dullage_s_iphone
+    - service: notify.iphones
       data:
         message: "Doorbell"
         data:
@@ -41,28 +24,5 @@
           push:
             category: camera
           entity_id: camera.front_door
-    - service: notify.mobile_app_iphone
-      data:
-        message: "Doorbell"
-        data:
-          attachment:
-            content-type: jpeg
-          push:
-            category: camera
-          entity_id: camera.front_door
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.kitchen_display
-        volume_level: 0
-    - service: camera.play_stream
-      data:
-        entity_id: camera.front_door
-        media_player: media_player.kitchen_display
     - delay:
-        minutes: 2
-    - service: media_player.media_stop
-      entity_id: media_player.kitchen_display
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.kitchen_display
-        volume_level: 0.7
+        seconds: 5
