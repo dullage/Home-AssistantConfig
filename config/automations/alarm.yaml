@@ -108,11 +108,17 @@
     event_data:
       event_type: modified
   condition:
-    - condition: state
-      entity_id: alarm_control_panel.ha_alarm
-      state: "armed_away"
-    - condition: template
-      value_template: "{{ trigger.event.data.file in ['side.jpg', 'garden.jpg'] }}"
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.ha_alarm
+        state: "armed_away"
+      - condition: template
+        value_template: "{{ trigger.event.data.file in ['side.jpg', 'garden.jpg'] }}"
+      # Only trust detections in the daylight
+      - condition: state
+        entity_id: sun.sun
+        state: "above_horizon"
   action:
     service: script.trigger_alarm
     data:
