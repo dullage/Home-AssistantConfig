@@ -43,3 +43,8 @@
           {{ states('person.leanne') }}
         {% endif %}
       entity_picture_template: /local/leanne.jpg
+
+    bathroom_excess_humidity:
+      unit_of_measurement: "%"
+      friendly_name: "Bathroom Excess Humidity"
+      value_template: "{{ '%.2f'|format(max([0, float(states('sensor.bathroom_temperature_sensor_humidity')) - float(states('sensor.landing_temperature_sensor_humidity'))])) }}"

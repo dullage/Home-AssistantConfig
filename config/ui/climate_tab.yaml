@@ -13,6 +13,12 @@
       name: Heating Boost (5 min)
       icon: mdi:fire
 
+- type: sensor
+  entity: sensor.bathroom_excess_humidity
+  name: Bathroom Excess Humidity
+  graph: line
+  hours_to_show: 12
+
 - type: thermostat
   entity: climate.office_heater
 
@@ -32,6 +38,8 @@
       name: Master Bedroom
     - entity: sensor.office_temperature_sensor_temperature
       name: Office
+    - entity: sensor.bathroom_temperature_sensor_temperature
+      name: Bathroom
 
 - type: glance
   title: Indoor Humidity
@@ -50,6 +58,8 @@
       name: Master Bedroom
     - entity: sensor.office_temperature_sensor_humidity
       name: Office
+    - entity: sensor.bathroom_temperature_sensor_humidity
+      name: Bathroom
 
 - type: entities
   title: Outdoor Climate
