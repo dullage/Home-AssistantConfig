@@ -1,9 +1,9 @@
 trigger_alarm:
   alias: Trigger Alarm
   sequence:
-    # Ignore triggers in the first 30 seconds after boot
+    # Ignore triggers in the first 60 seconds after boot
     - condition: template
-      value_template: "{{ as_timestamp(now()) - as_timestamp(states('sensor.uptime')) > 30 }}"
+      value_template: "{{ as_timestamp(now()) - as_timestamp(states('sensor.uptime')) > 60 }}"
     # Trigger the alarm
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.ha_alarm
@@ -34,7 +34,7 @@ trigger_alarm:
                   sound:
                     name: default
                     critical: 1
-                    volume: 1.0
+                    volume: 0.0
                   category: alarm
 
       # Camera Feed
@@ -70,7 +70,7 @@ trigger_alarm:
                   sound:
                     name: default
                     critical: 1
-                    volume: 1.0
+                    volume: 0.0
                   category: alarm
       # Image
       - conditions:
@@ -97,7 +97,7 @@ trigger_alarm:
                   sound:
                     name: default
                     critical: 1
-                    volume: 1.0
+                    volume: 0.0
                   category: alarm
 
       # Default
@@ -111,5 +111,5 @@ trigger_alarm:
                 sound:
                   name: default
                   critical: 1
-                  volume: 1.0
+                  volume: 0.0
                 category: alarm

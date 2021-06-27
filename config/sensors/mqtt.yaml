@@ -1,14 +1,4 @@
 - platform: mqtt
-  state_topic: "temperature/loft"
-  name: "Loft Temperature"
-  unit_of_measurement: "°C"
-
-- platform: mqtt
-  state_topic: "humidity/loft"
-  name: "Loft Humidity"
-  unit_of_measurement: "%"
-
-- platform: mqtt
   name: tv_power_consumption
   state_topic: 2NICE-7/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'

@@ -149,33 +149,33 @@
       trigger: "{{ trigger.entity_id }}"
 
 # Debug
-- alias: alarm_debug_armed_away
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: alarm_control_panel.ha_alarm
-    to: "armed_away"
-  action:
-    service: notify.mobile_app_dullage_s_iphone
-    data:
-      message: "Alarm Armed (Away)"
-- alias: alarm_debug_armed_night
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: alarm_control_panel.ha_alarm
-    to: "armed_night"
-  action:
-    service: notify.mobile_app_dullage_s_iphone
-    data:
-      message: "Alarm Armed (Night)"
-- alias: alarm_debug_disarmed
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: alarm_control_panel.ha_alarm
-    to: "disarmed"
-  action:
-    service: notify.mobile_app_dullage_s_iphone
-    data:
-      message: "Alarm Disarmed"
+# - alias: alarm_debug_armed_away
+#   initial_state: true
+#   trigger:
+#     platform: state
+#     entity_id: alarm_control_panel.ha_alarm
+#     to: "armed_away"
+#   action:
+#     service: notify.mobile_app_dullage_s_iphone
+#     data:
+#       message: "Alarm Armed (Away)"
+# - alias: alarm_debug_armed_night
+#   initial_state: true
+#   trigger:
+#     platform: state
+#     entity_id: alarm_control_panel.ha_alarm
+#     to: "armed_night"
+#   action:
+#     service: notify.mobile_app_dullage_s_iphone
+#     data:
+#       message: "Alarm Armed (Night)"
+# - alias: alarm_debug_disarmed
+#   initial_state: true
+#   trigger:
+#     platform: state
+#     entity_id: alarm_control_panel.ha_alarm
+#     to: "disarmed"
+#   action:
+#     service: notify.mobile_app_dullage_s_iphone
+#     data:
+#       message: "Alarm Disarmed"

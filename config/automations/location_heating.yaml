@@ -4,11 +4,10 @@
   trigger:
     platform: state
     entity_id: group.everyone
+    to: "not_home"
   condition:
     condition: and
     conditions:
-      - condition: template
-        value_template: "{{ states('group.everyone') != 'home' }}"
       - condition: time
         before: "15:00:00"
         weekday:
@@ -17,9 +16,8 @@
           - wed
           - thu
           - fri
-      - condition: numeric_state
-        entity_id: sensor.nest_temperature
-        above: 9
+      - condition: template
+        value_template: "{{ state_attr('climate.nest', 'temperature') > 9 }}"
   action:
     - service: climate.set_temperature
       data:
@@ -32,22 +30,14 @@
   trigger:
     platform: state
     entity_id: group.everyone
+    to: "not_home"
+    for:
+      minutes: 15
   condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ states('group.everyone') != 'home' }}"
-      - condition: numeric_state
-        entity_id: sensor.nest_temperature
-        above: 9
+    condition: template
+    value_template: "{{ state_attr('climate.nest', 'temperature') > 9 }}"
   action:
-    - service: notify.mobile_app_dullage_s_iphone
-      data:
-        message: "Warning: The heating is still on. Turn it off?"
-        data:
-          push:
-            category: location_heating_warning
-    - service: notify.mobile_app_iphone
+    - service: notify.iphones
       data:
         message: "Warning: The heating is still on. Turn it off?"
         data:

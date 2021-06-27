@@ -1,6 +1,8 @@
 # Saying "Hey Google, I'm going out" will start this script. It waits until the front door is shut then turns off all the lights and the TV.
 going_out:
   sequence:
+    - service: light.turn_on
+      entity_id: light.entrance_light
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'off' }}"
     - service: homeassistant.turn_off
