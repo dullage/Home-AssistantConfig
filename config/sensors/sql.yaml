@@ -1,0 +1,15 @@
+- platform: sql
+  db_url: !secret db_url
+  queries:
+    - name: rainfall
+      query: >
+        SELECT SUM(avgs.rainfall) as rainfall
+        FROM (
+          SELECT AVG(state) as rainfall
+          FROM states s
+          WHERE entity_id = 'sensor.dark_sky_precip_intensity'
+          AND created > DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL -1 DAY)
+          GROUP BY DATE_FORMAT(created, "%Y-%m-%d %H:00:00")
+        ) as avgs
+      column: rainfall
+      unit_of_measurement: mm

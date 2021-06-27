@@ -141,6 +141,21 @@ ios:
             activationMode: "background"
             authenticationRequired: no
             destructive: yes
+      - name: Activate Sprinklers
+        identifier: "activate_sprinklers"
+        actions:
+          - identifier: "ACTIVATE_SPRINKLERS"
+            title: "Activate Sprinklers"
+            activationMode: "background"
+            authenticationRequired: no
+      - name: Cancel Sprinklers
+        identifier: "cancel_sprinklers"
+        actions:
+          - identifier: "CANCEL_SPRINKLERS"
+            title: "Cancel Sprinklers"
+            activationMode: "background"
+            authenticationRequired: no
+            destructive: yes
 
 # HomeKit
 homekit: !include config/voice_assistants/siri.yaml

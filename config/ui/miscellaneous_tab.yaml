@@ -11,6 +11,12 @@
     #   name: Birds on the Lawn
     #   icon: mdi:bird
 
+- type: sensor
+  entity: sensor.rainfall
+  name: Rainfall Last 24h
+  graph: line
+  hours_to_show: 24
+
 - type: entities
   title: Modes
   show_header_toggle: false
@@ -41,13 +47,6 @@
     - entity: automation.home_arrival_notifications_leanne_arriving
       name: Leanne (Notify Adam)
       icon: mdi:bell-outline
-
-- type: entities
-  title: "Clothes Dryer"
-  show_header_toggle: false
-  entities:
-    - switch.clothes_dryer
-    - input_number.dryer_timeout
 
 - type: entities
   title: "Zigbee"

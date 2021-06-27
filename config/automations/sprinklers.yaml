@@ -3,16 +3,33 @@
     platform: time
     at: "20:55:00"
   action:
-    - service: notify.mobile_app_dullage_s_iphone
-      data:
-        message: "Automatic Sprinklers: 5 minute warning!"
-    - service: notify.mobile_app_iphone
-      data:
-        message: "Automatic Sprinklers: 5 minute warning!"
-    - delay:
-        minutes: 5
-    - service: switch.turn_on
-      entity_id: switch.sprinklers
+    - alias: "Turn on front lights if motion detected, else turn off"
+      choose:
+        # It has rained
+        - conditions:
+            - condition: template
+              value_template: "{{ float(states('sensor.rainfall')) > 0 }}"
+          sequence:
+            - delay:
+                minutes: 5
+            - service: notify.iphones
+              data:
+                message: "There has been rainfall in the last 24 hours so the sprinklers will not run."
+                data:
+                  push:
+                    category: activate_sprinklers
+      # It has not rained
+      default:
+        - service: notify.iphones
+          data:
+            message: "Automatic Sprinklers: 5 minute warning!"
+            data:
+              push:
+                category: cancel_sprinklers
+        - delay:
+            minutes: 5
+        - service: switch.turn_on
+          entity_id: switch.sprinklers
 
 # Turn off the sprinklers after they've been on for 4 minutes
 - alias: sprinklers_off
@@ -26,3 +43,29 @@
   action:
     service: switch.turn_off
     entity_id: switch.sprinklers
+
+# Turn on the sprinklers if the relevant iOS notification button is pressed
+- alias: sprinklers_activate
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: ACTIVATE_SPRINKLERS
+  action:
+    - service: switch.turn_on
+      entity_id: switch.sprinklers
+
+# Turn on the sprinklers if the relevant iOS notification button is pressed
+- alias: sprinklers_cancel
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: CANCEL_SPRINKLERS
+  action:
+    - service: automation.turn_off
+      entity_id: automation.sprinklers_auto
+    - service: automation.turn_on
+      entity_id: automation.sprinklers_auto
