@@ -47,14 +47,8 @@ logbook:
       - automation
     entities:
       - light.downstairs
-      - sensor.dark_sky_cloud_coverage
-      - sensor.dark_sky_daily_max_precip_intensity
-      - sensor.dark_sky_minutely_summary
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_wind_bearing
-      - sensor.dark_sky_wind_speed
+    entity_globs:
+      - sensor.dark_sky*
 
 lovelace:
   mode: yaml

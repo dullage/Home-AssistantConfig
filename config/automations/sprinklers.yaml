@@ -8,7 +8,7 @@
         # It has rained
         - conditions:
             - condition: template
-              value_template: "{{ float(states('sensor.rainfall')) > 0 }}"
+              value_template: "{{ float(states('sensor.rainfall_last_24h')) > 1 }}"
           sequence:
             - delay:
                 minutes: 5
@@ -18,7 +18,20 @@
                 data:
                   push:
                     category: activate_sprinklers
-      # It has not rained
+        # It will rain
+        - conditions:
+            - condition: template
+              value_template: "{{ float(states('sensor.rainfall_next_24h')) > 1 }}"
+          sequence:
+            - delay:
+                minutes: 5
+            - service: notify.iphones
+              data:
+                message: "There is rainfall expected in the next 24 hours so the sprinklers will not run."
+                data:
+                  push:
+                    category: activate_sprinklers
+      # It has not rained and won't rain
       default:
         - service: notify.iphones
           data:

@@ -1,7 +1,7 @@
 - platform: sql
   db_url: !secret db_url
   queries:
-    - name: rainfall
+    - name: rainfall_last_24h
       query: >
         SELECT SUM(avgs.rainfall) as rainfall
         FROM (

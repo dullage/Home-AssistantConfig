@@ -47,4 +47,33 @@
     bathroom_excess_humidity:
       unit_of_measurement: "%"
       friendly_name: "Bathroom Excess Humidity"
-      value_template: "{{ '%.2f'|format(max([0, float(states('sensor.bathroom_temperature_sensor_humidity')) - float(states('sensor.landing_temperature_sensor_humidity'))])) }}"
+      value_template: "{{ max([0, float(states('sensor.bathroom_temperature_sensor_humidity')) - float(states('sensor.landing_temperature_sensor_humidity'))]) }}"
+
+    rainfall_next_24h:
+      unit_of_measurement: mm
+      friendly_name: "Rainfall (Next 24h)"
+      value_template: >
+        {{ float(states('sensor.dark_sky_precip_intensity_1h'))
+         + float(states('sensor.dark_sky_precip_intensity_2h'))
+         + float(states('sensor.dark_sky_precip_intensity_3h'))
+         + float(states('sensor.dark_sky_precip_intensity_4h'))
+         + float(states('sensor.dark_sky_precip_intensity_5h'))
+         + float(states('sensor.dark_sky_precip_intensity_6h'))
+         + float(states('sensor.dark_sky_precip_intensity_7h'))
+         + float(states('sensor.dark_sky_precip_intensity_8h'))
+         + float(states('sensor.dark_sky_precip_intensity_9h'))
+         + float(states('sensor.dark_sky_precip_intensity_10h'))
+         + float(states('sensor.dark_sky_precip_intensity_11h'))
+         + float(states('sensor.dark_sky_precip_intensity_12h'))
+         + float(states('sensor.dark_sky_precip_intensity_13h'))
+         + float(states('sensor.dark_sky_precip_intensity_14h'))
+         + float(states('sensor.dark_sky_precip_intensity_15h'))
+         + float(states('sensor.dark_sky_precip_intensity_16h'))
+         + float(states('sensor.dark_sky_precip_intensity_17h'))
+         + float(states('sensor.dark_sky_precip_intensity_18h'))
+         + float(states('sensor.dark_sky_precip_intensity_19h'))
+         + float(states('sensor.dark_sky_precip_intensity_20h'))
+         + float(states('sensor.dark_sky_precip_intensity_21h'))
+         + float(states('sensor.dark_sky_precip_intensity_22h'))
+         + float(states('sensor.dark_sky_precip_intensity_23h'))
+         + float(states('sensor.dark_sky_precip_intensity_24h')) }}

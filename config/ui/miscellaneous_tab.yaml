@@ -10,12 +10,10 @@
     # - entity: binary_sensor.bird_on_lawn
     #   name: Birds on the Lawn
     #   icon: mdi:bird
-
-- type: sensor
-  entity: sensor.rainfall
-  name: Rainfall Last 24h
-  graph: line
-  hours_to_show: 24
+    - entity: sensor.rainfall_last_24h
+      name: Rainfall (Last 24h)
+    - entity: sensor.rainfall_next_24h
+      name: Expected Rainfall (Next 24h)
 
 - type: entities
   title: Modes
