@@ -63,3 +63,13 @@
     - entity: binary_sensor.bedroom_window_contact
       name: Bedroom Window
       icon: mdi:window-open-variant
+
+- type: entities
+  title: Camera Stream
+  show_header_toggle: false
+  entities:
+    - input_select.camera
+    - input_select.media_player
+    - entity: script.camera_stream
+      name: Stream Camera
+      icon: mdi:cast
