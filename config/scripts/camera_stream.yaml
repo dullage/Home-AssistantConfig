@@ -1,0 +1,93 @@
+camera_stream:
+  sequence:
+    - choose:
+        # Front Door on Front Room TV
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Front Door' and states('input_select.media_player') == 'Front Room TV' }}"
+          sequence:
+            - service: script.input_chromecast
+            - service: camera.play_stream
+              entity_id: camera.front_door_hd
+              data:
+                media_player: media_player.front_room_tv
+        # Side on Front Room TV
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Side' and states('input_select.media_player') == 'Front Room TV' }}"
+          sequence:
+            - service: script.input_chromecast
+            - service: camera.play_stream
+              entity_id: camera.side_hd
+              data:
+                media_player: media_player.front_room_tv
+        # Garden on Front Room TV
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Garden' and states('input_select.media_player') == 'Front Room TV' }}"
+          sequence:
+            - service: script.input_chromecast
+            - service: camera.play_stream
+              entity_id: camera.garden_hd
+              data:
+                media_player: media_player.front_room_tv
+        # Kitchen on Front Room TV
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Kitchen' and states('input_select.media_player') == 'Front Room TV' }}"
+          sequence:
+            - service: script.input_chromecast
+            - service: camera.play_stream
+              entity_id: camera.kitchen
+              data:
+                media_player: media_player.front_room_tv
+        # Front Door on Kitchen Display
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Front Door' and states('input_select.media_player') == 'Kitchen Display' }}"
+          sequence:
+            - service: camera.play_stream
+              entity_id: camera.front_door
+              data:
+                media_player: media_player.kitchen_display
+        # Side on Kitchen Display
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Side' and states('input_select.media_player') == 'Kitchen Display' }}"
+          sequence:
+            - service: camera.play_stream
+              entity_id: camera.side
+              data:
+                media_player: media_player.kitchen_display
+        # Garden on Kitchen Display
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Garden' and states('input_select.media_player') == 'Kitchen Display' }}"
+          sequence:
+            - service: camera.play_stream
+              entity_id: camera.garden
+              data:
+                media_player: media_player.kitchen_display
+        # Kitchen on Kitchen Display
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'Kitchen' and states('input_select.media_player') == 'Kitchen Display' }}"
+          sequence:
+            - service: camera.play_stream
+              entity_id: camera.kitchen
+              data:
+                media_player: media_player.kitchen_display
+        # Stop Front Room TV
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'None' and states('input_select.media_player') == 'Front Room TV' }}"
+          sequence:
+            - service: media_player.media_stop
+              entity_id: media_player.front_room_tv
+        # Stop Kitchen Display
+        - conditions:
+          - condition: template
+            value_template: "{{ states('input_select.camera') == 'None' and states('input_select.media_player') == 'Kitchen Display' }}"
+          sequence:
+            - service: media_player.media_stop
+              entity_id: media_player.kitchen_display

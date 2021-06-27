@@ -19,3 +19,17 @@ maestro_stairs:
     - "Bouncing Balls"
     - "Startup"
     - "Shutdown"
+
+camera:
+  name: "Camera"
+  options:
+    - "Front Door"
+    - "Side"
+    - "Garden"
+    - "None"
+
+media_player:
+  name: "Media Player"
+  options: 
+    - "Front Room TV"
+    - "Kitchen Display"
