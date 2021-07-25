@@ -1,4 +1,4 @@
-# Turn everything off downstairs once the front room door has been closed for a bit
+# Run the goodnight script once the front room and kitchen doors have been closed for a bit.
 - alias: auto_goodnight
   initial_state: true
   mode: restart
@@ -36,7 +36,7 @@
 
     - service: script.goodnight
 
-# After 9pm, once the downstairs lights have all been off for 5 minutes turn off the heating and TV.
+# After 9pm, once the downstairs lights have all been off for 5 minutes, run the goodnight script.
 - alias: bedtime
   initial_state: true
   trigger:

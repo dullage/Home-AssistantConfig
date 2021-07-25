@@ -69,7 +69,7 @@
     - service: switch.turn_on
       entity_id: switch.sprinklers
 
-# Turn on the sprinklers if the relevant iOS notification button is pressed
+# Cancel the sprinklers if the relevant iOS notification button is pressed
 - alias: sprinklers_cancel
   initial_state: true
   trigger:

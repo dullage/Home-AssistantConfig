@@ -3,7 +3,7 @@
   queries:
     - name: rainfall_last_24h
       query: >
-        SELECT SUM(avgs.rainfall) as rainfall
+        SELECT ROUND(IFNULL(SUM(avgs.rainfall), 0), 2) as rainfall
         FROM (
           SELECT AVG(state) as rainfall
           FROM states s

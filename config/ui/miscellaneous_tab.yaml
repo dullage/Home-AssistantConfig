@@ -14,6 +14,8 @@
       name: Rainfall (Last 24h)
     - entity: sensor.rainfall_next_24h
       name: Expected Rainfall (Next 24h)
+    - entity: sensor.rainfall_next_24h_adjusted
+      name: Expected Rainfall (Next 24h Adjusted)
 
 - type: entities
   title: Modes
@@ -34,6 +36,8 @@
       name: Bedroom Light Timeout
     - entity: automation.sprinklers_auto
       name: Automatic Sprinklers
+    - entity: automation.fan_auto_off
+      name: Fan Auto Off (4am)
 
 - type: entities
   title: "Home Arrival Notifications"
@@ -67,10 +71,6 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
-    - entity: sensor.sm_p610_battery_level
-      name: Tablet Battery
-    - entity: sensor.sm_p610_battery_state
-      name: Tablet Charging State
 
 - type: entities
   title: Effy Flea Treatment
