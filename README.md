@@ -1,6 +1,6 @@
 # Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 2021.6.2 in a docker container on a Dell Optiplex MFF.
+I currently run [Home Assistant](http://homeassistant.io/) version 2021.7.4 in a docker container on a Dell Optiplex MFF.
 
 Looking for inspiration? Most automations are commented, see the [automations folder](/config/automations).
 
@@ -11,7 +11,7 @@ Looking for inspiration? Most automations are commented, see the [automations fo
 | Alarm Control Panel | 1 |
 | Automation | 93 |
 | Binary Sensor | 22 |
-| Camera | 7 |
+| Camera | 9 |
 | Climate | 3 |
 | Device Tracker | 5 |
 | Input Boolean | 6 |
@@ -23,5 +23,6 @@ Looking for inspiration? Most automations are commented, see the [automations fo
 | Media Player | 15 |
 | Scene | 6 |
 | Script | 28 |
-| Sensor | 152 |
+| Select | 2 |
+| Sensor | 298 |
 | Switch | 17 |
