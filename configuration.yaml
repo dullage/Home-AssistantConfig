@@ -15,7 +15,7 @@ homeassistant:
     switch:
       assumed_state: false
   allowlist_external_dirs:
-    - "/config/bird_blaster_recordings"
+    # - "/config/bird_blaster_recordings"
     - "/media/cctv"
 
 zone: !secret zones

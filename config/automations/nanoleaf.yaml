@@ -1,0 +1,79 @@
+# When the Downstairs General scene is set, set the nanoleaf effect based on the sun position.
+- alias: nanoleaf_downstairs_general
+  initial_state: true
+  trigger:
+    # See https://community.home-assistant.io/t/automation-as-action-is-not-triggering-automation-b-help/328581
+    - platform: event
+      event_type: "call_service"
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id: scene.downstairs_general
+    - platform: event
+      event_type: "call_service"
+      event_data:
+        domain: scene
+        service: turn_on
+        service_data:
+          entity_id:
+            - scene.downstairs_general
+  action:
+    - choose:
+      # IF after sunset
+      - conditions:
+          - condition: state
+            entity_id: sun.sun
+            state: "below_horizon"
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.nanoleaf
+              brightness: 211
+              effect: "Blaze"
+      # ELSE
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.nanoleaf
+            brightness: 211
+            effect: "Cocoa Beach"
+
+
+# When the sun positions changes, set the nanoleaf effect based on the sun position.
+- alias: nanoleaf_sun
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    to:
+      - "above_horizon"
+      - "below_horizon"
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: light.nanoleaf
+          state: "on"
+        - condition: template
+          value_template: "{{ state_attr('light.nanoleaf', 'effect') in ['Cocoa Beach', 'Blaze']}}"
+  action:
+    - choose:
+      # IF after sunset
+      - conditions:
+          - condition: state
+            entity_id: sun.sun
+            state: "below_horizon"
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.nanoleaf
+              brightness: 211
+              effect: "Blaze"
+      # ELSE
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.nanoleaf
+            brightness: 211
+            effect: "Cocoa Beach"

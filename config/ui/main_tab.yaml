@@ -19,7 +19,7 @@
       name: Corner Lamp
       icon: mdi:led-strip-variant
     - input_select.maestro_corner_lamp
-    - entity: group.ambilight
+    - entity: switch.fidelux
       icon: mdi:television-ambient-light
 
 - type: entities
@@ -65,6 +65,7 @@
 - type: entities
   title: Dining Room
   entities:
+    - light.nanoleaf
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp

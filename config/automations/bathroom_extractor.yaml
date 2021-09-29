@@ -1,0 +1,42 @@
+# Turn on the bathroom extractor fan when the excess humidity goes above 12%
+- alias: bathroom_extractor_on
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.bathroom_excess_humidity
+    above: 15
+  condition:
+    condition: state
+    entity_id: switch.bathroom_extractor
+    state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bathroom_extractor
+
+# Turn off the bathroom extractor fan when the excess humidity goes below 10%
+- alias: bathroom_extractor_off
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.bathroom_excess_humidity
+    below: 10
+  condition:
+    condition: state
+    entity_id: switch.bathroom_extractor
+    state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bathroom_extractor
+
+# Automatically turn off the bathroom extractor fan when it's been on for 2 hours
+- alias: bathroom_extractor_timeout
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_extractor
+    to: "on"
+    for:
+      hours: 2
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bathroom_extractor

@@ -3,6 +3,12 @@
   trigger:
     platform: state
     entity_id: binary_sensor.landing_switch
+    # from:
+    #   - "on"
+    #   - "off"
+    to:
+      - "on"
+      - "off"
   action:
     - wait_for_trigger:
       - platform: state

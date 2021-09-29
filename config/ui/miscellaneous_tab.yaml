@@ -71,6 +71,9 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
+    - entity: switch.bathroom_extractor
+      name: Bathroom Extractor
+      icon: mdi:fan
 
 - type: entities
   title: Effy Flea Treatment

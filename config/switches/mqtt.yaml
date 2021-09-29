@@ -47,3 +47,11 @@
   state_topic: 2NICE-2/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
+
+- platform: mqtt
+  name: bathroom_extractor
+  command_topic: "shellies/shelly1pm-F4CFA2E4FE48/relay/0/command"
+  state_topic: "shellies/shelly1pm-F4CFA2E4FE48/relay/0"
+  payload_on: "on"
+  payload_off: "off"
+  retain: false

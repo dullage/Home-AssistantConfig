@@ -3,148 +3,140 @@ volume_up:
   alias: Volume Up
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
+      data:
+        device: amp
+        command: volume_up
 
 volume_upx2:
   alias: Volume Up
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBIAAABI5UQFRA5EBUPOhA5EDoQOREUEDkQFQ86EBUPFREUDxYPOhAVDzoQFBE5ETgRFBAUERQROBAVEDkQFRAVETgROBA6EAANBQ==
+      data:
+        device: amp
+        command: volume_up
         num_repeats: 2
 
 volume_down:
   alias: Volume Down
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
+      data:
+        device: amp
+        command: volume_down
 
 volume_downx2:
   alias: Volume Down
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBIAAABJJQQFRA5EBUROBE5DzoQORAVEDkQFRE4EBUQFQ8VEBUQORE5EDkQFQ86ETgQFRAVDxUQFRAVDzoQFRAUDzsPOhA5EQANBQ==
+      data:
+        device: amp
+        command: volume_down
         num_repeats: 2
 
 mute:
   alias: Mute
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABJpISEhI4EhISOBI3EzcSNxISEzcSEhM3EhITEhMSEhITNxISExISNxM3EjcTEhISExITNhM3EhITEhMSEjcTNhM3EgAFGAABJkkTAA0FAAAAAAAAAAA=
+      data:
+        device: amp
+        command: mute
 
 # Power
 tv:
   alias: TV
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBGAJCUEDkQOhA5ERQPFRAVEBQRFBA5ETkPOhEUDxURFBEUDxUQFRA5ERQQFQ8VEBUQFQ8VEDoQFBA6EDkQORE5DzoROBIADQUAAA==
+      data:
+        device: tv
+        command: power
 
 amp:
   alias: Amp
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABI5UQFBA6DxURORA5EDkRORAUETkQFBE5DxURFBAVDxUQOhA5EDkQOhA5EDkRFBAVDxUQFRAVEBQQFRAVDzoQORE5EAAFGgABI0wQAA0FAAAAAAAAAAA=
+      data:
+        device: amp
+        command: power
 
 freeview_box:
   alias: Freeview Box
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABKJMTEhM3EzYTEhM3ExITEhMSExITEhMSExITEhM2ExITExI3EzcSExITEjcTNxITEjcTEhMSEzYUNhM3ExITEhM2EwAFjwABJ0oSAA0FAAAAAAAAAAA=
+      data:
+        device: freeview_box
+        command: power
 
 # HMDI Switcher
 input_xbox:
   alias: Xbox
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABLJQUEhMTExITEhMTExITExM2EzcTNxM3EzcTNhQ2FDYUEhMTEzYUNhQSExITExMSExMTNhQSExITNxM3EzcTNhQ2FAAFJQABK0oTAA0FAAAAAAAAAAA=
+      data:
+        device: hdmi_switcher
+        command: xbox
         num_repeats: 3
 
 input_freeview:
   alias: Freeview Box
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABKpYRFBEUERURFBEUEhQRFBE5ETkRORE5EzcRORE5ETkTEhMSEzcSFBEUERUSExEUERUSOBMSETkRORE5ETkTNxE5EwAFJwABK0oRAA0FAAAAAAAAAAA=
+      data:
+        device: hdmi_switcher
+        command: freeview_box
         num_repeats: 3
 
 input_chromecast:
   alias: Chromecast
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABKZcTEhIUERQRFBIUExMQFRE5EzYUNhI4EzcTNxM3EzcTEhEVERQRORMSERURFBEUEhQRORI4EhMRORE5EzcTNxI3EwAFJwABKEwRAA0FAAAAAAAAAAA=
+      data:
+        device: hdmi_switcher
+        command: chromecast
         num_repeats: 3
 
 input_apple_tv:
   alias: Apple TV
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABKZcRFBITExMSExIUEhMSExI4EzcTNxI4EjgSOBE5ETkSExE5ERQTNxEVERQSExIUEhMRFRM2ERUSNxI5ETkRORA5FAAFJwABKEwSAA0FAAAAAAAAAAA=
+      data:
+        device: hdmi_switcher
+        command: apple_tv
         num_repeats: 3
 
 input_guest:
   alias: Guest HDMI
   sequence:
     - service: remote.send_command
-      data:
+      target:
         entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABL5QUEhQSExIUEhMTExITExM2FDYUNhQ2FDYUNhQ2FDYUExMSExMTEhM3ExMTEhMTExITNxM3EzcTExM2FDYUNhQ2FAAFJQABLkoTAA0FAAAAAAAAAAA=
+      data:
+        device: hdmi_switcher
+        command: guest
         num_repeats: 3
-
-# Amp Input
-# amp_dvd:
-#   alias: TV Audio
-#   sequence:
-#     - service: remote.send_command
-#       data:
-#         entity_id: remote.broadlink_remote
-#         command: b64:JgBQAAABJpQSEhI4EhISOBE4EjcSNxITEjcSExI3EhMTERITEhMSNxI3EhMSExISEhMSExI3EjcSExI3EjcSOBI3EjcSExITEgAFIwABJksSAA0FAAAAAAAAAAA=
-
-# amp_cd:
-#   alias: House Audio
-#   sequence:
-#     - service: remote.send_command
-#       data:
-#         entity_id: remote.broadlink_remote
-#         command: b64:JgBQAAABJpQSEhI4EhISOBI3EjcSOBETEjcSExI3EhMSExISEhMSNxI4EhISOBETEjcSExITEhISExI3EhMSNxITEjcSNxI4EgAFIwABJ0oSAA0FAAAAAAAAAAA=
-
-# Channel Numbers
-channel_0:
-  alias: Channel 0
-  sequence:
-    - service: remote.send_command
-      data:
-        entity_id: remote.broadlink_remote
-        command: b64:JgBQAAABJpQRFBE5ETgRFBE5EBUQFRAVEBUQFRAVEBUQFRA5ERQRFBE4ERQRFBE5ERQQFRA5ETkROBE5EBUQORE5EDkRFBEUEQAFjQABJUsRAA0FAAAAAAAAAAA=
-
-channel_2:
-  alias: Channel 2
-  sequence:
-    - service: remote.send_command
-      data:
-        entity_id: remote.broadlink_remote
-        command: b64:JgBIAAABKZIUERM2FDYTEhM2FBEUERQRFBEUERMSFBEUERQ2ExITEhMSEzYUNhMSEzYUNhMSEzcSEhQRFDYTNhQRFDYTNhQSEwANBQ==
 
 # Scripts
 all_av:
@@ -158,10 +150,12 @@ all_av:
 cbeebies:
   alias: CBeebies
   sequence:
-    - service: script.channel_2
-    - delay:
-        seconds: 0.5
-    - service: script.channel_0
-    - delay:
-        seconds: 0.5
-    - service: script.channel_2
+    - service: remote.send_command
+      target:
+        entity_id: remote.broadlink_remote
+      data:
+        device: freeview_box
+        command:
+          - "2"
+          - "0"
+          - "2"

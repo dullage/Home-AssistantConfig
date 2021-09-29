@@ -7,3 +7,13 @@
   action:
     service: switch.turn_off
     entity_id: switch.fan
+
+# Turn it back on again at 9am (when the blind opens)
+- alias: fan_auto_off_back_on
+  initial_state: true
+  trigger:
+    platform: time
+    at: "09:00:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.fan

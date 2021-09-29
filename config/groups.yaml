@@ -31,6 +31,7 @@ all_lights:
     - light.master_bedroom_main
     - light.bedroom_lamps
     - light.garden_lights
+    - light.nanoleaf
 
 # Everything that should be turned off when leaving
 everything:
@@ -43,6 +44,7 @@ living_room:
   name: Living Room
   entities:
     - light.front_room_lamp
+    - light.corner_lamp
     - group.tv
 
 kitchen_leds:
@@ -74,9 +76,9 @@ kitchen:
 dining_room:
   name: Dining Room
   entities:
+    - light.nanoleaf
     - light.dining_room_lamp
     - light.entrance_light
-    - light.corner_lamp
     - switch.coat_rack
 
 tv:
@@ -110,7 +112,6 @@ ambilight:
   name: Ambilight
   entities:
     - light.ambilight
-    - light.ambilight_corner_lamp
 
 downstairs_internal_doors:
   name: Downstairs Internal Doors

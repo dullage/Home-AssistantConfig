@@ -64,6 +64,20 @@
       name: Bedroom Window
       icon: mdi:window-open-variant
 
+- type: glance
+  title: Rejected Detections (Per Hour)
+  columns: 3
+  entities:
+    - entity: sensor.rejected_front_door_per_hr
+      name: Front Door
+      icon: mdi:account-off
+    - entity: sensor.rejected_side_per_hr
+      name: Side
+      icon: mdi:account-off
+    - entity: sensor.rejected_garden_per_hr
+      name: Garden
+      icon: mdi:account-off
+
 - type: entities
   title: Camera Stream
   show_header_toggle: false
