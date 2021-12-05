@@ -19,8 +19,8 @@
   graph: line
   hours_to_show: 12
 
-- type: thermostat
-  entity: climate.office_heater
+# - type: thermostat
+#   entity: climate.office_heater
 
 - type: glance
   title: Indoor Temperatures
