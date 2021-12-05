@@ -19,6 +19,9 @@
       name: Corner Lamp
       icon: mdi:led-strip-variant
     - input_select.maestro_corner_lamp
+    - entity: switch.mini_christmas_tree
+      name: Christmas Lights
+      icon: mdi:string-lights
 
 - type: entities
   title: Bathroom
@@ -70,6 +73,9 @@
     - entity: switch.coat_rack
       name: Coat Rack
       icon: mdi:hanger
+    - entity: switch.christmas_tree
+      name: Christmas Tree
+      icon: mdi:pine-tree
 
 - type: entities
   title: Outdoors
@@ -78,6 +84,12 @@
     - entity: light.porch_light
       name: Porch Light
       icon: mdi:coach-lamp
+    - entity: switch.hedge_lights
+      name: Hedge Lights
+      icon: mdi:string-lights
+    - entity: switch.snow_light
+      name: Snow Light
+      icon: mdi:snowflake
 
 - type: shopping-list
   title: Shopping List

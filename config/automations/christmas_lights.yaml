@@ -1,0 +1,24 @@
+# Turn the christmas lights on at sunset
+- alias: christmas_lights_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sun.sun
+    to: "below_horizon"
+  action:
+    - service: light.turn_on
+      entity_id: switch.hedge_lights
+    - service: light.turn_on
+      entity_id: switch.snow_light
+
+# Turn the christmas lights off at 11pm
+- alias: christmas_lights_off
+  initial_state: true
+  trigger:
+    platform: time
+    at: "23:00:00"
+  action:
+    - service: light.turn_off
+      entity_id: switch.hedge_lights
+    - service: light.turn_off
+      entity_id: switch.snow_light
