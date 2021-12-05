@@ -3,9 +3,10 @@
   trigger:
     platform: state
     entity_id: binary_sensor.landing_switch
-    # from:
-    #   - "on"
-    #   - "off"
+    # This avoids triggering when becoming unavailable
+    from:
+      - "on"
+      - "off"
     to:
       - "on"
       - "off"

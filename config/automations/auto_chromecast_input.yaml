@@ -4,7 +4,11 @@
   trigger:
     platform: state
     entity_id: media_player.front_room_tv
-    to: "idle"
+    to:
+      - "idle"
+      - "playing"
+    for:
+      seconds: 3
   action:
     service: script.input_chromecast
 
@@ -15,5 +19,7 @@
     platform: state
     entity_id: media_player.front_room_tv
     to: "off"
+    for:
+      seconds: 3
   action:
     service: script.input_freeview

@@ -40,3 +40,48 @@
   action:
     - service: switch.turn_off
       entity_id: switch.bathroom_extractor
+
+# Turn on the bathroom extractor fan when the bathroom lights are turned on between 6am and 9am
+# Then turn it off if the lights are turned back off and the humidity is low
+- alias: bathroom_extractor_light
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.bathroom_all
+    to: "on"
+  condition:
+    condition: time
+    after: "06:00"
+    before: "09:00"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bathroom_extractor
+    # Wait until the light is turned back off again
+    - wait_template: "{{ is_state('light.bathroom_all', 'off') }}"
+    # If the excess humidity is 10 or over, leave bathroom_extractor_off to do it's job
+    - condition: numeric_state
+      entity_id: sensor.bathroom_excess_humidity
+      below: 10
+    - service: switch.turn_off
+      entity_id: switch.bathroom_extractor
+
+
+# Warn me if the bathroom or landing humidity sensors havn't updated in the last 6 hours
+- alias: bathroom_extractor_sensor_check
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: "/15"
+  condition:
+    condition: template
+    value_template: >
+      {% set six_hours_ago = as_timestamp(utcnow()) - 21600 %}
+      {{ as_timestamp(states.sensor.bathroom_temperature_sensor_humidity.last_updated) < six_hours_ago 
+         or as_timestamp(states.sensor.landing_temperature_sensor_humidity.last_updated) < six_hours_ago }}
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Either the bathroom or landing humidity sensors haven't updated in over 6 hours."
+    # Only message once a day
+    - delay:
+        hours: 24

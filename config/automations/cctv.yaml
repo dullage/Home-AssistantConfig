@@ -22,3 +22,5 @@
           Front Door: {{ states('sensor.rejected_front_door_per_hr') }}
           Side: {{ states('sensor.rejected_side_per_hr') }}
           Garden: {{ states('sensor.rejected_garden_per_hr') }}
+    - delay:
+        hours: 6

@@ -3,6 +3,8 @@ going_out:
   sequence:
     - service: light.turn_on
       entity_id: light.entrance_light
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.all_av
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'off' }}"
     - service: homeassistant.turn_off

@@ -20,3 +20,13 @@
     service: switch.toggle
     entity_id: switch.ikea_socket_switch
 
+# Toggle the bathroom mirror lights on hold of the bathroom Xiaomi switch
+- alias: bathroom_xiaomi_switch_hold
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom_xiaomi_switch_action
+    to: hold
+  action:
+    service: light.toggle
+    entity_id: light.bathroom_mirror_lights

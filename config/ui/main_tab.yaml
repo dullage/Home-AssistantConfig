@@ -19,8 +19,6 @@
       name: Corner Lamp
       icon: mdi:led-strip-variant
     - input_select.maestro_corner_lamp
-    - entity: switch.fidelux
-      icon: mdi:television-ambient-light
 
 - type: entities
   title: Bathroom
