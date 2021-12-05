@@ -6,9 +6,9 @@
     entity_id: sun.sun
     to: "below_horizon"
   action:
-    - service: light.turn_on
+    - service: switch.turn_on
       entity_id: switch.hedge_lights
-    - service: light.turn_on
+    - service: switch.turn_on
       entity_id: switch.snow_light
 
 # Turn the christmas lights off at 11pm
@@ -18,7 +18,7 @@
     platform: time
     at: "23:00:00"
   action:
-    - service: light.turn_off
+    - service: switch.turn_off
       entity_id: switch.hedge_lights
-    - service: light.turn_off
+    - service: switch.turn_off
       entity_id: switch.snow_light
