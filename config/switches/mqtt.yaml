@@ -14,23 +14,9 @@
   payload_off: "OFF"
 
 - platform: mqtt
-  name: microwave
-  command_topic: 2NICE-5/cmnd/POWER
-  state_topic: 2NICE-5/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
-
-- platform: mqtt
-  name: fan
-  command_topic: 2NICE-4/cmnd/POWER
-  state_topic: 2NICE-4/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
-
-- platform: mqtt
-  name: office_heater
-  command_topic: 2NICE-6/cmnd/POWER
-  state_topic: 2NICE-6/stat/POWER
+  name: sprinklers
+  command_topic: 2NICE-2/cmnd/POWER
+  state_topic: 2NICE-2/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
 
@@ -42,8 +28,22 @@
   payload_off: "OFF"
 
 - platform: mqtt
-  name: sprinklers
-  command_topic: 2NICE-2/cmnd/POWER
-  state_topic: 2NICE-2/stat/POWER
+  name: fan
+  command_topic: 2NICE-4/cmnd/POWER
+  state_topic: 2NICE-4/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: microwave
+  command_topic: 2NICE-5/cmnd/POWER
+  state_topic: 2NICE-5/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
+
+- platform: mqtt
+  name: office_heater
+  command_topic: 2NICE-6/cmnd/POWER
+  state_topic: 2NICE-6/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
