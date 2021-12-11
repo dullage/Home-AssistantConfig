@@ -3,7 +3,6 @@
   show_header_toggle: false
   entities:
     - scene.downstairs_general
-    - scene.downstairs_timeout
     - scene.downstairs_dim
     - scene.downstairs_off
     - entity: group.all_lights
@@ -70,9 +69,6 @@
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp
-    - entity: switch.coat_rack
-      name: Coat Rack
-      icon: mdi:hanger
     - entity: switch.christmas_tree
       name: Christmas Tree
       icon: mdi:pine-tree
