@@ -8,7 +8,6 @@ everyone:
 all_lights:
   name: All Lights
   entities:
-    - switch.coat_rack
     - switch.ikea_socket_switch
     - light.entrance_light
     - light.dining_room_lamp
@@ -82,7 +81,6 @@ dining_room:
     - light.nanoleaf
     - light.dining_room_lamp
     - light.entrance_light
-    - switch.coat_rack
     - switch.christmas_tree
 
 tv:

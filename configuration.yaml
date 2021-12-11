@@ -182,11 +182,11 @@ nest:
   subscriber_id: !secret google_sdm_subscriber_id
 
 # Office Heater Thermostat
-# climate:
-#   - platform: generic_thermostat
-#     name: Office Heater
-#     heater: switch.office_heater
-#     target_sensor: sensor.office_temperature_sensor_temperature
+climate:
+  - platform: generic_thermostat
+    name: Office Heater
+    heater: switch.office_heater
+    target_sensor: sensor.office_temperature_sensor_temperature
 
 # Rest Commands
 rest_command:

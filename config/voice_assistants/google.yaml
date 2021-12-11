@@ -41,8 +41,6 @@ entity_config:
     name: Going Out Script
   script.goodnight:
     name: Goodnight Script
-  switch.coat_rack:
-    name: Coat Rack Lights
   switch.ikea_socket_switch:
     name: Office Lamp
 filter:
@@ -61,7 +59,6 @@ filter:
   - input_boolean.all_av
   - light.porch_light
   - light.entrance_light
-  - switch.coat_rack
   - light.dining_room_lamp
   - light.corner_lamp
   - input_boolean.cartoons

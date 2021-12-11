@@ -84,8 +84,6 @@
       effect: "Solid"
       rgb_color: [255,0,0]
       brightness: 255
-    switch.coat_rack:
-      state: "off"
     light.stairs:
       state: "on"
       rgb_color: [255,0,0]

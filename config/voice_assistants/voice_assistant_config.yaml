@@ -26,8 +26,6 @@ light.porch_light:
   name: Porch Light
 light.entrance_light:
   name: Entrance Light
-switch.coat_rack:
-  name: Coat Rack Lights
 light.dining_room_lamp:
   name: Dining Room Lamp
 light.corner_lamp:
@@ -38,7 +36,5 @@ switch.ikea_socket_switch:
   name: Office Lamp
 group.kitchen_leds:
   name: Kitchen Cupboard Lights
-light.ambilight:
-  name: Ambilight
 script.goodnight:
   name: Goodnight Script
