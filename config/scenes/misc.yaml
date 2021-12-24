@@ -8,7 +8,13 @@
 
 - name: Downstairs General
   entities:
-    input_select.maestro_stairs: "Startup"
+    # input_select.maestro_stairs: "Startup"
+    light.stairs:
+      state: "on"
+      effect: "Fill Noise"
+      # palette: "Fire"
+      # speed: 70
+      # intensity: 70
     group.kitchen_leds:
       state: "on"
     group.ambilight:
@@ -29,12 +35,10 @@
       # effect and brightness are set by automation.nanoleaf_downstairs_general
     switch.christmas_tree:
       state: "on"
-    switch.mini_christmas_tree:
-      state: "on"
 
 - name: Downstairs Dim
   entities:
-    input_select.maestro_stairs: "Startup"
+    # input_select.maestro_stairs: "Startup"
     group.kitchen_leds:
       state: "on"
     group.ambilight:
@@ -55,8 +59,6 @@
       effect: "Starlight"
     switch.christmas_tree:
       state: "on"
-    switch.mini_christmas_tree:
-      state: "off"
 
 - name: Downstairs Timeout
   entities:
@@ -86,6 +88,7 @@
       brightness: 255
     light.stairs:
       state: "on"
+      effect: "Solid"
       rgb_color: [255,0,0]
       brightness: 255
     light.nanoleaf:
@@ -93,8 +96,6 @@
       rgb_color: [255,0,0]
       brightness: 255
     switch.christmas_tree:
-      state: "off"
-    switch.mini_christmas_tree:
       state: "off"
 
 - name: kitchen_leds_dim

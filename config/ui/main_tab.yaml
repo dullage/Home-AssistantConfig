@@ -18,15 +18,15 @@
       name: Corner Lamp
       icon: mdi:led-strip-variant
     - input_select.maestro_corner_lamp
-    - entity: switch.mini_christmas_tree
-      name: Christmas Lights
-      icon: mdi:string-lights
 
 - type: entities
   title: Bathroom
   entities:
     - light.bathroom_all
     - light.bathroom_mirror_lights
+    - entity: switch.bathroom_extractor
+      name: Bathroom Extractor
+      icon: mdi:fan
 
 - type: entities
   title: Bedroom
@@ -81,10 +81,10 @@
       name: Porch Light
       icon: mdi:coach-lamp
     - entity: switch.hedge_lights
-      name: Hedge Lights
+      name: Front Christmas Lights
       icon: mdi:string-lights
     - entity: switch.snow_light
-      name: Snow Light
+      name: Snow Lights
       icon: mdi:snowflake
 
 - type: shopping-list

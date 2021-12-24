@@ -1,12 +1,4 @@
 - platform: mqtt
-  name: zigbee_pairing
-  command_topic: zigbee/bridge/config/permit_join
-  state_topic: zigbee/bridge/config
-  payload_on: true
-  payload_off: false
-  value_template: "{{ value_json.permit_join }}"
-
-- platform: mqtt
   name: office_heater
   command_topic: 2NICE-1/cmnd/POWER
   state_topic: 2NICE-1/stat/POWER
@@ -27,12 +19,12 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-- platform: mqtt
-  name: mini_christmas_tree
-  command_topic: 2NICE-4/cmnd/POWER
-  state_topic: 2NICE-4/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
+# - platform: mqtt
+#   name: mini_christmas_tree
+#   command_topic: 2NICE-4/cmnd/POWER
+#   state_topic: 2NICE-4/stat/POWER
+#   payload_on: "ON"
+#   payload_off: "OFF"
 
 - platform: mqtt
   name: microwave

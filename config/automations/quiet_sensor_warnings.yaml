@@ -1,0 +1,23 @@
+# Warn me if one of the sensors haven't updated in a while
+- alias: quiet_sensor_warnings
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: "/15"
+  condition:
+    condition: template
+    value_template: >
+      {% set six_hours_ago = as_timestamp(utcnow()) - 21600 %}
+      {{    as_timestamp(states.sensor.landing_temperature_sensor_temperature.last_updated) < six_hours_ago 
+         or as_timestamp(states.sensor.blues_room_temperature_sensor_temperature.last_updated) < six_hours_ago 
+         or as_timestamp(states.sensor.master_bedroom_temperature_sensor_temperature.last_updated) < six_hours_ago
+         or as_timestamp(states.sensor.office_temperature_sensor_temperature.last_updated) < six_hours_ago
+         or as_timestamp(states.sensor.bathroom_temperature_sensor_temperature.last_updated) < six_hours_ago
+         or as_timestamp(states.sensor.kitchen_plant_temperature.last_updated) < six_hours_ago }}
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "One of the monitored sensors hasn't updated in over 6 hours."
+    # Only message once a day
+    - delay:
+        hours: 24

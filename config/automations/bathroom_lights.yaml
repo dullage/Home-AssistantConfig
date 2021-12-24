@@ -102,14 +102,14 @@
           - service: light.turn_on
             data:
               entity_id: light.bathroom_all
-              color_temp: 450
+              color_temp: 370
               brightness: 200
       # ELSE
       default:
         - service: light.turn_on
           data:
             entity_id: light.bathroom_all
-            color_temp: 230
+            color_temp: 250
             brightness: 255
 
 # When the sun sets or when it's Blue's bedtime, if the bathroom lights are already on, update the colour temperature.

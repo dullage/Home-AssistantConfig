@@ -49,19 +49,11 @@
       icon: mdi:bell-outline
 
 - type: entities
-  title: "Zigbee"
-  show_header_toggle: false
-  entities:
-    - entity: switch.zigbee_pairing
-      name: Enable Pairing
-      icon: mdi:zigbee
-
-- type: entities
   title: "Misc"
   show_header_toggle: false
   entities:
     - entity: sensor.starling_effective_balance
-      name: "Stock Price"
+      name: "Account Balance"
     - script.render_voice_assistant_config
     - entity: switch.microwave
       name: Microwave
@@ -69,9 +61,6 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
-    - entity: switch.bathroom_extractor
-      name: Bathroom Extractor
-      icon: mdi:fan
 
 - type: entities
   title: Effy Flea Treatment

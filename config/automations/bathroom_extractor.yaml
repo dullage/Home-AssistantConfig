@@ -64,24 +64,3 @@
       below: 10
     - service: switch.turn_off
       entity_id: switch.bathroom_extractor
-
-
-# Warn me if the bathroom or landing humidity sensors havn't updated in the last 6 hours
-- alias: bathroom_extractor_sensor_check
-  initial_state: true
-  trigger:
-    platform: time_pattern
-    minutes: "/15"
-  condition:
-    condition: template
-    value_template: >
-      {% set six_hours_ago = as_timestamp(utcnow()) - 21600 %}
-      {{ as_timestamp(states.sensor.bathroom_temperature_sensor_humidity.last_updated) < six_hours_ago 
-         or as_timestamp(states.sensor.landing_temperature_sensor_humidity.last_updated) < six_hours_ago }}
-  action:
-    - service: notify.mobile_app_dullage_s_iphone
-      data:
-        message: "Either the bathroom or landing humidity sensors haven't updated in over 6 hours."
-    # Only message once a day
-    - delay:
-        hours: 24
