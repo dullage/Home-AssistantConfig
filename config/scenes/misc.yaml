@@ -8,13 +8,18 @@
 
 - name: Downstairs General
   entities:
+    # Stairs
     # input_select.maestro_stairs: "Startup"
     light.stairs:
       state: "on"
       effect: "Fill Noise"
-      # palette: "Fire"
-      # speed: 70
-      # intensity: 70
+    select.stairs_color_palette:
+      state: "Fire"
+    number.stairs_speed:
+      state: "70"
+    number.stairs_intensity:
+      state: "70"
+    # Other
     group.kitchen_leds:
       state: "on"
     group.ambilight:
@@ -100,38 +105,71 @@
 
 - name: kitchen_leds_dim
   entities:
-    light.kitchen_left_bottom:
-      state: "on"
-      effect: Rainbow
-    light.kitchen_right_bottom:
-      state: "on"
-      effect: Rainbow
+    # Kitchen Left Top
     light.kitchen_left_top:
       state: "on"
       effect: Rainbow
+    select.kitchen_left_top_colour_palette:
+      state: "Default"
+    number.kitchen_left_top_speed:
+      state: "15"
+    number.kitchen_left_top_intensity:
+      state: "100"
+    # Kitchen Left Bottom
+    light.kitchen_left_bottom:
+      state: "on"
+      effect: Rainbow
+    select.kitchen_left_bottom_colour_palette:
+      state: "Default"
+    number.kitchen_left_bottom_speed:
+      state: "15"
+    number.kitchen_left_bottom_intensity:
+      state: "100"
+    # Kitchen Right Top
     light.kitchen_right_top:
       state: "on"
       effect: Rainbow
+    select.kitchen_right_top_colour_palette:
+      state: "Default"
+    number.kitchen_right_top_speed:
+      state: "15"
+    number.kitchen_right_top_intensity:
+      state: "100"
+    # Kitchen Right Bottom
+    light.kitchen_right_bottom:
+      state: "on"
+      effect: Rainbow
+    select.kitchen_right_bottom_colour_palette:
+      state: "Default"
+    number.kitchen_right_bottom_speed:
+      state: "15"
+    number.kitchen_right_bottom_intensity:
+      state: "100"
 
 - name: kitchen_leds_bright
   entities:
-    light.kitchen_left_bottom:
-      state: "on"
-      rgb_color: [255,195,135]
-      brightness: 255
-      effect: None
-    light.kitchen_right_bottom:
-      state: "on"
-      rgb_color: [255,195,135]
-      brightness: 255
-      effect: None
+    # Kitchen Left Top
     light.kitchen_left_top:
       state: "on"
       rgb_color: [255,195,135]
       brightness: 255
-      effect: None
+      effect: "Solid"
+      transition: 5
+    # Kitchen Left Bottom
+    light.kitchen_left_bottom:
+      state: "on"
+      rgb_color: [255,195,135]
+      brightness: 255
+      effect: "Solid"
+    # Kitchen Right Top
     light.kitchen_right_top:
       state: "on"
       rgb_color: [255,195,135]
       brightness: 255
-      effect: None
+      effect: "Solid"
+    # Kitchen Right Bottom
+    light.kitchen_right_bottom:
+      state: "on"
+      rgb_color: [255,195,135]
+      brightness: 255
+      effect: "Solid"

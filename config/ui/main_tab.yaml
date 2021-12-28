@@ -21,6 +21,7 @@
 
 - type: entities
   title: Bathroom
+  show_header_toggle: false
   entities:
     - light.bathroom_all
     - light.bathroom_mirror_lights
