@@ -35,7 +35,10 @@ trigger_alarm:
                     name: default
                     critical: 1
                     volume: 0.0
-                  category: alarm
+                actions:
+                  - action: "DISARM_ALARM"
+                    title: "Disarm"
+                    destructive: yes
 
       # Camera Feed
       - conditions:
@@ -71,7 +74,10 @@ trigger_alarm:
                     name: default
                     critical: 1
                     volume: 0.0
-                  category: alarm
+                actions:
+                  - action: "DISARM_ALARM"
+                    title: "Disarm"
+                    destructive: yes
       # Image
       - conditions:
         - condition: template
@@ -98,7 +104,10 @@ trigger_alarm:
                     name: default
                     critical: 1
                     volume: 0.0
-                  category: alarm
+                actions:
+                  - action: "DISARM_ALARM"
+                    title: "Disarm"
+                    destructive: yes
 
       # Default
       default:
@@ -112,4 +121,7 @@ trigger_alarm:
                   name: default
                   critical: 1
                   volume: 0.0
-                category: alarm
+              actions:
+                - action: "DISARM_ALARM"
+                  title: "Disarm"
+                  destructive: yes

@@ -21,8 +21,6 @@
         data:
           attachment:
             content-type: jpeg
-          push:
-            category: camera
           entity_id: camera.front_door
     - delay:
         seconds: 5

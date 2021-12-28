@@ -96,61 +96,6 @@ input_datetime: !include config/inputs/input_datetime.yaml
 ##  Integrations  ##
 ####################
 
-# iOS
-ios:
-  push:
-    categories:
-      - name: Weekend Heating Warning
-        identifier: "location_heating_warning"
-        actions:
-          - identifier: "HEATING_TURN_OFF"
-            title: "Turn Heating Off"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: no
-            # behavior: 'textInput'
-            # textInputButtonTitle: 'Silencio!'
-            # textInputPlaceholder: 'Placeholder'
-      - name: Overtime Log
-        identifier: "overtime_log"
-        actions:
-          - identifier: "LOG_ONE_HOUR"
-            title: "Log 1hr Overtime"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: no
-      - name: Clear Shopping List
-        identifier: "clear_shopping_list"
-        actions:
-          - identifier: "CLEAR_SHOPPING_LIST"
-            title: "Clear Shopping List"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: yes
-      - name: Alarm
-        identifier: "alarm"
-        actions:
-          - identifier: "DISARM_ALARM"
-            title: "Disarm"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: yes
-      - name: Activate Sprinklers
-        identifier: "activate_sprinklers"
-        actions:
-          - identifier: "ACTIVATE_SPRINKLERS"
-            title: "Activate Sprinklers"
-            activationMode: "background"
-            authenticationRequired: no
-      - name: Cancel Sprinklers
-        identifier: "cancel_sprinklers"
-        actions:
-          - identifier: "CANCEL_SPRINKLERS"
-            title: "Cancel Sprinklers"
-            activationMode: "background"
-            authenticationRequired: no
-            destructive: yes
-
 # HomeKit
 homekit: !include config/voice_assistants/siri.yaml
 

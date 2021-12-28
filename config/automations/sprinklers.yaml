@@ -16,8 +16,9 @@
               data:
                 message: "There has been rainfall in the last 24 hours so the sprinklers will not run."
                 data:
-                  push:
-                    category: activate_sprinklers
+                  actions:
+                    - action: "ACTIVATE_SPRINKLERS"
+                      title: "Activate Sprinklers"
         # It will rain
         - conditions:
             - condition: template
@@ -29,16 +30,19 @@
               data:
                 message: "There is rainfall expected in the next 24 hours so the sprinklers will not run."
                 data:
-                  push:
-                    category: activate_sprinklers
+                  actions:
+                    - action: "ACTIVATE_SPRINKLERS"
+                      title: "Activate Sprinklers"
       # It has not rained and won't rain
       default:
         - service: notify.iphones
           data:
             message: "Automatic Sprinklers: 5 minute warning!"
             data:
-              push:
-                category: cancel_sprinklers
+              actions:
+                - action: "CANCEL_SPRINKLERS"
+                  title: "Cancel Sprinklers"
+                  destructive: yes
         - delay:
             minutes: 5
         - service: switch.turn_on
@@ -62,9 +66,9 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: ios.notification_action_fired
+    event_type: mobile_app_notification_action
     event_data:
-      actionName: ACTIVATE_SPRINKLERS
+      action: ACTIVATE_SPRINKLERS
   action:
     - service: switch.turn_on
       entity_id: switch.sprinklers
@@ -74,9 +78,9 @@
   initial_state: true
   trigger:
     platform: event
-    event_type: ios.notification_action_fired
+    event_type: mobile_app_notification_action
     event_data:
-      actionName: CANCEL_SPRINKLERS
+      action: CANCEL_SPRINKLERS
   action:
     - service: automation.turn_off
       entity_id: automation.sprinklers_auto
