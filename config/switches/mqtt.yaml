@@ -12,12 +12,12 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-- platform: mqtt
-  name: christmas_tree
-  command_topic: 2NICE-3/cmnd/POWER
-  state_topic: 2NICE-3/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
+# - platform: mqtt
+#   name: christmas_tree
+#   command_topic: 2NICE-3/cmnd/POWER
+#   state_topic: 2NICE-3/stat/POWER
+#   payload_on: "ON"
+#   payload_off: "OFF"
 
 # - platform: mqtt
 #   name: mini_christmas_tree
@@ -33,16 +33,16 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-- platform: mqtt
-  name: snow_light
-  command_topic: 2NICE-6/cmnd/POWER
-  state_topic: 2NICE-6/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
+# - platform: mqtt
+#   name: snow_light
+#   command_topic: 2NICE-6/cmnd/POWER
+#   state_topic: 2NICE-6/stat/POWER
+#   payload_on: "ON"
+#   payload_off: "OFF"
 
-- platform: mqtt
-  name: hedge_lights
-  command_topic: 2NICE-8/cmnd/POWER
-  state_topic: 2NICE-8/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
+# - platform: mqtt
+#   name: hedge_lights
+#   command_topic: 2NICE-8/cmnd/POWER
+#   state_topic: 2NICE-8/stat/POWER
+#   payload_on: "ON"
+#   payload_off: "OFF"

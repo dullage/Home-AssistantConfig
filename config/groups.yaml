@@ -31,7 +31,6 @@ all_lights:
     - light.bedroom_lamps
     - light.garden_lights
     - light.nanoleaf
-    - switch.christmas_tree
 
 # Everything that should be turned off when leaving
 everything:
@@ -83,7 +82,6 @@ dining_room:
     - light.nanoleaf
     - light.dining_room_lamp
     - light.entrance_light
-    - switch.christmas_tree
 
 tv:
   name: TV

@@ -70,9 +70,6 @@
     - entity: light.entrance_light
       name: Entrance Light
     - light.dining_room_lamp
-    - entity: switch.christmas_tree
-      name: Christmas Tree
-      icon: mdi:pine-tree
 
 - type: entities
   title: Outdoors
@@ -81,12 +78,6 @@
     - entity: light.porch_light
       name: Porch Light
       icon: mdi:coach-lamp
-    - entity: switch.hedge_lights
-      name: Front Christmas Lights
-      icon: mdi:string-lights
-    - entity: switch.snow_light
-      name: Snow Lights
-      icon: mdi:snowflake
 
 - type: shopping-list
   title: Shopping List
