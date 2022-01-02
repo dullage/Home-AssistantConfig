@@ -47,25 +47,29 @@ living_room:
     - light.corner_lamp
     - group.tv
 
-kitchen_leds:
-  name: Kitchen LEDs
+kitchen_leds_colour_palette:
+  name: Kitchen LEDs Colour Palette
   entities:
-    - light.kitchen_left_bottom
-    - light.kitchen_left_top
-    - light.kitchen_right_bottom
-    - light.kitchen_right_top
+    - select.kitchen_left_bottom_colour_palette
+    - select.kitchen_left_top_colour_palette
+    - select.kitchen_right_bottom_colour_palette
+    - select.kitchen_right_top_colour_palette
 
-kitchen_leds_bottom:
-  name: Bottom Kitchen LEDs
+kitchen_leds_speed:
+  name: Kitchen LEDs Speed
   entities:
-    - light.kitchen_left_bottom
-    - light.kitchen_right_bottom
+    - number.kitchen_left_bottom_speed
+    - number.kitchen_left_top_speed
+    - number.kitchen_right_bottom_speed
+    - number.kitchen_right_top_speed
 
-kitchen_leds_top:
-  name: Top Kitchen LEDs
+kitchen_leds_intensity:
+  name: Kitchen LEDs Intensity
   entities:
-    - light.kitchen_left_top
-    - light.kitchen_right_top
+    - number.kitchen_left_bottom_intensity
+    - number.kitchen_left_top_intensity
+    - number.kitchen_right_bottom_intensity
+    - number.kitchen_right_top_intensity
 
 kitchen:
   name: Kitchen

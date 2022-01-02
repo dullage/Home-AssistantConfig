@@ -34,7 +34,7 @@ input_boolean.cartoons:
   name: Cartoons
 switch.ikea_socket_switch:
   name: Office Lamp
-group.kitchen_leds:
+light.kitchen_leds:
   name: Kitchen Cupboard Lights
 script.goodnight:
   name: Goodnight Script

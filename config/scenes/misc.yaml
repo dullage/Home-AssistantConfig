@@ -20,7 +20,7 @@
     number.stairs_intensity:
       state: "70"
     # Other
-    group.kitchen_leds:
+    light.kitchen_leds:
       state: "on"
     group.ambilight:
       state: "off"
@@ -44,7 +44,7 @@
 - name: Downstairs Dim
   entities:
     # input_select.maestro_stairs: "Startup"
-    group.kitchen_leds:
+    light.kitchen_leds:
       state: "on"
     group.ambilight:
       state: "off"
@@ -67,7 +67,7 @@
 
 - name: Downstairs Timeout
   entities:
-    group.kitchen_leds:
+    light.kitchen_leds:
       state: "on"
       effect: "None"
       rgb_color: [255,0,0]
@@ -105,71 +105,36 @@
 
 - name: kitchen_leds_dim
   entities:
-    # Kitchen Left Top
-    light.kitchen_left_top:
+    light.kitchen_leds:
       state: "on"
+      brightness: 255
       effect: Rainbow
-    select.kitchen_left_top_colour_palette:
+    group.kitchen_leds_colour_palette:
       state: "Default"
-    number.kitchen_left_top_speed:
+    group.kitchen_leds_speed:
       state: "15"
-    number.kitchen_left_top_intensity:
-      state: "100"
-    # Kitchen Left Bottom
-    light.kitchen_left_bottom:
-      state: "on"
-      effect: Rainbow
-    select.kitchen_left_bottom_colour_palette:
-      state: "Default"
-    number.kitchen_left_bottom_speed:
-      state: "15"
-    number.kitchen_left_bottom_intensity:
-      state: "100"
-    # Kitchen Right Top
-    light.kitchen_right_top:
-      state: "on"
-      effect: Rainbow
-    select.kitchen_right_top_colour_palette:
-      state: "Default"
-    number.kitchen_right_top_speed:
-      state: "15"
-    number.kitchen_right_top_intensity:
-      state: "100"
-    # Kitchen Right Bottom
-    light.kitchen_right_bottom:
-      state: "on"
-      effect: Rainbow
-    select.kitchen_right_bottom_colour_palette:
-      state: "Default"
-    number.kitchen_right_bottom_speed:
-      state: "15"
-    number.kitchen_right_bottom_intensity:
+    group.kitchen_leds_intensity:
       state: "100"
 
 - name: kitchen_leds_bright
   entities:
-    # Kitchen Left Top
-    light.kitchen_left_top:
+    light.kitchen_leds:
       state: "on"
-      rgb_color: [255,195,135]
       brightness: 255
+      rgb_color: [255,195,135]
       effect: "Solid"
-      transition: 5
-    # Kitchen Left Bottom
-    light.kitchen_left_bottom:
+
+- name: kitchen_northern_lights
+  entities:
+    light.kitchen_leds_bottom:
+      state: "off"
+    light.kitchen_leds_top:
       state: "on"
-      rgb_color: [255,195,135]
       brightness: 255
-      effect: "Solid"
-    # Kitchen Right Top
-    light.kitchen_right_top:
-      state: "on"
-      rgb_color: [255,195,135]
-      brightness: 255
-      effect: "Solid"
-    # Kitchen Right Bottom
-    light.kitchen_right_bottom:
-      state: "on"
-      rgb_color: [255,195,135]
-      brightness: 255
-      effect: "Solid"
+      effect: "Pacifica"
+    group.kitchen_leds_colour_palette:
+      state: "Default"
+    group.kitchen_leds_speed:
+      state: "30"
+    group.kitchen_leds_intensity:
+      state: "255"

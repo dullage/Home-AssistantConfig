@@ -1,7 +1,7 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
-  group.kitchen_leds:
+  light.kitchen_leds:
     name: Kitchen Cupboard Lights
   input_boolean.all_av:
     name: TV
@@ -63,6 +63,6 @@ filter:
   - light.corner_lamp
   - input_boolean.cartoons
   - switch.ikea_socket_switch
-  - group.kitchen_leds
+  - light.kitchen_leds
   - light.ambilight
   - script.goodnight

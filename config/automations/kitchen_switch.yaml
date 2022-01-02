@@ -14,8 +14,8 @@
           - condition: template
             value_template: "{{ wait.trigger is not none }}"
         sequence:
-          - service: homeassistant.toggle
-            entity_id: group.kitchen_leds
+          - service: light.toggle
+            entity_id: light.kitchen_leds
       default:
         - service: light.toggle
           entity_id: light.main_kitchen_lights

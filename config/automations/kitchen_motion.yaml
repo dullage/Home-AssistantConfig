@@ -9,11 +9,11 @@
         minutes: 3
   condition:
       condition: state
-      entity_id: group.kitchen_leds
+      entity_id: light.kitchen_leds
       state: "on"
   action:
     - service: scene.turn_on
-      entity_id: scene.kitchen_leds_dim
+      entity_id: scene.kitchen_northern_lights
 
 # When there is motion in the kitchen, providing the kitchen LED lights are on set them to a bright warm light.
 - alias: kitchen_motion_leds_up
@@ -24,7 +24,7 @@
       to: "on"
   condition:
     condition: state
-    entity_id: group.kitchen_leds
+    entity_id: light.kitchen_leds
     state: "on"
   action:
     - service: scene.turn_on
@@ -35,7 +35,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.kitchen_leds
+    entity_id: light.kitchen_leds
     to: "on"
   condition:
     condition: state
@@ -43,14 +43,14 @@
     state: "off"
   action:
     - service: scene.turn_on
-      entity_id: scene.kitchen_leds_dim
+      entity_id: scene.kitchen_northern_lights
 
 # If the kitchen lights are turned on and the kitchen is occupied (motion detected) then go straight to the bright mode.
 - alias: kitchen_motion_start_down_if_unoccupied
   initial_state: true
   trigger:
     platform: state
-    entity_id: group.kitchen_leds
+    entity_id: light.kitchen_leds
     to: "on"
   condition:
     condition: state

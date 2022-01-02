@@ -1,0 +1,22 @@
+- platform: group
+  name: kitchen_leds
+  unique_id: kitchen_leds
+  entities:
+    - light.kitchen_left_bottom
+    - light.kitchen_left_top
+    - light.kitchen_right_bottom
+    - light.kitchen_right_top
+
+- platform: group
+  name: kitchen_leds_top
+  unique_id: kitchen_leds_top
+  entities:
+    - light.kitchen_left_top
+    - light.kitchen_right_top
+
+- platform: group
+  name: kitchen_leds_bottom
+  unique_id: kitchen_leds_bottom
+  entities:
+    - light.kitchen_left_bottom
+    - light.kitchen_right_bottom

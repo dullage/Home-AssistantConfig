@@ -40,7 +40,7 @@
   title: Kitchen
   entities:
     - light.main_kitchen_lights
-    - entity: group.kitchen_leds
+    - entity: light.kitchen_leds
       icon: mdi:led-strip-variant
 
 - type: entities
