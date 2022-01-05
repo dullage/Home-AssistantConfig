@@ -18,11 +18,8 @@ all_lights:
     - light.frontroom_under_tv
     - light.dining_room_lamp
     - light.main_kitchen_lights
+    - light.kitchen_leds
     - light.front_room_lamp
-    - light.kitchen_left_top
-    - light.kitchen_left_bottom
-    - light.kitchen_right_top
-    - light.kitchen_right_bottom
     - light.stairs
     - light.landing
     - light.bathroom_all
@@ -74,7 +71,7 @@ kitchen:
   name: Kitchen
   entities:
     - light.main_kitchen_lights
-    - group.kitchen_leds
+    - light.kitchen_leds
 
 dining_room:
   name: Dining Room

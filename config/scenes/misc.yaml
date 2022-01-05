@@ -8,18 +8,7 @@
 
 - name: Downstairs General
   entities:
-    # Stairs
-    # input_select.maestro_stairs: "Startup"
-    light.stairs:
-      state: "on"
-      effect: "Fill Noise"
-    select.stairs_color_palette:
-      state: "Fire"
-    number.stairs_speed:
-      state: "70"
-    number.stairs_intensity:
-      state: "70"
-    # Other
+    input_select.maestro_stairs: "Startup"
     light.kitchen_leds:
       state: "on"
     group.ambilight:
@@ -112,7 +101,13 @@
 
 - name: kitchen_leds_bright
   entities:
-    light.kitchen_leds:
+    # Separated out as top and bottom so that they change more evenly
+    light.kitchen_leds_bottom:
+      state: "on"
+      brightness: 255
+      rgb_color: [255,195,135]
+      effect: "Solid"
+    light.kitchen_leds_top:
       state: "on"
       brightness: 255
       rgb_color: [255,195,135]
