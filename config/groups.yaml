@@ -119,3 +119,9 @@ bedroom_doors:
   entities:
     - binary_sensor.master_bedroom_door_sensor_contact
     - binary_sensor.blues_room_door_sensor_contact
+
+bedroom_lamps:
+  name: Bedroom Lamps
+  entities:
+    - light.bedroom_left
+    - light.bedroom_right

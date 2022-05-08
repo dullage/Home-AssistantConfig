@@ -30,7 +30,7 @@ def write_config(file, warning, config):
 
 # Read Source
 with open(CONFIG_FILE, "r") as config_file_contents:
-    config = yaml.load(config_file_contents)
+    config = yaml.safe_load(config_file_contents)
 
 # Convert Structure
 new_config = {

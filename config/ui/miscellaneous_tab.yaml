@@ -17,6 +17,18 @@
     - entity: sensor.rainfall_next_24h_adjusted
       name: Expected Rainfall (Next 24h Adjusted)
 
+- type: sensor
+  entity: sensor.speedtest_download
+  name: Download Speed
+  graph: line
+  hours_to_show: 72
+
+- type: sensor
+  entity: sensor.speedtest_upload
+  name: Upload Speed
+  graph: line 
+  hours_to_show: 72
+
 - type: entities
   title: Modes
   show_header_toggle: false

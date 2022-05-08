@@ -13,7 +13,12 @@
   title: Frontroom
   entities:
     - light.front_room_lamp
-    - group.tv
+    - entity: group.tv
+      name: TV Backlight
+      icon: mdi:television-ambient-light
+    - entity: switch.fidelux
+      name: Fidelux
+      icon: mdi:television-ambient-light
     - entity: light.corner_lamp
       name: Corner Lamp
       icon: mdi:led-strip-variant
@@ -34,7 +39,8 @@
   show_header_toggle: false
   entities:
     - light.master_bedroom_main
-    - light.bedroom_lamps
+    - entity: group.bedroom_lamps
+      icon: mdi:lightbulb
 
 - type: entities
   title: Kitchen

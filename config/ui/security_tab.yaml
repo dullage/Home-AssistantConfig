@@ -5,18 +5,6 @@
     - arm_away
     - arm_night
 
-- type: picture-entity
-  entity: camera.front_door
-
-- type: picture-entity
-  entity: camera.side
-
-- type: picture-entity
-  entity: camera.garden
-
-- type: picture-entity
-  entity: camera.kitchen
-
 - type: entities
   title: Motion Sensors
   show_header_toggle: false
@@ -63,6 +51,15 @@
     - entity: binary_sensor.bedroom_window_contact
       name: Bedroom Window
       icon: mdi:window-open-variant
+
+- type: picture-entity
+  entity: camera.front_door
+
+- type: picture-entity
+  entity: camera.side
+
+- type: picture-entity
+  entity: camera.garden
 
 - type: glance
   title: Rejected Detections (Per Hour)

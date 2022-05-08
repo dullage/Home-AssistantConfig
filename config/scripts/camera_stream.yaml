@@ -31,16 +31,6 @@ camera_stream:
               entity_id: camera.garden_hd
               data:
                 media_player: media_player.front_room_tv
-        # Kitchen on Front Room TV
-        - conditions:
-          - condition: template
-            value_template: "{{ states('input_select.camera') == 'Kitchen' and states('input_select.media_player') == 'Front Room TV' }}"
-          sequence:
-            - service: script.input_chromecast
-            - service: camera.play_stream
-              entity_id: camera.kitchen
-              data:
-                media_player: media_player.front_room_tv
         # Front Door on Kitchen Display
         - conditions:
           - condition: template
@@ -66,15 +56,6 @@ camera_stream:
           sequence:
             - service: camera.play_stream
               entity_id: camera.garden
-              data:
-                media_player: media_player.kitchen_display
-        # Kitchen on Kitchen Display
-        - conditions:
-          - condition: template
-            value_template: "{{ states('input_select.camera') == 'Kitchen' and states('input_select.media_player') == 'Kitchen Display' }}"
-          sequence:
-            - service: camera.play_stream
-              entity_id: camera.kitchen
               data:
                 media_player: media_player.kitchen_display
         # Stop Front Room TV

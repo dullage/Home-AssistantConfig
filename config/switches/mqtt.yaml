@@ -40,6 +40,8 @@
 #   payload_on: "ON"
 #   payload_off: "OFF"
 
+# 2NICE-7 = TV
+
 # - platform: mqtt
 #   name: hedge_lights
 #   command_topic: 2NICE-8/cmnd/POWER

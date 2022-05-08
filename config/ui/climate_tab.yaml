@@ -34,8 +34,6 @@
       name: Blue's Room
     - entity: sensor.loft_temperature
       name: Loft
-    - entity: sensor.master_bedroom_temperature_sensor_temperature
-      name: Master Bedroom
     - entity: sensor.office_temperature_sensor_temperature
       name: Office
     - entity: sensor.bathroom_temperature_sensor_temperature
@@ -54,8 +52,6 @@
     - entity: sensor.loft_humidity
       name: Loft
       icon: mdi:water-percent
-    - entity: sensor.master_bedroom_temperature_sensor_humidity
-      name: Master Bedroom
     - entity: sensor.office_temperature_sensor_humidity
       name: Office
     - entity: sensor.bathroom_temperature_sensor_humidity

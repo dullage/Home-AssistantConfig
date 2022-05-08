@@ -28,5 +28,17 @@
     entity_id: sensor.bathroom_xiaomi_switch_action
     to: hold
   action:
-    service: light.toggle
-    entity_id: light.bathroom_mirror_lights
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: light.bathroom_all
+          state: "on"
+        sequence:
+          - service: light.turn_on
+            entity_id: light.bathroom_all
+            data_template:
+              transition: 2
+              brightness: "{{ state_attr('light.bathroom_all', 'brightness') - 60 }}"
+      default:
+        - service: light.toggle
+          entity_id: light.bathroom_mirror_lights

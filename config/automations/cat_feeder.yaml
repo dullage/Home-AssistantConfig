@@ -1,0 +1,20 @@
+- alias: cat_feeder
+  initial_state: true
+  mode: restart
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_door_contact
+    to: "on"
+  condition:
+    condition: state
+    entity_id: input_boolean.away
+    state: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.downstairs
+    - delay:
+        minutes: 10
+    - service: homeassistant.turn_off
+      data:
+        entity_id: group.everything
+

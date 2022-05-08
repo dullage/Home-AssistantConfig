@@ -15,4 +15,4 @@
         entity_id: media_player.kitchen_display
         message: "<speak>Human. The kitchen plant needs watering.</speak>"
     - delay:
-        minutes: 5
+        minutes: 30

@@ -3,16 +3,12 @@
     group.downstairs_ex_stairs:
       state: "off"
     input_select.maestro_stairs: "Shutdown"
-    group.ambilight:
-      state: "off"
 
 - name: Downstairs General
   entities:
     input_select.maestro_stairs: "Startup"
     light.kitchen_leds:
       state: "on"
-    group.ambilight:
-      state: "off"
     group.tv:
       state: "on"
       brightness: 200
@@ -23,7 +19,9 @@
       state: "on"
     light.corner_lamp:
       state: "on"
-      effect: "Fire 2012"
+      effect: "Solid"
+      brightness: 255
+      rgb_color: [255, 175, 96]
     light.nanoleaf:
       state: "on"
       # effect and brightness are set by automation.nanoleaf_downstairs_general
@@ -33,8 +31,6 @@
     # input_select.maestro_stairs: "Startup"
     light.kitchen_leds:
       state: "on"
-    group.ambilight:
-      state: "off"
     group.tv:
       state: "on"
       brightness: 60
@@ -55,17 +51,15 @@
     light.kitchen_leds:
       state: "on"
       effect: "None"
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
       brightness: 255
     light.main_kitchen_lights:
       state: "off"
     light.entrance_light:
       state: "off"
-    group.ambilight:
-      state: "off"
     group.tv:
       state: "on"
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
       brightness: 255
     light.front_room_lamp:
       state: "off"
@@ -74,16 +68,16 @@
     light.corner_lamp:
       state: "on"
       effect: "Solid"
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
       brightness: 255
     light.stairs:
       state: "on"
       effect: "Solid"
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
       brightness: 255
     light.nanoleaf:
       state: "on"
-      rgb_color: [255,0,0]
+      rgb_color: [255, 0, 0]
       brightness: 255
 
 - name: kitchen_leds_dim
@@ -105,12 +99,12 @@
     light.kitchen_leds_bottom:
       state: "on"
       brightness: 255
-      rgb_color: [255,195,135]
+      rgb_color: [255, 195, 135]
       effect: "Solid"
     light.kitchen_leds_top:
       state: "on"
       brightness: 255
-      rgb_color: [255,195,135]
+      rgb_color: [255, 195, 135]
       effect: "Solid"
 
 - name: kitchen_northern_lights

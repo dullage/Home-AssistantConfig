@@ -60,9 +60,7 @@ trigger_alarm:
                 {% endif %}
               data:
                 entity_id: >
-                  {% if trigger == 'binary_sensor.kitchen_door_sensor_contact' %}
-                    camera.kitchen
-                  {% elif trigger == 'binary_sensor.front_door_contact' %}
+                  {% if trigger == 'binary_sensor.front_door_contact' %}
                     camera.front_door
                   {% elif trigger == 'binary_sensor.garden_door_contact' %}
                     camera.garden

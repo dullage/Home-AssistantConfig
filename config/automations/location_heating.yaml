@@ -1,4 +1,4 @@
-# If we both leave the house on a weekday before 3pm turn the heating off (set to a low temp).
+# If we both leave the house on a weekday before 4pm turn the heating off (set to a low temp).
 - alias: location_heating_auto_off_weekdays
   initial_state: true
   trigger:
@@ -6,52 +6,85 @@
     entity_id: group.everyone
     to: "not_home"
   condition:
+    condition: time
+    before: "16:00:00"
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: climate.set_temperature
+    data:
+      entity_id: climate.nest
+      temperature: 9
+
+# If the house starts heating whilst we're out, ask (via an iOS notification) whether we want to turn the heating off.
+- alias: location_heating_whilst_out
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: climate.nest
+    attribute: "hvac_action"
+    to: "heating"
+  condition:
     condition: and
     conditions:
-      - condition: time
-        before: "15:00:00"
-        weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
-      - condition: template
-        value_template: "{{ state_attr('climate.nest', 'temperature') > 9 }}"
+      - condition: state
+        entity_id: group.everyone
+        state: "not_home"
+      # Exclude weekdays after 4pm
+      - condition: not
+        conditions:
+          condition: time
+          after: "16:00:00"
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
   action:
-    - service: climate.set_temperature
+    service: notify.iphones
+    data:
+      message: "Warning: The heating is still on. Turn it off?"
       data:
-        entity_id: climate.nest
-        temperature: 9
+        actions:
+          - action: "HEATING_TURN_OFF"
+            title: "Turn Heating Off"
 
-# On any day, if we've both been out of the house for more than 15 minutes, ask (via an iOS notification) whether we want to turn the heating off.
-- alias: location_heating_warning
+# If the house becomes unoccupied, ask (via an iOS notification) whether we want to turn the heating off.
+- alias: location_heating_leaving
   initial_state: true
   trigger:
     platform: state
     entity_id: group.everyone
     to: "not_home"
-    for:
-      minutes: 15
-  condition:
-    condition: template
-    value_template: "{{ state_attr('climate.nest', 'temperature') > 9 }}"
   action:
+    # Wait 10 seconds to let automation.location_heating_auto_off_weekdays kick in if needed
+    - delay:
+        seconds: 10
+    # Check to see if the house is heating
+    - condition: template
+      value_template: "{{ state_attr('climate.nest', 'hvac_action') == 'heating' }}"
+    # Notify
     - service: notify.iphones
       data:
         message: "Warning: The heating is still on. Turn it off?"
         data:
-          push:
-            category: location_heating_warning
+          actions:
+            - action: "HEATING_TURN_OFF"
+              title: "Turn Heating Off"
 
 # Turn the heating off (set to a low temp) if we press the button in the iOS notification.
 - alias: location_heating_warning_action
   initial_state: true
   trigger:
     platform: event
-    event_type: ios.notification_action_fired
+    event_type: mobile_app_notification_action
     event_data:
-      actionName: HEATING_TURN_OFF
+      action: HEATING_TURN_OFF
   action:
     - service: climate.set_temperature
       data:

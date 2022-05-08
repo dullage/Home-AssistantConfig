@@ -47,7 +47,9 @@
     bathroom_excess_humidity:
       unit_of_measurement: "%"
       friendly_name: "Bathroom Excess Humidity"
-      value_template: "{{ max([0, float(states('sensor.bathroom_temperature_sensor_humidity')) - float(states('sensor.landing_temperature_sensor_humidity'))]) }}"
+      value_template: >
+        {{ max([0, float(states('sensor.bathroom_temperature_sensor_humidity'))
+                 - float(states('sensor.landing_temperature_sensor_humidity'))]) | round(2) }}
 
     rainfall_next_24h:
       unit_of_measurement: mm
@@ -110,3 +112,20 @@
           + (float(states('sensor.dark_sky_precip_intensity_23h')) * (float(states('sensor.dark_sky_precip_probability_23h')) / 100))
           + (float(states('sensor.dark_sky_precip_intensity_24h')) * (float(states('sensor.dark_sky_precip_probability_24h')) / 100)) %}
         {{ rainfall_adj | round(2) }}
+
+    energy_cost_per_kwh:
+      unit_of_measurement: GBP
+      friendly_name: Energy Cost p/kWh
+      value_template: "{{ 0.2069 }}"
+
+    current_energy_cost_ph:
+      unit_of_measurement: GBP
+      friendly_name: "Current Energy Cost (per hour)"
+      value_template: >
+        {{ ((float(states('sensor.home_power')) / 1000) * (float(states('sensor.energy_cost_per_kwh')))) | round(2) }}
+
+    current_energy_cost_pm:
+      unit_of_measurement: GBP
+      friendly_name: "Current Energy Cost (per month)"
+      value_template: >
+        {{ (((float(states('sensor.current_energy_cost_ph')) * 24) * 365) / 12) | round(2) }}

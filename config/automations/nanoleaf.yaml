@@ -2,22 +2,8 @@
 - alias: nanoleaf_downstairs_general
   initial_state: true
   trigger:
-    # See https://community.home-assistant.io/t/automation-as-action-is-not-triggering-automation-b-help/328581
-    - platform: event
-      event_type: "call_service"
-      event_data:
-        domain: scene
-        service: turn_on
-        service_data:
-          entity_id: scene.downstairs_general
-    - platform: event
-      event_type: "call_service"
-      event_data:
-        domain: scene
-        service: turn_on
-        service_data:
-          entity_id:
-            - scene.downstairs_general
+    platform: state
+    entity_id: scene.downstairs_general
   action:
     - choose:
       # IF after sunset

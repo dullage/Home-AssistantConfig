@@ -8,6 +8,15 @@ morning_routine:
       entity_id: light.downstairs
     - service: light.turn_on
       entity_id: light.bathroom_all
+    # Give automation.bathroom_light_temperature a chance to kick in then fade lights to cool over 5 minutes. Note: In the summer they may already be cool in which case this will have no effect.
+    - delay:
+        seconds: 15
+    - service: light.turn_on
+      entity_id: light.bathroom_all
+      data:
+        transition: 300
+        color_temp: 250
+        # brightness: 255
     # Wait until the motion sensor on the stairs changes to 'off' then back to 'on' indicating that I've finished showering and I'm now going back down for breakfast. Then turn the bathroom lights off (the downstairs lights will be turned on automatically by another automation).
     - wait_template: "{{ states.binary_sensor['stairs_motion_sensor_occupancy'].state == 'off' }}"
     - wait_template: "{{ states.binary_sensor['stairs_motion_sensor_occupancy'].state == 'on' }}"

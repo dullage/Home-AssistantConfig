@@ -1,5 +1,42 @@
 - platform: mqtt
+  name: office_heater_energy
+  unique_id: 8d1eee6a-ed94-4263-a9c8-057090867123
+  state_topic: 2NICE-1/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- platform: mqtt
+  name: sprinklers_energy
+  unique_id: 3652a46f-f719-423f-81bd-22fe546cf84c
+  state_topic: 2NICE-2/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- platform: mqtt
+  name: microwave_energy
+  unique_id: 3a5fe68c-3c47-44c0-9dcd-4ea6eba324ed
+  state_topic: 2NICE-5/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- platform: mqtt
+  name: tv_energy
+  unique_id: 6a09cb2d-cb73-4b79-86d1-e3d785609dc3
+  state_topic: 2NICE-7/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- platform: mqtt
   name: tv_power_consumption
+  unique_id: a1b1bf29-df12-4bf8-88b8-4a2bd3ffb88f
   state_topic: 2NICE-7/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W

@@ -10,6 +10,7 @@ homeassistant:
   longitude: !secret longitude
   elevation: !secret elevation
   unit_system: metric
+  currency: GBP
   time_zone: Europe/London
   customize_domain:
     switch:
@@ -76,6 +77,7 @@ updater:
 shopping_list:
 ffmpeg:
 stream:
+energy:
 
 # Include
 automation: !include_dir_merge_list config/automations/
@@ -137,13 +139,14 @@ climate:
 rest_command:
   override_stair_light_live:
     url: "http://192.168.0.156/win&LO=1"
+  calibrate_fidelux:
+    url: "https://fidelux.dullage.com/calibrate"
 
 # Cameras
 camera:
   - platform: mjpeg
-    name: Kitchen
+    name: Fidelux
     mjpeg_url: http://192.168.0.108:8081
-    still_image_url: http://192.168.0.108/picture/1/current/
 
 # Alarm
 alarm_control_panel:

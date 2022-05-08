@@ -127,8 +127,8 @@ input_apple_tv:
         command: apple_tv
         num_repeats: 3
 
-input_guest:
-  alias: Guest HDMI
+input_nintendo_switch:
+  alias: Nintendo Switch
   sequence:
     - service: remote.send_command
       target:

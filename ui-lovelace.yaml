@@ -12,9 +12,18 @@ views:
   - title: Climate
     icon: mdi:thermostat
     cards: !include config/ui/climate_tab.yaml
+  - title: Energy
+    icon: mdi:home-lightning-bolt
+    cards: !include config/ui/energy.yaml
+    badges:
+      - sensor.adam_badge
+      - sensor.leanne_badge
   - title: Security
     icon: mdi:cctv
     cards: !include config/ui/security_tab.yaml
+    badges:
+      - sensor.adam_badge
+      - sensor.leanne_badge
   - title: Miscellaneous
     icon: mdi:hops
     cards: !include config/ui/miscellaneous_tab.yaml
