@@ -1,8 +1,5 @@
 fidelux_show_calibration_image:
   sequence:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.all_av
-    - service: script.input_chromecast
     - service: media_player.play_media
       entity_id: media_player.front_room_tv
       data:
@@ -11,7 +8,6 @@ fidelux_show_calibration_image:
 
 fidelux_show_current_calibration:
   sequence:
-    - service: script.input_chromecast
     - service: media_player.play_media
       entity_id: media_player.front_room_tv
       data:
@@ -23,6 +19,5 @@ fidelux_calibrate:
     - service: rest_command.calibrate_fidelux
     - delay:
         seconds: 5
-    # - service: script.fidelux_show_current_calibration
-    - service: media_player.turn_off
+    - service: media_player.media_stop
       entity_id: media_player.front_room_tv

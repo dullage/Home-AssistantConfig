@@ -1,0 +1,51 @@
+- alias: tv_power_input_boolean_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.tv_power
+    to: "on"
+  action:
+    service: script.tv
+
+- alias: tv_power_input_boolean_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.tv_power
+    to: "off"
+  action:
+    service: script.tv
+
+- alias: tv_power_input_boolean_update_on
+  initial_state: true
+  trigger:
+    # - platform: numeric_state
+    #   entity_id: sensor.tv_power_consumption
+    #   above: 29
+    - platform: state
+      entity_id: media_player.philips_tv
+      to: "on"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.tv_power_input_boolean_on
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.tv_power
+    - service: automation.turn_on
+      entity_id: automation.tv_power_input_boolean_on
+
+- alias: tv_power_input_boolean_update_off
+  initial_state: true
+  trigger:
+    # - platform: numeric_state
+    #   entity_id: sensor.tv_power_consumption
+    #   below: 30
+    - platform: state
+      entity_id: media_player.philips_tv
+      to: "off"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.tv_power_input_boolean_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.tv_power
+    - service: automation.turn_on
+      entity_id: automation.tv_power_input_boolean_off

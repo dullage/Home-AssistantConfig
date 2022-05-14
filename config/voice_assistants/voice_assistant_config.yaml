@@ -20,7 +20,7 @@ light.master_bedroom_main:
   name: Bedroom Lights
 light.bedroom_lamps:
   name: Bedroom Lamps
-input_boolean.all_av:
+input_boolean.tv_power:
   name: TV
 light.porch_light:
   name: Porch Light

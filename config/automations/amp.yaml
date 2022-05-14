@@ -1,0 +1,7 @@
+- alias: amp_toggle
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.tv_power
+  action:
+    service: script.amp

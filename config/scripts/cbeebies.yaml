@@ -1,0 +1,21 @@
+cbeebies:
+  alias: CBeebies
+  sequence:
+    - service: media_player.select_source
+      entity_id: media_player.philips_tv
+      data:
+        source: "Watch TV"
+    - delay:
+        seconds: 5
+    - service: remote.send_command
+      entity_id: remote.philips_tv_remote
+      data:
+        command: "Digit2"
+    - service: remote.send_command
+      entity_id: remote.philips_tv_remote
+      data:
+        command: "Digit0"
+    - service: remote.send_command
+      entity_id: remote.philips_tv_remote
+      data:
+        command: "Digit2"

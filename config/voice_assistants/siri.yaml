@@ -1,7 +1,7 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
-  input_boolean.all_av:
+  input_boolean.tv_power:
     name: TV
   input_boolean.cartoons:
     name: Cartoons
@@ -54,7 +54,7 @@ filter:
   - light.bathroom_all
   - light.master_bedroom_main
   - light.bedroom_lamps
-  - input_boolean.all_av
+  - input_boolean.tv_power
   - light.porch_light
   - light.entrance_light
   - light.dining_room_lamp

@@ -6,10 +6,11 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: input_boolean.all_av
+    entity_id: input_boolean.tv_power
     state: "off"
   action:
-    - service: script.all_av
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.tv_power
     - delay:
         seconds: 10
     - service: script.cbeebies
@@ -24,7 +25,7 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: input_boolean.all_av
+    entity_id: input_boolean.tv_power
     state: "on"
   action:
     - service: script.cbeebies

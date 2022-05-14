@@ -6,7 +6,6 @@ camera_stream:
           - condition: template
             value_template: "{{ states('input_select.camera') == 'Front Door' and states('input_select.media_player') == 'Front Room TV' }}"
           sequence:
-            - service: script.input_chromecast
             - service: camera.play_stream
               entity_id: camera.front_door_hd
               data:
@@ -16,7 +15,6 @@ camera_stream:
           - condition: template
             value_template: "{{ states('input_select.camera') == 'Side' and states('input_select.media_player') == 'Front Room TV' }}"
           sequence:
-            - service: script.input_chromecast
             - service: camera.play_stream
               entity_id: camera.side_hd
               data:
@@ -26,7 +24,6 @@ camera_stream:
           - condition: template
             value_template: "{{ states('input_select.camera') == 'Garden' and states('input_select.media_player') == 'Front Room TV' }}"
           sequence:
-            - service: script.input_chromecast
             - service: camera.play_stream
               entity_id: camera.garden_hd
               data:

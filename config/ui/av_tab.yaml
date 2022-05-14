@@ -5,7 +5,9 @@
       image: /local/remote/power.png
       tap_action:
         action: call-service
-        service: script.all_av
+        service: input_boolean.toggle
+        service_data:
+          entity_id: input_boolean.tv_power
       style:
         top: 16.66%
         left: 16.66%
@@ -48,21 +50,6 @@
         left: 33.33%
 
 - type: entities
-  title: TV Inputs
-  show_header_toggle: false
-  entities:
-    - entity: script.input_freeview
-      icon: mdi:video-input-hdmi
-    - entity: script.input_chromecast
-      icon: mdi:video-input-hdmi
-    - entity: script.input_xbox
-      icon: mdi:video-input-hdmi
-    - entity: script.input_apple_tv
-      icon: mdi:video-input-hdmi
-    - entity: script.input_nintendo_switch
-      icon: mdi:video-input-hdmi
-
-- type: entities
   title: Misc
   show_header_toggle: false
   entities:
@@ -73,13 +60,11 @@
   title: AV Power
   show_header_toggle: false
   entities:
-    - entity: input_boolean.all_av
-      icon: mdi:power
-    - entity: script.tv
-      icon: mdi:power
-    - entity: script.amp
+    - entity: input_boolean.tv_power
       icon: mdi:power
     - entity: script.freeview_box
+      icon: mdi:power
+    - entity: script.amp
       icon: mdi:power
 
 - type: entities

@@ -18,7 +18,7 @@
       entity_id: automation.kitchen_motion_leds_down
 
     - service: input_boolean.turn_off
-      entity_id: input_boolean.all_av
+      entity_id: input_boolean.tv_power
     - service: rest_command.override_stair_light_live
     - service: scene.turn_on
       entity_id: scene.downstairs_timeout

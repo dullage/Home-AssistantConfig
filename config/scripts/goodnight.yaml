@@ -6,7 +6,7 @@ goodnight:
         entity_id: climate.nest
         temperature: 9
     - service: input_boolean.turn_off
-      entity_id: input_boolean.all_av
+      entity_id: input_boolean.tv_power
     - service: scene.turn_on
       entity_id: scene.downstairs_off
     # Only set the armed_night mode if currently disarmed.
