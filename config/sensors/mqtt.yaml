@@ -17,6 +17,22 @@
   state_class: total_increasing
 
 - platform: mqtt
+  name: server_cupboard_energy
+  unique_id: 0f7df323-ba25-4075-a33c-81aa2368ebf2
+  state_topic: 2NICE-3/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- platform: mqtt
+  name: server_cupboard_power_consumption
+  unique_id: 7d5a2b71-8cfd-442c-9488-ba3000bf45c7
+  state_topic: 2NICE-3/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: W
+
+- platform: mqtt
   name: microwave_energy
   unique_id: 3a5fe68c-3c47-44c0-9dcd-4ea6eba324ed
   state_topic: 2NICE-5/tele/SENSOR

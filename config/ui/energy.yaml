@@ -18,3 +18,10 @@
 
 - type: energy-date-selection
 - type: energy-usage-graph
+
+- type: sensor
+  name: Server Cupboard
+  entity: sensor.server_cupboard_power_consumption
+  icon: mdi:server
+  graph: line
+  detail: 2
