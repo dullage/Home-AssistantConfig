@@ -73,7 +73,6 @@ map:
 mobile_app:
 sun:
 system_health:
-updater:
 shopping_list:
 ffmpeg:
 stream:
@@ -110,13 +109,6 @@ tts:
     text_type: ssml
     voice: Amy
 
-# MQTT
-mqtt:
-  discovery: true
-  broker: 127.0.0.1
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-
 # IFTTT
 ifttt:
   key: !secret ifttt_key
@@ -139,14 +131,21 @@ climate:
 rest_command:
   override_stair_light_live:
     url: "http://192.168.0.156/win&LO=1"
-  calibrate_fidelux:
-    url: "https://fidelux.dullage.com/calibrate"
-
-# Cameras
-camera:
-  - platform: mjpeg
-    name: Fidelux
-    mjpeg_url: http://192.168.0.108:8081
+  ambilight_auto:
+    url: "http://192.168.0.147:1925/ambilight/mode"
+    method: "post"
+    content_type: "application/json"
+    payload: '{"current": "internal"}'
+  ambilight_manual:
+    url: "http://192.168.0.147:1925/ambilight/mode"
+    method: "post"
+    content_type: "application/json"
+    payload: '{"current": "manual"}'
+  ambilight_warm:
+    url: "http://192.168.0.147:1925/ambilight/cached"
+    method: "post"
+    content_type: "application/json"
+    payload: '{"r": 230, "g": 150, "b": 120}'
 
 # Alarm
 alarm_control_panel:

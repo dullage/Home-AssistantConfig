@@ -66,21 +66,3 @@
       icon: mdi:power
     - entity: script.amp
       icon: mdi:power
-
-- type: entities
-  title: Fidelux
-  show_header_toggle: False
-  entities:
-    - entity: script.fidelux_show_current_calibration
-      name: Show Current Calibration
-      icon: mdi:television-shimmer
-    - type: divider
-    - entity: script.fidelux_show_calibration_image
-      name: Cast Calibration Image
-      icon: mdi:qrcode
-    - entity: script.fidelux_calibrate
-      name: Calibrate
-      icon: mdi:tools
-
-- type: picture
-  image: "https://fidelux.dullage.com/camera?draw=true"

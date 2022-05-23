@@ -12,10 +12,20 @@
 - type: entities
   title: Frontroom
   entities:
+    - type: button
+      name: Ambilight On
+      tap_action:
+        action: call-service
+        service: rest_command.ambilight_auto
+    - type: button
+      name: Ambilight Off
+      tap_action:
+        action: call-service
+        service: rest_command.ambilight_warm
     - light.front_room_lamp
     - entity: group.tv
-      name: TV Backlight
-      icon: mdi:television-ambient-light
+      name: Hue Plays
+      icon: mdi:speaker
     - entity: switch.fidelux
       name: Fidelux
       icon: mdi:television-ambient-light

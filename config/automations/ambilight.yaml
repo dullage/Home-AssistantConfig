@@ -1,0 +1,32 @@
+- alias: ambilight_downstairs_dim
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: scene.downstairs_dim
+  action:
+    - service: rest_command.ambilight_auto
+
+- alias: ambilight_downstairs_general
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: scene.downstairs_general
+  action:
+    - service: rest_command.ambilight_warm
+    - delay:
+        seconds: 1
+    - service: rest_command.ambilight_manual
+
+- alias: ambilight_tv_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.tv_power
+    to: "on"
+  action:
+    - delay:
+        seconds: 8
+    - service: rest_command.ambilight_warm
+    - delay:
+        seconds: 1
+    - service: rest_command.ambilight_manual
