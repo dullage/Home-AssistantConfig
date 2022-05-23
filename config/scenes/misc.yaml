@@ -28,7 +28,6 @@
 
 - name: Downstairs Dim
   entities:
-    # input_select.maestro_stairs: "Startup"
     light.kitchen_leds:
       state: "on"
     group.tv:
