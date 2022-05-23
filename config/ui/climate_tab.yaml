@@ -17,6 +17,7 @@
   entity: sensor.bathroom_excess_humidity
   name: Bathroom Excess Humidity
   graph: line
+  detail: 2
   hours_to_show: 12
 
 - type: thermostat

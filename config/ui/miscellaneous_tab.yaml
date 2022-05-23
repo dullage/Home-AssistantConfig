@@ -73,6 +73,16 @@
     - entity: group.pi_holes
       name: Pi-hole Ad-Blocking
       icon: mdi:pi-hole
+    - type: button
+      name: Ambilight On
+      tap_action:
+        action: call-service
+        service: rest_command.ambilight_auto
+    - type: button
+      name: Ambilight Off
+      tap_action:
+        action: call-service
+        service: rest_command.ambilight_warm
 
 - type: entities
   title: Effy Flea Treatment
