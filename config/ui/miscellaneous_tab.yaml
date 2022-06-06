@@ -91,3 +91,16 @@
     - entity: input_datetime.last_effy_flea
       name: Last Effy Flea
       icon: mdi:cat
+
+- type: entities
+  title: "Electrictiy Meter"
+  show_header_toggle: false
+  entities:
+    - sensor.electricity_meter
+    - type: button
+      name: Reset
+      tap_action:
+        action: call-service
+        service: utility_meter.reset
+        service_data:
+          entity_id: sensor.electricity_meter
