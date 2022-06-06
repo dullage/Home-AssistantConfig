@@ -3,6 +3,9 @@
   trigger:
     platform: state
     entity_id: binary_sensor.kitchen_switch
+    not_from:
+      - "unavailable"
+      - "unknown"
   action:
     - wait_for_trigger:
       - platform: state
