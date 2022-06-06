@@ -37,9 +37,9 @@
 
 # 2NICE-7 = TV
 
-# - platform: mqtt
-#   name: hedge_lights
-#   command_topic: 2NICE-8/cmnd/POWER
-#   state_topic: 2NICE-8/stat/POWER
-#   payload_on: "ON"
-#   payload_off: "OFF"
+- platform: mqtt
+  name: bedroom_fan
+  command_topic: 2NICE-8/cmnd/POWER
+  state_topic: 2NICE-8/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
