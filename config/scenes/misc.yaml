@@ -7,7 +7,7 @@
 - name: Downstairs General
   entities:
     input_select.maestro_stairs: "Startup"
-    light.kitchen_leds:
+    light.kitchen_left:
       state: "on"
     group.tv:
       state: "on"
@@ -25,6 +25,11 @@
     light.nanoleaf:
       state: "on"
       # effect and brightness are set by automation.nanoleaf_downstairs_general
+    # Parent Kitchen Lights (need to be on)
+    light.kitchen_right:
+      state: "on"
+    light.kitchen_leds:
+      state: "on"
 
 - name: Downstairs Dim
   entities:

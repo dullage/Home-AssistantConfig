@@ -35,12 +35,14 @@
     service: light.turn_on
     entity_id: light.bathroom_mirror_lights
 
-# Turn the bathroom mirror lights on if the master bedroom door is opened after sunset
+# Turn the bathroom mirror lights on if the master bedroom door or Blue's door is opened after sunset
 - alias: bathroom_lights_night_light_on_2
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.master_bedroom_door_sensor_contact
+    entity_id:
+      - binary_sensor.master_bedroom_door_sensor_contact
+      - binary_sensor.blues_room_door_sensor_contact
     to: "on"
   condition:
     condition: state

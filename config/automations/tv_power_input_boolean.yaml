@@ -19,9 +19,6 @@
 - alias: tv_power_input_boolean_update_on
   initial_state: true
   trigger:
-    # - platform: numeric_state
-    #   entity_id: sensor.tv_power_consumption
-    #   above: 29
     - platform: state
       entity_id: media_player.philips_tv
       to: "on"
@@ -36,9 +33,6 @@
 - alias: tv_power_input_boolean_update_off
   initial_state: true
   trigger:
-    # - platform: numeric_state
-    #   entity_id: sensor.tv_power_consumption
-    #   below: 30
     - platform: state
       entity_id: media_player.philips_tv
       to: "off"
