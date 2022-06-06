@@ -173,3 +173,10 @@ notify:
     services:
       - service: mobile_app_dullage_s_iphone
       - service: mobile_app_iphone
+
+# MQTT Entities
+mqtt:
+  light: !include config/mqtt/lights.yaml
+  binary_sensor: !include config/mqtt/binary_sensors.yaml
+  sensor: !include config/mqtt/sensors.yaml
+  switch: !include config/mqtt/switches.yaml

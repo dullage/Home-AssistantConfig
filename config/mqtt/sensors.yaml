@@ -1,5 +1,4 @@
-- platform: mqtt
-  name: office_heater_energy
+- name: office_heater_energy
   unique_id: 8d1eee6a-ed94-4263-a9c8-057090867123
   state_topic: 2NICE-1/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -7,8 +6,7 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: sprinklers_energy
+- name: sprinklers_energy
   unique_id: 3652a46f-f719-423f-81bd-22fe546cf84c
   state_topic: 2NICE-2/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -16,8 +14,7 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: server_cupboard_energy
+- name: server_cupboard_energy
   unique_id: 0f7df323-ba25-4075-a33c-81aa2368ebf2
   state_topic: 2NICE-3/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -25,15 +22,13 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: server_cupboard_power_consumption
+- name: server_cupboard_power_consumption
   unique_id: 7d5a2b71-8cfd-442c-9488-ba3000bf45c7
   state_topic: 2NICE-3/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
 
-- platform: mqtt
-  name: microwave_energy
+- name: microwave_energy
   unique_id: 3a5fe68c-3c47-44c0-9dcd-4ea6eba324ed
   state_topic: 2NICE-5/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -41,8 +36,7 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: fridge_energy
+- name: fridge_energy
   unique_id: 33db4c34-f10d-4b4a-a27e-6041308bbde3
   state_topic: 2NICE-7/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -50,15 +44,13 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: fridge_consumption
+- name: fridge_consumption
   unique_id: d5c2cf44-5da8-4cd3-a570-37c98c4fe090
   state_topic: 2NICE-7/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
 
-- platform: mqtt
-  name: bedroom_fan_energy
+- name: bedroom_fan_energy
   unique_id: 9036cc19-aeeb-4f4d-bb2a-9acbb61e55a1
   state_topic: 2NICE-8/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Total"] }}'
@@ -66,8 +58,7 @@
   device_class: energy
   state_class: total_increasing
 
-- platform: mqtt
-  name: bedroom_fan_power_consumption
+- name: bedroom_fan_power_consumption
   unique_id: 39812578-baa4-4e2f-b7f6-e29e1afd6b1b
   state_topic: 2NICE-8/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'

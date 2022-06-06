@@ -1,12 +1,10 @@
-- platform: mqtt
-  name: office_heater
+- name: office_heater
   command_topic: 2NICE-1/cmnd/POWER
   state_topic: 2NICE-1/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
 
-- platform: mqtt
-  name: sprinklers
+- name: sprinklers
   command_topic: 2NICE-2/cmnd/POWER
   state_topic: 2NICE-2/stat/POWER
   payload_on: "ON"
@@ -14,22 +12,19 @@
 
 # 2NICE-3 = Server Cupboard
 
-# - platform: mqtt
-#   name: mini_christmas_tree
+# - name: mini_christmas_tree
 #   command_topic: 2NICE-4/cmnd/POWER
 #   state_topic: 2NICE-4/stat/POWER
 #   payload_on: "ON"
 #   payload_off: "OFF"
 
-- platform: mqtt
-  name: microwave
+- name: microwave
   command_topic: 2NICE-5/cmnd/POWER
   state_topic: 2NICE-5/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
 
-# - platform: mqtt
-#   name: snow_light
+# - name: snow_light
 #   command_topic: 2NICE-6/cmnd/POWER
 #   state_topic: 2NICE-6/stat/POWER
 #   payload_on: "ON"
@@ -37,8 +32,7 @@
 
 # 2NICE-7 = TV
 
-- platform: mqtt
-  name: bedroom_fan
+- name: bedroom_fan
   command_topic: 2NICE-8/cmnd/POWER
   state_topic: 2NICE-8/stat/POWER
   payload_on: "ON"

@@ -1,61 +1,53 @@
-- platform: mqtt
-  name: Bathroom Mirror Lights
+- name: Bathroom Mirror Lights
   command_topic: "shellies/shelly1-2272F1/relay/0/command"
   state_topic: "shellies/shelly1-2272F1/relay/0"
   payload_off: "off"
   payload_on: "on"
   retain: false
 
-- platform: mqtt
-  name: Main Kitchen Lights
+- name: Main Kitchen Lights
   command_topic: "shellies/shelly1-76F1C8/relay/0/command"
   state_topic: "shellies/shelly1-76F1C8/relay/0"
   payload_on: "on"
   payload_off: "off"
   retain: false
 
-- platform: mqtt
-  name: Dining Room Lamp
+- name: Dining Room Lamp
   state_topic: "light/dining_room_lamp/state"
   command_topic: "light/dining_room_lamp"
   payload_off: "0"
   payload_on: "1"
   retain: false
 
-- platform: mqtt
-  name: Front Room Lamp
+- name: Front Room Lamp
   state_topic: "light/front_room_lamp/state"
   command_topic: "light/front_room_lamp"
   payload_off: "0"
   payload_on: "1"
   retain: false
 
-- platform: mqtt
-  name: Master Bedroom Main
+- name: Master Bedroom Main
   command_topic: "light/master_bedroom_main"
   state_topic: "light/master_bedroom_main/state"
   payload_on: "1"
   payload_off: "0"
   retain: false
 
-- platform: mqtt
-  name: Garden Lights
+- name: Garden Lights
   command_topic: "shellies/shelly1-32CDCA/relay/0/command"
   state_topic: "shellies/shelly1-32CDCA/relay/0"
   payload_on: "on"
   payload_off: "off"
   retain: false
 
-- platform: mqtt
-  name: porch_light
+- name: porch_light
   command_topic: "shellies/shelly1-227D0A/relay/0/command"
   state_topic: "shellies/shelly1-227D0A/relay/0"
   payload_on: "on"
   payload_off: "off"
   retain: false
 
-- platform: mqtt
-  name: entrance_light
+- name: entrance_light
   command_topic: "shellies/shelly1-76F1B6/relay/0/command"
   state_topic: "shellies/shelly1-76F1B6/relay/0"
   payload_on: "on"
