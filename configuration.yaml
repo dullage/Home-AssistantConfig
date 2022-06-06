@@ -15,6 +15,11 @@ homeassistant:
   customize_domain:
     switch:
       assumed_state: false
+  customize:
+    person.adam:
+      entity_picture: "https://www.gravatar.com/avatar/ab1e383c9a6fb394fe2afa5389c21657.jpg"
+    person.leanne:
+      entity_picture: "/local/leanne.jpg"
   allowlist_external_dirs:
     # - "/config/bird_blaster_recordings"
     - "/media/cctv"
@@ -55,15 +60,16 @@ lovelace:
   mode: yaml
 
 person:
+  # Photos are configured above in the "customize" section
   - name: Adam
     id: adam
+    user_id: abaddb8df5924d6588b1fc123d1e67fa
     device_trackers:
-      # iOS App
       - device_tracker.dullage_s_iphone
   - name: Leanne
     id: leanne
+    user_id: 8f6e8563ce484f9e9517830cd7a73d6d
     device_trackers:
-      # iOS App
       - device_tracker.iphone
 
 config:
