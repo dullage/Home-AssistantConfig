@@ -76,6 +76,12 @@
       icon: mdi:account-off
 
 - type: entities
+  entities:
+    - entity: sensor.cctv_queue_depth
+      name: CCTV Queue
+      icon: mdi:cctv
+
+- type: entities
   title: Camera Stream
   show_header_toggle: false
   entities:

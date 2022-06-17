@@ -1,4 +1,10 @@
 - platform: command_line
+  name: cctv_queue_depth
+  command: "find /cctv/staging -type f -name '*.mp4' | wc -l"
+  unit_of_measurement: "events"
+  scan_interval: 600
+
+- platform: command_line
   name: rejected_front_door_per_hr
   command: "find /cctv/rejected -mmin -60 -type f -name '*Front Door*' | wc -l"
   unit_of_measurement: "ph"
