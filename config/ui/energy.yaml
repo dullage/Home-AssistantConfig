@@ -15,6 +15,7 @@
   entities:
     - sensor.current_energy_cost_ph
     - sensor.current_energy_cost_pm
+    - sensor.excess_power_consumption
 
 - type: energy-date-selection
 - type: energy-usage-graph

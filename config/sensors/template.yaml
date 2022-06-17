@@ -89,3 +89,11 @@
       friendly_name: "Current Energy Cost (per month)"
       value_template: >
         {{ (((float(states('sensor.current_energy_cost_ph')) * 24) * 365) / 12) | round(2) }}
+
+    excess_power_consumption:
+      unit_of_measurement: w
+      friendly_name: "Excess Power Consumption"
+      value_template: >
+        {{ float(states('sensor.home_power'))
+         - float(states('sensor.fridge_consumption'))
+         - float(states('sensor.server_cupboard_power_consumption'))}}
