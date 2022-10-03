@@ -38,3 +38,5 @@ light.kitchen_leds:
   name: Kitchen Cupboard Lights
 script.goodnight:
   name: Goodnight Script
+switch.blues_fan:
+  name: Blue's Fan

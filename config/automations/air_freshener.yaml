@@ -1,0 +1,47 @@
+- alias: air_freshener_doorbell
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: sensor.doorbell_action
+    to: 
+      - "single"
+      - "double"
+      - "triple"
+      - "quadruple"
+      - "release"
+  condition:
+    condition: state
+    entity_id: group.everyone
+    state: "home"
+  action:
+    - service: script.air_freshener
+    - delay:
+        seconds: 60
+
+- alias: air_freshener_arrival
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    to: "home"
+  action:
+    - delay:
+        seconds: 60
+    - service: script.air_freshener
+
+- alias: air_freshener_timer
+  initial_state: true
+  trigger:
+    platform: time_pattern
+    minutes: "/15"
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: group.everyone
+          state: "home"
+        - condition: time
+          after: "07:00:00"
+          before: "22:00:00"
+  action:
+    - service: script.air_freshener

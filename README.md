@@ -1,6 +1,6 @@
 # Setup
 
-I currently run [Home Assistant](http://homeassistant.io/) version 2021.9.0 in a docker container on a Dell Optiplex MFF.
+I currently run [Home Assistant](http://homeassistant.io/) version 2022.9.7 in a docker container on a Dell Optiplex MFF.
 
 Looking for inspiration? Most automations are commented, see the [automations folder](/config/automations).
 

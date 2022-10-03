@@ -1,10 +1,10 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
-  input_boolean.tv_power:
-    name: TV
   input_boolean.cartoons:
     name: Cartoons
+  input_boolean.tv_power:
+    name: TV
   light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
@@ -39,6 +39,8 @@ entity_config:
     name: Going Out Script
   script.goodnight:
     name: Goodnight Script
+  switch.blues_fan:
+    name: Blue's Fan
   switch.ikea_socket_switch:
     name: Office Lamp
 filter:
@@ -63,3 +65,4 @@ filter:
   - switch.ikea_socket_switch
   - light.kitchen_leds
   - script.goodnight
+  - switch.blues_fan

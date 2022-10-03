@@ -15,12 +15,15 @@
       data:
         entity_id: media_player.nest_minis
         message: "<speak>Humans. There is someone at the front door.</speak>"
+    - service: camera.snapshot
+      entity_id: camera.front_door
+      data:
+        filename: /media/front_door.jpg
     - service: notify.iphones
       data:
         message: "Doorbell"
         data:
-          attachment:
-            content-type: jpeg
-          entity_id: camera.front_door
+          image: /media/local/front_door.jpg
+          url: /lovelace/4  # CCTV Tab
     - delay:
         seconds: 5

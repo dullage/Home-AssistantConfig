@@ -1,0 +1,49 @@
+# Master Bedroom
+- alias: fans_bedroom_fan_on
+  initial_state: true
+  trigger:
+    platform: time
+    at: "09:00:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.bedroom_fan
+
+# Blue's Room
+- alias: fans_blues_fan_auto_on
+  initial_state: true
+  trigger:
+    platform: time
+    at: "05:00:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.blues_fan
+
+- alias: fans_blues_fan_auto_off_1
+  initial_state: true
+  trigger:
+    platform: time
+    at: "08:00:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.blues_fan
+
+- alias: fans_blues_fan_auto_off_2
+  initial_state: true
+  trigger:
+    platform: time
+    at: "20:30:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.blues_fan
+
+- alias: fans_blues_fan_auto_off_3
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.blues_room_door_sensor_contact
+    to: "on"
+    for:
+      minutes: 5
+  action:
+    service: switch.turn_off
+    entity_id: switch.blues_fan

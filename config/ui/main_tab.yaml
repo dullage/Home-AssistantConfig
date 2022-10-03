@@ -84,6 +84,3 @@
     - entity: light.porch_light
       name: Porch Light
       icon: mdi:coach-lamp
-
-- type: shopping-list
-  title: Shopping List

@@ -1,5 +1,5 @@
 # Announce if the kitchen plant needs watering when someone walks into the kitchen
-- alias: garden_lights_on
+- alias: kitchen_plant_notification
   initial_state: true
   trigger:
     platform: state

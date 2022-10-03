@@ -38,6 +38,8 @@ http:
     - 172.16.0.0/12
   use_x_forwarded_for: true
 
+api:
+
 # Core
 logger:
   default: warn
@@ -152,6 +154,11 @@ rest_command:
     method: "post"
     content_type: "application/json"
     payload: '{"r": 230, "g": 150, "b": 120}'
+  wake_tablet_screen:
+    url: "http://192.168.0.124:2971/api/command"
+    method: "post"
+    content_type: "application/json"
+    payload: '{"wake": "true"}'
 
 # Alarm
 alarm_control_panel:

@@ -1,0 +1,10 @@
+# Turn the air freshener on for 10 seconds, just enough time for 1 spray
+air_freshener:
+  alias: Air Freshener
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.air_freshener
+    - delay:
+        seconds: 10
+    - service: switch.turn_off
+      entity_id: switch.air_freshener

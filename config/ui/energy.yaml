@@ -26,3 +26,9 @@
   icon: mdi:server
   graph: line
   detail: 2
+
+- type: entities
+  title: "Electrictiy Meter"
+  show_header_toggle: false
+  entities:
+    - sensor.electricity_meter

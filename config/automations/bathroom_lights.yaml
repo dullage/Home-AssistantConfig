@@ -49,11 +49,9 @@
     entity_id: sun.sun
     state: "below_horizon"
   action:
-    - delay:
-        seconds: 2
     - service: light.turn_on
       entity_id: light.bathroom_mirror_lights
-    # If no motion in bathroom after 10 seconds and the main bathroom lights are off, turn the light back off again
+    # If no motion in bathroom after 30 seconds and the main bathroom lights are off, turn the light back off again
     - delay:
         seconds: 30
     - condition: state
@@ -93,7 +91,7 @@
     - delay:
         seconds: 1
     - choose:
-      # IF after sunset or Blue's bedtime
+      # If after sunset or Blue's bedtime
       - conditions:
           - condition: or
             conditions:
@@ -101,7 +99,7 @@
                 entity_id: sun.sun
                 state: "below_horizon"
               - condition: time
-                after: "18:20:00"
+                after: "18:30:00"
         sequence:
           # Fade brightness and temperature separately as they don't seem to work together
           - service: light.turn_on
@@ -132,13 +130,15 @@
             transition: 5
             color_temp: 250
 
-# When the sun sets, if the bathroom lights are already on, update the colour temperature.
+# When the sun sets or it's Blue's bathtime, if the bathroom lights are already on, update the colour temperature.
 - alias: bathroom_light_temperature_2
   initial_state: true
   trigger:
     - platform: state
       entity_id: sun.sun
       to: 'below_horizon'
+    - platform: time
+      at: "18:30:00"
   condition:
     condition: state
     entity_id: light.bathroom_all

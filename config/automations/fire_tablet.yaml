@@ -1,0 +1,8 @@
+- alias: fire_tablet_wake
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.dining_room_motion_sensor_occupancy
+    to: "on"
+  action:
+    service: rest_command.wake_tablet_screen
