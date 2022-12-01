@@ -48,6 +48,9 @@
       - binary_sensor.dining_room_motion_sensor_occupancy
       - binary_sensor.kitchen_door_sensor_contact
       - binary_sensor.front_door_contact
+    from:
+      - "on"
+      - "off"
     to:
       - "on"
       - "off"
@@ -89,6 +92,9 @@
         - binary_sensor.blues_room_door_sensor_contact
         # Windows
         - binary_sensor.bedroom_window_contact
+      from:
+        - "on"
+        - "off"
       to:
         - "on"
         - "off"
@@ -134,6 +140,9 @@
         - binary_sensor.front_door_contact
         - binary_sensor.garden_door_contact
         - binary_sensor.patio_doors_contact
+      from:
+        - "on"
+        - "off"
       to:
         - "on"
         - "off"
@@ -147,35 +156,3 @@
     service: script.trigger_alarm
     data:
       trigger: "{{ trigger.entity_id }}"
-
-# Debug
-# - alias: alarm_debug_armed_away
-#   initial_state: true
-#   trigger:
-#     platform: state
-#     entity_id: alarm_control_panel.ha_alarm
-#     to: "armed_away"
-#   action:
-#     service: notify.mobile_app_dullage_s_iphone
-#     data:
-#       message: "Alarm Armed (Away)"
-# - alias: alarm_debug_armed_night
-#   initial_state: true
-#   trigger:
-#     platform: state
-#     entity_id: alarm_control_panel.ha_alarm
-#     to: "armed_night"
-#   action:
-#     service: notify.mobile_app_dullage_s_iphone
-#     data:
-#       message: "Alarm Armed (Night)"
-# - alias: alarm_debug_disarmed
-#   initial_state: true
-#   trigger:
-#     platform: state
-#     entity_id: alarm_control_panel.ha_alarm
-#     to: "disarmed"
-#   action:
-#     service: notify.mobile_app_dullage_s_iphone
-#     data:
-#       message: "Alarm Disarmed"

@@ -18,14 +18,8 @@
           - wed
           - thu
           - fri
-      # 2h Debounce
-      - condition: template
-        value_template: >
-          {% set automation_name = "morning_routine_adam" %}
-          {% set debounce_seconds = 7200 %}
-          {{ 
-            (states.automation[automation_name].attributes.last_triggered == none) 
-            or (as_timestamp(state_attr('automation.' + automation_name, 'last_triggered')) < (as_timestamp(now()) - debounce_seconds))
-          }}
   action:
-    service: script.morning_routine
+    - service: script.morning_routine
+    # 2h Debounce
+    - delay:
+        hours: 2

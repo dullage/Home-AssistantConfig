@@ -76,7 +76,7 @@
     energy_cost_per_kwh:
       unit_of_measurement: GBP
       friendly_name: Energy Cost p/kWh
-      value_template: "{{ 0.2069 }}"
+      value_template: "{{ 0.3531 }}"
 
     current_energy_cost_ph:
       unit_of_measurement: GBP

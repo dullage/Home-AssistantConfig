@@ -5,6 +5,7 @@
   trigger:
     platform: state
     entity_id: group.downstairs_internal_doors
+    from: "on"
     to: "off"
     for:
       seconds: 3

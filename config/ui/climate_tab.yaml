@@ -31,6 +31,8 @@
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_temperature
       name: Landing
+    - entity: sensor.master_bedroom_temperature_sensor_temperature
+      name: Master Bedroom
     - entity: sensor.blues_room_temperature_sensor_temperature
       name: Blue's Room
     - entity: sensor.loft_temperature
@@ -48,6 +50,8 @@
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_humidity
       name: Landing
+    - entity: sensor.master_bedroom_temperature_sensor_humidity
+      name: Master Bedroom
     - entity: sensor.blues_room_temperature_sensor_humidity
       name: Blue's Room
     - entity: sensor.loft_humidity
@@ -77,14 +81,14 @@
       icon: mdi:alarm-multiple
 
 - type: glance
-  title: Kitchen plant
+  title: Kitchen Plant
   columns: 4
   entities:
-    - entity: sensor.kitchen_plant_moisture
+    - entity: sensor.plant_sensor_a034_moisture
       name: Moisture
-    - entity: sensor.kitchen_plant_illuminance
+    - entity: sensor.plant_sensor_a034_illuminance
       name: Brightness
-    - entity: sensor.kitchen_plant_temperature
+    - entity: sensor.plant_sensor_a034_temperature
       name: Temperature
-    - entity: sensor.kitchen_plant_soil_conductivity
+    - entity: sensor.plant_sensor_a034_conductivity
       name: Soil Conductivity

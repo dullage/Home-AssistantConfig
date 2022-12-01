@@ -78,16 +78,16 @@
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
 
-- name: bedroom_fan_energy
-  unique_id: 9036cc19-aeeb-4f4d-bb2a-9acbb61e55a1
-  state_topic: 2NICE-8/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Total"] }}'
-  unit_of_measurement: kWh
-  device_class: energy
-  state_class: total_increasing
+# - name: bedroom_fan_energy
+#   unique_id: 9036cc19-aeeb-4f4d-bb2a-9acbb61e55a1
+#   state_topic: 2NICE-8/tele/SENSOR
+#   value_template: '{{ value_json["ENERGY"]["Total"] }}'
+#   unit_of_measurement: kWh
+#   device_class: energy
+#   state_class: total_increasing
 
-- name: bedroom_fan_power_consumption
-  unique_id: 39812578-baa4-4e2f-b7f6-e29e1afd6b1b
-  state_topic: 2NICE-8/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Power"] }}'
-  unit_of_measurement: W
+# - name: bedroom_fan_power_consumption
+#   unique_id: 39812578-baa4-4e2f-b7f6-e29e1afd6b1b
+#   state_topic: 2NICE-8/tele/SENSOR
+#   value_template: '{{ value_json["ENERGY"]["Power"] }}'
+#   unit_of_measurement: W

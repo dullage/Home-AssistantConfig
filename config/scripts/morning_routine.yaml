@@ -1,11 +1,9 @@
 morning_routine:
   alias: Morning Routine
   sequence:
-    # Going downstairs
-    - wait_for_trigger:
-        platform: state
-        entity_id: binary_sensor.stairs_motion_sensor_occupancy
-        to: "on"
+    # This script is started by an automation that is triggered when someone
+    # goes downstairs within a particular window.
+
     # Turn the downstairs lights on
     - service: scene.turn_on
       entity_id: scene.downstairs_general
@@ -36,7 +34,7 @@ morning_routine:
     - wait_for_trigger:
         platform: state
         entity_id: binary_sensor.bathroom_door_sensor_contact
-        to: "off"
+        to: "on"
     # Going downstairs
     - wait_for_trigger:
         platform: state
