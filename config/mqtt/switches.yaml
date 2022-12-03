@@ -32,8 +32,8 @@
 
 # 2NICE-7 = TV
 
-# - name: bedroom_fan
-#   command_topic: 2NICE-8/cmnd/POWER
-#   state_topic: 2NICE-8/stat/POWER
-#   payload_on: "ON"
-#   payload_off: "OFF"
+- name: bedroom_fan
+  command_topic: 2NICE-8/cmnd/POWER
+  state_topic: 2NICE-8/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
