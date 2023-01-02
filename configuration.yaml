@@ -9,6 +9,7 @@ homeassistant:
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: !secret elevation
+  country: GB
   unit_system: metric
   currency: GBP
   time_zone: Europe/London
