@@ -120,8 +120,14 @@ bedroom_doors:
     - binary_sensor.master_bedroom_door_sensor_contact
     - binary_sensor.blues_room_door_sensor_contact
 
-bedroom_lamps:
-  name: Bedroom Lamps
+bedroom_lights:
+  name: Bedroom Lights
   entities:
-    - light.bedroom_left
-    - light.bedroom_right
+    - light.master_bedroom_main
+    - light.bedroom_lamps
+
+kitchen_motion_sensors:
+  name: Kitchen Motion Sensors
+  entities:
+    - binary_sensor.kitchen_motion_sensor_occupancy
+    - binary_sensor.kitchen_motion_sensor_2_occupancy
