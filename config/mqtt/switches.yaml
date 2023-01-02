@@ -30,10 +30,16 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-# 2NICE-7 = TV
+- # 2NICE-7 = Unused
 
 - name: bedroom_fan
   command_topic: 2NICE-8/cmnd/POWER
   state_topic: 2NICE-8/stat/POWER
   payload_on: "ON"
   payload_off: "OFF"
+
+# - LB-1 = Unused
+
+# - LB-2 = Unused
+
+# - LB-3 = Unused

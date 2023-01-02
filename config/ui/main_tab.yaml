@@ -39,7 +39,8 @@
   show_header_toggle: false
   entities:
     - light.master_bedroom_main
-    - entity: group.bedroom_lamps
+    - entity: light.bedroom_lamps
+      name: Bedroom Lamps
       icon: mdi:lightbulb
 
 - type: entities

@@ -1,3 +1,4 @@
+# Repeat the Downstairs General scene when Fidelux is on to ensure it resets properly
 - alias: fidelux_downstairs_general
   initial_state: true
   trigger:
@@ -8,8 +9,6 @@
     entity_id: switch.fidelux
     state: "on"
   action:
-    - service: switch.turn_off
-      entity_id: switch.fidelux
     - delay:
         seconds: 3
     - service: scene.turn_on

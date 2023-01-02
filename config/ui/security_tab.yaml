@@ -17,6 +17,8 @@
       name: Stairs Motion Sensor
     - entity: binary_sensor.kitchen_motion_sensor_occupancy
       name: Kitchen Motion Sensor
+    - entity: binary_sensor.kitchen_motion_sensor_2_occupancy
+      name: Kitchen Motion Sensor 2
     - entity: binary_sensor.bathroom_motion_sensor_occupancy
       name: Bathroom Motion Sensor
 

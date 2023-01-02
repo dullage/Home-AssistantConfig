@@ -38,7 +38,7 @@
       - condition: not
         conditions:
           condition: time
-          after: "16:00:00"
+          after: "15:30:00"
           weekday:
             - mon
             - tue
@@ -62,9 +62,9 @@
     entity_id: group.everyone
     to: "not_home"
   action:
-    # Wait 10 seconds to let automation.location_heating_auto_off_weekdays kick in if needed
+    # Wait 30 seconds to let automation.location_heating_auto_off_weekdays kick in if needed
     - delay:
-        seconds: 10
+        seconds: 30
     # Check to see if the house is heating
     - condition: template
       value_template: "{{ state_attr('climate.nest', 'hvac_action') == 'heating' }}"

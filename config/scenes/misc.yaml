@@ -30,6 +30,8 @@
       state: "on"
     light.kitchen_leds:
       state: "on"
+    switch.fidelux:
+      state: "off"
 
 - name: Downstairs Dim
   entities:
@@ -49,6 +51,8 @@
       state: "on"
       brightness: 28
       effect: "Starlight"
+    switch.fidelux:
+      state: "on"
 
 - name: Downstairs Timeout
   entities:

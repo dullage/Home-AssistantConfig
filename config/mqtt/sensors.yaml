@@ -64,19 +64,19 @@
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
 
-- name: fridge_energy
-  unique_id: 33db4c34-f10d-4b4a-a27e-6041308bbde3
-  state_topic: 2NICE-7/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Total"] }}'
-  unit_of_measurement: kWh
-  device_class: energy
-  state_class: total_increasing
+# - name: fridge_energy
+#   unique_id: 33db4c34-f10d-4b4a-a27e-6041308bbde3
+#   state_topic: 2NICE-7/tele/SENSOR
+#   value_template: '{{ value_json["ENERGY"]["Total"] }}'
+#   unit_of_measurement: kWh
+#   device_class: energy
+#   state_class: total_increasing
 
-- name: fridge_consumption
-  unique_id: d5c2cf44-5da8-4cd3-a570-37c98c4fe090
-  state_topic: 2NICE-7/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Power"] }}'
-  unit_of_measurement: W
+# - name: fridge_consumption
+#   unique_id: d5c2cf44-5da8-4cd3-a570-37c98c4fe090
+#   state_topic: 2NICE-7/tele/SENSOR
+#   value_template: '{{ value_json["ENERGY"]["Power"] }}'
+#   unit_of_measurement: W
 
 - name: bedroom_fan_energy
   unique_id: 9036cc19-aeeb-4f4d-bb2a-9acbb61e55a1
