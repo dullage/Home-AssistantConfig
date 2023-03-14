@@ -32,7 +32,7 @@
   action:
     service: light.toggle
     data:
-      entity_id: light.master_bedroom_main
+      entity_id: light.master_bedroom_all
 
 # Set a darker warm colour when the bedroom Xiaomi switch is long pressed.
 - alias: master_bedroom_xiaomi_switch_long_press

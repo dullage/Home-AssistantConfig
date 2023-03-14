@@ -1,0 +1,34 @@
+# Open the blind at 8:30 every morning.
+- alias: master_bedroom_blind_morning
+  trigger:
+    platform: time
+    at: '08:30:00'
+  action:
+    service: cover.open_cover
+    entity_id: cover.master_bedroom
+
+# Close the blind at 18:30 or sunset, whichever is earlier.
+- alias: master_bedroom_blind_evening
+  trigger:
+    - platform: time
+      at: '18:30:00'
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+  condition:
+    condition: time
+    before: '20:00:00'
+  action:
+    service: cover.close_cover
+    entity_id: cover.master_bedroom
+
+# At 20:00, set the blind to 38% open.
+- alias: master_bedroom_blind_night
+  trigger:
+    platform: time
+    at: '20:00:00'
+  action:
+    service: cover.set_cover_position
+    entity_id: cover.master_bedroom
+    data:
+      position: 38

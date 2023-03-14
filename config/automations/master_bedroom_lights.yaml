@@ -1,0 +1,77 @@
+# When the master bedroom lights are turned on (by any means), update the colour temperature based on the sunset/time.
+- alias: master_bedroom_lights_temperature
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.master_bedroom_all
+    to: "on"
+  action:
+    - delay:
+        seconds: 1
+    - choose:
+      # If after sunset or Blue's bedtime
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: sun.sun
+                state: "below_horizon"
+              - condition: time
+                after: "18:30:00"
+        sequence:
+          # Fade brightness and temperature separately as they don't seem to work together
+          - service: light.turn_on
+            data:
+              entity_id: light.master_bedroom_all
+              transition: 5
+              brightness: 200
+          - delay:
+              seconds: 5
+          - service: light.turn_on
+            data:
+              entity_id: light.master_bedroom_all
+              transition: 5
+              color_temp: 370
+      # ELSE
+      default:
+        # Fade brightness and temperature separately as they don't seem to work together
+        - service: light.turn_on
+          data:
+            entity_id: light.master_bedroom_all
+            transition: 5
+            brightness: 255
+        - delay:
+            seconds: 5
+        - service: light.turn_on
+          data:
+            entity_id: light.master_bedroom_all
+            transition: 5
+            color_temp: 250
+
+# When the sun sets or it's Blue's bathtime, if the master bedroom lights are already on, update the colour temperature.
+- alias: master_bedroom_lights_temperature_2
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      to: 'below_horizon'
+    - platform: time
+      at: "18:30:00"
+  condition:
+    condition: state
+    entity_id: light.master_bedroom_all
+    state: "on"
+  action:
+    # Fade brightness and temperature separately as they don't seem to work together
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_all
+        transition: 5
+        brightness: 200
+    - delay:
+        seconds: 5
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_all
+        transition: 5
+        color_temp: 370

@@ -16,7 +16,7 @@ light.landing:
   name: Landing Light
 light.bathroom_all:
   name: Bathroom Lights
-light.master_bedroom_main:
+light.master_bedroom_all:
   name: Bedroom Lights
 light.bedroom_lamps:
   name: Bedroom Lamps
@@ -40,3 +40,5 @@ script.goodnight:
   name: Goodnight Script
 switch.blues_fan:
   name: Blue's Fan
+cover.master_bedroom:
+  name: Bedroom Blind

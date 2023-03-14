@@ -74,7 +74,7 @@
         {{ rainfall_adj | round(2) }}
 
     energy_cost_per_kwh:
-      unit_of_measurement: GBP
+      unit_of_measurement: GBP/kWh
       friendly_name: Energy Cost p/kWh
       value_template: "{{ 0.3531 }}"
 

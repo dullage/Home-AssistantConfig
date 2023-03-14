@@ -12,8 +12,7 @@
          or as_timestamp(states.sensor.blues_room_temperature_sensor_temperature.last_updated) < six_hours_ago 
          or as_timestamp(states.sensor.office_temperature_sensor_temperature.last_updated) < six_hours_ago
          or as_timestamp(states.sensor.bathroom_temperature_sensor_temperature.last_updated) < six_hours_ago
-         or as_timestamp(states.sensor.plant_sensor_a034_temperature.last_updated) < six_hours_ago
-         or as_timestamp(states.sensor.master_bedroom_temperature_sensor_temperature) < six_hours_ago }}
+         or as_timestamp(states.sensor.plant_sensor_a034_temperature.last_updated) < six_hours_ago }}
   action:
     - service: notify.mobile_app_dullage_s_iphone
       data:

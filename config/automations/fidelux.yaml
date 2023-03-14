@@ -11,6 +11,10 @@
   action:
     - delay:
         seconds: 3
+    # Check that the frontroom lamp is still on which is a good indicator the scene hasn't changed again
+    - condition: state
+      entity_id: light.front_room_lamp
+      state: "on"
     - service: scene.turn_on
       entity_id: scene.downstairs_general
 

@@ -81,24 +81,6 @@
           entity_id: media_player.philips_tv
           source: Watch TV
     - type: button
-      name: Freeview Box
-      icon: mdi:satellite-uplink
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: HDMI 1
-    - type: button
-      name: Apple TV
-      icon: mdi:apple
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: HDMI 2
-    - type: button
       name: Chromecast
       icon: mdi:google-chrome
       tap_action:
@@ -116,3 +98,24 @@
         data:
           entity_id: media_player.philips_tv
           source: HDMI 4
+    - type: button
+      # name: Freeview Box
+      # icon: mdi:satellite-uplink
+      name: Xbox
+      icon: mdi:microsoft-xbox
+      tap_action:
+        action: call-service
+        service: media_player.select_source
+        data:
+          entity_id: media_player.philips_tv
+          source: HDMI 1
+    - type: button
+      name: Apple TV
+      icon: mdi:apple
+      tap_action:
+        action: call-service
+        service: media_player.select_source
+        data:
+          entity_id: media_player.philips_tv
+          source: HDMI 2
+

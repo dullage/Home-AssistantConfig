@@ -12,7 +12,8 @@
 - type: entities
   title: Frontroom
   entities:
-    - light.front_room_lamp
+    - entity: light.front_room_lamp
+      name: Lamp
     - entity: group.tv
       name: Hue Plays
       icon: mdi:speaker
@@ -28,26 +29,37 @@
   title: Bathroom
   show_header_toggle: false
   entities:
-    - light.bathroom_all
-    - light.bathroom_mirror_lights
+    - entity: light.bathroom_all
+      name: Main Lights
+    - entity: light.bathroom_mirror_lights
+      name: Mirror Lights
+      icon: mdi:mirror
     - entity: switch.bathroom_extractor
-      name: Bathroom Extractor
+      name: Extractor Fan
       icon: mdi:fan
 
 - type: entities
-  title: Bedroom
+  title: Master Bedroom
   show_header_toggle: false
   entities:
-    - light.master_bedroom_main
+    - entity: light.master_bedroom_all
+      name: Main Lights
     - entity: light.bedroom_lamps
-      name: Bedroom Lamps
+      name: Lamps
       icon: mdi:lightbulb
+    - entity: cover.master_bedroom
+      name: Blind
+    - entity: switch.electric_blanket
+      name: Electric Blanket
+      icon: mdi:radiator
 
 - type: entities
   title: Kitchen
   entities:
-    - light.main_kitchen_lights
+    - entity: light.main_kitchen_lights
+      name: Main Lights
     - entity: light.kitchen_leds
+      name: LED Lights
       icon: mdi:led-strip-variant
 
 - type: entities
@@ -67,8 +79,17 @@
   title: Office
   entities:
     - entity: switch.ikea_socket_switch
-      name: Office Lamp
+      name: Lamp
       icon: mdi:lightbulb
+
+- type: entities
+  title: Blue's Room
+  entities:
+    - entity: light.blues_room_all
+      name: Main Lights
+    - entity: switch.blues_rainbow_light
+      name: Rainbow Light
+      icon: mdi:looks
 
 - type: entities
   title: Dining Room
@@ -76,7 +97,8 @@
     - light.nanoleaf
     - entity: light.entrance_light
       name: Entrance Light
-    - light.dining_room_lamp
+    - entity: light.dining_room_lamp
+      name: Lamp
 
 - type: entities
   title: Outdoors

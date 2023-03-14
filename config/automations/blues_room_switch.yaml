@@ -1,0 +1,125 @@
+# Turn on Blue's Room lights to 100% when on switch is held
+- alias: blues_room_switch_on
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "brightness_move_up"
+  action:
+    service: light.turn_on
+    entity_id: light.blues_room_all
+    data:
+      brightness: 255
+      kelvin: 2700
+
+# Turn off Blue's Room lights when off switch is held
+- alias: blues_room_switch_off
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "brightness_move_down"
+  action:
+    service: light.turn_off
+    entity_id: light.blues_room_all
+
+# Increase Blue's Room lights by 20% when on is pressed
+- alias: blues_room_switch_brightness_up
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "on"
+  action:
+    # If blue's rooms lights are off then turn on and set them to 20% else increase brightness by 20%
+    - service: light.turn_on
+      entity_id: light.blues_room_all
+      data_template:
+        brightness: >
+          {% if is_state('light.blues_room_all', 'off') %}
+            50
+          {% else %}
+            {{ (states.light.blues_room_all.attributes.brightness | int + 50) | int }}
+          {% endif %}
+        kelvin: 2700
+
+# Decrease Blue's Room lights by 20% when off is pressed
+- alias: blues_room_switch_brightness_down
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "off"
+  condition:
+    condition: state
+    entity_id: light.blues_room_all
+    state: "on"
+  action:
+    # Decrease brightness by 20%
+    - service: light.turn_on
+      entity_id: light.blues_room_all
+      data_template:
+        brightness: "{{ (states.light.blues_room_all.attributes.brightness | int - 50) | int }}"
+        kelvin: 2700
+
+# Set Blues Room lights to a random colour when the right arrow is pressed
+- alias: blues_room_switch_right_arrow
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "arrow_right_click"
+  action:
+    service: light.turn_on
+    entity_id: light.blues_room_all
+    data_template:
+      brightness: 255
+      rgb_color:
+        [
+          "{{ range(0, 255) | random }}",
+          "{{ range(0, 255) | random }}",
+          "{{ range(0, 255) | random }}",
+        ]
+
+# Set Blues Room lights individually to a random colour when the left arrow is pressed
+- alias: blues_room_switch_left_arrow
+  trigger:
+    platform: state
+    entity_id: sensor.blues_room_switch_action
+    to: "arrow_left_click"
+  action:
+    - service: light.turn_on
+      entity_id: light.blues_room_1
+      data_template:
+        brightness: 255
+        rgb_color:
+          [
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+          ]
+    - service: light.turn_on
+      entity_id: light.blues_room_2
+      data_template:
+        brightness: 255
+        rgb_color:
+          [
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+          ]
+    - service: light.turn_on
+      entity_id: light.blues_room_3
+      data_template:
+        brightness: 255
+        rgb_color:
+          [
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+          ]
+    - service: light.turn_on
+      entity_id: light.blues_room_4
+      data_template:
+        brightness: 255
+        rgb_color:
+          [
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+            "{{ range(0, 255) | random }}",
+          ]

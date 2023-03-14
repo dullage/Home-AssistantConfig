@@ -1,0 +1,22 @@
+# Turn off the electric blanket at 11:30pm
+- alias: electric_blanket
+  initial_state: true
+  trigger:
+    platform: time
+    at: '22:30:00'
+  action:
+    service: switch.turn_off
+    entity_id: switch.electric_blanket
+
+# Don't let the electric blanket be on for more than 2 hours
+- alias: electric_blanket
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.electric_blanket
+    to: 'on'
+    for:
+      hours: 2
+  action:
+    service: switch.turn_off
+    entity_id: switch.electric_blanket

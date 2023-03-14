@@ -1,10 +1,47 @@
-# Toggle the bedroom lamps when the bedroom light switch is double toggled.
-- alias: master_bedroom_switch_double_toggle
+- alias: master_bedroom_switch
   initial_state: true
   trigger:
-    platform: mqtt
-    topic: automation
-    payload: "master_bedroom_main"
+    platform: state
+    entity_id: binary_sensor.master_bedroom_switch
+    not_from:
+      - "unavailable"
+      - "unknown"
   action:
-    service: light.toggle
-    entity_id: light.bedroom_lamps
+    - choose:
+      # If all off, immediately turn the lamp on and then if switched again within 0.5 seconds also turn the main lights on.
+      - conditions:
+        - condition: state
+          entity_id: light.bedroom_lamps
+          state: 'off'
+        - condition: state
+          entity_id: light.master_bedroom_all
+          state: 'off'
+        sequence:
+          - service: light.toggle
+            entity_id: light.bedroom_lamps
+          - wait_for_trigger:
+            - platform: state
+              entity_id: binary_sensor.master_bedroom_switch
+            timeout:
+              seconds: 0.5
+          - condition: template
+            value_template: "{{ wait.trigger is not none }}"
+          - service: light.toggle
+            entity_id: light.master_bedroom_all
+      # If any lights are on then wait for 0.5 seconds to see if the switch is double toggled. If so, toggle the main lights else turn all lights off.
+      default:
+        - wait_for_trigger:
+          - platform: state
+            entity_id: binary_sensor.master_bedroom_switch
+          timeout:
+            seconds: 0.5
+        - choose:
+          - conditions:
+            - condition: template
+              value_template: "{{ wait.trigger is not none }}"
+            sequence:
+              - service: light.toggle
+                entity_id: light.master_bedroom_all
+          default:
+            - service: homeassistant.turn_off
+              entity_id: group.bedroom_lights

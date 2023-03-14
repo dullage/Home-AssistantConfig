@@ -1,6 +1,8 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
+  cover.master_bedroom:
+    name: Bedroom Blind
   input_boolean.cartoons:
     name: Cartoons
   input_boolean.tv_power:
@@ -25,7 +27,7 @@ entity_config:
     name: Landing Light
   light.main_kitchen_lights:
     name: Kitchen Lights
-  light.master_bedroom_main:
+  light.master_bedroom_all:
     name: Bedroom Lights
   light.porch_light:
     name: Porch Light
@@ -54,7 +56,7 @@ filter:
   - light.garden_lights
   - light.landing
   - light.bathroom_all
-  - light.master_bedroom_main
+  - light.master_bedroom_all
   - light.bedroom_lamps
   - input_boolean.tv_power
   - light.porch_light
@@ -66,3 +68,4 @@ filter:
   - light.kitchen_leds
   - script.goodnight
   - switch.blues_fan
+  - cover.master_bedroom

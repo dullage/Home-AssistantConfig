@@ -7,7 +7,7 @@
     to: "on"
   condition:
     condition: numeric_state
-    entity_id: sensor.kitchen_plant_moisture
+    entity_id: sensor.plant_sensor_a034_moisture
     below: 31
   action:
     - service: tts.amazon_polly_say

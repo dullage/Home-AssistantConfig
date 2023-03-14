@@ -4,6 +4,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.stairs_motion_sensor_occupancy
+    from: "off"
     to: "on"
   condition:
     condition: and
@@ -41,6 +42,7 @@
   trigger:
     platform: state
     entity_id: binary_sensor.stairs_motion_sensor_occupancy
+    from: "off"
     to: "on"
   condition:
     condition: and

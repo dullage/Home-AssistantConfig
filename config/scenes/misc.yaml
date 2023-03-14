@@ -37,10 +37,6 @@
   entities:
     light.kitchen_leds:
       state: "on"
-    group.tv:
-      state: "on"
-      brightness: 60
-      xy_color: [0.49, 0.41]
     light.front_room_lamp:
       state: "off"
     light.dining_room_lamp:

@@ -1,0 +1,19 @@
+# Send me a notification to remind me to charge my watch when I go into the kitchen in the morning
+- alias: charge_watch_reminder
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_door_sensor_contact
+    to: 'on'
+  condition:
+    condition: time
+    after: '06:00:00'
+    before: '06:30:00'
+  action:
+    - delay:
+        seconds: 3
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Reminder: Charge Watch"
+    - delay:
+        minutes: 30

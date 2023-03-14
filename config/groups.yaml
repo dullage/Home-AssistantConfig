@@ -24,10 +24,12 @@ all_lights:
     - light.landing
     - light.bathroom_all
     - light.bathroom_mirror_lights
-    - light.master_bedroom_main
+    - light.master_bedroom_all
     - light.bedroom_lamps
     - light.garden_lights
     - light.nanoleaf
+    - light.blues_room_all
+    - switch.blues_rainbow_light
 
 # Everything that should be turned off when leaving
 everything:
@@ -35,6 +37,7 @@ everything:
   entities:
     - group.all_lights
     - input_boolean.tv_power
+    # Non-light switches??
 
 living_room:
   name: Living Room
@@ -123,7 +126,7 @@ bedroom_doors:
 bedroom_lights:
   name: Bedroom Lights
   entities:
-    - light.master_bedroom_main
+    - light.master_bedroom_all
     - light.bedroom_lamps
 
 kitchen_motion_sensors:

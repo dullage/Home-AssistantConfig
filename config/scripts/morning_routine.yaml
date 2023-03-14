@@ -4,7 +4,7 @@ morning_routine:
     # This script is started by an automation that is triggered when someone
     # goes downstairs within a particular window.
 
-    # Turn the downstairs lights on
+    # Turn the downstairs lights on. Note: There is another automation that does this but it only works when the sun is down.
     - service: scene.turn_on
       entity_id: scene.downstairs_general
 
