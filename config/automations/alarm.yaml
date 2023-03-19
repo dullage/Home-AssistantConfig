@@ -101,7 +101,9 @@
   condition:
     condition: state
     entity_id: alarm_control_panel.ha_alarm
-    state: "armed_away"
+    state:
+      - "armed_away"
+      - "triggered"
   action:
     service: script.trigger_alarm
     data:
@@ -118,7 +120,9 @@
     conditions:
       - condition: state
         entity_id: alarm_control_panel.ha_alarm
-        state: "armed_away"
+        state:
+          - "armed_away"
+          - "triggered"
       - condition: template
         value_template: "{{ trigger.event.data.file in ['side.jpg', 'garden.jpg'] }}"
       # Only trust detections in the daylight
@@ -152,6 +156,34 @@
     state:
       - "armed_away"
       - "armed_night"
+      - "triggered"
+  action:
+    service: script.trigger_alarm
+    data:
+      trigger: "{{ trigger.entity_id }}"
+
+# Alarms sensors active only when alarm is tiggered.
+- alias: alarm_sensors_once_triggered
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id:
+        # Motion Sensors
+        - group.kitchen_motion_sensors
+        - binary_sensor.dining_room_motion_sensor_occupancy
+        - binary_sensor.stairs_motion_sensor_occupancy
+        - binary_sensor.bathroom_motion_sensor_occupancy
+      from:
+        - "on"
+        - "off"
+      to:
+        - "on"
+        - "off"
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.ha_alarm
+    state:
+      - "triggered"
   action:
     service: script.trigger_alarm
     data:

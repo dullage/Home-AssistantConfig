@@ -4,15 +4,12 @@ trigger_alarm:
     # Ignore triggers in the first 2 minutes after boot
     - condition: template
       value_template: "{{ as_timestamp(now()) - as_timestamp(states('sensor.uptime')) > 120 }}"
-    # Trigger the alarm
-    - service: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.ha_alarm
     # Send notifications
     - choose:
         # Basic
         - conditions:
             - condition: template
-              value_template: "{{ trigger in ['binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'binary_sensor.master_bedroom_door_sensor_contact', 'binary_sensor.blues_room_door_sensor_contact', 'binary_sensor.bedroom_window_contact'] }}"
+              value_template: "{{ trigger in ['binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'binary_sensor.master_bedroom_door_sensor_contact', 'binary_sensor.blues_room_door_sensor_contact', 'binary_sensor.bedroom_window_contact', 'group.kitchen_motion_sensors', 'binary_sensor.dining_room_motion_sensor_occupancy', 'binary_sensor.stairs_motion_sensor_occupancy', 'binary_sensor.bathroom_motion_sensor_occupancy'] }}"
           sequence:
             - service: notify.iphones
               data:
@@ -28,6 +25,14 @@ trigger_alarm:
                     Blue's Room door opened/closed!
                   {% elif trigger == 'binary_sensor.bedroom_window_contact' %}
                     Master Bedroom window opened/closed!
+                  {% elif trigger == 'group.kitchen_motion_sensors' %}
+                    Motion in the Kitchen!
+                  {% elif trigger == 'binary_sensor.dining_room_motion_sensor_occupancy' %}
+                    Motion in the Dining Room!
+                  {% elif trigger == 'binary_sensor.stairs_motion_sensor_occupancy' %}
+                    Motion on the Stairs!
+                  {% elif trigger == 'binary_sensor.bathroom_motion_sensor_occupancy' %}
+                    Motion in the Bathroom!
                   {% endif %}
                 data:
                   push:
@@ -76,6 +81,7 @@ trigger_alarm:
                     - action: "DISARM_ALARM"
                       title: "Disarm"
                       destructive: yes
+
         # Image
         - conditions:
             - condition: template
@@ -123,3 +129,7 @@ trigger_alarm:
                 - action: "DISARM_ALARM"
                   title: "Disarm"
                   destructive: yes
+
+    # Trigger the alarm
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.ha_alarm
