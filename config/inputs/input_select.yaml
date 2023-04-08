@@ -20,6 +20,12 @@ maestro_stairs:
     - "Startup"
     - "Shutdown"
 
+maestro_matrix:
+  name: "Matrix - Maestro"
+  options:
+    - "Off"
+    - "Minecraft"
+
 camera:
   name: "Camera"
   options:

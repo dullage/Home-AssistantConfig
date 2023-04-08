@@ -95,6 +95,9 @@
   title: Dining Room
   entities:
     - light.nanoleaf
+    - entity: light.matrix_light
+      icon: mdi:matrix
+    - input_select.maestro_matrix
     - entity: light.entrance_light
       name: Entrance Light
     - entity: light.dining_room_lamp

@@ -25,6 +25,11 @@
     light.nanoleaf:
       state: "on"
       # effect and brightness are set by automation.nanoleaf_downstairs_general
+    light.matrix_light:
+      state: "on"
+      brightness: 255
+      effect: "Swirl"
+    # input_select.maestro_matrix: "Minecraft"
     # Parent Kitchen Lights (need to be on)
     light.kitchen_right:
       state: "on"
@@ -47,6 +52,10 @@
       state: "on"
       brightness: 28
       effect: "Starlight"
+    light.matrix_light:
+      state: "on"
+      brightness: 255
+      effect: "Firenoise"
     switch.fidelux:
       state: "on"
 
@@ -81,6 +90,11 @@
       brightness: 255
     light.nanoleaf:
       state: "on"
+      rgb_color: [255, 0, 0]
+      brightness: 255
+    light.matrix_light:
+      state: "on"
+      effect: "Solid"
       rgb_color: [255, 0, 0]
       brightness: 255
 

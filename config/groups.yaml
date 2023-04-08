@@ -28,6 +28,7 @@ all_lights:
     - light.bedroom_lamps
     - light.garden_lights
     - light.nanoleaf
+    - light.matrix_light
     - light.blues_room_all
     - switch.blues_rainbow_light
 
@@ -80,6 +81,7 @@ dining_room:
   name: Dining Room
   entities:
     - light.nanoleaf
+    - light.matrix_light
     - light.dining_room_lamp
     - light.entrance_light
 

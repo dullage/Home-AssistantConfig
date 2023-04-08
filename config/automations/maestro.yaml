@@ -1,3 +1,4 @@
+# Corner Lamp
 - alias: maestro_corner_lamp_input
   initial_state: True
   trigger:
@@ -47,6 +48,7 @@
         entity_id: input_select.maestro_corner_lamp
         option: "Off"
 
+# Stairs
 - alias: maestro_stairs_input
   initial_state: True
   trigger:
@@ -112,3 +114,46 @@
         topic: maestro/stairs/animation/finished
     - service: light.turn_off
       entity_id: light.stairs
+
+
+# Matrix
+- alias: maestro_matrix_input
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: input_select.maestro_matrix
+  action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ trigger.to_state.state == 'Off' }}"
+          sequence:
+            - service: light.turn_off
+              entity_id: light.matrix_light
+      default:
+        - service: light.turn_on
+          data:
+            entity_id: light.matrix_light
+            effect: UDP
+        - service: mqtt.publish
+          data_template:
+            topic: maestro/matrix/animation/start
+            payload: >
+              {% if trigger.to_state.state == 'Minecraft' %}
+                {"animation": "Minecraft"}
+              {% endif %}
+
+- alias: maestro_matrix_off
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: light.matrix_light
+    to: "off"
+  action:
+    - service: mqtt.publish
+      data_template:
+        topic: maestro/matrix/animation/stop
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.maestro_matrix
+        option: "Off"
