@@ -11,72 +11,10 @@
         {{ max([0, float(states('sensor.bathroom_temperature_sensor_humidity'))
                  - float(states('sensor.landing_temperature_sensor_humidity'))]) | round(2) }}
 
-    rainfall_next_24h:
-      unit_of_measurement: mm
-      friendly_name: "Rainfall (Next 24h)"
-      value_template: >
-        {% set rainfall = 
-           float(states('sensor.dark_sky_precip_intensity_1h'))
-         + float(states('sensor.dark_sky_precip_intensity_2h'))
-         + float(states('sensor.dark_sky_precip_intensity_3h'))
-         + float(states('sensor.dark_sky_precip_intensity_4h'))
-         + float(states('sensor.dark_sky_precip_intensity_5h'))
-         + float(states('sensor.dark_sky_precip_intensity_6h'))
-         + float(states('sensor.dark_sky_precip_intensity_7h'))
-         + float(states('sensor.dark_sky_precip_intensity_8h'))
-         + float(states('sensor.dark_sky_precip_intensity_9h'))
-         + float(states('sensor.dark_sky_precip_intensity_10h'))
-         + float(states('sensor.dark_sky_precip_intensity_11h'))
-         + float(states('sensor.dark_sky_precip_intensity_12h'))
-         + float(states('sensor.dark_sky_precip_intensity_13h'))
-         + float(states('sensor.dark_sky_precip_intensity_14h'))
-         + float(states('sensor.dark_sky_precip_intensity_15h'))
-         + float(states('sensor.dark_sky_precip_intensity_16h'))
-         + float(states('sensor.dark_sky_precip_intensity_17h'))
-         + float(states('sensor.dark_sky_precip_intensity_18h'))
-         + float(states('sensor.dark_sky_precip_intensity_19h'))
-         + float(states('sensor.dark_sky_precip_intensity_20h'))
-         + float(states('sensor.dark_sky_precip_intensity_21h'))
-         + float(states('sensor.dark_sky_precip_intensity_22h'))
-         + float(states('sensor.dark_sky_precip_intensity_23h'))
-         + float(states('sensor.dark_sky_precip_intensity_24h')) %}
-        {{ rainfall | round(2) }}
-
-    rainfall_next_24h_adjusted:
-      unit_of_measurement: mm
-      friendly_name: "Rainfall (Next 24h Adjusted)"
-      value_template: >
-        {% set rainfall_adj = 
-            (float(states('sensor.dark_sky_precip_intensity_1h')) * (float(states('sensor.dark_sky_precip_probability_1h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_2h')) * (float(states('sensor.dark_sky_precip_probability_2h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_3h')) * (float(states('sensor.dark_sky_precip_probability_3h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_4h')) * (float(states('sensor.dark_sky_precip_probability_4h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_5h')) * (float(states('sensor.dark_sky_precip_probability_5h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_6h')) * (float(states('sensor.dark_sky_precip_probability_6h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_7h')) * (float(states('sensor.dark_sky_precip_probability_7h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_8h')) * (float(states('sensor.dark_sky_precip_probability_8h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_9h')) * (float(states('sensor.dark_sky_precip_probability_9h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_10h')) * (float(states('sensor.dark_sky_precip_probability_10h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_11h')) * (float(states('sensor.dark_sky_precip_probability_11h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_12h')) * (float(states('sensor.dark_sky_precip_probability_12h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_13h')) * (float(states('sensor.dark_sky_precip_probability_13h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_14h')) * (float(states('sensor.dark_sky_precip_probability_14h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_15h')) * (float(states('sensor.dark_sky_precip_probability_15h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_16h')) * (float(states('sensor.dark_sky_precip_probability_16h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_17h')) * (float(states('sensor.dark_sky_precip_probability_17h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_18h')) * (float(states('sensor.dark_sky_precip_probability_18h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_19h')) * (float(states('sensor.dark_sky_precip_probability_19h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_20h')) * (float(states('sensor.dark_sky_precip_probability_20h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_21h')) * (float(states('sensor.dark_sky_precip_probability_21h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_22h')) * (float(states('sensor.dark_sky_precip_probability_22h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_23h')) * (float(states('sensor.dark_sky_precip_probability_23h')) / 100))
-          + (float(states('sensor.dark_sky_precip_intensity_24h')) * (float(states('sensor.dark_sky_precip_probability_24h')) / 100)) %}
-        {{ rainfall_adj | round(2) }}
-
     energy_cost_per_kwh:
       unit_of_measurement: GBP/kWh
       friendly_name: Energy Cost p/kWh
-      value_template: "{{ 0.3531 }}"
+      value_template: "{{ 0.3417 }}"
 
     current_energy_cost_ph:
       unit_of_measurement: GBP

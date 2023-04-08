@@ -7,15 +7,6 @@
       icon: mdi:sprinkler-variant
     - entity: script.bird_blaster
       icon: mdi:pistol
-    # - entity: binary_sensor.bird_on_lawn
-    #   name: Birds on the Lawn
-    #   icon: mdi:bird
-    - entity: sensor.rainfall_last_24h
-      name: Rainfall (Last 24h)
-    - entity: sensor.rainfall_next_24h
-      name: Expected Rainfall (Next 24h)
-    - entity: sensor.rainfall_next_24h_adjusted
-      name: Expected Rainfall (Next 24h Adjusted)
 
 - type: sensor
   entity: sensor.speedtest_download

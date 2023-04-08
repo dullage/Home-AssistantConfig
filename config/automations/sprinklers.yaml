@@ -3,50 +3,18 @@
     platform: time
     at: "20:55:00"
   action:
-    - alias: "Turn on front lights if motion detected, else turn off"
-      choose:
-        # It has rained
-        - conditions:
-            - condition: template
-              value_template: "{{ float(states('sensor.rainfall_last_24h')) > 1 }}"
-          sequence:
-            - delay:
-                minutes: 5
-            - service: notify.iphones
-              data:
-                message: "There has been rainfall in the last 24 hours so the sprinklers will not run."
-                data:
-                  actions:
-                    - action: "ACTIVATE_SPRINKLERS"
-                      title: "Activate Sprinklers"
-        # It will rain
-        - conditions:
-            - condition: template
-              value_template: "{{ float(states('sensor.rainfall_next_24h')) > 1 }}"
-          sequence:
-            - delay:
-                minutes: 5
-            - service: notify.iphones
-              data:
-                message: "There is rainfall expected in the next 24 hours so the sprinklers will not run."
-                data:
-                  actions:
-                    - action: "ACTIVATE_SPRINKLERS"
-                      title: "Activate Sprinklers"
-      # It has not rained and won't rain
-      default:
-        - service: notify.iphones
-          data:
-            message: "Automatic Sprinklers: 5 minute warning!"
-            data:
-              actions:
-                - action: "CANCEL_SPRINKLERS"
-                  title: "Cancel Sprinklers"
-                  destructive: yes
-        - delay:
-            minutes: 5
-        - service: switch.turn_on
-          entity_id: switch.sprinklers
+    - service: notify.iphones
+      data:
+        message: "Automatic Sprinklers: 5 minute warning!"
+        data:
+          actions:
+            - action: "CANCEL_SPRINKLERS"
+              title: "Cancel Sprinklers"
+              destructive: yes
+    - delay:
+        minutes: 5
+    - service: switch.turn_on
+      entity_id: switch.sprinklers
 
 # Turn off the sprinklers after they've been on for 4 minutes
 - alias: sprinklers_off
@@ -60,18 +28,6 @@
   action:
     service: switch.turn_off
     entity_id: switch.sprinklers
-
-# Turn on the sprinklers if the relevant iOS notification button is pressed
-- alias: sprinklers_activate
-  initial_state: true
-  trigger:
-    platform: event
-    event_type: mobile_app_notification_action
-    event_data:
-      action: ACTIVATE_SPRINKLERS
-  action:
-    - service: switch.turn_on
-      entity_id: switch.sprinklers
 
 # Cancel the sprinklers if the relevant iOS notification button is pressed
 - alias: sprinklers_cancel

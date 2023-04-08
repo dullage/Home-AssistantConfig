@@ -62,8 +62,10 @@
   title: Outdoor Climate
   show_header_toggle: false
   entities:
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_precip_probability
+    - entity: sensor.openweathermap_temperature
+      name: Temperature
+    - entity: sensor.openweathermap_humidity
+      name: Humidity
 
 - type: entities
   title: One-Off Heating Timer
