@@ -1,0 +1,11 @@
+# Send a warning notification if the CCTV queue depth is too high
+- alias: cctv_queue_warning
+  initial_state: true
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.cctv_queue_depth
+    above: 6
+  action:
+    - service: notify.mobile_app_dullage_s_iphone
+      data:
+        message: "Warning: There are a lot of CCTV videos waiting to be processed."
