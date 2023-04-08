@@ -50,15 +50,13 @@ recorder:
   purge_keep_days: 31
 
 logbook:
-  exclude:
-    domains:
-      - group
-      - media_player
-      - automation
-    entities:
-      - light.downstairs
-    entity_globs:
-      - sensor.dark_sky*
+  # exclude:
+  #   domains:
+  #     - group
+  #     - media_player
+  #     - automation
+  #   entities:
+  #     - light.downstairs
 
 lovelace:
   mode: yaml
