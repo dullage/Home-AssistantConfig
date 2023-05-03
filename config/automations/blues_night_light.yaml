@@ -1,0 +1,12 @@
+# Automatically turn off the Blues Night Light after 60 minutes
+- alias: blues_night_light_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.blues_night_light
+    to: "on"
+    for:
+      minutes: 60
+  action:
+    service: switch.turn_off
+    entity_id: switch.blues_night_light

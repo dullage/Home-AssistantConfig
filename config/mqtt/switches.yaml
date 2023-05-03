@@ -44,7 +44,7 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-- name: blues_rainbow_light
+- name: blues_night_light
   command_topic: local-bytes/LB-2/cmnd/POWER
   state_topic: local-bytes/LB-2/stat/POWER
   payload_on: "ON"

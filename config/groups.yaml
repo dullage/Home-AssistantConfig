@@ -30,7 +30,7 @@ all_lights:
     - light.nanoleaf
     - light.matrix_light
     - light.blues_room_all
-    - switch.blues_rainbow_light
+    - switch.blues_night_light
 
 # Everything that should be turned off when leaving
 everything:
