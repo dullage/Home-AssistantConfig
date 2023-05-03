@@ -49,6 +49,9 @@
       icon: mdi:lightbulb
     - entity: cover.master_bedroom
       name: Blind
+    - entity: script.master_bedroom_blind_fan_position
+      name: Set Blind to Fan Position
+      icon: mdi:fan
     - entity: switch.electric_blanket
       name: Electric Blanket
       icon: mdi:radiator
@@ -87,9 +90,9 @@
   entities:
     - entity: light.blues_room_all
       name: Main Lights
-    - entity: switch.blues_rainbow_light
-      name: Rainbow Light
-      icon: mdi:looks
+    - entity: switch.blues_night_light
+      name: Night Light
+      icon: mdi:weather-night
 
 - type: entities
   title: Dining Room

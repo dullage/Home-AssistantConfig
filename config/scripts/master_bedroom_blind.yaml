@@ -1,0 +1,7 @@
+master_bedroom_blind_fan_position:
+  alias: Master Bedroom Blind Fan Position
+  sequence:
+    - service: cover.set_cover_position
+      entity_id: cover.master_bedroom
+      data:
+        position: 38

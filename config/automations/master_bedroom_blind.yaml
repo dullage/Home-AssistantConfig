@@ -45,7 +45,20 @@
     condition: time
     before: '18:31:00'
   action:
-    service: cover.set_cover_position
-    entity_id: cover.master_bedroom
-    data:
-      position: 38
+    service: script.master_bedroom_blind_fan_position
+
+# If it's before 6am and the bedroom windows is closed, close the blind.
+- alias: master_bedroom_blind_window_closed
+  trigger:
+    platform: state
+    entity_id: binary_sensor.bedroom_window_contact
+    from: "on"
+    to: "off"
+  condition:
+    condition: time
+    before: '06:00:00'
+  action:
+    - delay:
+        seconds: 4
+    - service: cover.close_cover
+      entity_id: cover.master_bedroom
