@@ -78,6 +78,22 @@
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.ha_alarm
 
+
+# Disarm the alarm if the "Disarm (10 mins)" button is pressed in the iOS notification.
+- alias: alarm_disarm_10_mins
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: DISARM_ALARM_10_MINS
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm
+    - delay: 00:10:00
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.ha_alarm
+
 # Alarms sensors active only when alarm is in armed_away mode.
 - alias: alarm_sensors_away_only
   initial_state: true

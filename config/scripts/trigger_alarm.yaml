@@ -9,13 +9,15 @@ trigger_alarm:
         # Basic
         - conditions:
             - condition: template
-              value_template: "{{ trigger in ['binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'binary_sensor.master_bedroom_door_sensor_contact', 'binary_sensor.blues_room_door_sensor_contact', 'binary_sensor.bedroom_window_contact', 'group.kitchen_motion_sensors', 'binary_sensor.dining_room_motion_sensor_occupancy', 'binary_sensor.stairs_motion_sensor_occupancy', 'binary_sensor.bathroom_motion_sensor_occupancy'] }}"
+              value_template: "{{ trigger in ['binary_sensor.kitchen_door_sensor_contact', 'binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'binary_sensor.master_bedroom_door_sensor_contact', 'binary_sensor.blues_room_door_sensor_contact', 'binary_sensor.bedroom_window_contact', 'group.kitchen_motion_sensors', 'binary_sensor.dining_room_motion_sensor_occupancy', 'binary_sensor.stairs_motion_sensor_occupancy', 'binary_sensor.bathroom_motion_sensor_occupancy'] }}"
           sequence:
             - service: notify.iphones
               data:
                 title: "Alarm!"
                 message: >
-                  {% if trigger == 'binary_sensor.front_room_door_sensor_contact' %}
+                  {% if trigger == 'binary_sensor.kitchen_door_sensor_contact' %}
+                    Kitchen door (internal) opened/closed!
+                  {% elif trigger == 'binary_sensor.front_room_door_sensor_contact' %}
                     Front Room door opened/closed!
                   {% elif trigger == 'binary_sensor.bathroom_door_sensor_contact' %}
                     Bathroom door opened/closed!
@@ -44,19 +46,28 @@ trigger_alarm:
                     - action: "DISARM_ALARM"
                       title: "Disarm"
                       destructive: yes
+                    - action: "DISARM_ALARM_10_MINS"
+                      title: "Disarm (10 mins)"
+                      destructive: no
 
-        # Camera Feed
+        # Sensor Trigger > Image
         - conditions:
             - condition: template
-              value_template: "{{ trigger in ['binary_sensor.kitchen_door_sensor_contact', 'binary_sensor.front_door_contact', 'binary_sensor.garden_door_contact', 'binary_sensor.patio_doors_contact'] }}"
+              value_template: "{{ trigger in ['binary_sensor.front_door_contact', 'binary_sensor.garden_door_contact', 'binary_sensor.patio_doors_contact'] }}"
           sequence:
+            - service: camera.snapshot
+              entity_id: camera.front_door
+              data:
+                filename: /media/front_door.jpg
+            - service: camera.snapshot
+              entity_id: camera.garden
+              data:
+                filename: /media/garden.jpg
             - service: notify.iphones
               data:
                 title: "Alarm!"
                 message: >
-                  {% if trigger == 'binary_sensor.kitchen_door_sensor_contact' %}
-                    Kitchen door (internal) opened/closed!
-                  {% elif trigger == 'binary_sensor.front_door_contact' %}
+                  {% if trigger == 'binary_sensor.front_door_contact' %}
                     Front door opened/closed!
                   {% elif trigger == 'binary_sensor.garden_door_contact' %}
                     Kitchen door (external) opened/closed!
@@ -64,13 +75,14 @@ trigger_alarm:
                     Patio doors opened/closed!
                   {% endif %}
                 data:
-                  entity_id: >
+                  url: /lovelace/4  # CCTV Tab
+                  image: >
                     {% if trigger == 'binary_sensor.front_door_contact' %}
-                      camera.front_door
+                      /media/local/front_door.jpg
                     {% elif trigger == 'binary_sensor.garden_door_contact' %}
-                      camera.garden
+                      /media/local/garden.jpg
                     {% elif trigger == 'binary_sensor.patio_doors_contact' %}
-                      camera.garden
+                      /media/local/garden.jpg
                     {% endif %}
                   push:
                     sound:
@@ -81,8 +93,11 @@ trigger_alarm:
                     - action: "DISARM_ALARM"
                       title: "Disarm"
                       destructive: yes
+                    - action: "DISARM_ALARM_10_MINS"
+                      title: "Disarm (10 mins)"
+                      destructive: no
 
-        # Image
+        # Image Trigger > Image
         - conditions:
             - condition: template
               value_template: "{{ trigger in ['side.jpg', 'garden.jpg'] }}"
@@ -112,6 +127,9 @@ trigger_alarm:
                     - action: "DISARM_ALARM"
                       title: "Disarm"
                       destructive: yes
+                    - action: "DISARM_ALARM_10_MINS"
+                      title: "Disarm (10 mins)"
+                      destructive: no
 
       # Default
       default:
@@ -129,6 +147,9 @@ trigger_alarm:
                 - action: "DISARM_ALARM"
                   title: "Disarm"
                   destructive: yes
+                - action: "DISARM_ALARM_10_MINS"
+                  title: "Disarm (10 mins)"
+                  destructive: no
 
     # Trigger the alarm
     - service: alarm_control_panel.alarm_trigger

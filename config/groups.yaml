@@ -12,6 +12,7 @@ all_lights:
     - light.entrance_light
     - light.dining_room_lamp
     - light.corner_lamp
+    - light.corner_lamp_2
     - light.tv_left
     - light.tv_top
     - light.tv_right
@@ -38,7 +39,6 @@ everything:
   entities:
     - group.all_lights
     - input_boolean.tv_power
-    # Non-light switches??
 
 living_room:
   name: Living Room

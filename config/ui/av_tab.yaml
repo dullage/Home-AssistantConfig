@@ -119,3 +119,5 @@
           entity_id: media_player.philips_tv
           source: HDMI 2
 
+- type: media-control
+  entity: media_player.whole_house

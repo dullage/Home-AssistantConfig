@@ -22,7 +22,7 @@
       icon: mdi:television-ambient-light
     - entity: light.corner_lamp
       name: Corner Lamp
-      icon: mdi:led-strip-variant
+      icon: mdi:drag-vertical-variant
     - input_select.maestro_corner_lamp
 
 - type: entities
@@ -84,6 +84,9 @@
     - entity: switch.ikea_socket_switch
       name: Lamp
       icon: mdi:lightbulb
+    - entity: light.corner_lamp_2
+      name: Corner Lamp 2
+      icon: mdi:drag-vertical-variant
 
 - type: entities
   title: Blue's Room
@@ -93,6 +96,9 @@
     - entity: switch.blues_night_light
       name: Night Light
       icon: mdi:weather-night
+    # - entity: switch.blues_fan
+    #   name: Fan
+    #   icon: mdi:fan
 
 - type: entities
   title: Dining Room

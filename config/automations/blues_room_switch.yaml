@@ -123,3 +123,48 @@
             "{{ range(0, 255) | random }}",
             "{{ range(0, 255) | random }}",
           ]
+
+# Door Sensor
+- alias: blues_room_switch_toggle
+  trigger:
+    platform: state
+    entity_id: binary_sensor.blues_bedroom_switch_contact
+    to:
+      - "on"
+      - "off"
+    from:
+      - "on"
+      - "off"
+  action:
+    - choose:
+        # Daytime
+        - conditions:
+            - condition: state
+              entity_id: light.blues_room_all
+              state: "off"
+            - condition: time
+              after: "07:00:00"
+              before: "18:30:00"
+          sequence:
+            - service: light.turn_on
+              entity_id: light.blues_room_all
+              data:
+                brightness: 255
+                kelvin: 2700
+        # Nighttime
+        - conditions:
+            - condition: state
+              entity_id: light.blues_room_all
+              state: "off"
+            - condition: time
+              after: "18:30:00"
+              before: "07:00:00"
+          sequence:
+            - service: light.turn_on
+              entity_id: light.blues_room_all
+              data:
+                brightness: 100
+                kelvin: 2400
+      default:
+        - service: light.turn_off
+          entity_id: light.blues_room_all

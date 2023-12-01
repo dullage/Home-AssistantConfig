@@ -23,39 +23,42 @@
 - type: thermostat
   entity: climate.office_heater
 
-- type: glance
+- type: entities
   title: Indoor Temperatures
-  columns: 3
   entities:
     - entity: sensor.nest_temperature
+      secondary_info: last-updated
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_temperature
+      secondary_info: last-updated
       name: Landing
     - entity: sensor.blues_room_temperature_sensor_temperature
+      secondary_info: last-updated
       name: Blue's Room
-    - entity: sensor.loft_temperature
-      name: Loft
     - entity: sensor.office_temperature_sensor_temperature
+      secondary_info: last-updated
       name: Office
     - entity: sensor.bathroom_temperature_sensor_temperature
+      secondary_info: last-updated
       name: Bathroom
 
-- type: glance
+- type: entities
   title: Indoor Humidity
-  columns: 3
   entities:
     - entity: sensor.nest_humidity
+      secondary_info: last-updated
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_humidity
+      secondary_info: last-updated
       name: Landing
     - entity: sensor.blues_room_temperature_sensor_humidity
+      secondary_info: last-updated
       name: Blue's Room
-    - entity: sensor.loft_humidity
-      name: Loft
-      icon: mdi:water-percent
     - entity: sensor.office_temperature_sensor_humidity
+      secondary_info: last-updated
       name: Office
     - entity: sensor.bathroom_temperature_sensor_humidity
+      secondary_info: last-updated
       name: Bathroom
 
 - type: entities
@@ -66,6 +69,9 @@
       name: Temperature
     - entity: sensor.openweathermap_humidity
       name: Humidity
+    - entity: sensor.rain_gauge
+      name: Rainfall (Today)
+      icon: mdi:water
 
 - type: entities
   title: One-Off Heating Timer
@@ -77,16 +83,3 @@
     - entity: automation.ad_hoc_heating_timer
       name: Activated
       icon: mdi:alarm-multiple
-
-- type: glance
-  title: Kitchen Plant
-  columns: 4
-  entities:
-    - entity: sensor.plant_sensor_a034_moisture
-      name: Moisture
-    - entity: sensor.plant_sensor_a034_illuminance
-      name: Brightness
-    - entity: sensor.plant_sensor_a034_temperature
-      name: Temperature
-    - entity: sensor.plant_sensor_a034_conductivity
-      name: Soil Conductivity

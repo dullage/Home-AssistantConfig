@@ -1,0 +1,8 @@
+# Create a backup every night at 2am
+- alias: backup
+  initial_state: true
+  trigger:
+    platform: time
+    at: '02:00:00'
+  action:
+    service: backup.create

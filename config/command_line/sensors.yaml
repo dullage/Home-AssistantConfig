@@ -1,0 +1,23 @@
+  - sensor:
+      name: cctv_queue_depth
+      command: "find /cctv/staging -type f -name '*.mp4' | wc -l"
+      unit_of_measurement: "events"
+      scan_interval: 600
+
+  - sensor:
+      name: rejected_front_door_per_hr
+      command: "find /cctv/rejected -mmin -60 -type f -name '*Front Door*' | wc -l"
+      unit_of_measurement: "ph"
+      scan_interval: 600
+
+  - sensor:
+      name: rejected_side_per_hr
+      command: "find /cctv/rejected -mmin -60 -type f -name '*Side*' | wc -l"
+      unit_of_measurement: "ph"
+      scan_interval: 600
+
+  - sensor:
+      name: rejected_garden_per_hr
+      command: "find /cctv/rejected -mmin -60 -type f -name '*Garden*' | wc -l"
+      unit_of_measurement: "ph"
+      scan_interval: 600

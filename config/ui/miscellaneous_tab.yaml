@@ -39,6 +39,8 @@
       name: Bedroom Light Timeout
     - entity: automation.sprinklers_auto
       name: Automatic Sprinklers
+    - entity: automation.master_bedroom_blind_morning
+      name: Master Bedroom Blind Morning
 
 - type: entities
   title: "Home Arrival Notifications"

@@ -85,6 +85,7 @@ shopping_list:
 ffmpeg:
 stream:
 energy:
+backup:
 
 # Include
 automation: !include_dir_merge_list config/automations/
@@ -94,7 +95,6 @@ switch: !include_dir_merge_list config/switches/
 scene: !include_dir_merge_list config/scenes/
 group: !include config/groups.yaml
 shell_command: !include_dir_merge_named config/shell_commands/
-binary_sensor: !include_dir_merge_list config/binary_sensors/
 sensor: !include_dir_merge_list config/sensors/
 input_boolean: !include config/inputs/input_boolean.yaml
 input_number: !include config/inputs/input_number.yaml
@@ -176,3 +176,26 @@ mqtt:
   binary_sensor: !include config/mqtt/binary_sensors.yaml
   sensor: !include config/mqtt/sensors.yaml
   switch: !include config/mqtt/switches.yaml
+
+# Command Line Entities
+command_line: !include config/command_line/sensors.yaml
+
+# Rain Guage
+
+# 1. A binary sensor to monitor the state of the bucket.
+# 2. A counter to count the number of time the bucket changes state. This resets to zero on reboot.
+# 3. An automation to increment the counter.
+# 4. A template sensor to convert the counter to mm. This resets to zero on reboot.
+# 5. A utility meter to reset the count each day and calculate the mm per day.
+
+counter:
+  rain_sensor_flips:
+    name: Rain Sensor Flips
+    restore: false
+
+utility_meter:
+  rain_sensor_mm_per_day:
+    name: Rain Gauge
+    source: sensor.rain_sensor_mm
+    cycle: daily
+    periodically_resetting: true

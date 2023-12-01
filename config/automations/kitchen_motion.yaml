@@ -13,7 +13,7 @@
       state: "on"
   action:
     - service: scene.turn_on
-      entity_id: scene.kitchen_northern_lights
+      entity_id: scene.kitchen_leds_dim
 
 # When there is motion in the kitchen, providing the kitchen LED lights are on set them to a bright warm light.
 - alias: kitchen_motion_leds_up
@@ -43,7 +43,7 @@
     state: "off"
   action:
     - service: scene.turn_on
-      entity_id: scene.kitchen_northern_lights
+      entity_id: scene.kitchen_leds_dim
 
 # If the kitchen lights are turned on and the kitchen is occupied (motion detected) then go straight to the bright mode.
 - alias: kitchen_motion_start_down_if_unoccupied
