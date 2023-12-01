@@ -28,6 +28,8 @@
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
 
+# 2NICE-4 = Air Freshener
+
 - name: microwave_energy
   unique_id: 3a5fe68c-3c47-44c0-9dcd-4ea6eba324ed
   state_topic: 2NICE-5/tele/SENSOR
@@ -35,20 +37,6 @@
   unit_of_measurement: kWh
   device_class: energy
   state_class: total_increasing
-
-- name: air_conditioner_energy
-  unique_id: 38f3cf6f-9089-4c87-91b6-e5d9c686df3c
-  state_topic: 2NICE-7/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Total"] }}'
-  unit_of_measurement: kWh
-  device_class: energy
-  state_class: total_increasing
-
-- name: air_conditioner_power_consumption
-  unique_id: 4b759cd8-6b94-4052-ac4d-0f98b8ef7c2e
-  state_topic: 2NICE-7/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Power"] }}'
-  unit_of_measurement: W
 
 # - name: blues_fan_energy
 #   unique_id: 266bc096-882e-4848-92fc-8d8eed7ae2aa
@@ -64,6 +52,20 @@
 #   value_template: '{{ value_json["ENERGY"]["Power"] }}'
 #   unit_of_measurement: W
 
+- name: air_conditioner_energy
+  unique_id: 38f3cf6f-9089-4c87-91b6-e5d9c686df3c
+  state_topic: 2NICE-7/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Total"] }}'
+  unit_of_measurement: kWh
+  device_class: energy
+  state_class: total_increasing
+
+- name: air_conditioner_power_consumption
+  unique_id: 4b759cd8-6b94-4052-ac4d-0f98b8ef7c2e
+  state_topic: 2NICE-7/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: W
+
 - name: bedroom_fan_energy
   unique_id: 9036cc19-aeeb-4f4d-bb2a-9acbb61e55a1
   state_topic: 2NICE-8/tele/SENSOR
@@ -77,3 +79,9 @@
   state_topic: 2NICE-8/tele/SENSOR
   value_template: '{{ value_json["ENERGY"]["Power"] }}'
   unit_of_measurement: W
+
+# LB-1 = Electric Blanket
+
+# LB-2 = Blue's Night Light
+
+# LB-3 = Unused

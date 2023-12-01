@@ -30,7 +30,7 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-# - 2NICE-7 = Unused
+# 2NICE-7 = Air Conditioner
 
 - name: bedroom_fan
   command_topic: 2NICE-8/cmnd/POWER
@@ -50,4 +50,4 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-# - LB-3 = Unused
+# LB-3 = Unused
