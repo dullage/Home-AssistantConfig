@@ -12,7 +12,6 @@ all_lights:
     - light.entrance_light
     - light.dining_room_lamp
     - light.corner_lamp
-    - light.corner_lamp_2
     - light.tv_left
     - light.tv_top
     - light.tv_right

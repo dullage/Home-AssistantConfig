@@ -49,6 +49,8 @@
       icon: mdi:lightbulb
     - entity: cover.master_bedroom
       name: Blind
+    - entity: sensor.master_bedroom_battery
+      name: Blind Battery
     - entity: script.master_bedroom_blind_fan_position
       name: Set Blind to Fan Position
       icon: mdi:fan
@@ -84,9 +86,6 @@
     - entity: switch.ikea_socket_switch
       name: Lamp
       icon: mdi:lightbulb
-    - entity: light.corner_lamp_2
-      name: Corner Lamp 2
-      icon: mdi:drag-vertical-variant
 
 - type: entities
   title: Blue's Room
