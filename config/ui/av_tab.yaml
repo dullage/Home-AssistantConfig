@@ -7,7 +7,7 @@
         action: call-service
         service: input_boolean.toggle
         service_data:
-          entity_id: input_boolean.tv_power
+          entity_id: input_boolean.apple_tv
       style:
         top: 16.66%
         left: 16.66%
@@ -49,13 +49,17 @@
         top: 80%
         left: 33.33%
 
+- type: media-control
+  entity: media_player.apple_tv
+
 - type: entities
   title: AV Power
   show_header_toggle: false
   entities:
-    - entity: input_boolean.tv_power
+    - entity: input_boolean.apple_tv
+      name: Apple TV
       icon: mdi:power
-    - entity: script.freeview_box
+    - entity: script.tv
       icon: mdi:power
     - entity: script.amp
       icon: mdi:power
@@ -72,14 +76,23 @@
   show_header_toggle: false
   entities:
     - type: button
-      name: Watch TV
-      icon: mdi:television-box
+      name: Live TV
+      icon: mdi:television-classic
       tap_action:
         action: call-service
         service: media_player.select_source
         data:
           entity_id: media_player.philips_tv
           source: Watch TV
+    - type: button
+      name: Apple TV
+      icon: mdi:apple
+      tap_action:
+        action: call-service
+        service: media_player.select_source
+        data:
+          entity_id: media_player.philips_tv
+          source: HDMI 2
     - type: button
       name: Chromecast
       icon: mdi:google-chrome
@@ -99,8 +112,6 @@
           entity_id: media_player.philips_tv
           source: HDMI 4
     - type: button
-      # name: Freeview Box
-      # icon: mdi:satellite-uplink
       name: Xbox
       icon: mdi:microsoft-xbox
       tap_action:
@@ -109,15 +120,9 @@
         data:
           entity_id: media_player.philips_tv
           source: HDMI 1
-    - type: button
-      name: Apple TV
-      icon: mdi:apple
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: HDMI 2
 
 - type: media-control
   entity: media_player.whole_house
+
+- type: media-control
+  entity: media_player.dining_room_tv

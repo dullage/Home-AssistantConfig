@@ -95,9 +95,9 @@
     - entity: switch.blues_night_light
       name: Night Light
       icon: mdi:weather-night
-    # - entity: switch.blues_fan
-    #   name: Fan
-    #   icon: mdi:fan
+    - entity: switch.rainbow_light
+      name: Rainbow
+      icon: mdi:looks
 
 - type: entities
   title: Dining Room

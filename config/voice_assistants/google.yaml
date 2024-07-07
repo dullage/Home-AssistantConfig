@@ -5,8 +5,6 @@ entity_config:
     name: Bedroom Blind
   input_boolean.cartoons:
     name: Cartoons
-  input_boolean.tv_power:
-    name: TV
   light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
@@ -31,6 +29,8 @@ entity_config:
     name: Bedroom Lights
   light.porch_light:
     name: Porch Light
+  media_player.apple_tv:
+    name: TV
   scene.downstairs_dim:
     name: Front Room Dim
   scene.downstairs_general:
@@ -58,7 +58,7 @@ filter:
   - light.bathroom_all
   - light.master_bedroom_all
   - light.bedroom_lamps
-  - input_boolean.tv_power
+  - media_player.apple_tv
   - light.porch_light
   - light.entrance_light
   - light.dining_room_lamp

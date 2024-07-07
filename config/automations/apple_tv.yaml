@@ -1,0 +1,71 @@
+- alias: apple_tv_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.apple_tv
+    from:
+      - "standby"
+    for:
+      seconds: 3
+  action:
+    - service: script.amp
+
+- alias: apple_tv_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: media_player.apple_tv
+    to:
+      - "standby"
+    for:
+      seconds: 3
+  action:
+    service: script.amp
+
+- alias: apple_tv_input_boolean_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.apple_tv
+    to: "on"
+  action:
+    service: media_player.turn_on
+    entity_id: media_player.apple_tv
+
+- alias: apple_tv_input_boolean_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.apple_tv
+    to: "off"
+  action:
+    service: media_player.turn_off
+    entity_id: media_player.apple_tv
+
+- alias: apple_tv_input_boolean_update_on
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv
+      from: "standby"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.apple_tv_input_boolean_on
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.apple_tv
+    - service: automation.turn_on
+      entity_id: automation.apple_tv_input_boolean_on
+
+- alias: apple_tv_input_boolean_update_off
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: media_player.apple_tv
+      to: "standby"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.apple_tv_input_boolean_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.apple_tv
+    - service: automation.turn_on
+      entity_id: automation.apple_tv_input_boolean_off

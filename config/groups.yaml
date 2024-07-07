@@ -37,7 +37,8 @@ everything:
   name: Everything
   entities:
     - group.all_lights
-    - input_boolean.tv_power
+    - media_player.apple_tv
+    - media_player.dining_room_tv
 
 living_room:
   name: Living Room

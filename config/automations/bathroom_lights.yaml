@@ -63,7 +63,7 @@
     - service: light.turn_off
       entity_id: light.bathroom_mirror_lights
 
-# As long as the main bathroom lights are off, turn the bathroom mirror lights off once there has been no motion in the bathroom for 5 seconds (debounce). In reality this timeout is more like 2 minutes due to the polling frequency of the Xiaomi motion sensors.
+# As long as the main bathroom lights are off, turn the bathroom mirror lights off once there has been no motion in the bathroom for 1 minute.
 - alias: bathroom_lights_night_light_off
   initial_state: true
   trigger:
@@ -71,7 +71,7 @@
     entity_id: binary_sensor.bathroom_motion_sensor_occupancy
     to: "off"
     for:
-      seconds: 5
+      minutes: 1
   condition:
     condition: state
     entity_id: light.bathroom_all

@@ -77,7 +77,6 @@ person:
 config:
 frontend:
 history:
-map:
 mobile_app:
 sun:
 system_health:
@@ -159,8 +158,6 @@ alarm_control_panel:
 
 # Used for the CCTV notifications
 media_source:
-folder_watcher:
-  - folder: /media/cctv
 
 # Notification Groups
 notify:

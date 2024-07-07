@@ -62,13 +62,6 @@
       secondary_info: last-changed
       name: Blue's Bedroom Door
 
-    - type: section
-      label: Windows
-    - entity: binary_sensor.bedroom_window_contact
-      secondary_info: last-changed
-      name: Bedroom Window
-      icon: mdi:window-open-variant
-
 - type: picture-entity
   entity: camera.front_door
 

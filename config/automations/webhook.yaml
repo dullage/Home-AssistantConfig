@@ -1,8 +1,8 @@
-- alias: webhook_download_complete
+- alias: webhook_notify_adam
   initial_state: true
   trigger:
     platform: webhook
-    webhook_id: !secret download_complete_webhook_id
+    webhook_id: !secret notify_adam_webhook_id
     allowed_methods:
       - POST
     local_only: false
@@ -10,4 +10,4 @@
     - service: notify.mobile_app_dullage_s_iphone
       data_template:
         message: >
-          Download Complete: {{ trigger.json.message }}
+          {{ trigger.json.message }}

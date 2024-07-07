@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # This script takes the contents of voice_assistant_config.yaml and converts it into two configuration
-# files, one for the HomeKit integration and one for the Google Assistant integration. This serves 
+# files, one for the HomeKit integration and one for the Google Assistant integration. This serves
 # two purposes:
 #
 #     1. There is only one place to configure the entites for both integrations. This could be done
@@ -25,7 +25,9 @@ WARNING = "# THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assis
 
 def write_config(file, warning, config):
     with open(file, "w") as file_content:
-        file_content.write(warning + yaml.dump(config, default_flow_style=False))
+        file_content.write(
+            warning + yaml.dump(config, default_flow_style=False)
+        )
 
 
 # Read Source

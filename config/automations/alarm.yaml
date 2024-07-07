@@ -100,14 +100,11 @@
   trigger:
     - platform: state
       entity_id:
-        # Internal Doors
         - binary_sensor.kitchen_door_sensor_contact
         - binary_sensor.front_room_door_sensor_contact
         - binary_sensor.bathroom_door_sensor_contact
         - binary_sensor.master_bedroom_door_sensor_contact
         - binary_sensor.blues_room_door_sensor_contact
-        # Windows
-        - binary_sensor.bedroom_window_contact
       from:
         - "on"
         - "off"

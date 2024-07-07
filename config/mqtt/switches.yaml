@@ -28,7 +28,11 @@
 
 # 2NICE-7 = Unused
 
-# 2NICE-8 = Unused
+- name: rainbow_light
+  command_topic: 2NICE-8/cmnd/POWER
+  state_topic: 2NICE-8/stat/POWER
+  payload_on: "ON"
+  payload_off: "OFF"
 
 - name: electric_blanket
   command_topic: local-bytes/LB-1/cmnd/POWER

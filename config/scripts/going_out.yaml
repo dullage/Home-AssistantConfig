@@ -3,8 +3,10 @@ going_out:
   sequence:
     - service: light.turn_on
       entity_id: light.entrance_light
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.tv_power
+    - service: media_player.turn_off
+      entity_id: 
+        - media_player.apple_tv
+        - media_player.dining_room_tv
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'on' }}"
     - wait_template: "{{ states.binary_sensor['front_door_contact'].state == 'off' }}"
     - service: homeassistant.turn_off

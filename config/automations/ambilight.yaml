@@ -21,7 +21,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: input_boolean.tv_power
+    entity_id: media_player.front_room_tv
     to: "on"
   action:
     - delay:

@@ -1,4 +1,4 @@
-# 
+# Turn off all but one light when the Blues Night Light is turned on
 - alias: blues_night_light_on
   initial_state: true
   trigger:
@@ -8,15 +8,17 @@
   action:
     - service: light.turn_off
       entity_id: light.blues_room_1
-    - service: light.turn_off
-      entity_id: light.blues_room_2
-    - service: light.turn_off
-      entity_id: light.blues_room_3
     - service: light.turn_on
-      entity_id: light.blues_room_4
+      entity_id: light.blues_room_2
       data:
         brightness: 40
         kelvin: 2400
+    - service: light.turn_off
+      entity_id: light.blues_room_3
+    - service: light.turn_off
+      entity_id: light.blues_room_4
+    - service: switch.turn_off
+      entity_id: switch.rainbow_light
 
 # Automatically turn off the Blues Night Light after 60 minutes
 - alias: blues_night_light_off

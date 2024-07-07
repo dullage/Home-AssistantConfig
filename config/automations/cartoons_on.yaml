@@ -6,13 +6,13 @@
     to: 'on'
   condition:
     condition: state
-    entity_id: input_boolean.tv_power
-    state: "off"
+    entity_id: media_player.apple_tv
+    state: "standby"
   action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.tv_power
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
     - delay:
-        seconds: 10
+        seconds: 15
     - service: script.cbeebies
     - service: input_boolean.turn_off
       entity_id: input_boolean.cartoons
@@ -24,9 +24,8 @@
     entity_id: input_boolean.cartoons
     to: 'on'
   condition:
-    condition: state
-    entity_id: input_boolean.tv_power
-    state: "on"
+    condition: template
+    value_template: "{{ not is_state('media_player.apple_tv', 'standby') }}"
   action:
     - service: script.cbeebies
     - service: input_boolean.turn_off

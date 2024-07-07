@@ -7,5 +7,5 @@ cartoons:
 guest_mode:
   name: Guest Mode
 
-tv_power:
-  name: TV Power
+apple_tv:
+  name: Apple TV

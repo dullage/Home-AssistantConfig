@@ -38,7 +38,7 @@
       - condition: not
         conditions:
           condition: time
-          after: "15:30:00"
+          after: "15:00:00"
           weekday:
             - mon
             - tue

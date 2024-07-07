@@ -20,7 +20,7 @@ light.master_bedroom_all:
   name: Bedroom Lights
 light.bedroom_lamps:
   name: Bedroom Lamps
-input_boolean.tv_power:
+media_player.apple_tv:
   name: TV
 light.porch_light:
   name: Porch Light

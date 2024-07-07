@@ -1,0 +1,21 @@
+- alias: blues_rainbow_light_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.blues_room_all
+    from: "off"
+    to: "on"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.rainbow_light
+
+- alias: blues_rainbow_light_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.blues_room_all
+    from: "on"
+    to: "off"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.rainbow_light

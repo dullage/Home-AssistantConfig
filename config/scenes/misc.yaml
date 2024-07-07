@@ -54,8 +54,6 @@
       state: "off"
     light.dining_room_lamp:
       state: "off"
-    light.corner_lamp:
-      state: "off"
     light.nanoleaf:
       state: "on"
       brightness: 28
@@ -72,7 +70,7 @@
     light.kitchen_leds:
       state: "on"
       effect: "None"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
     light.main_kitchen_lights:
       state: "off"
@@ -80,7 +78,7 @@
       state: "off"
     group.tv:
       state: "on"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
     light.front_room_lamp:
       state: "off"
@@ -89,21 +87,21 @@
     light.corner_lamp:
       state: "on"
       effect: "Solid"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
     light.stairs:
       state: "on"
       effect: "Solid"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
     light.nanoleaf:
       state: "on"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
     light.matrix_light:
       state: "on"
       effect: "Solid"
-      rgb_color: [255, 0, 0]
+      rgb_color: [0, 0, 255]
       brightness: 255
 
 - name: kitchen_leds_dim
