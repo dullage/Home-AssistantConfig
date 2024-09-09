@@ -18,7 +18,7 @@
     service: climate.set_temperature
     data:
       entity_id: climate.nest
-      temperature: 9
+      temperature: 10
 
 # If the house starts heating whilst we're out, ask (via an iOS notification) whether we want to turn the heating off.
 - alias: location_heating_whilst_out
@@ -89,4 +89,4 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.nest
-        temperature: 9
+        temperature: 10

@@ -59,6 +59,8 @@
   entities:
     - entity: sensor.starling_effective_balance
       name: "Account Balance"
+    - entity: sensor.blue_s_balance
+      name: "Blue's Balance"
     - script.render_voice_assistant_config
     - entity: switch.microwave
       name: Microwave

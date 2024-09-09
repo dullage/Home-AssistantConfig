@@ -4,7 +4,7 @@ goodnight:
     - service: climate.set_temperature
       data:
         entity_id: climate.nest
-        temperature: 9
+        temperature: 10
     - service: media_player.turn_off
       entity_id: media_player.apple_tv
     - service: scene.turn_on

@@ -19,8 +19,6 @@ entity_config:
     name: Front Room Lamp
   light.garden_lights:
     name: Garden Lights
-  light.kitchen_leds:
-    name: Kitchen Cupboard Lights
   light.landing:
     name: Landing Light
   light.main_kitchen_lights:
@@ -35,21 +33,16 @@ entity_config:
     name: Front Room Dim
   scene.downstairs_general:
     name: Downstairs General
-  scene.downstairs_off:
-    name: Downstairs Off
   script.going_out:
     name: Going Out Script
   script.goodnight:
     name: Goodnight Script
-  switch.blues_fan:
-    name: Blue's Fan
   switch.ikea_socket_switch:
     name: Office Lamp
 filter:
   include_entities:
   - scene.downstairs_general
   - scene.downstairs_dim
-  - scene.downstairs_off
   - light.front_room_lamp
   - script.going_out
   - light.main_kitchen_lights
@@ -65,7 +58,5 @@ filter:
   - light.corner_lamp
   - input_boolean.cartoons
   - switch.ikea_socket_switch
-  - light.kitchen_leds
   - script.goodnight
-  - switch.blues_fan
   - cover.master_bedroom

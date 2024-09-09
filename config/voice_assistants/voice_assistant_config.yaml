@@ -2,8 +2,6 @@ scene.downstairs_general:
   name: Downstairs General
 scene.downstairs_dim:
   name: Front Room Dim
-scene.downstairs_off:
-  name: Downstairs Off
 light.front_room_lamp:
   name: Front Room Lamp
 script.going_out:
@@ -34,11 +32,7 @@ input_boolean.cartoons:
   name: Cartoons
 switch.ikea_socket_switch:
   name: Office Lamp
-light.kitchen_leds:
-  name: Kitchen Cupboard Lights
 script.goodnight:
   name: Goodnight Script
-switch.blues_fan:
-  name: Blue's Fan
 cover.master_bedroom:
   name: Bedroom Blind

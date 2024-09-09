@@ -1,6 +1,5 @@
 - alias: cat_feeder
   initial_state: true
-  mode: restart
   trigger:
     platform: state
     entity_id: binary_sensor.front_door_contact
@@ -10,11 +9,20 @@
     entity_id: input_boolean.away
     state: "on"
   action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm
+      data:
+        code: !secret alarm_code
     - service: light.turn_on
       entity_id: light.downstairs
+    - service: notify.iphones
+      data:
+        message: "The cat has been fed 🐈"
     - delay:
         minutes: 10
     - service: homeassistant.turn_off
       data:
         entity_id: group.everything
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.ha_alarm
 

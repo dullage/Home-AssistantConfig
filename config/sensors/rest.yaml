@@ -1,0 +1,9 @@
+- platform: rest
+  name: "Blue's Balance"
+  resource: !secret starlingbank_blues_balance_url
+  headers:
+    Authorization: !secret starlingbank_joint_api_key_header
+  value_template: "{{ value_json.balance.minorUnits / 100 }}"
+  device_class: monetary
+  unit_of_measurement: "GBP"
+  scan_interval: 1800 # 30 minutes
