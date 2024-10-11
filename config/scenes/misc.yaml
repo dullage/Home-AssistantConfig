@@ -33,8 +33,6 @@
       state: "on"
       brightness: 255
       effect: "Soap"
-    # input_select.maestro_matrix: "Minecraft"
-    # Parent Kitchen Lights (need to be on)
     light.kitchen_right:
       state: "on"
     light.kitchen_leds:

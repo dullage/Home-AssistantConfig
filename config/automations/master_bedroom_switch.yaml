@@ -23,7 +23,7 @@
             - platform: state
               entity_id: binary_sensor.master_bedroom_switch
             timeout:
-              seconds: 0.5
+              seconds: 1
           - condition: template
             value_template: "{{ wait.trigger is not none }}"
           - service: light.toggle
@@ -34,7 +34,7 @@
           - platform: state
             entity_id: binary_sensor.master_bedroom_switch
           timeout:
-            seconds: 0.5
+            seconds: 1
         - choose:
           - conditions:
             - condition: template

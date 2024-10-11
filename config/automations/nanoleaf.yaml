@@ -5,6 +5,8 @@
     platform: state
     entity_id: scene.downstairs_general
   action:
+    - delay:
+        seconds: 1
     - choose:
       # IF after sunset
       - conditions:

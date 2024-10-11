@@ -1,10 +1,10 @@
-# Turn on the bathroom extractor fan when the excess humidity goes above 12%
+# Turn on the bathroom extractor fan when the excess humidity goes above 20%
 - alias: bathroom_extractor_on
   initial_state: true
   trigger:
     platform: numeric_state
     entity_id: sensor.bathroom_excess_humidity
-    above: 15
+    above: 20
   condition:
     condition: state
     entity_id: switch.bathroom_extractor
@@ -13,13 +13,15 @@
     - service: switch.turn_on
       entity_id: switch.bathroom_extractor
 
-# Turn off the bathroom extractor fan when the excess humidity goes below 10%
+# Turn off the bathroom extractor fan when the excess humidity goes below 20% for 10 minutes
 - alias: bathroom_extractor_off
   initial_state: true
   trigger:
     platform: numeric_state
     entity_id: sensor.bathroom_excess_humidity
-    below: 10
+    below: 20
+    for:
+      minutes: 10
   condition:
     condition: state
     entity_id: switch.bathroom_extractor
@@ -28,7 +30,7 @@
     - service: switch.turn_off
       entity_id: switch.bathroom_extractor
 
-# Automatically turn off the bathroom extractor fan when it's been on for 2 hours
+# Automatically turn off the bathroom extractor fan when it's been on for 1 hour
 - alias: bathroom_extractor_timeout
   initial_state: true
   trigger:
@@ -36,7 +38,7 @@
     entity_id: switch.bathroom_extractor
     to: "on"
     for:
-      hours: 2
+      hours: 1
   action:
     - service: switch.turn_off
       entity_id: switch.bathroom_extractor
@@ -58,9 +60,9 @@
       entity_id: switch.bathroom_extractor
     # Wait until the light is turned back off again
     - wait_template: "{{ is_state('light.bathroom_all', 'off') }}"
-    # If the excess humidity is 10 or over, leave bathroom_extractor_off to do it's job
+    # If the excess humidity is 20 or over, leave bathroom_extractor_off to do it's job
     - condition: numeric_state
       entity_id: sensor.bathroom_excess_humidity
-      below: 10
+      below: 20
     - service: switch.turn_off
       entity_id: switch.bathroom_extractor
