@@ -4,7 +4,7 @@ everyone:
     - person.adam
     - person.leanne
 
-# A group containing all lights including lights that are in the switch domain. 
+# A group containing all lights including lights that are in the switch domain.
 all_lights:
   name: All Lights
   entities:
@@ -81,9 +81,13 @@ dining_room:
   name: Dining Room
   entities:
     - light.nanoleaf
-    - light.matrix_light
     - light.dining_room_lamp
     - light.entrance_light
+
+stairs:
+  name: stairs
+    - light.stairs
+    - light.matrix_light
 
 tv:
   name: TV
@@ -93,18 +97,13 @@ tv:
     - light.tv_right
     - light.frontroom_under_tv
 
-downstairs_ex_stairs:
-  name: Downstairs Excluding Stairs
+downstairs:
+  name: Downstairs
   entities:
     - group.living_room
     - group.kitchen
     - group.dining_room
-
-downstairs:
-  name: Downstairs
-  entities:
-    - group.downstairsExcStairs
-    - light.stairs
+    - group.stairs
 
 pi_holes:
   name: Pi-holes

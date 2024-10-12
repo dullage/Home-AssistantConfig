@@ -73,6 +73,8 @@
   entities:
     - light.stairs
     - input_select.maestro_stairs
+    - entity: light.matrix_light
+      icon: mdi:square-outline
 
 - type: entities
   title: Landing
@@ -103,8 +105,6 @@
   title: Dining Room
   entities:
     - light.nanoleaf
-    - entity: light.matrix_light
-      icon: mdi:matrix
     - input_select.maestro_matrix
     - entity: light.entrance_light
       name: Entrance Light
