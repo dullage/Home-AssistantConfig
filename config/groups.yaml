@@ -86,6 +86,7 @@ dining_room:
 
 stairs:
   name: stairs
+  entities:
     - light.stairs
     - light.matrix_light
 

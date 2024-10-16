@@ -20,7 +20,6 @@
 
     - service: media_player.turn_off
       entity_id: media_player.apple_tv
-    - service: rest_command.override_stair_light_live
     - service: scene.turn_on
       entity_id: scene.downstairs_timeout
     - delay:

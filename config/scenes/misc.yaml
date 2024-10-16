@@ -1,6 +1,6 @@
 - name: Downstairs Off
   entities:
-    group.downstairs_ex_stairs:
+    group.downstairs:
       state: "off"
     light.stairs:
       state: "off"
@@ -31,7 +31,7 @@
       # effect and brightness are set by automation.nanoleaf_downstairs_general
     light.matrix_light:
       state: "on"
-      brightness: 255
+      brightness: 130
       effect: "Tetrix"
     light.kitchen_right:
       state: "on"
@@ -57,7 +57,7 @@
       brightness: 28
       effect: "Starlight"
     light.matrix_light:
-      state: "of"
+      state: "off"
       # brightness: 255
       # effect: "Firenoise"
     switch.fidelux:

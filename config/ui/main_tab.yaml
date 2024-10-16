@@ -75,6 +75,7 @@
     - input_select.maestro_stairs
     - entity: light.matrix_light
       icon: mdi:square-outline
+    - input_select.maestro_matrix
 
 - type: entities
   title: Landing
