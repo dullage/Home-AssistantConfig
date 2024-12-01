@@ -14,7 +14,7 @@
 import yaml
 from os import path
 
-ROOT_DIR = r"/config/config/voice_assistants/"
+ROOT_DIR = "./"
 
 CONFIG_FILE = path.join(ROOT_DIR, "voice_assistant_config.yaml")
 GOOGLE_FILE = path.join(ROOT_DIR, "google.yaml")
