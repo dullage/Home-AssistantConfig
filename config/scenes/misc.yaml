@@ -100,7 +100,7 @@
       state: "on"
       effect: "Solid"
       rgb_color: [0, 0, 255]
-      brightness: 255
+      brightness: 130
 
 - name: kitchen_leds_dim
   entities:
