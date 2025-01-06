@@ -10,7 +10,7 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-# 2NICE-3 = Server Cupboard
+# 2NICE-3 = Unused
 
 - name: air_freshener
   command_topic: 2NICE-4/cmnd/POWER
