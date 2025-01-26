@@ -45,3 +45,46 @@
           before: "22:00:00"
   action:
     - service: script.air_freshener
+
+# Master Bedroom
+- alias: air_freshener_master_bedroom_home
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    to: "home"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.master_bedroom_air_freshener
+
+- alias: air_freshener_master_bedroom_away
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+    to: "not_home"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.master_bedroom_air_freshener
+
+- alias: air_freshener_master_bedroom_morning
+  initial_state: true
+  trigger:
+    platform: time
+    at: "05:30:00"
+  condition:
+    condition: state
+    entity_id: group.everyone
+    state: "home"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.master_bedroom_air_freshener
+
+- alias: air_freshener_master_bedroom_evening
+  initial_state: true
+  trigger:
+    platform: time
+    at: "21:00:00"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.master_bedroom_air_freshener

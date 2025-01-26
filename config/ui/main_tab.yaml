@@ -57,6 +57,9 @@
     - entity: switch.electric_blanket
       name: Electric Blanket
       icon: mdi:radiator
+    - entity: switch.master_bedroom_air_freshener
+      name: Air Freshener
+      icon: mdi:air-purifier
 
 - type: entities
   title: Kitchen
