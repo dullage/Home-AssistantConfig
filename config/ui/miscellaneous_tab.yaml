@@ -1,13 +1,3 @@
-- type: entities
-  title: "Sprinklers"
-  show_header_toggle: false
-  entities:
-    - entity: switch.sprinklers
-      name: Sprinklers
-      icon: mdi:sprinkler-variant
-    - entity: script.bird_blaster
-      icon: mdi:pistol
-
 - type: sensor
   entity: sensor.speedtest_download
   name: Download Speed
@@ -37,8 +27,6 @@
       name: Landing Light Timeout
     - entity: automation.light_timeouts_master_bedroom
       name: Bedroom Light Timeout
-    - entity: automation.sprinklers_auto
-      name: Automatic Sprinklers
     - entity: automation.master_bedroom_blind_morning
       name: Master Bedroom Blind Morning
 

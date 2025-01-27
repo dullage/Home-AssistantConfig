@@ -6,13 +6,7 @@
   device_class: energy
   state_class: total_increasing
 
-- name: sprinklers_energy
-  unique_id: 3652a46f-f719-423f-81bd-22fe546cf84c
-  state_topic: 2NICE-2/tele/SENSOR
-  value_template: '{{ value_json["ENERGY"]["Total"] }}'
-  unit_of_measurement: kWh
-  device_class: energy
-  state_class: total_increasing
+# 2NICE-2 = Unused
 
 # 2NICE-3 = Master Bedroom Air Freshener
 
