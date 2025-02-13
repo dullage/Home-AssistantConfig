@@ -33,6 +33,8 @@
       state: "on"
       brightness: 130
       effect: "Tetrix"
+    select.matrix_light_color_palette:
+      state: "Red Tide"
     light.kitchen_right:
       state: "on"
     light.kitchen_leds:
