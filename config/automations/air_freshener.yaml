@@ -1,14 +1,26 @@
 - alias: air_freshener_doorbell
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sensor.doorbell_action
-    to: 
-      - "single"
-      - "double"
-      - "triple"
-      - "quadruple"
-      - "release"
+    - platform: device
+      domain: mqtt
+      device_id: d572fbda577747ca835c8fe948a600ae
+      type: action
+      subtype: single
+    - platform: device
+      domain: mqtt
+      device_id: d572fbda577747ca835c8fe948a600ae
+      type: action
+      subtype: double
+    - platform: device
+      domain: mqtt
+      device_id: d572fbda577747ca835c8fe948a600ae
+      type: action
+      subtype: triple
+    - platform: device
+      domain: mqtt
+      device_id: d572fbda577747ca835c8fe948a600ae
+      type: action
+      subtype: quadruple
   condition:
     condition: state
     entity_id: group.everyone

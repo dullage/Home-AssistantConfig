@@ -1,9 +1,11 @@
 # Turn on Blue's Room lights to 100% when on switch is held
 - alias: blues_room_switch_on
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "brightness_move_up"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: brightness_move_up
   action:
     service: light.turn_on
     entity_id: light.blues_room_all
@@ -14,9 +16,11 @@
 # Turn off Blue's Room lights when off switch is held
 - alias: blues_room_switch_off
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "brightness_move_down"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: brightness_move_down
   action:
     service: light.turn_off
     entity_id: light.blues_room_all
@@ -24,9 +28,11 @@
 # Increase Blue's Room lights by 20% when on is pressed
 - alias: blues_room_switch_brightness_up
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "on"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: "on"
   action:
     # If blue's rooms lights are off then turn on and set them to 20% else increase brightness by 20%
     - service: light.turn_on
@@ -43,9 +49,11 @@
 # Decrease Blue's Room lights by 20% when off is pressed
 - alias: blues_room_switch_brightness_down
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "off"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: "off"
   condition:
     condition: state
     entity_id: light.blues_room_all
@@ -61,9 +69,11 @@
 # Set Blues Room lights to a random colour when the right arrow is pressed
 - alias: blues_room_switch_right_arrow
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "arrow_right_click"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: "arrow_right_click"
   action:
     service: light.turn_on
     entity_id: light.blues_room_all
@@ -79,9 +89,11 @@
 # Set Blues Room lights individually to a random colour when the left arrow is pressed
 - alias: blues_room_switch_left_arrow
   trigger:
-    platform: state
-    entity_id: sensor.blues_room_switch_action
-    to: "arrow_left_click"
+    platform: device
+    domain: mqtt
+    device_id: bcd874d4f4d45e9e832b158b7f9acaec
+    type: action
+    subtype: "arrow_left_click"
   action:
     - service: light.turn_on
       entity_id: light.blues_room_1

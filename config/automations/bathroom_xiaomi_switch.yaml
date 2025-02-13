@@ -2,9 +2,11 @@
 - alias: bathroom_xiaomi_switch_single_click
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_action
-    to: single
+    trigger: device
+    domain: mqtt
+    device_id: a8524bd709e840aea929760b358ef27e
+    type: action
+    subtype: single
   action:
     service: light.toggle
     entity_id: light.bathroom_all
@@ -13,9 +15,11 @@
 - alias: bathroom_xiaomi_switch_double_click
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_action
-    to: double
+    trigger: device
+    domain: mqtt
+    device_id: a8524bd709e840aea929760b358ef27e
+    type: action
+    subtype: double
   action:
     service: switch.toggle
     entity_id: switch.ikea_socket_switch
@@ -24,9 +28,11 @@
 - alias: bathroom_xiaomi_switch_hold
   initial_state: true
   trigger:
-    platform: state
-    entity_id: sensor.bathroom_xiaomi_switch_action
-    to: hold
+    trigger: device
+    domain: mqtt
+    device_id: a8524bd709e840aea929760b358ef27e
+    type: action
+    subtype: hold
   action:
     - choose:
       - conditions:
