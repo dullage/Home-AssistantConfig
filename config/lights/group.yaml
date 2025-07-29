@@ -20,3 +20,18 @@
   entities:
     - light.kitchen_left_bottom
     - light.kitchen_right_bottom
+
+- platform: group
+  name: lodge_lights
+  unique_id: lodge_lights
+  entities:
+    - light.lodge_ceiling_all
+    - light.lodge_plant
+    - light.lodge_desk_right
+
+- platform: group
+  name: garden_all
+  unique_id: garden_all
+  entities:
+    - light.garden_lights
+    - light.lodge_exterior_all

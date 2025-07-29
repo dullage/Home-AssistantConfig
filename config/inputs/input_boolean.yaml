@@ -1,9 +1,6 @@
 away:
   name: Away
 
-cartoons:
-  name: Cartoons
-
 guest_mode:
   name: Guest Mode
 

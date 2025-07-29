@@ -55,12 +55,6 @@
     - entity: binary_sensor.bathroom_door_sensor_contact
       secondary_info: last-changed
       name: Bathroom Door
-    - entity: binary_sensor.master_bedroom_door_sensor_contact
-      secondary_info: last-changed
-      name: Master Bedroom Door
-    - entity: binary_sensor.blues_room_door_sensor_contact
-      secondary_info: last-changed
-      name: Blue's Bedroom Door
 
 - type: picture-entity
   entity: camera.front_door

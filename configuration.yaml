@@ -178,23 +178,3 @@ mqtt:
 
 # Command Line Entities
 command_line: !include config/command_line/sensors.yaml
-
-# Rain Guage
-
-# 1. A binary sensor to monitor the state of the bucket.
-# 2. A counter to count the number of time the bucket changes state. This resets to zero on reboot.
-# 3. An automation to increment the counter.
-# 4. A template sensor to convert the counter to mm. This resets to zero on reboot.
-# 5. A utility meter to reset the count each day and calculate the mm per day.
-
-counter:
-  rain_sensor_flips:
-    name: Rain Sensor Flips
-    restore: false
-
-utility_meter:
-  rain_sensor_mm_per_day:
-    name: Rain Gauge
-    source: sensor.rain_sensor_mm
-    cycle: daily
-    periodically_resetting: true

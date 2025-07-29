@@ -53,9 +53,6 @@
     - entity: switch.microwave
       name: Microwave
       icon: mdi:microwave
-    - entity: group.pi_holes
-      name: Pi-hole Ad-Blocking
-      icon: mdi:pi-hole
     - type: button
       name: Ambilight On
       tap_action:

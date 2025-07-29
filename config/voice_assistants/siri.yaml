@@ -1,10 +1,12 @@
 # THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py
 
 entity_config:
+  climate.lodge_ac:
+    name: Lodge AC
   cover.master_bedroom:
     name: Bedroom Blind
-  input_boolean.cartoons:
-    name: Cartoons
+  group.garden:
+    name: Garden Lights
   light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
@@ -17,10 +19,10 @@ entity_config:
     name: Entrance Light
   light.front_room_lamp:
     name: Front Room Lamp
-  light.garden_lights:
-    name: Garden Lights
   light.landing:
     name: Landing Light
+  light.lodge_ceiling_all:
+    name: Lodge
   light.main_kitchen_lights:
     name: Kitchen Lights
   light.master_bedroom_all:
@@ -37,8 +39,6 @@ entity_config:
     name: Going Out Script
   script.goodnight:
     name: Goodnight Script
-  switch.ikea_socket_switch:
-    name: Office Lamp
 filter:
   include_entities:
   - scene.downstairs_general
@@ -46,7 +46,7 @@ filter:
   - light.front_room_lamp
   - script.going_out
   - light.main_kitchen_lights
-  - light.garden_lights
+  - group.garden
   - light.landing
   - light.bathroom_all
   - light.master_bedroom_all
@@ -56,7 +56,7 @@ filter:
   - light.entrance_light
   - light.dining_room_lamp
   - light.corner_lamp
-  - input_boolean.cartoons
-  - switch.ikea_socket_switch
   - script.goodnight
   - cover.master_bedroom
+  - light.lodge_ceiling_all
+  - climate.lodge_ac

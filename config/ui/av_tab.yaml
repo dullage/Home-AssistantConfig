@@ -65,25 +65,9 @@
       icon: mdi:power
 
 - type: entities
-  title: Misc
-  show_header_toggle: false
-  entities:
-    - entity: input_boolean.cartoons
-      icon: mdi:duck
-
-- type: entities
   title: HDMI Inputs
   show_header_toggle: false
   entities:
-    - type: button
-      name: Live TV
-      icon: mdi:television-classic
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: Watch TV
     - type: button
       name: Apple TV
       icon: mdi:apple
@@ -93,24 +77,15 @@
         data:
           entity_id: media_player.philips_tv
           source: HDMI 2
-    - type: button
-      name: Chromecast
-      icon: mdi:google-chrome
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: HDMI 3
-    - type: button  
-      name: Nintendo Switch
-      icon: mdi:nintendo-switch
-      tap_action:
-        action: call-service
-        service: media_player.select_source
-        data:
-          entity_id: media_player.philips_tv
-          source: HDMI 4
+    # - type: button  
+    #   name: Nintendo Switch
+    #   icon: mdi:nintendo-switch
+    #   tap_action:
+    #     action: call-service
+    #     service: media_player.select_source
+    #     data:
+    #       entity_id: media_player.philips_tv
+    #       source: HDMI 4
     - type: button
       name: Xbox
       icon: mdi:microsoft-xbox
@@ -120,6 +95,24 @@
         data:
           entity_id: media_player.philips_tv
           source: HDMI 1
+    - type: button
+      name: Chromecast
+      icon: mdi:google-chrome
+      tap_action:
+        action: call-service
+        service: media_player.select_source
+        data:
+          entity_id: media_player.philips_tv
+          source: HDMI 3
+    - type: button
+      name: Live TV
+      icon: mdi:television-classic
+      tap_action:
+        action: call-service
+        service: media_player.select_source
+        data:
+          entity_id: media_player.philips_tv
+          source: Watch TV
 
 - type: media-control
   entity: media_player.whole_house

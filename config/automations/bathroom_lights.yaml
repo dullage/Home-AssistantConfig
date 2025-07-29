@@ -35,34 +35,6 @@
     service: light.turn_on
     entity_id: light.bathroom_mirror_lights
 
-# Turn the bathroom mirror lights on if the master bedroom door or Blue's door is opened after sunset
-- alias: bathroom_lights_night_light_on_2
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id:
-      - binary_sensor.master_bedroom_door_sensor_contact
-      - binary_sensor.blues_room_door_sensor_contact
-    to: "on"
-  condition:
-    condition: state
-    entity_id: sun.sun
-    state: "below_horizon"
-  action:
-    - service: light.turn_on
-      entity_id: light.bathroom_mirror_lights
-    # If no motion in bathroom after 30 seconds and the main bathroom lights are off, turn the light back off again
-    - delay:
-        seconds: 30
-    - condition: state
-      entity_id: binary_sensor.bathroom_motion_sensor_occupancy
-      state: "off"
-    - condition: state
-      entity_id: light.bathroom_all
-      state: "off"
-    - service: light.turn_off
-      entity_id: light.bathroom_mirror_lights
-
 # As long as the main bathroom lights are off, turn the bathroom mirror lights off once there has been no motion in the bathroom for 1 minute.
 - alias: bathroom_lights_night_light_off
   initial_state: true

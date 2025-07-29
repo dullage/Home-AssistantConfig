@@ -84,7 +84,17 @@
     - light.landing
 
 - type: entities
-  title: Office
+  title: Executive Lodge
+  entities:
+    - entity: light.lodge_ceiling_all
+      name: Main Lights
+    - entity: light.lodge_plant
+      name: Plant Light
+    - entity: light.lodge_desk_right
+      name: Desk Light
+
+- type: entities
+  title: Craft Room
   entities:
     - entity: switch.ikea_socket_switch
       name: Lamp
@@ -116,6 +126,8 @@
   title: Outdoors
   entities:
     - light.garden_lights
+    - entity: light.lodge_exterior_all
+      name: Executive Lodge
     - entity: light.porch_light
       name: Porch Light
       icon: mdi:coach-lamp

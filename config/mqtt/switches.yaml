@@ -4,7 +4,7 @@
   payload_on: "ON"
   payload_off: "OFF"
 
-# 2NICE-2 = Unused
+# 2NICE-2 = Monitor
 
 - name: master_bedroom_air_freshener
   command_topic: 2NICE-3/cmnd/POWER

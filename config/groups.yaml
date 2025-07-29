@@ -8,29 +8,33 @@ everyone:
 all_lights:
   name: All Lights
   entities:
-    - switch.ikea_socket_switch
-    - light.entrance_light
-    - light.dining_room_lamp
-    - light.corner_lamp
-    - light.tv_left
-    - light.tv_top
-    - light.tv_right
-    - light.frontroom_under_tv
-    - light.dining_room_lamp
-    - light.main_kitchen_lights
-    - light.kitchen_leds
-    - light.front_room_lamp
-    - light.stairs
-    - light.landing
     - light.bathroom_all
     - light.bathroom_mirror_lights
-    - light.master_bedroom_all
     - light.bedroom_lamps
-    - light.garden_lights
-    - light.nanoleaf
-    - light.matrix_light
     - light.blues_room_all
+    - light.corner_lamp
+    - light.dining_room_lamp
+    - light.dining_room_lamp
+    - light.entrance_light
+    - light.front_room_lamp
+    - light.frontroom_under_tv
+    - light.garden_lights
+    - light.kitchen_leds
+    - light.landing
+    - light.lodge_ceiling_all
+    - light.lodge_desk_right
+    - light.lodge_exterior_all
+    - light.lodge_plant
+    - light.main_kitchen_lights
+    - light.master_bedroom_all
+    - light.matrix_light
+    - light.nanoleaf
+    - light.stairs
+    - light.tv_left
+    - light.tv_right
+    - light.tv_top
     - switch.blues_night_light
+    - switch.ikea_socket_switch
 
 # Everything that should be turned off when leaving
 everything:
@@ -106,24 +110,11 @@ downstairs:
     - group.dining_room
     - group.stairs
 
-pi_holes:
-  name: Pi-holes
-  entities:
-    - switch.pi_hole
-    - switch.pi_hole2
-
 downstairs_internal_doors:
   name: Downstairs Internal Doors
   entities:
     - binary_sensor.kitchen_door_sensor_contact
     - binary_sensor.front_room_door_sensor_contact
-
-bedroom_doors:
-  name: Bedroom Doors
-  all: true
-  entities:
-    - binary_sensor.master_bedroom_door_sensor_contact
-    - binary_sensor.blues_room_door_sensor_contact
 
 bedroom_lights:
   name: Bedroom Lights
@@ -136,3 +127,16 @@ kitchen_motion_sensors:
   entities:
     - binary_sensor.kitchen_motion_sensor_occupancy
     - binary_sensor.kitchen_motion_sensor_2_occupancy
+
+lodge:
+  name: Executive Lodge
+  entities:
+    - light.lodge_ceiling_all
+    - light.lodge_desk_right
+    - light.lodge_plant
+
+garden:
+  name: Garden
+  entities:
+    - light.garden_lights
+    - light.lodge_exterior_all

@@ -1,0 +1,24 @@
+- alias: lodge_switches_ceiling
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.shelly_lodge_ceiling_switch
+    not_from:
+      - "unavailable"
+      - "unknown"
+  action:
+    service: light.toggle
+    entity_id: light.lodge_lights
+
+- alias: lodge_switches_exterior
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.shelly_lodge_exterior_switch
+    not_from:
+      - "unavailable"
+      - "unknown"
+  action:
+    service: light.toggle
+    # entity_id: light.garden_all
+    entity_id: light.lodge_exterior_all

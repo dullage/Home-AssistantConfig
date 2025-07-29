@@ -6,7 +6,11 @@
   device_class: energy
   state_class: total_increasing
 
-# 2NICE-2 = Unused
+- name: monitor_power_consumption
+  unique_id: 19dd225d-c898-43a4-b839-78cb832aaa6a
+  state_topic: 2NICE-2/tele/SENSOR
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: W
 
 # 2NICE-3 = Master Bedroom Air Freshener
 

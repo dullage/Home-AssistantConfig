@@ -14,7 +14,7 @@
     energy_cost_per_kwh:
       unit_of_measurement: GBP/kWh
       friendly_name: Energy Cost p/kWh
-      value_template: "{{ 0.3417 }}"
+      value_template: "{{ 0.2221 }}"
 
     current_energy_cost_ph:
       unit_of_measurement: GBP
@@ -27,8 +27,3 @@
       friendly_name: "Current Energy Cost (per month)"
       value_template: >
         {{ (((float(states('sensor.current_energy_cost_ph')) * 24) * 365) / 12) | round(2) }}
-
-    rain_sensor_mm:
-      unit_of_measurement: mm
-      friendly_name: Rain Sensor (mm)
-      value_template: "{{ (float(states('counter.rain_sensor_flips')) * 0.3) | round(1) }}"

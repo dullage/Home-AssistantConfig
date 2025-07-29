@@ -9,7 +9,6 @@
     value_template: >
       {% set six_hours_ago = as_timestamp(utcnow()) - 21600 %}
       {{    as_timestamp(states.sensor.landing_temperature_sensor_temperature.last_updated) < six_hours_ago 
-         or as_timestamp(states.sensor.blues_room_temperature_sensor_temperature.last_updated) < six_hours_ago 
          or as_timestamp(states.sensor.office_temperature_sensor_temperature.last_updated) < six_hours_ago
          or as_timestamp(states.sensor.bathroom_temperature_sensor_temperature.last_updated) < six_hours_ago }}
   action:

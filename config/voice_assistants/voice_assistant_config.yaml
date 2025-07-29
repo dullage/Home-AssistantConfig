@@ -8,7 +8,7 @@ script.going_out:
   name: Going Out Script
 light.main_kitchen_lights:
   name: Kitchen Lights
-light.garden_lights:
+group.garden:
   name: Garden Lights
 light.landing:
   name: Landing Light
@@ -28,11 +28,11 @@ light.dining_room_lamp:
   name: Dining Room Lamp
 light.corner_lamp:
   name: Corner Lamp
-input_boolean.cartoons:
-  name: Cartoons
-switch.ikea_socket_switch:
-  name: Office Lamp
 script.goodnight:
   name: Goodnight Script
 cover.master_bedroom:
   name: Bedroom Blind
+light.lodge_ceiling_all:
+  name: Lodge
+climate.lodge_ac:
+  name: Lodge AC

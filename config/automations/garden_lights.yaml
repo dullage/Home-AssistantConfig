@@ -15,10 +15,10 @@
     entity_id: sun.sun
     state: "below_horizon"
   action:
-    service: light.turn_on
-    entity_id: light.garden_lights
+    service: homeassistant.turn_on
+    entity_id: group.garden
 
-# Turn off the garden lights 2 minutes after the kitchen door is shut (as long as the patio doors are also shut).
+# Turn off the garden lights 5 minutes after the kitchen door is shut (as long as the patio doors are also shut).
 - alias: garden_lights_off_kitchen_door
   initial_state: true
   trigger:
@@ -26,16 +26,16 @@
     entity_id: binary_sensor.garden_door_contact
     to: "off"
     for:
-      minutes: 2
+      minutes: 5
   condition:
     condition: state
     entity_id: binary_sensor.patio_doors_contact
     state: "off"
   action:
-    service: light.turn_off
-    entity_id: light.garden_lights
+    service: homeassistant.turn_off
+    entity_id: group.garden
 
-# Turn off the garden lights 2 minutes after the patio doors are shut (as long as the kitchen door is also shut).
+# Turn off the garden lights 5 minutes after the patio doors are shut (as long as the kitchen door is also shut).
 - alias: garden_lights_off_patio_doors
   initial_state: true
   trigger:
@@ -43,11 +43,11 @@
     entity_id: binary_sensor.patio_doors_contact
     to: "off"
     for:
-      minutes: 2
+      minutes: 5
   condition:
     condition: state
     entity_id: binary_sensor.garden_door_contact
     state: "off"
   action:
-    service: light.turn_off
-    entity_id: light.garden_lights
+    service: homeassistant.turn_off
+    entity_id: group.garden

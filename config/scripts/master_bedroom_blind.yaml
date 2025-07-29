@@ -4,4 +4,4 @@ master_bedroom_blind_fan_position:
     - service: cover.set_cover_position
       entity_id: cover.master_bedroom
       data:
-        position: 38
+        position: 36
