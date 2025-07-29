@@ -6,3 +6,6 @@ guest_mode:
 
 apple_tv:
   name: Apple TV
+
+video_call_lights:
+  name: Video Call Lights

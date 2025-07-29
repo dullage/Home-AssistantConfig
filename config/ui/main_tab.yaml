@@ -92,6 +92,10 @@
       name: Plant Light
     - entity: light.lodge_desk_right
       name: Desk Light
+    - type: section
+    - entity: input_boolean.video_call_lights
+      name: Video Call Lights
+      icon: mdi:video
 
 - type: entities
   title: Craft Room

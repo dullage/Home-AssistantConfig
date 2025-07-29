@@ -1,0 +1,30 @@
+- alias: video_call_lights_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.video_call_lights
+    to: "on"
+  action:
+    - service: scene.create
+      data:
+        scene_id: video_call_lights_previous_state
+        snapshot_entities:
+          - light.lodge_desk_right
+    - service: light.turn_on
+      entity_id: light.lodge_desk_right
+      data:
+        brightness: 255
+        color_temp: 250
+
+- alias: video_call_lights_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.video_call_lights
+    to: "off"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.video_call_lights_previous_state
+    - service: scene.delete
+      data:
+        scene_id: video_call_lights_previous_state
