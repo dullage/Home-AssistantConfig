@@ -5,8 +5,8 @@ entity_config:
     name: Lodge AC
   cover.master_bedroom:
     name: Bedroom Blind
-  group.garden:
-    name: Garden Lights
+  input_boolean.video_call_lights:
+    name: Video Call Lights
   light.bathroom_all:
     name: Bathroom Lights
   light.bedroom_lamps:
@@ -19,6 +19,8 @@ entity_config:
     name: Entrance Light
   light.front_room_lamp:
     name: Front Room Lamp
+  light.garden_all:
+    name: Garden Lights
   light.landing:
     name: Landing Light
   light.lodge_ceiling_all:
@@ -46,7 +48,7 @@ filter:
   - light.front_room_lamp
   - script.going_out
   - light.main_kitchen_lights
-  - group.garden
+  - light.garden_all
   - light.landing
   - light.bathroom_all
   - light.master_bedroom_all
@@ -60,3 +62,4 @@ filter:
   - cover.master_bedroom
   - light.lodge_ceiling_all
   - climate.lodge_ac
+  - input_boolean.video_call_lights

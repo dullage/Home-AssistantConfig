@@ -22,6 +22,9 @@ SIRI_FILE = path.join(ROOT_DIR, "siri.yaml")
 
 WARNING = "# THIS FILE IS AUTO GENERATED, DO NOT DIRECTLY EDIT. SEE: voice_assistant_config.py\n\n"  # noqa
 
+GOOGLE_EXCLUDED_ENTITIES = ["camera.front_door"]
+SIRI_EXCLUDED_ENTITIES = []
+
 
 def write_config(file, warning, config):
     with open(file, "w") as file_content:
@@ -30,16 +33,32 @@ def write_config(file, warning, config):
         )
 
 
+def convert_structure(config):
+    """Convert the structure of the config to the required format."""
+    return {
+        "filter": {"include_entities": [entity for entity in config.keys()]},
+        "entity_config": config,
+    }
+
+
 # Read Source
 with open(CONFIG_FILE, "r") as config_file_contents:
     config = yaml.safe_load(config_file_contents)
 
-# Convert Structure
-new_config = {
-    "filter": {"include_entities": [entity for entity in config.keys()]},
-    "entity_config": config,
+# Google
+google_config = {
+    entity: entity_config
+    for entity, entity_config in config.items()
+    if entity not in GOOGLE_EXCLUDED_ENTITIES
+}
+
+# Siri
+siri_config = {
+    entity: entity_config
+    for entity, entity_config in config.items()
+    if entity not in SIRI_EXCLUDED_ENTITIES
 }
 
 # Write Targets
-write_config(GOOGLE_FILE, WARNING, new_config)
-write_config(SIRI_FILE, WARNING, new_config)
+write_config(GOOGLE_FILE, WARNING, convert_structure(google_config))
+write_config(SIRI_FILE, WARNING, convert_structure(siri_config))

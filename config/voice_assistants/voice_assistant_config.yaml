@@ -8,7 +8,7 @@ script.going_out:
   name: Going Out Script
 light.main_kitchen_lights:
   name: Kitchen Lights
-group.garden:
+light.garden_all:
   name: Garden Lights
 light.landing:
   name: Landing Light
@@ -36,3 +36,8 @@ light.lodge_ceiling_all:
   name: Lodge
 climate.lodge_ac:
   name: Lodge AC
+input_boolean.video_call_lights:
+  name: Video Call Lights
+camera.front_door:
+  name: Front Door Camera
+  linked_doorbell_sensor: binary_sensor.doorbell_automation_running

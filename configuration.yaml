@@ -178,3 +178,11 @@ mqtt:
 
 # Command Line Entities
 command_line: !include config/command_line/sensors.yaml
+
+# Template Sensors
+template:
+  - binary_sensor:
+      - name: "Doorbell Automation Running"
+        state: >
+          {% set cnt = state_attr('automation.doorbell', 'current') %}
+          {{ cnt|int(0) > 0 }}
