@@ -1,0 +1,32 @@
+# Note: The AC is also turned off by the goodnight script.
+
+# Turn off the lodge AC when Adam leaves (ask via iOS notification).
+- alias: lodge_ac_auto_off_leaving
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: person.adam
+    from: 'home'
+  condition:
+    - condition: template
+      value_template: "{{ states('climate.lodge_ac') != 'off' }}"
+  action:
+    - service: notify.iphones
+      data:
+        message: "The lodge AC is still on. Turn it off?"
+        data:
+          actions:
+            - action: "LODGE_AC_TURN_OFF"
+              title: "Turn Lodge AC Off"
+
+# Turn off the lodge AC if the notification action is pressed.
+- alias: lodge_ac_warning_action
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: LODGE_AC_TURN_OFF
+  action:
+    - service: climate.turn_off
+      entity_id: climate.lodge_ac

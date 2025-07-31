@@ -9,6 +9,8 @@ goodnight:
       entity_id: media_player.apple_tv
     - service: scene.turn_on
       entity_id: scene.downstairs_off
+    - service: climate.turn_off
+      entity_id: climate.lodge_ac
     # Only set the armed_night mode if currently disarmed.
     - condition: state
       entity_id: alarm_control_panel.ha_alarm
