@@ -145,3 +145,49 @@
       state: "30"
     group.kitchen_leds_intensity:
       state: "255"
+
+- name: lodge_general
+  entities:
+    light.lodge_ceiling_1:
+      state: "on"
+      brightness: 230
+      color_temp: 294
+    light.lodge_ceiling_2:
+      state: "on"
+      brightness: 255
+      color_temp: 357
+    light.lodge_ceiling_3:
+      state: "on"
+      brightness: 51
+      color_temp: 357
+    light.lodge_desk:
+      state: "on"
+      brightness: 102
+      color_temp: 357
+    light.lodge_plant:
+      state: "on"
+      brightness: 178
+      color_temp: 357
+
+- name: lodge_bright
+  entities:
+    light.lodge_ceiling_1:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_ceiling_2:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_ceiling_3:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_desk:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_plant:
+      state: "on"
+      brightness: 255
+      color_temp: 250

@@ -9,9 +9,16 @@
       data:
         scene_id: video_call_lights_previous_state
         snapshot_entities:
+          - light.lodge_desk_left
           - light.lodge_desk_right
+          - light.lodge_ceiling_2
     - service: light.turn_on
-      entity_id: light.lodge_desk_right
+      entity_id: light.lodge_desk
+      data:
+        brightness: 255
+        color_temp: 250
+    - service: light.turn_on
+      entity_id: light.lodge_ceiling_2
       data:
         brightness: 255
         color_temp: 250
@@ -26,5 +33,23 @@
     - service: scene.turn_on
       entity_id: scene.video_call_lights_previous_state
     - service: scene.delete
-      data:
-        scene_id: video_call_lights_previous_state
+      target:
+        entity_id: scene.video_call_lights_previous_state
+
+- alias: video_call_lights_auto_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: light.lodge_desk
+    to: "off"
+  condition:
+    condition: state
+    entity_id: input_boolean.video_call_lights
+    state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.video_call_lights
+    - delay:
+        seconds: 3
+    - service: light.turn_off
+      entity_id: light.lodge_desk

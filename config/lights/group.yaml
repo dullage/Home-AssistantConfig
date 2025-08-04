@@ -27,6 +27,7 @@
   entities:
     - light.lodge_ceiling_all
     - light.lodge_plant
+    - light.lodge_desk_left
     - light.lodge_desk_right
 
 - platform: group

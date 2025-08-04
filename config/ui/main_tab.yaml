@@ -85,13 +85,19 @@
 
 - type: entities
   title: Executive Lodge
+  show_header_toggle: false
   entities:
+    - entity: scene.lodge_general
+      name: General Scene
+      icon: mdi:palette
+    - entity: scene.lodge_bright
+      name: Bright Scene
+      icon: mdi:palette
+    - type: section
     - entity: light.lodge_ceiling_all
       name: Main Lights
-    - entity: light.lodge_plant
-      name: Plant Light
-    - entity: light.lodge_desk_right
-      name: Desk Light
+    - entity: light.lodge_lamps
+      name: Lamps
     - type: section
     - entity: input_boolean.video_call_lights
       name: Video Call Lights

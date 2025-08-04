@@ -22,7 +22,7 @@ all_lights:
     - light.kitchen_leds
     - light.landing
     - light.lodge_ceiling_all
-    - light.lodge_desk_right
+    - light.lodge_desk
     - light.lodge_exterior_all
     - light.lodge_plant
     - light.main_kitchen_lights
@@ -132,7 +132,7 @@ lodge:
   name: Executive Lodge
   entities:
     - light.lodge_ceiling_all
-    - light.lodge_desk_right
+    - light.lodge_desk
     - light.lodge_plant
 
 garden:
