@@ -3,9 +3,12 @@
   trigger:
     platform: state
     entity_id: binary_sensor.master_bedroom_switch
-    not_from:
-      - "unavailable"
-      - "unknown"
+    from:
+      - "on"
+      - "off"
+    to:
+      - "on"
+      - "off"
   action:
     - choose:
       # If all off, immediately turn the lamp on and then if switched again within 0.5 seconds also turn the main lights on.
