@@ -3,21 +3,57 @@
   trigger:
     platform: state
     entity_id: binary_sensor.shelly_lodge_ceiling_switch
-    not_from:
-      - "unavailable"
-      - "unknown"
+    from:
+      - "on"
+      - "off"
+    to:
+      - "on"
+      - "off"
   action:
-    service: light.toggle
-    entity_id: light.lodge_lights
+    - wait_for_trigger:
+      - platform: state
+        entity_id: binary_sensor.shelly_lodge_ceiling_switch
+      timeout:
+        seconds: 0.5
+    - choose:
+      # Double Toggle
+      - conditions:
+          - condition: template
+            value_template: "{{ wait.trigger is not none }}"
+        sequence:
+          - service: scene.turn_on
+            entity_id: scene.lodge_bright
+      # Single Toggle
+      default:
+      - choose:
+        # If lights are off, set general scene
+        - conditions:
+          - condition: state
+            entity_id: light.lodge_lights
+            state: "off"
+          sequence:
+            - service: scene.turn_on
+              entity_id: scene.lodge_general
+        # If lights are on, turn them off
+        - conditions:
+          - condition: state
+            entity_id: light.lodge_lights
+            state: "on"
+          sequence:
+            - service: light.turn_off
+              entity_id: light.lodge_lights
 
 - alias: lodge_switches_exterior
   initial_state: true
   trigger:
     platform: state
     entity_id: binary_sensor.shelly_lodge_exterior_switch
-    not_from:
-      - "unavailable"
-      - "unknown"
+    from:
+      - "on"
+      - "off"
+    to:
+      - "on"
+      - "off"
   action:
     service: light.toggle
     # entity_id: light.garden_all
