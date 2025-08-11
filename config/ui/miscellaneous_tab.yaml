@@ -63,6 +63,15 @@
       tap_action:
         action: call-service
         service: rest_command.ambilight_warm
+    - type: button
+      name: "Disabled Ad-Blocking (5 minutes)"
+      tap_action:
+        action: call-service
+        service: pi_hole.disable
+        data:
+          duration: "00:05:00"
+        target:
+          entity_id: switch.pi_hole
 
 - type: entities
   title: Effy Flea Treatment
