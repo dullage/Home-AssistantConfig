@@ -4,7 +4,7 @@
     platform: state
     entity_id: media_player.apple_tv
     from:
-      - "standby"
+      - "off"
     for:
       seconds: 3
   action:
@@ -16,7 +16,7 @@
     platform: state
     entity_id: media_player.apple_tv
     to:
-      - "standby"
+      - "off"
     for:
       seconds: 3
   action:
@@ -47,7 +47,7 @@
   trigger:
     - platform: state
       entity_id: media_player.apple_tv
-      from: "standby"
+      from: "off"
   action:
     - service: automation.turn_off
       entity_id: automation.apple_tv_input_boolean_on
@@ -61,7 +61,7 @@
   trigger:
     - platform: state
       entity_id: media_player.apple_tv
-      to: "standby"
+      to: "off"
   action:
     - service: automation.turn_off
       entity_id: automation.apple_tv_input_boolean_off
