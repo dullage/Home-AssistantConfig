@@ -1,5 +1,5 @@
 - type: thermostat
-  entity: climate.nest
+  entity: climate.wiser_home
   name: Central Heating
 
 - type: entities
@@ -26,9 +26,10 @@
 - type: entities
   title: Indoor Temperatures
   entities:
-    - entity: sensor.nest_temperature
+    - entity: sensor.wiser_lts_temperature_home
       secondary_info: last-updated
       name: Downstairs
+      icon: mdi:thermometer
     - entity: sensor.landing_temperature_sensor_temperature
       secondary_info: last-updated
       name: Landing
@@ -45,7 +46,7 @@
 - type: entities
   title: Indoor Humidity
   entities:
-    - entity: sensor.nest_humidity
+    - entity: sensor.wiser_lts_humidity_home
       secondary_info: last-updated
       name: Downstairs
     - entity: sensor.landing_temperature_sensor_humidity

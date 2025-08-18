@@ -3,7 +3,7 @@ goodnight:
   sequence:
     - service: climate.set_temperature
       data:
-        entity_id: climate.nest
+        entity_id: climate.wiser_home
         temperature: 10
     - service: media_player.turn_off
       entity_id: media_player.apple_tv

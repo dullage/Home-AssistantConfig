@@ -30,16 +30,16 @@
     service: input_boolean.turn_off
     entity_id: input_boolean.away
 
-# Turn Nest off when "away" input turned on
-- alias: away_nest_away
+# Set Wiser away mode on when "away" input turned on
+- alias: away_wiser_away
   initial_state: true
   trigger:
     platform: state
     entity_id: input_boolean.away
     to: "on"
   action:
-    - service: climate.turn_off
-      entity_id: climate.nest
+    - service: switch.turn_on
+      entity_id: switch.wiser_away_mode
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "I have put the house into 'Away Mode', have a nice trip!"
@@ -47,16 +47,16 @@
       data:
         message: "I have put the house into 'Away Mode', have a nice trip!"
 
-# Turn Nest on when "away" input turned off
-- alias: away_nest_home
+# Turn Wiser off when "away" input turned off
+- alias: away_wiser_home
   initial_state: true
   trigger:
     platform: state
     entity_id: input_boolean.away
     to: "off"
   action:
-    - service: climate.turn_on
-      entity_id: climate.nest
+    - service: switch.turn_off
+      entity_id: switch.wiser_away_mode
     - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "Welcome Home!"

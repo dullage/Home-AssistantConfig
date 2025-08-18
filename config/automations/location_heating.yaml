@@ -17,7 +17,7 @@
   action:
     service: climate.set_temperature
     data:
-      entity_id: climate.nest
+      entity_id: climate.wiser_home
       temperature: 10
 
 # If the house starts heating whilst we're out, ask (via an iOS notification) whether we want to turn the heating off.
@@ -25,7 +25,7 @@
   initial_state: true
   trigger:
     platform: state
-    entity_id: climate.nest
+    entity_id: climate.wiser_home
     attribute: "hvac_action"
     to: "heating"
   condition:
@@ -67,7 +67,7 @@
         seconds: 30
     # Check to see if the house is heating
     - condition: template
-      value_template: "{{ state_attr('climate.nest', 'hvac_action') == 'heating' }}"
+      value_template: "{{ state_attr('climate.wiser_home', 'hvac_action') == 'heating' }}"
     # Notify
     - service: notify.iphones
       data:
@@ -88,5 +88,5 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.nest
+        entity_id: climate.wiser_home
         temperature: 10
