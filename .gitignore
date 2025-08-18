@@ -18,9 +18,10 @@
 secrets.yaml
 known_devices.yaml
 ip_bans.yaml
+README_TEMPLATE.md
+render_readme.py
 
 # Re-exclude these directories as they were allowed above
 /www
-README_TEMPLATE.md
-render_readme.py
 /blueprints
+/custom_components
