@@ -82,7 +82,10 @@
 - type: entities
   entities:
     - entity: sensor.cctv_queue_depth
-      name: CCTV Queue
+      name: CCTV Queue Depth
+      icon: mdi:cctv
+    - entity: sensor.cctv_queue_depth_old
+      name: Old CCTV Queue Items
       icon: mdi:cctv
 
 - type: entities
