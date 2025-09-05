@@ -20,12 +20,10 @@ light.bedroom_lamps:
   name: Bedroom Lamps
 media_player.apple_tv:
   name: TV
-light.porch_light:
+light.porch_light:s
   name: Porch Light
 light.entrance_light:
   name: Entrance Light
-light.dining_room_lamp:
-  name: Dining Room Lamp
 light.corner_lamp:
   name: Corner Lamp
 script.goodnight:

@@ -13,8 +13,6 @@ entity_config:
     name: Bedroom Lamps
   light.corner_lamp:
     name: Corner Lamp
-  light.dining_room_lamp:
-    name: Dining Room Lamp
   light.entrance_light:
     name: Entrance Light
   light.front_room_lamp:
@@ -56,7 +54,6 @@ filter:
   - media_player.apple_tv
   - light.porch_light
   - light.entrance_light
-  - light.dining_room_lamp
   - light.corner_lamp
   - script.goodnight
   - cover.master_bedroom

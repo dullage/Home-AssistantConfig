@@ -13,8 +13,6 @@ all_lights:
     - light.bedroom_lamps
     - light.blues_room_all
     - light.corner_lamp
-    - light.dining_room_lamp
-    - light.dining_room_lamp
     - light.entrance_light
     - light.front_room_lamp
     - light.frontroom_under_tv
@@ -85,7 +83,6 @@ dining_room:
   name: Dining Room
   entities:
     - light.nanoleaf
-    - light.dining_room_lamp
     - light.entrance_light
 
 stairs:
