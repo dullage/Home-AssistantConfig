@@ -116,13 +116,6 @@ tts:
     text_type: ssml
     voice: Amy
 
-# Office Heater Thermostat
-climate:
-  - platform: generic_thermostat
-    name: Office Heater
-    heater: switch.office_heater
-    target_sensor: sensor.office_temperature_sensor_temperature
-
 # Rest Commands
 rest_command:
   override_stair_light_live:

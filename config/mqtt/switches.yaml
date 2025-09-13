@@ -1,10 +1,6 @@
-- name: office_heater
-  command_topic: 2NICE-1/cmnd/POWER
-  state_topic: 2NICE-1/stat/POWER
-  payload_on: "ON"
-  payload_off: "OFF"
+# 2NICE-1 = Unused
 
-# 2NICE-2 = Monitor
+# 2NICE-2 = Unused
 
 # 2NICE-3 = Unused
 
