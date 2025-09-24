@@ -179,7 +179,7 @@
       color_temp: 250
     light.lodge_desk:
       state: "on"
-      brightness: 255
+      brightness: 178
       color_temp: 250
     light.lodge_plant:
       state: "on"
