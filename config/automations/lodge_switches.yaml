@@ -56,5 +56,4 @@
       - "off"
   action:
     service: light.toggle
-    # entity_id: light.garden_all
-    entity_id: light.lodge_exterior_all
+    entity_id: light.garden_all
