@@ -25,7 +25,8 @@
   trigger:
     platform: state
     entity_id: climate.lodge_ac
-  condition: and
+  condition:
+    condition: and
     conditions:
       - condition: template
         value_template: "{{ states('person.adam') != 'home' }}"
