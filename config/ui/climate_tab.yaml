@@ -12,6 +12,8 @@
     - entity: script.heating_quick_actions_boost
       name: Heating Boost (5 min)
       icon: mdi:fire
+    - entity: input_boolean.lodge_auto_heat
+      name: Lodge Auto Heat
 
 - type: sensor
   entity: sensor.bathroom_excess_humidity

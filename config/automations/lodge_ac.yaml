@@ -19,6 +19,27 @@
             - action: "LODGE_AC_TURN_OFF"
               title: "Turn Lodge AC Off"
 
+# Turn off the lodge AC if it comes on while Adam is away (ask via iOS notification).
+- alias: lodge_ac_auto_off_away
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: climate.lodge_ac
+  condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ states('person.adam') != 'home' }}"
+      - condition: template
+        value_template: "{{ states('climate.lodge_ac') != 'off' }}"
+  action:
+    - service: notify.iphones
+      data:
+        message: "The lodge AC has turned on. Turn it off?"
+        data:
+          actions:
+            - action: "LODGE_AC_TURN_OFF"
+              title: "Turn Lodge AC Off"
+
 # Turn off the lodge AC if the notification action is pressed.
 - alias: lodge_ac_warning_action
   initial_state: true

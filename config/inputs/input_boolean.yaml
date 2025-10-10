@@ -9,3 +9,6 @@ apple_tv:
 
 video_call_lights:
   name: Video Call Lights
+
+lodge_auto_heat:
+  name: Lodge Auto Heat
