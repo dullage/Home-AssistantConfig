@@ -11,17 +11,12 @@
         snapshot_entities:
           - light.lodge_desk_left
           - light.lodge_desk_right
+          - light.lodge_plant
+          - light.lodge_ceiling_1
           - light.lodge_ceiling_2
-    - service: light.turn_on
-      entity_id: light.lodge_desk
-      data:
-        brightness: 255
-        color_temp: 250
-    - service: light.turn_on
-      entity_id: light.lodge_ceiling_2
-      data:
-        brightness: 255
-        color_temp: 250
+          - light.lodge_ceiling_3
+    - service: scene.turn_on
+      entity_id: scene.lodge_video_call
 
 - alias: video_call_lights_off
   initial_state: true

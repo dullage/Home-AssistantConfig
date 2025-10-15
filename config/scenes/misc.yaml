@@ -185,3 +185,24 @@
       state: "on"
       brightness: 255
       color_temp: 250
+
+- name: lodge_video_call
+  entities:
+    light.lodge_ceiling_1:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_ceiling_2:
+      state: "on"
+      brightness: 255
+      color_temp: 250
+    light.lodge_ceiling_3:
+      state: "off"
+    light.lodge_desk:
+      state: "on"
+      brightness: 178
+      color_temp: 250
+    light.lodge_plant:
+      state: "on"
+      brightness: 100
+      color_temp: 357
