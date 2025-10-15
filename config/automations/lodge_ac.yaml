@@ -8,8 +8,13 @@
     entity_id: person.adam
     from: 'home'
   condition:
-    - condition: template
-      value_template: "{{ states('climate.lodge_ac') != 'off' }}"
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ states('climate.lodge_ac') != 'off' }}"
+      - condition: state
+        entity_id: input_boolean.lodge_auto_heat
+        state: 'on'
   action:
     - service: notify.iphones
       data:
@@ -52,3 +57,5 @@
   action:
     - service: climate.turn_off
       entity_id: climate.lodge_ac
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lodge_auto_heat
