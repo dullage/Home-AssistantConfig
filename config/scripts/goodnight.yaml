@@ -5,12 +5,14 @@ goodnight:
       data:
         entity_id: climate.wiser_home
         temperature: 10
+    - service: climate.turn_off
+      entity_id: climate.lodge_ac
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lodge_auto_heat
     - service: media_player.turn_off
       entity_id: media_player.apple_tv
     - service: scene.turn_on
       entity_id: scene.downstairs_off
-    - service: climate.turn_off
-      entity_id: climate.lodge_ac
     # Only set the armed_night mode if currently disarmed.
     - condition: state
       entity_id: alarm_control_panel.ha_alarm
