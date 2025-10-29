@@ -30,6 +30,7 @@
   trigger:
     platform: state
     entity_id: climate.lodge_ac
+    not_to: 'off'
   condition:
     condition: and
     conditions:
