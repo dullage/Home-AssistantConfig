@@ -20,7 +20,7 @@ light.bedroom_lamps:
   name: Bedroom Lamps
 media_player.apple_tv:
   name: TV
-light.porch_light:s
+light.porch_light:
   name: Porch Light
 light.entrance_light:
   name: Entrance Light
@@ -30,8 +30,6 @@ script.goodnight:
   name: Goodnight Script
 cover.master_bedroom:
   name: Bedroom Blind
-light.lodge_ceiling_all:
-  name: Lodge
 climate.lodge_ac:
   name: Lodge AC
 input_boolean.video_call_lights:
@@ -39,3 +37,7 @@ input_boolean.video_call_lights:
 camera.front_door:
   name: Front Door Camera
   linked_doorbell_sensor: binary_sensor.doorbell_automation_running
+scene.lodge_general:
+  name: Lodge General
+scene.lodge_video_call:
+  name: Lodge Video Call
