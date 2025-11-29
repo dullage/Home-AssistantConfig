@@ -24,6 +24,12 @@
 
 - type: thermostat
   entity: climate.lodge_ac
+  features:
+  - type: "climate-hvac-modes"
+    hvac_modes:
+      - "off"
+      - heat
+      - cool
 
 - type: entities
   title: Indoor Temperatures
