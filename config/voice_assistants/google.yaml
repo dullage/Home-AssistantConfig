@@ -3,6 +3,8 @@
 entity_config:
   climate.lodge_ac:
     name: Lodge AC
+  climate.wiser_home:
+    name: House Heating
   cover.master_bedroom:
     name: Bedroom Blind
   input_boolean.video_call_lights:
@@ -59,6 +61,7 @@ filter:
   - light.corner_lamp
   - script.goodnight
   - cover.master_bedroom
+  - climate.wiser_home
   - climate.lodge_ac
   - input_boolean.video_call_lights
   - scene.lodge_general

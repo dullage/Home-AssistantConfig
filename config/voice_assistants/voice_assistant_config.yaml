@@ -30,6 +30,8 @@ script.goodnight:
   name: Goodnight Script
 cover.master_bedroom:
   name: Bedroom Blind
+climate.wiser_home:
+  name: House Heating
 climate.lodge_ac:
   name: Lodge AC
 input_boolean.video_call_lights:
