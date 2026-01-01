@@ -11,19 +11,6 @@
     service: light.toggle
     entity_id: light.bathroom_all
 
-# Toggle the office lamp on double click of the bathroom Xiaomi switch
-- alias: bathroom_xiaomi_switch_double_click
-  initial_state: true
-  trigger:
-    trigger: device
-    domain: mqtt
-    device_id: a8524bd709e840aea929760b358ef27e
-    type: action
-    subtype: double
-  action:
-    service: switch.toggle
-    entity_id: switch.ikea_socket_switch
-
 # Toggle the bathroom mirror lights on hold of the bathroom Xiaomi switch
 - alias: bathroom_xiaomi_switch_hold
   initial_state: true
