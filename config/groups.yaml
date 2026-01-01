@@ -32,7 +32,6 @@ all_lights:
     - light.tv_right
     - light.tv_top
     - switch.blues_night_light
-    - switch.ikea_socket_switch
 
 # Everything that should be turned off when leaving
 everything:
