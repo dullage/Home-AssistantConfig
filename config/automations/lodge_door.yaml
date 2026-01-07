@@ -1,0 +1,20 @@
+# If lodge door is opened and the lodge lights have been off for more than 1 minute, set the lodge general scene
+- alias: lodge_door_opened
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.lodge_door_contact
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: "below_horizon"
+    - condition: state
+      entity_id: light.lodge_lights
+      state: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: scene.turn_on
+      entity_id: scene.lodge_general
