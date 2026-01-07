@@ -104,13 +104,6 @@
       icon: mdi:video
 
 - type: entities
-  title: Craft Room
-  entities:
-    - entity: switch.ikea_socket_switch
-      name: Lamp
-      icon: mdi:lightbulb
-
-- type: entities
   title: Blue's Room
   entities:
     - entity: light.blues_room_all
