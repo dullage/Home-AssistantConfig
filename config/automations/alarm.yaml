@@ -162,6 +162,7 @@
         # External Doors
         - binary_sensor.garden_door_contact
         - binary_sensor.patio_doors_contact
+        - binary_sensor.lodge_door_contact
       from:
         - "on"
         - "off"
