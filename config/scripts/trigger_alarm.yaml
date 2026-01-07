@@ -47,7 +47,7 @@ trigger_alarm:
         # Sensor Trigger > Image
         - conditions:
             - condition: template
-              value_template: "{{ trigger in ['binary_sensor.front_door_contact', 'binary_sensor.garden_door_contact', 'binary_sensor.patio_doors_contact'] }}"
+              value_template: "{{ trigger in ['binary_sensor.front_door_contact', 'binary_sensor.garden_door_contact', 'binary_sensor.patio_doors_contact', 'binary_sensor.lodge_door_contact'] }}"
           sequence:
             - service: camera.snapshot
               entity_id: camera.front_door
@@ -67,6 +67,8 @@ trigger_alarm:
                     Kitchen door (external) opened/closed!
                   {% elif trigger == 'binary_sensor.patio_doors_contact' %}
                     Patio doors opened/closed!
+                  {% elif trigger == 'binary_sensor.lodge_door_contact' %}
+                    Lodge door opened/closed!
                   {% endif %}
                 data:
                   url: /lovelace/4  # CCTV Tab
@@ -76,6 +78,8 @@ trigger_alarm:
                     {% elif trigger == 'binary_sensor.garden_door_contact' %}
                       /media/local/garden.jpg
                     {% elif trigger == 'binary_sensor.patio_doors_contact' %}
+                      /media/local/garden.jpg
+                    {% elif trigger == 'binary_sensor.lodge_door_contact' %}
                       /media/local/garden.jpg
                     {% endif %}
                   push:
