@@ -46,13 +46,15 @@
             - thu
             - fri
   action:
-    service: notify.iphones
+  - service: notify.iphones
     data:
       message: "Warning: The heating is still on. Turn it off?"
       data:
         actions:
           - action: "HEATING_TURN_OFF"
             title: "Turn Heating Off"
+  - delay: "01:00:00"
+            
 
 # If the house becomes unoccupied, ask (via an iOS notification) whether we want to turn the heating off.
 - alias: location_heating_leaving
