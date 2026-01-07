@@ -55,6 +55,11 @@
     - entity: binary_sensor.bathroom_door_sensor_contact
       secondary_info: last-changed
       name: Bathroom Door
+    - type: section
+      label: Other
+    - entity: binary_sensor.lodge_door_contact
+      secondary_info: last-changed
+      name: Lodge Door
 
 - type: picture-entity
   entity: camera.front_door
