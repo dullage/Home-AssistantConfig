@@ -46,6 +46,7 @@
           actions:
             - action: "LODGE_AC_TURN_OFF"
               title: "Turn Lodge AC Off"
+            - delay: '00:30:00'
 
 # Turn off the lodge AC if the notification action is pressed.
 - alias: lodge_ac_warning_action
