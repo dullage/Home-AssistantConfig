@@ -53,16 +53,16 @@ recorder:
   purge_keep_days: 31
 
 logbook:
-  # exclude:
-  #   domains:
-  #     - group
-  #     - media_player
-  #     - automation
-  #   entities:
-  #     - light.downstairs
 
 lovelace:
-  mode: yaml
+  resource_mode: yaml
+  dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Overview
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
 
 person:
   # Photos are configured above in the "customize" section
@@ -175,10 +175,8 @@ mqtt:
 # Command Line Entities
 command_line: !include config/command_line/sensors.yaml
 
-# Template Sensors
+# Template Entities
 template:
-  - binary_sensor:
-      - name: "Doorbell Automation Running"
-        state: >
-          {% set cnt = state_attr('automation.doorbell', 'current') %}
-          {{ cnt|int(0) > 0 }}
+  - binary_sensor: !include config/template/binary_sensors.yaml
+  - sensor: !include config/template/sensors.yaml
+  - light: !include config/template/lights.yaml

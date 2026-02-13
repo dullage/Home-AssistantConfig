@@ -1,0 +1,31 @@
+- name: Set Time
+  default_entity_id: sensor.ad_hoc_heating_time
+  state: '{% if states.input_number.ad_hoc_heating_time_hour.state|round(0)|string|length
+    == 1 %}0{% endif %}{{ states.input_number.ad_hoc_heating_time_hour.state|round(0)|string
+    }}:{% if states.input_number.ad_hoc_heating_time_minute.state|round(0)|string|length
+    == 1 %}0{% endif %}{{ states.input_number.ad_hoc_heating_time_minute.state|round(0)|string
+    }}'
+
+- name: Bathroom Excess Humidity
+  default_entity_id: sensor.bathroom_excess_humidity
+  unit_of_measurement: '%'
+  state: "{{ max([0, float(states('sensor.bathroom_temperature_sensor_humidity'))\n
+    \        - float(states('sensor.landing_temperature_sensor_humidity'))]) | round(2)
+    }}"
+
+- name: Energy Cost p/kWh
+  default_entity_id: sensor.energy_cost_per_kwh
+  unit_of_measurement: GBP/kWh
+  state: '{{ 0.2221 }}'
+
+- name: Current Energy Cost (per hour)
+  default_entity_id: sensor.current_energy_cost_ph
+  unit_of_measurement: GBP
+  state: '{{ ((float(states(''sensor.home_power'')) / 1000) * (float(states(''sensor.energy_cost_per_kwh''))))
+    | round(2) }}'
+
+- name: Current Energy Cost (per month)
+  default_entity_id: sensor.current_energy_cost_pm
+  unit_of_measurement: GBP
+  state: '{{ (((float(states(''sensor.current_energy_cost_ph'')) * 24) * 365) /
+    12) | round(2) }}'

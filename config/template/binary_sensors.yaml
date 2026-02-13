@@ -1,0 +1,4 @@
+- name: "Doorbell Automation Running"
+  state: >
+    {% set cnt = state_attr('automation.doorbell', 'current') %}
+    {{ cnt|int(0) > 0 }}

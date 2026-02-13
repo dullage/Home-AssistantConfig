@@ -1,0 +1,11 @@
+- name: downstairs
+  default_entity_id: light.downstairs
+  state: '{{ is_state(''group.downstairs'', ''on'') }}'
+  turn_on:
+  - data:
+      entity_id: scene.downstairs_general
+    action: scene.turn_on
+  turn_off:
+  - data:
+      entity_id: scene.downstairs_off
+    action: scene.turn_on
