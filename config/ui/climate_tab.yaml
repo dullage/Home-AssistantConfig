@@ -30,6 +30,7 @@
       - "off"
       - heat
       - cool
+      - fan_only
 
 - type: entities
   title: Indoor Temperatures

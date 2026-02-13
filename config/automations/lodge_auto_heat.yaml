@@ -4,21 +4,8 @@
     platform: state
     entity_id: input_boolean.lodge_auto_heat
     to: 'on'
-  condition:
-    condition: numeric_state
-    entity_id: sensor.lodge_ac_temperature
-    below: 24
   action:
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: climate.lodge_ac
-      data:
-        hvac_mode: heat
-    - service: climate.set_temperature
-      target:
-        entity_id: climate.lodge_ac
-      data:
-        temperature: 24
+    - service: script.lodge_auto_heat
 
 - alias: lodge_auto_heat_off
   initial_state: true
@@ -31,39 +18,24 @@
       target:
         entity_id: climate.lodge_ac
 
-- alias: lodge_auto_heat_too_hot
+- alias: lodge_auto_heat_temp_change
   initial_state: true
   trigger:
-    platform: numeric_state
+    platform: state
     entity_id: sensor.lodge_ac_temperature
-    above: 26
   condition:
     condition: state
     entity_id: input_boolean.lodge_auto_heat
     state: 'on'
   action:
-    - service: climate.turn_off
-      target:
-        entity_id: climate.lodge_ac
+    - service: script.lodge_auto_heat
 
-- alias: lodge_auto_heat_too_cold
+- alias: lodge_auto_heat_ac_off
   initial_state: true
   trigger:
-    platform: numeric_state
-    entity_id: sensor.lodge_ac_temperature
-    below: 24
-  condition:
-    condition: state
+    platform: state
+    entity_id: climate.lodge_ac
+    to: 'off'
+  action: 
+    service: input_boolean.turn_off
     entity_id: input_boolean.lodge_auto_heat
-    state: 'on'
-  action:
-    - service: climate.set_hvac_mode
-      target:
-        entity_id: climate.lodge_ac
-      data:
-        hvac_mode: heat
-    - service: climate.set_temperature
-      target:
-        entity_id: climate.lodge_ac
-      data:
-        temperature: 24

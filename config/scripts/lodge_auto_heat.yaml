@@ -1,0 +1,37 @@
+lodge_auto_heat:
+  alias: Lodge Auto Heat
+  sequence:
+    - variables:
+        target_temp: 24
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ states('sensor.lodge_ac_temperature') | float <= target_temp - 0.5 }}
+          sequence:
+            - service: climate.set_hvac_mode
+              target:
+                entity_id: climate.lodge_ac
+              data:
+                hvac_mode: heat
+            - service: climate.set_temperature
+              target:
+                entity_id: climate.lodge_ac
+              data:
+                temperature: "{{ target_temp }}"
+        - conditions:
+            - condition: template
+              value_template: >-
+                {{ states('sensor.lodge_ac_temperature') | float >= target_temp + 1 }}
+          sequence:
+            - service: climate.set_hvac_mode
+              target:
+                entity_id: climate.lodge_ac
+              data:
+                hvac_mode: fan_only
+            - service: climate.set_temperature
+              target:
+                entity_id: climate.lodge_ac
+              data:
+                temperature: "{{ target_temp }}"
+      default: []
