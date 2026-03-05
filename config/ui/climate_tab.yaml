@@ -42,9 +42,9 @@
     - entity: sensor.landing_temperature_sensor_temperature
       secondary_info: last-updated
       name: Landing
-    - entity: sensor.office_temperature_sensor_temperature
+    - entity: sensor.craft_room_temperature_sensor_temperature
       secondary_info: last-updated
-      name: Office
+      name: Craft Room
     - entity: sensor.bathroom_temperature_sensor_temperature
       secondary_info: last-updated
       name: Bathroom
@@ -61,9 +61,9 @@
     - entity: sensor.landing_temperature_sensor_humidity
       secondary_info: last-updated
       name: Landing
-    - entity: sensor.office_temperature_sensor_humidity
+    - entity: sensor.craft_room_temperature_sensor_humidity
       secondary_info: last-updated
-      name: Office
+      name: Craft Room
     - entity: sensor.bathroom_temperature_sensor_humidity
       secondary_info: last-updated
       name: Bathroom
