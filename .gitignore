@@ -25,3 +25,4 @@ render_readme.py
 /www
 /blueprints
 /custom_components
+/.cache
