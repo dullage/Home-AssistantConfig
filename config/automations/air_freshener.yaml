@@ -1,59 +1,11 @@
-- alias: air_freshener_doorbell
+- alias: air_freshener
   initial_state: true
   trigger:
-    - platform: device
-      domain: mqtt
-      device_id: d572fbda577747ca835c8fe948a600ae
-      type: action
-      subtype: single
-    - platform: device
-      domain: mqtt
-      device_id: d572fbda577747ca835c8fe948a600ae
-      type: action
-      subtype: double
-    - platform: device
-      domain: mqtt
-      device_id: d572fbda577747ca835c8fe948a600ae
-      type: action
-      subtype: triple
-    - platform: device
-      domain: mqtt
-      device_id: d572fbda577747ca835c8fe948a600ae
-      type: action
-      subtype: quadruple
-  condition:
-    condition: state
-    entity_id: group.everyone
-    state: "home"
+  - platform: state
+    entity_id: binary_sensor.lodge_door_contact
+    from: 'on'
+    to: 'off'
   action:
     - service: script.air_freshener
     - delay:
-        seconds: 60
-
-- alias: air_freshener_arrival
-  initial_state: true
-  trigger:
-    platform: state
-    entity_id: group.everyone
-    to: "home"
-  action:
-    - delay:
-        seconds: 60
-    - service: script.air_freshener
-
-- alias: air_freshener_timer
-  initial_state: true
-  trigger:
-    platform: time_pattern
-    minutes: "/15"
-  condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: group.everyone
-          state: "home"
-        - condition: time
-          after: "07:00:00"
-          before: "22:00:00"
-  action:
-    - service: script.air_freshener
+        minutes: 15

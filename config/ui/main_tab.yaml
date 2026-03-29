@@ -101,6 +101,10 @@
       name: Main Lights
     - entity: light.lodge_lamps
       name: Lamps
+    - type: section
+    - entity: script.air_freshener
+      name: Air Freshener
+      icon: mdi:spray
 
 - type: entities
   title: Blue's Room
