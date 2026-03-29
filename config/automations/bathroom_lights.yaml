@@ -85,7 +85,7 @@
             data:
               entity_id: light.bathroom_all
               transition: 5
-              color_temp: 370
+              color_temp_kelvin: 2700
       # ELSE
       default:
         # Fade brightness and temperature separately as they don't seem to work together
@@ -100,7 +100,7 @@
           data:
             entity_id: light.bathroom_all
             transition: 5
-            color_temp: 250
+            color_temp_kelvin: 4000
 
 # When the sun sets or it's Blue's bathtime, if the bathroom lights are already on, update the colour temperature.
 - alias: bathroom_light_temperature_2
@@ -128,4 +128,4 @@
       data:
         entity_id: light.bathroom_all
         transition: 5
-        color_temp: 370
+        color_temp_kelvin: 2700

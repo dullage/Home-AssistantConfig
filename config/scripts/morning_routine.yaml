@@ -27,7 +27,7 @@ morning_routine:
       entity_id: light.bathroom_all
       data:
         transition: 300
-        color_temp: 250
+        color_temp_kelvin: 4000
         # brightness: 255
 
     # Bathroom door opening

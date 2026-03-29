@@ -11,7 +11,7 @@
     entity_id: light.blues_room_all
     data:
       brightness: 255
-      kelvin: 2700
+      color_temp_kelvin: 2700
 
 # Turn off Blue's Room lights when off switch is held
 - alias: blues_room_switch_off
@@ -44,7 +44,7 @@
           {% else %}
             {{ (states.light.blues_room_all.attributes.brightness | int + 50) | int }}
           {% endif %}
-        kelvin: 2700
+        color_temp_kelvin: 2700
 
 # Decrease Blue's Room lights by 20% when off is pressed
 - alias: blues_room_switch_brightness_down
@@ -64,7 +64,7 @@
       entity_id: light.blues_room_all
       data_template:
         brightness: "{{ (states.light.blues_room_all.attributes.brightness | int - 50) | int }}"
-        kelvin: 2700
+        color_temp_kelvin: 2700
 
 # Set Blues Room lights to a random colour when the right arrow is pressed
 - alias: blues_room_switch_right_arrow
@@ -162,7 +162,7 @@
               entity_id: light.blues_room_all
               data:
                 brightness: 255
-                kelvin: 2700
+                color_temp_kelvin: 2700
         # Nighttime
         - conditions:
             - condition: state
@@ -176,7 +176,7 @@
               entity_id: light.blues_room_all
               data:
                 brightness: 100
-                kelvin: 2400
+                color_temp_kelvin: 2400
       default:
         - service: light.turn_off
           entity_id: light.blues_room_all
