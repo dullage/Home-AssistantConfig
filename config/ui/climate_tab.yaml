@@ -14,6 +14,8 @@
       icon: mdi:fire
     - entity: input_boolean.lodge_auto_heat
       name: Lodge Auto Heat
+    - entity: input_number.lodge_auto_heat_temperature
+      name: Lodge Auto Heat Temperature
 
 - type: sensor
   entity: sensor.bathroom_excess_humidity

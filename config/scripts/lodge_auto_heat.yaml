@@ -2,7 +2,7 @@ lodge_auto_heat:
   alias: Lodge Auto Heat
   sequence:
     - variables:
-        target_temp: 24
+        target_temp: "{{ states('input_number.lodge_auto_heat_temperature') | float }}"
     - choose:
         - conditions:
             - condition: template

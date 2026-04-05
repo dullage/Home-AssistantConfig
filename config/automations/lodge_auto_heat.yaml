@@ -30,6 +30,18 @@
   action:
     - service: script.lodge_auto_heat
 
+- alias: lodge_auto_heat_target_change
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_number.lodge_auto_heat_temperature
+  condition:
+    condition: state
+    entity_id: input_boolean.lodge_auto_heat
+    state: 'on'
+  action:
+    - service: script.lodge_auto_heat
+
 - alias: lodge_auto_heat_ac_off
   initial_state: true
   trigger:
