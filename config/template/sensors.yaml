@@ -16,7 +16,7 @@
 - name: Energy Cost p/kWh
   default_entity_id: sensor.energy_cost_per_kwh
   unit_of_measurement: GBP/kWh
-  state: '{{ 0.2221 }}'
+  state: '{{ 0.1868 }}'
 
 - name: Current Energy Cost (per hour)
   default_entity_id: sensor.current_energy_cost_ph
