@@ -16,7 +16,7 @@
         entity_id: input_boolean.lodge_auto_heat
         state: 'on'
   action:
-    - service: notify.iphones
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "The lodge AC is still on. Turn it off?"
         data:
@@ -39,14 +39,14 @@
       - condition: template
         value_template: "{{ states('climate.lodge_ac') != 'off' }}"
   action:
-    - service: notify.iphones
+    - service: notify.mobile_app_dullage_s_iphone
       data:
         message: "The lodge AC has turned on. Turn it off?"
         data:
           actions:
             - action: "LODGE_AC_TURN_OFF"
               title: "Turn Lodge AC Off"
-            - delay: '00:30:00'
+    - delay: '00:30:00'
 
 # Turn off the lodge AC if the notification action is pressed.
 - alias: lodge_ac_warning_action
