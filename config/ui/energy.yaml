@@ -24,3 +24,8 @@
   show_header_toggle: false
   entities:
     - sensor.electricity_meter
+
+- type: sensor
+  entity: sensor.electricity_usage_12_month_rolling
+  graph: line
+  hours_to_show: 744

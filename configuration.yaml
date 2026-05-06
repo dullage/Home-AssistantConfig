@@ -180,3 +180,18 @@ template:
   - binary_sensor: !include config/template/binary_sensors.yaml
   - sensor: !include config/template/sensors.yaml
   - light: !include config/template/lights.yaml
+
+# SQL Sensors
+sql:
+  - name: Electricity Usage (12 Month Rolling)
+    unique_id: electricity_usage_12_month_rolling
+    query: >
+      SELECT ROUND(MAX(`sum`) - MIN(`sum`)) AS kwh_used
+      FROM statistics s
+      JOIN statistics_meta m ON s.metadata_id = m.id
+      WHERE m.statistic_id = 'sensor.electricity_meter'
+      AND s.start_ts >= UNIX_TIMESTAMP(NOW() - INTERVAL 12 MONTH);
+    column: kwh_used
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: measurement
