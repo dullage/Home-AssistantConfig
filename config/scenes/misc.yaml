@@ -162,6 +162,10 @@
       state: "on"
       brightness: 178
       color_temp_kelvin: 2800
+    light.lodge_monitors:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 2800
 
 - name: lodge_bright
   entities:
@@ -182,6 +186,10 @@
       brightness: 178
       color_temp_kelvin: 4000
     light.lodge_plant:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 4000
+    light.lodge_monitors:
       state: "on"
       brightness: 255
       color_temp_kelvin: 4000
@@ -206,3 +214,7 @@
       state: "on"
       brightness: 100
       color_temp_kelvin: 2800
+    light.lodge_monitors:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 4000
