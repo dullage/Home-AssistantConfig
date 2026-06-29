@@ -130,6 +130,7 @@ lodge:
     - light.lodge_ceiling_all
     - light.lodge_desk
     - light.lodge_plant
+    - light.lodge_monitors
 
 garden:
   name: Garden
