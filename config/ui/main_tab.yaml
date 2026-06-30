@@ -99,7 +99,7 @@
     - type: section
     - entity: light.lodge_ceiling_all
       name: Main Lights
-    - entity: light.lodge_lamps
+    - entity: light.lodge_leds
       name: Lamps
     - type: section
     - entity: script.air_freshener
@@ -125,6 +125,15 @@
     - input_select.maestro_matrix
     - entity: light.entrance_light
       name: Entrance Light
+
+- type: entities
+  title: Downstairs Toilet
+  entities:
+    - entity: light.downstairs_toilet_light
+      name: Main Light
+    - entity: switch.downstairs_toilet_extractor
+      name: Extractor Fan
+      icon: mdi:fan
 
 - type: entities
   title: Outdoors

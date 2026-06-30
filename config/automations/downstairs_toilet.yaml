@@ -1,0 +1,55 @@
+# Turn the light on when there is motion in the downstairs toilet and the sun is below the horizon
+- alias: downstairs_toilet_light_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
+    from: "off"
+    to: "on"
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: "below_horizon"
+  action:
+    service: light.turn_on
+    entity_id: light.downstairs_toilet_light
+    data:
+      brightness_pct: 80
+
+# Turn the light off when there is no motion in the downstairs toilet
+- alias: downstairs_toilet_light_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
+    from: "on"
+    to: "off"
+  action:
+    service: light.turn_off
+    entity_id: light.downstairs_toilet_light
+
+# Turn the extractor fan on when there is motion in the downstairs toilet (regardless of time of day)
+- alias: downstairs_toilet_extractor_on
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
+    from: "off"
+    to: "on"
+  action:
+    service: switch.turn_on
+    entity_id: switch.downstairs_toilet_extractor
+
+# Turn the extractor fan off when there has been no motion in the downstairs toilet for 10 minutes
+- alias: downstairs_toilet_extractor_off
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
+    from: "on"
+    to: "off"
+    for:
+      minutes: 10
+  action:
+    service: switch.turn_off
+    entity_id: switch.downstairs_toilet_extractor

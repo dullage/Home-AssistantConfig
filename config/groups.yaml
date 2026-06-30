@@ -23,6 +23,7 @@ all_lights:
     - light.lodge_desk
     - light.lodge_exterior_all
     - light.lodge_plant
+    - light.lodge_monitors
     - light.main_kitchen_lights
     - light.master_bedroom_all
     - light.matrix_light
@@ -32,6 +33,7 @@ all_lights:
     - light.tv_right
     - light.tv_top
     - switch.blues_night_light
+    - light.downstairs_toilet_light
 
 # Everything that should be turned off when leaving
 everything:
@@ -84,6 +86,11 @@ dining_room:
     - light.nanoleaf
     - light.entrance_light
 
+downstairs_toilet:
+  name: Downstairs Toilet
+  entities:
+    - light.downstairs_toilet_light
+
 stairs:
   name: stairs
   entities:
@@ -104,6 +111,7 @@ downstairs:
     - group.living_room
     - group.kitchen
     - group.dining_room
+    - group.downstairs_toilet
     - group.stairs
 
 downstairs_internal_doors:

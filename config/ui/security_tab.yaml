@@ -12,9 +12,9 @@
     - entity: binary_sensor.porch_motion
       secondary_info: last-changed
       name: Porch Motion Sensor (Night)
-    - entity: binary_sensor.dining_room_motion_sensor_occupancy
+    - entity: binary_sensor.downstairs_toilet_motion_sensor_occupancy
       secondary_info: last-changed
-      name: Dining Room Motion Sensor
+      name: Downstairs Toilet Motion Sensor
     - entity: binary_sensor.stairs_motion_sensor_occupancy
       secondary_info: last-changed
       name: Stairs Motion Sensor

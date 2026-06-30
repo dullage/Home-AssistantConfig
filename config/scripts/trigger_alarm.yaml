@@ -9,7 +9,7 @@ trigger_alarm:
         # Basic
         - conditions:
             - condition: template
-              value_template: "{{ trigger in ['binary_sensor.kitchen_door_sensor_contact', 'binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'group.kitchen_motion_sensors', 'binary_sensor.dining_room_motion_sensor_occupancy', 'binary_sensor.stairs_motion_sensor_occupancy', 'binary_sensor.bathroom_motion_sensor_occupancy'] }}"
+              value_template: "{{ trigger in ['binary_sensor.kitchen_door_sensor_contact', 'binary_sensor.front_room_door_sensor_contact', 'binary_sensor.bathroom_door_sensor_contact', 'group.kitchen_motion_sensors', 'binary_sensor.downstairs_toilet_motion_sensor_occupancy', 'binary_sensor.stairs_motion_sensor_occupancy', 'binary_sensor.bathroom_motion_sensor_occupancy'] }}"
           sequence:
             - service: notify.iphones
               data:
@@ -23,8 +23,8 @@ trigger_alarm:
                     Bathroom door opened/closed!
                   {% elif trigger == 'group.kitchen_motion_sensors' %}
                     Motion in the Kitchen!
-                  {% elif trigger == 'binary_sensor.dining_room_motion_sensor_occupancy' %}
-                    Motion in the Dining Room!
+                  {% elif trigger == 'binary_sensor.downstairs_toilet_motion_sensor_occupancy' %}
+                    Motion in the Downstairs Toilet!
                   {% elif trigger == 'binary_sensor.stairs_motion_sensor_occupancy' %}
                     Motion on the Stairs!
                   {% elif trigger == 'binary_sensor.bathroom_motion_sensor_occupancy' %}

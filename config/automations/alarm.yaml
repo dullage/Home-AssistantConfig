@@ -47,7 +47,7 @@
     platform: state
     entity_id:
       - binary_sensor.stairs_motion_sensor_occupancy
-      - binary_sensor.dining_room_motion_sensor_occupancy
+      - binary_sensor.downstairs_toilet_motion_sensor_occupancy
       - binary_sensor.kitchen_door_sensor_contact
       - binary_sensor.front_door_contact
     from:
@@ -218,7 +218,7 @@
       entity_id:
         # Motion Sensors
         - group.kitchen_motion_sensors
-        - binary_sensor.dining_room_motion_sensor_occupancy
+        - binary_sensor.downstairs_toilet_motion_sensor_occupancy
         - binary_sensor.stairs_motion_sensor_occupancy
         - binary_sensor.bathroom_motion_sensor_occupancy
       from:
