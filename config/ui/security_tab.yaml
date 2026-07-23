@@ -46,6 +46,9 @@
 
     - type: section
       label: Internal Doors
+    - entity: binary_sensor.downstairs_toilet_door_contact
+      secondary_info: last-changed
+      name: Downstairs Toilet Door
     - entity: binary_sensor.kitchen_door_sensor_contact
       secondary_info: last-changed
       name: Kitchen Door
@@ -55,6 +58,7 @@
     - entity: binary_sensor.bathroom_door_sensor_contact
       secondary_info: last-changed
       name: Bathroom Door
+
     - type: section
       label: Other
     - entity: binary_sensor.lodge_door_contact

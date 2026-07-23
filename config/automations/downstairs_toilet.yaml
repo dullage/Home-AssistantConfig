@@ -14,7 +14,7 @@
     service: light.turn_on
     entity_id: light.downstairs_toilet_light
     data:
-      brightness_pct: 80
+      brightness_pct: 40
 
 # Turn the light off when there is no motion in the downstairs toilet
 - alias: downstairs_toilet_light_off
@@ -28,28 +28,41 @@
     service: light.turn_off
     entity_id: light.downstairs_toilet_light
 
-# Turn the extractor fan on when there is motion in the downstairs toilet (regardless of time of day)
+# Turn the extractor fan on when the door is shut
 - alias: downstairs_toilet_extractor_on
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
-    from: "off"
-    to: "on"
+    entity_id: binary_sensor.downstairs_toilet_door_contact
+    from: "on"
+    to: "off"
   action:
     service: switch.turn_on
     entity_id: switch.downstairs_toilet_extractor
 
-# Turn the extractor fan off when there has been no motion in the downstairs toilet for 10 minutes
+# Turn the extractor fan off when the door has been open for 10 minutes
 - alias: downstairs_toilet_extractor_off
   initial_state: true
   trigger:
     platform: state
-    entity_id: binary_sensor.downstairs_toilet_motion_sensor_occupancy
-    from: "on"
-    to: "off"
+    entity_id: binary_sensor.downstairs_toilet_door_contact
+    from: "off"
+    to: "on"
     for:
       minutes: 10
+  action:
+    service: switch.turn_off
+    entity_id: switch.downstairs_toilet_extractor
+
+# As a backstop, turn the extractor fan off after it's been on for 30 minutes
+- alias: downstairs_toilet_extractor_off_after_30_minutes
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: switch.downstairs_toilet_extractor
+    to: "on"
+    for:
+      minutes: 30
   action:
     service: switch.turn_off
     entity_id: switch.downstairs_toilet_extractor

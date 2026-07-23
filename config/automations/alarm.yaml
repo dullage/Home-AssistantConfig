@@ -50,6 +50,7 @@
       - binary_sensor.downstairs_toilet_motion_sensor_occupancy
       - binary_sensor.kitchen_door_sensor_contact
       - binary_sensor.front_door_contact
+      - binary_sensor.downstairs_toilet_door_contact
     from:
       - "on"
       - "off"
@@ -111,6 +112,7 @@
         - binary_sensor.kitchen_door_sensor_contact
         - binary_sensor.front_room_door_sensor_contact
         - binary_sensor.bathroom_door_sensor_contact
+        - binary_sensor.downstairs_toilet_door_contact
       from:
         - "on"
         - "off"
