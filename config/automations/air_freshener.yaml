@@ -9,3 +9,22 @@
     - service: script.air_freshener
     - delay:
         minutes: 15
+
+- alias: air_freshener_every_15_minutes_when_lodge_in_use
+  initial_state: true
+  trigger:
+    - platform: time_pattern
+      minutes: "/15"
+  condition:
+    - condition: state
+      entity_id: light.lodge_lights
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.lodge_door_contact
+      state: 'off'
+    - condition: template
+      value_template: >
+        {% set last = state_attr('script.air_freshener', 'last_trigger') %}
+        {{ last is none or (as_timestamp(now()) - as_timestamp(last)) > 900 }}
+  action:
+    - service: script.air_freshener
