@@ -44,9 +44,6 @@
     - entity: sensor.landing_temperature_sensor_temperature
       secondary_info: last-updated
       name: Landing
-    - entity: sensor.craft_room_temperature_sensor_temperature
-      secondary_info: last-updated
-      name: Craft Room
     - entity: sensor.bathroom_temperature_sensor_temperature
       secondary_info: last-updated
       name: Bathroom
