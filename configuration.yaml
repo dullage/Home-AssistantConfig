@@ -31,17 +31,6 @@ zone: !secret zones
 cloud:
   google_actions: !include config/voice_assistants/google.yaml
 
-http:
-  ip_ban_enabled: true
-  login_attempts_threshold: 5
-  server_port: 8448
-  trusted_proxies:
-    # Docker Subnets    
-    - 172.16.0.0/12
-    # Docker cloudflared Subnet
-    - 192.168.128.0/20
-  use_x_forwarded_for: true
-
 api:
 
 # Core
