@@ -126,11 +126,6 @@ rest_command:
     method: "post"
     content_type: "application/json"
     payload: '{"r": 230, "g": 150, "b": 120}'
-  wake_tablet_screen:
-    url: "http://192.168.0.217:2971/api/command"
-    method: "post"
-    content_type: "application/json"
-    payload: '{"wake": "true"}'
 
 # Alarm
 alarm_control_panel:
