@@ -1,5 +1,5 @@
 # Turn off the electric blanket at 11:30pm
-- alias: electric_blanket
+- alias: electric_blanket_off_time
   initial_state: true
   trigger:
     platform: time
@@ -9,7 +9,7 @@
     entity_id: switch.electric_blanket
 
 # Don't let the electric blanket be on for more than 2 hours
-- alias: electric_blanket
+- alias: electric_blanket_off_timer
   initial_state: true
   trigger:
     platform: state
