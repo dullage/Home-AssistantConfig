@@ -25,7 +25,11 @@
   entities:
     - sensor.electricity_meter
 
-- type: sensor
-  entity: sensor.electricity_usage_12_month_rolling
-  graph: line
-  hours_to_show: 744
+- type: statistics-graph
+  entities:
+    - sensor.electricity_usage_12_month_rolling
+  chart_type: line
+  period: month
+  days_to_show: 365
+  stat_types:
+    - mean
