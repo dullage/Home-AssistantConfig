@@ -1,5 +1,5 @@
 # Turn the volumes down on the google homes at night.
-- alias: google_home_volumes_night
+- alias: media_player_volumes_night
   initial_state: true
   trigger:
     platform: time
@@ -25,9 +25,14 @@
       data:
         entity_id: media_player.bathroom_nest_mini
         volume_level: 0.2
+    # Justboom
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.justboom
+        volume_level: 0.15
 
 # Turn the volumes up on the google homes in the morning.
-- alias: google_home_volumes_day
+- alias: media_player_volumes_day
   initial_state: true
   trigger:
     platform: time
@@ -53,3 +58,8 @@
       data:
         entity_id: media_player.bathroom_nest_mini
         volume_level: 0.4
+    # Justboom
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.justboom
+        volume_level: 0.45

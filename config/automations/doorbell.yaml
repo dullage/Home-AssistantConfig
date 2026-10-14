@@ -23,11 +23,14 @@
       type: action
       subtype: quadruple
   action:
-    - service: tts.cloud_say
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.justboom
       data:
-        entity_id: media_player.nest_minis
-        message: "Humans. There is someone at the front door."
-        cache: true
+        announce: true
+        media:
+          media_content_type: music
+          media_content_id: file:///home/dullage/doorbell.wav
     - service: camera.snapshot
       entity_id: camera.front_door
       data:

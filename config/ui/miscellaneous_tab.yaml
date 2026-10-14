@@ -72,6 +72,18 @@
           duration: "00:05:00"
         target:
           entity_id: switch.pi_hole
+    - type: button
+      name: "Doorbell Test"
+      tap_action:
+        action: call-service
+        service: media_player.play_media
+        target:
+          entity_id: media_player.justboom
+        data:
+          announce: true
+          media:
+            media_content_type: music
+            media_content_id: file:///home/dullage/doorbell.wav
 
 - type: entities
   title: Effy Flea Treatment
