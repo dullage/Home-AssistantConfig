@@ -13,6 +13,10 @@
     platform: state
     entity_id: input_boolean.lodge_auto_heat
     to: 'off'
+  condition:
+    condition: state
+    entity_id: climate.lodge_ac
+    state_not: 'cool'
   action:
     - service: climate.turn_off
       target:
@@ -45,9 +49,11 @@
 - alias: lodge_auto_heat_ac_off
   initial_state: true
   trigger:
-    platform: state
-    entity_id: climate.lodge_ac
-    to: 'off'
+    - platform: state
+      entity_id: climate.lodge_ac
+      to:
+        - 'off'
+        - 'cool'
   action: 
     service: input_boolean.turn_off
     entity_id: input_boolean.lodge_auto_heat
