@@ -34,4 +34,12 @@ lodge_auto_heat:
                 entity_id: climate.lodge_ac
               data:
                 temperature: "{{ target_temp }}"
-      default: []
+      default:
+        - condition: template
+          value_template: >-
+            {{ states('climate.lodge_ac') not in ['heat', 'fan_only'] }}
+        - service: climate.set_hvac_mode
+          target:
+            entity_id: climate.lodge_ac
+          data:
+            hvac_mode: fan_only
