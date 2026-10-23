@@ -14,9 +14,11 @@
     entity_id: input_boolean.lodge_auto_heat
     to: 'off'
   condition:
-    condition: state
-    entity_id: climate.lodge_ac
-    state_not: 'cool'
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: climate.lodge_ac
+        state: 'cool'
   action:
     - service: climate.turn_off
       target:
