@@ -1,0 +1,39 @@
+# Toggle the fire tablet screensaver on when we've both left the house.
+- alias: fire_tablet_screensaver_on_when_everyone_leaves
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: group.everyone
+  condition:
+    condition: template
+    value_template: "{{ states('group.everyone') != 'home' }}"
+  action:
+    service: switch.turn_on
+    entity_id: switch.fire_tablet_screensaver
+
+# Toggle the fire tablet screensaver off when either of us comes home.
+- alias: fire_tablet_screensaver_off_on_arrival
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: person.adam
+      to: "home"
+    - platform: state
+      entity_id: person.leanne
+      to: "home"
+  action:
+    service: switch.turn_off
+    entity_id: switch.fire_tablet_screensaver
+
+# Toggle the fire tablet screensaver off at 6am if either of us are home.
+- alias: fire_tablet_screensaver_off_morning
+  initial_state: true
+  trigger:
+    platform: time
+    at: '06:00:00'
+  condition:
+    condition: template
+    value_template: "{{ is_state('person.adam', 'home') or is_state('person.leanne', 'home') }}"
+  action:
+    service: switch.turn_off
+    entity_id: switch.fire_tablet_screensaver
