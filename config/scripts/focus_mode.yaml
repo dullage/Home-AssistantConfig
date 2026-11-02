@@ -1,0 +1,67 @@
+# Manually turn focus mode on and off.
+focus_mode_on:
+  alias: Focus Mode On
+  sequence:
+    - service: ntfy.publish
+      data:
+        message: "on"
+      target:
+        entity_id: notify.focus_mode
+
+focus_mode_off:
+  alias: Focus Mode Off
+  sequence:
+    - service: ntfy.publish
+      data:
+        message: "off"
+      target:
+        entity_id: notify.focus_mode
+
+# Send "on" to the focus mode ntfy topic, wait, then send "off" to turn it back off again.
+focus_mode_15_minutes:
+  alias: Focus Mode 15 Minutes
+  sequence:
+    - service: ntfy.publish
+      data:
+        message: "on"
+      target:
+        entity_id: notify.focus_mode
+    - delay:
+        minutes: 15
+    - service: ntfy.publish
+      data:
+        message: "off"
+      target:
+        entity_id: notify.focus_mode
+
+focus_mode_30_minutes:
+  alias: Focus Mode 30 Minutes
+  sequence:
+    - service: ntfy.publish
+      data:
+        message: "on"
+      target:
+        entity_id: notify.focus_mode
+    - delay:
+        minutes: 30
+    - service: ntfy.publish
+      data:
+        message: "off"
+      target:
+        entity_id: notify.focus_mode
+
+focus_mode_1_hour:
+  alias: Focus Mode 1 Hour
+  sequence:
+    - service: ntfy.publish
+      data:
+        message: "on"
+      target:
+        entity_id: notify.focus_mode
+    - delay:
+        hours: 1
+    - service: ntfy.publish
+      data:
+        message: "off"
+      target:
+        entity_id: notify.focus_mode

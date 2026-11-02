@@ -20,6 +20,41 @@
       icon: mdi:airplane
 
 - type: entities
+  title: Focus Mode
+  show_header_toggle: false
+  entities:
+    - type: button
+      name: Enable (15 Minutes)
+      icon: mdi:eye-off
+      tap_action:
+        action: call-service
+        service: script.focus_mode_15_minutes
+    - type: button
+      name: Enable (30 Minutes)
+      icon: mdi:eye-off
+      tap_action:
+        action: call-service
+        service: script.focus_mode_30_minutes
+    - type: button
+      name: Enable (1 Hour)
+      icon: mdi:eye-off
+      tap_action:
+        action: call-service
+        service: script.focus_mode_1_hour
+    - type: button
+      name: Turn On
+      icon: mdi:eye
+      tap_action:
+        action: call-service
+        service: script.focus_mode_on
+    - type: button
+      name: Turn Off
+      icon: mdi:eye-check
+      tap_action:
+        action: call-service
+        service: script.focus_mode_off
+
+- type: entities
   title: Automation Control
   show_header_toggle: false
   entities:
