@@ -11,6 +11,12 @@ focus_mode_on:
 focus_mode_off:
   alias: Focus Mode Off
   sequence:
+    - service: script.turn_off
+      target:
+        entity_id:
+          - script.focus_mode_15_minutes
+          - script.focus_mode_30_minutes
+          - script.focus_mode_1_hour
     - service: ntfy.publish
       data:
         message: "off"
