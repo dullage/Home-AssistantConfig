@@ -13,10 +13,14 @@
       brightness: 255
     light.kitchen_left:
       state: "on"
-    group.tv:
+    group.tv_hues:
       state: "on"
       brightness: 200
       xy_color: [0.49, 0.41]
+    light.tv_cabinet:
+      state: "on"
+      brightness: 200
+      xy_color: [0.51, 0.41]
     light.front_room_lamp:
       state: "on"
     light.corner_lamp:

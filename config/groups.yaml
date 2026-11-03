@@ -15,7 +15,7 @@ all_lights:
     - light.corner_lamp
     - light.entrance_light
     - light.front_room_lamp
-    - light.frontroom_under_tv
+    - light.tv_cabinet
     - light.garden_lights
     - light.kitchen_leds
     - light.landing
@@ -97,13 +97,18 @@ stairs:
     - light.stairs
     - light.matrix_light
 
-tv:
-  name: TV
+tv_hues:
+  name: TV Hues
   entities:
     - light.tv_left
     - light.tv_top
     - light.tv_right
-    - light.frontroom_under_tv
+
+tv:
+  name: TV
+  entities:
+    - group.tv_hues
+    - light.tv_cabinet
 
 downstairs:
   name: Downstairs
