@@ -35,14 +35,14 @@ entity_config:
     name: Front Room Dim
   scene.downstairs_general:
     name: Downstairs General
-  scene.lodge_general:
-    name: Lodge General
   scene.lodge_video_call:
     name: Lodge Video Call
   script.going_out:
     name: Going Out Script
   script.goodnight:
     name: Goodnight Script
+  script.lodge_lights:
+    name: Lodge Lights
 filter:
   include_entities:
   - scene.downstairs_general
@@ -64,5 +64,5 @@ filter:
   - climate.wiser_home
   - climate.lodge_ac
   - input_boolean.video_call_lights
-  - scene.lodge_general
+  - script.lodge_lights
   - scene.lodge_video_call

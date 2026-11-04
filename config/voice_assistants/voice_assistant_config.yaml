@@ -39,7 +39,7 @@ input_boolean.video_call_lights:
 camera.front_door:
   name: Front Door Camera
   linked_doorbell_sensor: binary_sensor.doorbell_automation_running
-scene.lodge_general:
-  name: Lodge General
+script.lodge_lights:
+  name: Lodge Lights
 scene.lodge_video_call:
   name: Lodge Video Call

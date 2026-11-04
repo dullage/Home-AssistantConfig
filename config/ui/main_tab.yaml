@@ -87,7 +87,7 @@
   title: Executive Lodge
   show_header_toggle: false
   entities:
-    - entity: scene.lodge_general
+    - entity: script.lodge_lights
       name: General Scene
       icon: mdi:palette
     - entity: scene.lodge_video_call

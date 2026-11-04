@@ -144,7 +144,7 @@
     group.kitchen_leds_intensity:
       state: "255"
 
-- name: lodge_general
+- name: lodge_night
   entities:
     light.lodge_ceiling_1:
       state: "on"
@@ -171,6 +171,33 @@
       brightness: 255
       color_temp_kelvin: 2800
 
+- name: lodge_day
+  entities:
+    light.lodge_ceiling_1:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 4000
+    light.lodge_ceiling_2:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 4000
+    light.lodge_ceiling_3:
+      state: "on"
+      brightness: 130
+      color_temp_kelvin: 4000
+    light.lodge_desk:
+      state: "on"
+      brightness: 150
+      color_temp_kelvin: 4000
+    light.lodge_plant:
+      state: "on"
+      brightness: 230
+      color_temp_kelvin: 4000
+    light.lodge_monitors:
+      state: "on"
+      brightness: 255
+      color_temp_kelvin: 4000
+
 - name: lodge_bright
   entities:
     light.lodge_ceiling_1:
@@ -191,7 +218,7 @@
       color_temp_kelvin: 4000
     light.lodge_plant:
       state: "on"
-      brightness: 255
+      brightness: 230
       color_temp_kelvin: 4000
     light.lodge_monitors:
       state: "on"

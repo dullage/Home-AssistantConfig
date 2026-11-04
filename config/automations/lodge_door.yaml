@@ -1,4 +1,4 @@
-# If lodge door is opened and the lodge lights have been off for more than 1 minute, set the lodge general scene
+# If lodge door is opened and the lodge lights have been off for more than 1 minute, run the lodge lights script
 - alias: lodge_door_opened
   initial_state: true
   trigger:
@@ -16,5 +16,5 @@
       for:
         minutes: 1
   action:
-    - service: scene.turn_on
-      entity_id: scene.lodge_general
+    - service: script.turn_on
+      entity_id: script.lodge_lights

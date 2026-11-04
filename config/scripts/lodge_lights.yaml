@@ -1,0 +1,14 @@
+# Sets the lodge lights to the night scene if the sun is below the horizon, otherwise the day scene.
+lodge_lights:
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: sun.sun
+              state: "below_horizon"
+          sequence:
+            - service: scene.turn_on
+              entity_id: scene.lodge_night
+      default:
+        - service: scene.turn_on
+          entity_id: scene.lodge_day
