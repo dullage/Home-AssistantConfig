@@ -191,7 +191,7 @@
       color_temp_kelvin: 4000
     light.lodge_plant:
       state: "on"
-      brightness: 230
+      brightness: 190
       color_temp_kelvin: 4000
     light.lodge_monitors:
       state: "on"
@@ -218,7 +218,7 @@
       color_temp_kelvin: 4000
     light.lodge_plant:
       state: "on"
-      brightness: 230
+      brightness: 190 # Bulb flickers above this brightness
       color_temp_kelvin: 4000
     light.lodge_monitors:
       state: "on"
